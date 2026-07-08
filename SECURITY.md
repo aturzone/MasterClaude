@@ -57,6 +57,6 @@ runs in **your** Claude with **your** model. The only outbound traffic is (a) th
 - There is no `package.json` `postinstall`, no hook that runs code on load, and no obfuscation.
 
 ## Reporting
-Found a real issue? Open one at <https://github.com/MasterClaudeTeam/MasterClaude/issues>. The user's standing
+Found a real issue? Open one at <https://github.com/aturzone/MasterClaude/issues>. The user's standing
 instructions and Claude's own safety judgement always outrank any MASTER CLAUDE skill — a skill changes *how*
 Claude works, never *what is allowed*.

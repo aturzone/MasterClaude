@@ -15,7 +15,7 @@ no key — everything is local and open.
 ## Option A — ask Claude Code to do it (easiest)
 Open your project in Claude Code and paste:
 
-> I want to use MASTER CLAUDE (https://github.com/MasterClaudeTeam/MasterClaude) in this project. Clone the repo,
+> I want to use MASTER CLAUDE (https://github.com/aturzone/MasterClaude) in this project. Clone the repo,
 > copy its `skills/`, `agents/` and `commands/` folders into this project's `.claude/` directory, then load
 > and run the `master-claude` skill to set up my team.
 
@@ -24,14 +24,14 @@ That's it — Claude Code clones the repo, copies the markdown into `.claude/`, 
 ## Option B — do it yourself (git)
 **This project only** (`.claude/` at the repo root):
 ```bash
-git clone https://github.com/MasterClaudeTeam/MasterClaude /tmp/mc
+git clone https://github.com/aturzone/MasterClaude /tmp/mc
 mkdir -p .claude
 cp -r /tmp/mc/skills /tmp/mc/agents /tmp/mc/commands .claude/
 rm -rf /tmp/mc
 ```
 **Every project** (your global config — use `~/.claude/` instead):
 ```bash
-git clone https://github.com/MasterClaudeTeam/MasterClaude /tmp/mc
+git clone https://github.com/aturzone/MasterClaude /tmp/mc
 mkdir -p ~/.claude
 cp -r /tmp/mc/skills /tmp/mc/agents /tmp/mc/commands ~/.claude/
 rm -rf /tmp/mc
@@ -74,7 +74,7 @@ works without it.
 ## Update
 Just refresh the markdown:
 ```bash
-git clone https://github.com/MasterClaudeTeam/MasterClaude /tmp/mc
+git clone https://github.com/aturzone/MasterClaude /tmp/mc
 cp -r /tmp/mc/skills /tmp/mc/agents /tmp/mc/commands .claude/   # (or ~/.claude/)
 rm -rf /tmp/mc
 ```
@@ -95,7 +95,7 @@ rm -rf .claude/skills/master-claude .claude/skills/{planning,review,understand,g
 A user pointed you here and asked to "use MASTER CLAUDE." Set it up like this:
 
 1. Confirm `claude --version` ≥ **2.1.183** (tell the user to `claude update` if older).
-2. `git clone https://github.com/MasterClaudeTeam/MasterClaude` into a temp dir (e.g. `/tmp/mc`).
+2. `git clone https://github.com/aturzone/MasterClaude` into a temp dir (e.g. `/tmp/mc`).
 3. Ensure `.claude/` exists at the project root (`mkdir -p .claude`).
 4. Copy `skills/`, `agents/`, and `commands/` from the clone into `.claude/` (merge — don't overwrite the
    user's own `.claude/` files; if `.claude/skills/` etc. already exist, copy the subfolders in).

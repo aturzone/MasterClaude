@@ -33,13 +33,13 @@ MASTER CLAUDE is `.md` files you drop into `.claude/`. Pick either path:
 
 **A. Let Claude Code set it up (easiest).** In your project, paste this to Claude Code:
 
-> I want to use MASTER CLAUDE (https://github.com/MasterClaudeTeam/MasterClaude) in this project. Clone the repo,
+> I want to use MASTER CLAUDE (https://github.com/aturzone/MasterClaude) in this project. Clone the repo,
 > copy its `skills/`, `agents/` and `commands/` folders into this project's `.claude/` directory, then load
 > and run the `master-claude` skill to set up my team.
 
 **B. Manual (git).**
 ```bash
-git clone https://github.com/MasterClaudeTeam/MasterClaude /tmp/mc
+git clone https://github.com/aturzone/MasterClaude /tmp/mc
 mkdir -p .claude && cp -r /tmp/mc/skills /tmp/mc/agents /tmp/mc/commands .claude/
 ```
 Use `~/.claude/` instead of `.claude/` to enable it for **every** project. The optional Sentinel hook and

@@ -25,7 +25,7 @@ and website stay accurate, and it actually ships. Nothing half-landed.
 ## 4. Ship it
 - [ ] Update the README team list on a new category. (Users get the change by re-copying
       `skills/ agents/ commands/` into `.claude/`.)
-- [ ] Commit + **push** the skills repo (`MasterClaudeTeam/MasterClaude`).
+- [ ] Commit + **push** the skills repo (`aturzone/MasterClaude`).
 - [ ] Build + **deploy** the website (`bash infra/deploy.sh`); **verify live** (home 200, catalog count, the
       new item present).
 - [ ] Notable addition → a short **blog** post.
