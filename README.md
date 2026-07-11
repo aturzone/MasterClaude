@@ -13,6 +13,8 @@ and the catastrophe rails always hold. Full model: **[SECURITY.md](SECURITY.md)*
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Buy me a coffee in TON](https://img.shields.io/badge/Buy%20me%20a%20coffee-TON-0098EA.svg)](https://masterclaude.shop/donate)
+[![Claudeers](https://claudeers.com/api/badge/masterclaude-2.svg)](https://claudeers.com/masterclaude-2)
+[![Hits](https://claudeers.com/api/counter/masterclaude-2.svg)](https://claudeers.com/masterclaude-2)
 
 ---
 
