@@ -13,8 +13,6 @@ and the catastrophe rails always hold. Full model: **[SECURITY.md](SECURITY.md)*
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Buy me a coffee in TON](https://img.shields.io/badge/Buy%20me%20a%20coffee-TON-0098EA.svg)](https://masterclaude.shop/donate)
-[![Claudeers](https://claudeers.com/api/badge/masterclaude-2.svg)](https://claudeers.com/masterclaude-2)
-[![Hits](https://claudeers.com/api/counter/masterclaude-2.svg)](https://claudeers.com/masterclaude-2)
 
 ---
 
@@ -161,6 +159,11 @@ This is a community project — PRs welcome. Add or sharpen a skill, an agent, o
 folder brainstorms what's needed (including **stack-specific** ideas). Contributors who want it can share a
 **TON address with their PRs** and receive a slice of the month's donations (see below). Start here:
 [CONTRIBUTING.md](CONTRIBUTING.md). Licensed under [MIT](LICENSE).
+
+
+[![Claudeers](https://claudeers.com/api/badge/masterclaude-2.svg)](https://claudeers.com/masterclaude-2)
+
+[![Hits](https://claudeers.com/api/counter/masterclaude-2.svg)](https://claudeers.com/masterclaude-2)
 
 ## Support the project ☕
 MASTER CLAUDE is free and open source. If it saves you time, **buy it a coffee in TON** — 100% on-chain,
