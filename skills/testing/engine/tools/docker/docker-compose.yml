@@ -1,0 +1,54 @@
+# One compose file. Profiles keep it minimal:
+#   default             — the QA runner (Linux Playwright image; deterministic visual baselines)
+#   security            — testssl + MDN HTTP Observatory sidecars
+#   security-extended   — + ZAP baseline (passive only)
+#   debug               — mitmproxy for manual traffic inspection
+#
+# Usage:
+#   docker compose -f tools/docker/docker-compose.yml run --rm runner pnpm qa run --service example --env production.test-account
+#   docker compose -f tools/docker/docker-compose.yml --profile security up testssl observatory
+services:
+  runner:
+    build:
+      context: ../..
+      dockerfile: tools/docker/Dockerfile
+    env_file:
+      - ../../.env
+    volumes:
+      - ../..:/repo
+    working_dir: /repo
+    # Override the command at `docker compose run` time; this is the default.
+    command: ["pnpm", "qa", "run", "--service", "example", "--env", "production.test-account", "--section", "s01-smoke"]
+
+  testssl:
+    image: drwetter/testssl.sh:latest
+    profiles: ["security"]
+    volumes:
+      - ../../results:/results
+    entrypoint: ["/home/testssl/testssl.sh"]
+    command: ["--jsonfile", "/results/sidecars/testssl.json", "${MC_QA_TARGET_URL:-https://example.com}"]
+
+  observatory:
+    image: node:22-alpine
+    profiles: ["security"]
+    working_dir: /work
+    volumes:
+      - ../../results:/work/results
+    # MDN HTTP Observatory (the old Mozilla Observatory API was shut down Oct 2024).
+    command: ["npx", "-y", "@mdn/mdn-http-observatory", "${MC_QA_TARGET_HOST:-example.com}"]
+
+  zap:
+    image: ghcr.io/zaproxy/zaproxy:stable
+    profiles: ["security-extended"]
+    volumes:
+      - ../../results:/zap/wrk
+    # Passive baseline scan only — safe against production.
+    command: ["zap-baseline.py", "-t", "${MC_QA_TARGET_URL:-https://example.com}", "-J", "wrk/sidecars/zap.json"]
+
+  mitmproxy:
+    image: mitmproxy/mitmproxy:latest
+    profiles: ["debug"]
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+    command: ["mitmweb", "--web-host", "0.0.0.0"]

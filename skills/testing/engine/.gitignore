@@ -1,0 +1,12 @@
+node_modules/
+results/
+.session/
+apps/*/.session/
+test-results/
+playwright-report/
+.env
+.env.*
+!.env.example
+*.tsbuildinfo
+.DS_Store
+Thumbs.db

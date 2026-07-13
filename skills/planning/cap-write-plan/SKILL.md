@@ -6,7 +6,7 @@ description: >-
   "write an implementation plan", "turn this spec into a plan", or after grill-me/cap-spec-smith +
   cap-decomposer have produced a spec and a step list, before any code. Each task carries exact file paths,
   interface contracts, real test code, exact commands and their expected output — no placeholders. The plan
-  is the contract; cap-execute-plan (or GOD mode / subagents) runs it.
+  is the contract; cap-execute-plan (or parallel subagents) runs it.
 allowed-tools: Read, Grep, Glob, Bash, Write, Edit
 ---
 
@@ -28,8 +28,8 @@ reader infer, it isn't done. Write it before any code.
 - **Architecture** — 2–3 sentences (how the pieces fit), tech stack.
 - **Global constraints** — copied **verbatim** from the spec (exact values, formats, relationships), one per
   line. These bind every task; the executor and any reviewer read them literally.
-- **Execution** — state how it'll run: inline (`cap-execute-plan`), autonomous (`god-mode`), or via parallel
-  subagents (`subagent-orchestration`) — so the executor routes correctly.
+- **Execution** — state how it'll run: inline (`cap-execute-plan`) or via parallel subagents
+  (`subagent-orchestration`) — so the executor routes correctly.
 
 ## Per-task block (required)
 Size each task to the **smallest unit worth its own review gate** — fold its setup/config/scaffolding/docs
@@ -57,10 +57,9 @@ into it. Then specify:
 4. **Right-sized:** a reviewer could accept/reject each task independently; no task is too big to verify.
 
 ## Hand off
-Pass the plan to **cap-execute-plan** (supervised) or **god-mode** (unattended) — both run the tasks in
-order, verify each against its stated expected output, and check each task's *Consumes* exist before
-implementing it. For a large independent-task plan, **subagent-orchestration** can run a fresh implementer
-per task.
+Pass the plan to **cap-execute-plan**, which runs the tasks in order, verifies each against its stated
+expected output, and checks each task's *Consumes* exist before implementing it. For a large
+independent-task plan, **subagent-orchestration** can run a fresh implementer per task.
 
 ---
 *Credits:* the zero-context, interfaces-per-task, no-placeholders, TDD-structured plan format is from

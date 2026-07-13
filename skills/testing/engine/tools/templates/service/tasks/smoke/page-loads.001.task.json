@@ -1,0 +1,45 @@
+{
+  "$schema": "../../../../packages/core/src/schemas/task.schema.json",
+  "schemaVersion": "1.0",
+  "id": "__SERVICE__.smoke.page-loads.001",
+  "title": "Home page loads with rendered content",
+  "goal": "The home page of this surface must load and render readable content within a reasonable time — never a blank screen. This is the baseline signal that the surface is up.",
+  "classification": {
+    "category": "smoke",
+    "testTypes": ["functional"],
+    "tags": ["smoke", "public"]
+  },
+  "importance": {
+    "priority": "P0",
+    "severityIfBroken": "blocker",
+    "businessImpact": "A blank home page means the surface is unreachable for every user."
+  },
+  "risk": {
+    "class": "a",
+    "reason": "Public page, no auth, no state change.",
+    "allowedEnvs": ["production.test-account"]
+  },
+  "automation": {
+    "level": "full",
+    "executor": "script",
+    "humanInvolvement": 0
+  },
+  "procedure": {
+    "preconditions": [{ "kind": "network", "value": "Online" }],
+    "steps": [
+      { "n": 1, "action": "goto", "target": "/" },
+      { "n": 2, "action": "custom", "fn": "pageRendered", "evidence": ["screenshot"] }
+    ]
+  },
+  "oracle": {
+    "expected": [{ "id": "e1", "description": "Home page renders readable content within 30s" }],
+    "evidence": { "required": ["screenshot"] }
+  },
+  "lifecycle": {
+    "status": "active",
+    "owner": "qa@example.com",
+    "createdAt": "2026-07-09",
+    "updatedAt": "2026-07-09"
+  },
+  "schedule": { "frequency": ["per-deploy", "nightly"], "estimatedDurationSec": 30, "timeoutSec": 120 }
+}

@@ -1,0 +1,21 @@
+{
+  "name": "mc-qa",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.7.0",
+  "engines": {
+    "node": ">=20.12"
+  },
+  "scripts": {
+    "qa": "tsx packages/runner/src/cli.ts",
+    "typecheck": "pnpm -r exec tsc --noEmit"
+  },
+  "devDependencies": {
+    "@lhci/cli": "^0.15.1",
+    "@playwright/mcp": "^0.0.77",
+    "@types/node": "^26.1.1",
+    "linkinator": "^7.6.1",
+    "tsx": "^4.23.0",
+    "typescript": "^6.0.3"
+  }
+}

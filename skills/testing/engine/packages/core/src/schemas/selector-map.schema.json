@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "mc-qa-selector-map-1.0",
+  "title": "MASTER CLAUDE QA Selector Map (one file per page)",
+  "type": "object",
+  "required": ["schemaVersion", "service", "page", "entries"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "schemaVersion": { "const": "1.0" },
+    "service": { "type": "string" },
+    "page": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+    "path": { "type": "string" },
+    "entries": {
+      "type": "object",
+      "propertyNames": { "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+      "additionalProperties": {
+        "type": "object",
+        "required": ["kind", "description", "provenance", "lastVerified"],
+        "additionalProperties": false,
+        "properties": {
+          "kind": { "enum": ["element", "url-pattern"] },
+          "selector": { "type": "string" },
+          "fallbacks": { "type": "array", "items": { "type": "string" } },
+          "role": { "type": "string" },
+          "name": { "type": "string" },
+          "urlPattern": { "type": "string" },
+          "page": { "type": "string" },
+          "description": { "type": "string" },
+          "provenance": { "enum": ["authored", "learned"] },
+          "learnedBy": { "type": "string" },
+          "state": { "enum": ["verified", "candidate", "stale"] },
+          "lastVerified": { "type": "string", "format": "date" },
+          "hits": { "type": "integer", "minimum": 0 },
+          "misses": { "type": "integer", "minimum": 0 },
+          "stability": { "type": "number", "minimum": 0, "maximum": 1 },
+          "notes": { "type": "string" }
+        }
+      }
+    }
+  }
+}

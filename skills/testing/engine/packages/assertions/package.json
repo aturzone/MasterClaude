@@ -1,0 +1,15 @@
+{
+  "name": "@mc-qa/assertions",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Optional i18n/RTL assertion helpers for MASTER CLAUDE QA (enable per-project; the core engine is English-first and locale-neutral by default)",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@mc-qa/core": "workspace:*",
+    "@playwright/test": "^1.61.1",
+    "jalaali-js": "^2.0.0"
+  }
+}

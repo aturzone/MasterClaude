@@ -1,0 +1,14 @@
+{
+  "name": "@mc-qa-app/__SERVICE__",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@mc-qa/assertions": "workspace:*",
+    "@mc-qa/core": "workspace:*",
+    "@mc-qa/fixtures": "workspace:*",
+    "@mc-qa/runner": "workspace:*",
+    "@mc-qa/selector-memory": "workspace:*",
+    "@playwright/test": "^1.61.1"
+  }
+}

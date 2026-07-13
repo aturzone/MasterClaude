@@ -1,0 +1,9 @@
+{
+  "$schema": "../../../packages/core/src/schemas/env-profile.schema.json",
+  "name": "production.test-account",
+  "baseURL": "__BASEURL__",
+  "accountType": "test",
+  "unattendedRiskClasses": ["a", "b"],
+  "supervisedRiskClasses": ["c"],
+  "ciAllowed": true
+}

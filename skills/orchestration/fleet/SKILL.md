@@ -40,43 +40,32 @@ genuinely parallel and big enough to matter.
    Spawn teammates that share a **task list** and a **mailbox** (they message each other via `SendMessage`).
    Start with **3–5**. Caveats: in-process teammates **don't survive `/resume`**, one team per session, no
    nested teams.
-3. **Headless fleet — scripted / unattended batch** (`claude -p`). Spawn N print-mode workers in parallel, each
-   its own `--session-id`, parse `--output-format json`, coordinate through a filesystem job board. Use the
-   bundled **`fleet-runner.mjs`** (below). Best for read/analysis fan-out — no merge risk.
+3. **Git worktrees — isolate parallel edits.** Give each writer its own branch + working directory so
+   concurrent edits never clobber each other (background sessions do this for you automatically; reach for it
+   directly when you dispatch your own parallel editors). See **worktree-isolation**.
 
 ## The leader's flow
 1. **Decompose** — break the goal into independent, similarly-sized chunks (use `cap-decomposer`). Name each
    chunk's owner files so **no two workers touch the same file**.
 2. **Dispatch** — one session per chunk, **≤ 3–5 at a time**. For edits, prefer background sessions
-   (auto-worktree) or give each its own worktree (`worktree-isolation`). For analysis, headless workers writing
-   results to disk.
-3. **Monitor** — `claude agents` (background) or poll the job board. Don't micromanage — workers are autonomous.
+   (auto-worktree) or give each its own worktree (`worktree-isolation`). For analysis/review, have each
+   background session write its findings to a named file.
+3. **Monitor** — `claude agents` (background) or the team's shared task list. Don't micromanage — workers are autonomous.
 4. **Integrate** — collect each worker's result, resolve any overlap, synthesize the final output, and **verify
    the merged whole** (build/tests). A green per-worker result doesn't guarantee a green merge.
 
-## Automate it — the fleet runner
-For a batch of independent **analysis / investigation** tasks (parallel code review, per-module audits, doc
-generation), the bundled runner fans them out and collects the results:
-```bash
-node .claude/skills/orchestration/fleet/fleet-runner.mjs tasks.json --concurrency 3 --budget 3
-#   tasks.json: ["review src/auth", "review src/api", "review src/db"]   (independent chunks)
-#   results -> .mc/fleet/<runId>/results.json     ·   stop: touch .mc/fleet/STOP
-```
-Each task runs as a separate `claude -p` worker (capped concurrency, an optional per-worker `--max-budget-usd`).
-It **does not edit your source** — workers analyze and report; you (or the leader) apply changes. For parallel
-*edits*, use background sessions / worktrees instead.
-
 ## Guardrails (do not skip — this is where mistakes happen)
 - **Cost is linear.** N parallel sessions ≈ **N× the token/usage burn**, and you can hit usage limits N× faster.
-  Cap concurrency (3–5), cap per-worker budget (`--max-budget-usd`), and only fan out when the speedup earns it.
+  Cap concurrency (3–5), and only fan out when the speedup earns it.
 - **Never two workers on one file.** Give each chunk disjoint files, or isolate with worktrees. Same-file
   parallel edits = lost work. The leader owns the merge and the final verify.
-- **No-resume gotcha.** Background/headless workers are one-shot; if one wedges, **spawn a replacement** rather
+- **No-resume gotcha.** Background workers are one-shot; if one wedges, **spawn a replacement** rather
   than trying to resume it.
-- **Opt-in & safe.** The fleet spawns extra sessions only when *you* run it; nothing auto-fans-out. Unattended
-  workers run with the same safe-by-default rules and catastrophe rails as the rest of MASTER CLAUDE (no money,
-  no destroying real data, no exfiltration, stay in the project). A `STOP` file halts the runner. See
-  [SECURITY.md](../../../SECURITY.md).
+- **Opt-in & safe.** The fleet is just Claude Code's own built-in fan-out — background agents, agent teams, and
+  git worktrees — so **every session runs with normal permissions** (no permission-skipping runner, nothing
+  headless, nothing auto-fans-out; you dispatch each one). The same safe-by-default rules and catastrophe rails
+  hold as the rest of MASTER CLAUDE (no money, no destroying real data, no exfiltration, stay in the project).
+  See [SECURITY.md](../../../SECURITY.md).
 
 ---
 *Built on Claude Code's own primitives — background agents, agent teams, and git worktrees. Complements

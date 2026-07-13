@@ -1,0 +1,13 @@
+{
+  "name": "@mc-qa/selector-memory",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@mc-qa/core": "workspace:*",
+    "@playwright/test": "^1.61.1"
+  }
+}

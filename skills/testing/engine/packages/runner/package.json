@@ -1,0 +1,21 @@
+{
+  "name": "@mc-qa/runner",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./playwright": "./src/playwright/index.ts"
+  },
+  "dependencies": {
+    "@axe-core/playwright": "^4.12.1",
+    "@mc-qa/agent-bridge": "workspace:*",
+    "@mc-qa/assertions": "workspace:*",
+    "@mc-qa/core": "workspace:*",
+    "@mc-qa/fixtures": "workspace:*",
+    "@mc-qa/reporting": "workspace:*",
+    "@mc-qa/selector-memory": "workspace:*",
+    "@playwright/test": "^1.61.1",
+    "playwright-ctrf-json-reporter": "^0.0.29"
+  }
+}

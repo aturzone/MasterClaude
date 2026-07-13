@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "mc-qa-env-profile-1.0",
+  "title": "MASTER CLAUDE QA Env Profile (committed, non-secret)",
+  "type": "object",
+  "required": ["name", "baseURL", "accountType", "unattendedRiskClasses", "supervisedRiskClasses"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "name": { "type": "string", "pattern": "^(staging|production)\\.(test|real)-account$" },
+    "baseURL": { "type": "string", "description": "URL or ${env:NAME} placeholder" },
+    "accountType": { "enum": ["none", "test", "real"] },
+    "unattendedRiskClasses": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "enum": ["a", "b", "c"] },
+      "description": "Class d is intentionally NOT in this enum — real-money tasks can never run unattended"
+    },
+    "supervisedRiskClasses": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "enum": ["a", "b", "c", "d"] }
+    },
+    "headedOnly": { "type": "boolean" },
+    "ciAllowed": { "type": "boolean" },
+    "secrets": {
+      "type": "object",
+      "additionalProperties": { "type": "string", "pattern": "^\\$\\{env:[A-Z0-9_]+\\}$" }
+    }
+  }
+}

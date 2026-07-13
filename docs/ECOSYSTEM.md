@@ -11,7 +11,7 @@ running alongside MASTER CLAUDE. The leader knows these and will recommend the r
 | **[superpowers](https://github.com/obra/superpowers)** | Jesse Vincent (`obra`) | A deep skills framework + methodology: brainstorming, plan-writing, **subagent-driven development**, **parallel-agent dispatch**, git-worktree isolation, strict TDD, systematic debugging, and a meta-skill for writing skills. | model-per-role ("turn count beats token price"), the two-loop reviewer, parallel-dispatch-by-cardinality, and trigger-only skill descriptions → shaped our `orchestration/` skills. |
 | **[mattpocock/skills](https://github.com/mattpocock/skills)** | Matt Pocock | "Skills for real engineers" — the original viral **`grill-me`** interview skill, plus `to-prd`, `to-issues`, domain-modeling, TDD, handoff, and more. | one-question-at-a-time **with a recommended default**, codebase-grounded interviewing, depth-first decision-tree traversal, and interview→spec handoff → sharpened our `grill-me`. |
 | **[Jekudy/grillme-skill](https://github.com/Jekudy/grillme-skill)** | Jekudy | An independent Socratic deep-interview skill that escalates in **waves** (basics → edge cases → contradictions/blind-spots). | wave-based question escalation → added to our `grill-me`. |
-| **[gsd](https://github.com/glittercowboy/gsd)** | — | Spec-driven autonomous builds that resume across `/compact`. | a model for long autonomous runs (cf. our GOD mode). |
+| **[gsd](https://github.com/glittercowboy/gsd)** | — | Spec-driven autonomous builds that resume across `/compact`. | a model for long autonomous, spec-driven builds. |
 | **caveman** | — | Terse output mode (~65% fewer output tokens) for long sessions. | when to recommend trimming output on marathon sessions. |
 
 > If you heard about MASTER CLAUDE alongside a Persian "**Kak [Alireza]**" recommendation, that most likely
@@ -44,8 +44,6 @@ separate parallel sessions for throughput:
 - **[Agent teams](https://code.claude.com/docs/en/agent-teams)** (experimental) — teammates with a shared task
   list + mailbox, for work that needs coordination.
 - **[Git worktrees](https://code.claude.com/docs/en/worktrees)** — isolate parallel file edits.
-- **[Headless mode](https://code.claude.com/docs/en/cli-reference)** — parallel `claude -p --output-format json`
-  workers (what `fleet-runner.mjs` drives), with `--max-budget-usd` cost caps.
 
 The trade-off is real: **N parallel sessions ≈ N× usage** — fan out only for genuinely independent work.
 

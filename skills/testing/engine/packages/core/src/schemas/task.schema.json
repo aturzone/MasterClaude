@@ -1,0 +1,270 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "mc-qa-task-1.0",
+  "title": "MASTER CLAUDE QA Task",
+  "type": "object",
+  "required": ["schemaVersion", "id", "title", "goal", "classification", "importance", "risk", "automation", "procedure", "oracle", "lifecycle", "schedule"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "schemaVersion": { "const": "1.0" },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(\\.[a-z0-9]+){1,4}\\.[a-z0-9]+(-[a-z0-9]+)*\\.\\d{3}$",
+      "description": "<service>.<taxonomy-category>.<slug>.<NNN> — immutable; renames get a new id"
+    },
+    "title": { "type": "string", "minLength": 8, "maxLength": 120 },
+    "goal": { "type": "string", "minLength": 20, "description": "What user-visible behavior this protects and why" },
+    "classification": {
+      "type": "object",
+      "required": ["category", "testTypes"],
+      "additionalProperties": false,
+      "properties": {
+        "category": { "type": "string", "description": "Must exist in taxonomy.json and equal the id's middle segments" },
+        "testTypes": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "enum": ["functional", "visual", "perf", "a11y", "security", "seo", "pwa", "rtl-i18n", "network", "console", "fuzz", "ux-judgment", "content", "resilience", "data-sanity"] }
+        },
+        "tags": { "type": "array", "items": { "type": "string", "pattern": "^[a-z0-9-]+$" } }
+      }
+    },
+    "importance": {
+      "type": "object",
+      "required": ["priority", "severityIfBroken"],
+      "additionalProperties": false,
+      "properties": {
+        "priority": { "enum": ["P0", "P1", "P2", "P3"] },
+        "severityIfBroken": { "enum": ["blocker", "critical", "major", "minor", "cosmetic"] },
+        "businessImpact": { "type": "string" }
+      }
+    },
+    "risk": {
+      "type": "object",
+      "required": ["class", "allowedEnvs"],
+      "additionalProperties": false,
+      "properties": {
+        "class": { "enum": ["a", "b", "c", "d"], "description": "a=public/no-auth/no state change, b=authenticated reversible, c=state-mutating but test-scoped/reversible, d=irreversible/real-world side effect" },
+        "thirdParty": { "type": "array", "items": { "enum": ["sms-otp", "email-link", "payment-gateway", "identity-verification", "push", "external-service"] } },
+        "reason": { "type": "string" },
+        "allowedEnvs": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "forbiddenActions": { "type": "array", "items": { "type": "string" }, "description": "Injected verbatim into agent briefs and interview screens" }
+      }
+    },
+    "automation": {
+      "type": "object",
+      "required": ["level", "executor", "humanInvolvement"],
+      "additionalProperties": false,
+      "properties": {
+        "level": { "enum": ["full", "assisted", "manual"] },
+        "executor": { "enum": ["script", "agent", "human", "hybrid"] },
+        "humanInvolvement": { "type": "integer", "minimum": 0, "maximum": 5, "description": "0 script; 1 unattended agent; 2 unattended->pending-review; 3 attended; 4 human drives; 5 human only" },
+        "agentBrief": {
+          "type": "object",
+          "required": ["goal", "constraints", "successRubric"],
+          "additionalProperties": false,
+          "properties": {
+            "goal": { "type": "string" },
+            "constraints": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+            "successRubric": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "required": ["criterion", "verdict"],
+                "additionalProperties": false,
+                "properties": {
+                  "criterion": { "type": "string" },
+                  "verdict": { "enum": ["must-pass", "should-pass", "informational"] }
+                }
+              }
+            },
+            "hints": { "type": "array", "items": { "type": "string" } },
+            "maxSteps": { "type": "integer", "minimum": 1 },
+            "selectorMapAccess": { "enum": ["read", "read-propose"] },
+            "model": { "type": "string", "description": "Optional per-task model override (e.g. a cheaper model for a structural-only check). Falls back to the run --model / MC_QA_AGENT_MODEL / default." }
+          }
+        },
+        "destructiveContext": { "type": "boolean", "description": "This task deliberately breaks its own browser context (emulates offline, kills tabs). The driver runs it LAST in the serialized auth lane and force-restarts the Session Keeper after it, so it can't poison the shared logged-in context for other auth tasks." },
+        "cliKind": { "enum": ["lhci", "linkinator"] },
+        "cliUrls": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "humanInterview": {
+      "type": "object",
+      "required": ["intro", "questions", "estimatedMinutes"],
+      "additionalProperties": false,
+      "properties": {
+        "intro": { "type": "string" },
+        "setupChecklist": { "type": "array", "items": { "type": "string" } },
+        "estimatedMinutes": { "type": "integer", "minimum": 1 },
+        "questions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["id", "prompt", "kind", "passWhen"],
+            "additionalProperties": false,
+            "properties": {
+              "id": { "type": "string", "pattern": "^q[0-9]+$" },
+              "prompt": { "type": "string" },
+              "observationHint": { "type": "string" },
+              "kind": { "enum": ["boolean", "scale-1-5", "single-choice", "multi-choice", "text", "number"] },
+              "options": { "type": "array", "items": { "type": "string" } },
+              "passWhen": { "type": "object", "minProperties": 1, "maxProperties": 1 },
+              "evidencePrompt": { "type": "string" },
+              "failSeverity": { "enum": ["blocker", "critical", "major", "minor", "cosmetic"] }
+            }
+          }
+        },
+        "teardownChecklist": { "type": "array", "items": { "type": "string" } },
+        "live": {
+          "type": "object",
+          "additionalProperties": false,
+          "description": "Attended-live mode: tester performs the task in a host browser (video-recorded).",
+          "properties": {
+            "startPath": { "type": "string" },
+            "requiresAuth": { "type": "boolean" },
+            "savesSession": { "type": "boolean" }
+          }
+        }
+      }
+    },
+    "procedure": {
+      "type": "object",
+      "required": ["steps"],
+      "additionalProperties": false,
+      "properties": {
+        "preconditions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["kind", "value"],
+            "additionalProperties": false,
+            "properties": {
+              "kind": { "enum": ["account-state", "permission-level", "balance", "feature-flag", "device", "network", "time-window", "data-fixture", "other"] },
+              "value": { "type": "string" },
+              "setupRef": { "type": "string" }
+            }
+          }
+        },
+        "steps": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["n", "action"],
+            "additionalProperties": false,
+            "properties": {
+              "n": { "type": "integer", "minimum": 1 },
+              "action": { "type": "string" },
+              "executor": { "enum": ["script", "agent", "human"] },
+              "target": { "type": "string" },
+              "locator": { "type": "string" },
+              "selectorKeys": { "type": "array", "items": { "type": "string" } },
+              "data": { "type": "object" },
+              "text": { "type": "string" },
+              "font": { "type": "string" },
+              "fn": { "type": "string" },
+              "name": { "type": "string" },
+              "expect": { "type": "string" },
+              "evidence": { "type": "array", "items": { "$ref": "#/$defs/evidenceKind" } },
+              "prompt": { "type": "string" }
+            }
+          }
+        },
+        "testDataRefs": { "type": "array", "items": { "type": "string" } },
+        "selectorKeys": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "oracle": {
+      "type": "object",
+      "required": ["expected", "evidence"],
+      "additionalProperties": false,
+      "properties": {
+        "expected": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["id", "description"],
+            "additionalProperties": false,
+            "properties": {
+              "id": { "type": "string", "pattern": "^e[0-9]+$" },
+              "description": { "type": "string" },
+              "assertionRef": { "type": "string" }
+            }
+          }
+        },
+        "evidence": {
+          "type": "object",
+          "required": ["required"],
+          "additionalProperties": false,
+          "properties": {
+            "required": { "type": "array", "items": { "$ref": "#/$defs/evidenceKind" } },
+            "optional": { "type": "array", "items": { "$ref": "#/$defs/evidenceKind" } }
+          }
+        },
+        "baselines": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "visual": { "type": "string" },
+            "aria": { "type": "string" },
+            "lighthouse": { "type": "string" }
+          }
+        }
+      }
+    },
+    "lifecycle": {
+      "type": "object",
+      "required": ["status", "owner", "createdAt", "updatedAt"],
+      "additionalProperties": false,
+      "properties": {
+        "status": { "enum": ["draft", "active", "quarantined", "deprecated"] },
+        "owner": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date" },
+        "updatedAt": { "type": "string", "format": "date" },
+        "flakiness": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "knownFlaky": { "type": "boolean" },
+            "notes": { "type": "string" },
+            "quarantinedUntil": { "type": ["string", "null"], "format": "date" }
+          }
+        },
+        "relatedTasks": { "type": "array", "items": { "type": "string" } },
+        "supersededBy": { "type": "string" },
+        "sources": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["type", "url"],
+            "additionalProperties": false,
+            "properties": {
+              "type": { "enum": ["faq", "docs", "support-article", "observed-behavior", "bug-report"] },
+              "url": { "type": "string" },
+              "note": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "schedule": {
+      "type": "object",
+      "required": ["frequency", "estimatedDurationSec"],
+      "additionalProperties": false,
+      "properties": {
+        "frequency": { "type": "array", "minItems": 1, "items": { "enum": ["per-deploy", "per-release", "nightly", "weekly", "monthly", "on-demand"] } },
+        "estimatedDurationSec": { "type": "integer", "minimum": 1 },
+        "timeoutSec": { "type": "integer", "minimum": 1 }
+      }
+    }
+  },
+  "$defs": {
+    "evidenceKind": {
+      "enum": ["screenshot", "screenshot-full-page", "video", "trace", "har", "console-log", "network-log", "aria-snapshot", "lighthouse-report", "axe-report", "human-photo", "human-notes"]
+    }
+  }
+}

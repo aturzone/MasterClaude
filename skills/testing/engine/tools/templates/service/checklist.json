@@ -1,0 +1,18 @@
+{
+  "$schema": "../../packages/core/src/schemas/checklist.schema.json",
+  "schemaVersion": "1.0",
+  "service": "__SERVICE__",
+  "title": "__SERVICE__ end-user release checklist",
+  "sections": [
+    {
+      "id": "s01-smoke",
+      "title": "Smoke: page loads",
+      "gate": true,
+      "stopOnFail": true,
+      "tasks": [
+        "__SERVICE__.smoke.page-loads.001"
+      ]
+    }
+  ],
+  "unscheduled": []
+}

@@ -12,12 +12,11 @@ Follow the `fleet` skill. In short:
    no two workers touch the same file.
 3. **Dispatch ≤ 3–5 at a time:**
    - edits → background sessions (`claude --bg "<chunk>"`, auto-worktree) or a worktree each (`worktree-isolation`);
-   - analysis/review → headless workers:
-     `node .claude/skills/orchestration/fleet/fleet-runner.mjs tasks.json --concurrency 3 --budget 3`
-     (writes results to `.mc/fleet/<runId>/`, **edits nothing**).
-4. **Monitor** (`claude agents` / the job board) — don't micromanage; workers are autonomous.
+   - analysis/review → background sessions that each write their findings to a named file (they edit nothing).
+4. **Monitor** (`claude agents` / the team's shared task list) — don't micromanage; workers are autonomous.
 5. **Integrate** — collect each result, resolve overlap, synthesize, and **verify the merged whole**
-   (build/tests). Stop the runner anytime: `touch .mc/fleet/STOP`.
+   (build/tests).
 
-Opt-in and cost-capped; the catastrophe rails + safe-by-default rules always hold (see SECURITY.md). Never fan
-out same-file edits.
+Just Claude Code's own built-in fan-out — background agents, agent teams, git worktrees — so every session
+runs with **normal permissions** (no permission-skipping runner, nothing headless). Cost-capped and opt-in; the
+catastrophe rails + safe-by-default rules always hold (see SECURITY.md). Never fan out same-file edits.

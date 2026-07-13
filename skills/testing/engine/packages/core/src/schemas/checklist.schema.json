@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "mc-qa-checklist-1.0",
+  "title": "MASTER CLAUDE QA Service Checklist (curated, ordered)",
+  "type": "object",
+  "$defs": {
+    "localizedText": {
+      "description": "A plain English string is the common case; an object may supply per-locale strings.",
+      "oneOf": [
+        { "type": "string" },
+        {
+          "type": "object",
+          "required": ["en"],
+          "properties": { "en": { "type": "string" } }
+        }
+      ]
+    }
+  },
+  "required": ["schemaVersion", "service", "title", "sections"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "schemaVersion": { "const": "1.0" },
+    "service": { "type": "string" },
+    "title": { "$ref": "#/$defs/localizedText" },
+    "sections": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "tasks"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "pattern": "^s[0-9]{2}-[a-z0-9-]+$" },
+          "title": { "$ref": "#/$defs/localizedText" },
+          "gate": { "type": "boolean", "description": "Failing gate section blocks the release verdict" },
+          "stopOnFail": { "type": "boolean", "description": "Abort the run when this section fails (smoke only)" },
+          "humanSession": { "type": "boolean", "description": "Present as one human interview sitting" },
+          "tasks": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "unscheduled": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["task", "reason"],
+        "additionalProperties": false,
+        "properties": {
+          "task": { "type": "string" },
+          "reason": { "type": "string" }
+        }
+      }
+    }
+  }
+}

@@ -19,7 +19,7 @@ without stepping on each other, and a dead-end spike is discarded by removing a 
 - You're about to **dispatch parallel subagents that edit code** (not just read) — give each its own worktree.
 - A **risky experiment / spike** you want to try without polluting the main tree.
 - **Several features/bugfixes** in flight at once.
-- A long autonomous run (GOD mode) that wants a clean branch per task.
+- A long multi-task build that wants a clean branch per task.
 
 *Not needed* for read-only parallel work (research/review) — those don't write, so they can't collide.
 

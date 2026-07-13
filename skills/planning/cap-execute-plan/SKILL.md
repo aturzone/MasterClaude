@@ -5,7 +5,7 @@ description: >-
   the plan", "work the backlog", "build it from the plan/spec", "implement this plan", or right after
   cap-plan-first / cap-decomposer / grill-me produced a plan. Works the tasks in order, verifies each
   (build/tests) before moving on, checkpoints with you at the risky/irreversible steps, and keeps a
-  progress trail. The supervised cousin of GOD mode — you stay in the loop.
+  progress trail. You stay in the loop the whole way, verifying each step.
 allowed-tools: Read, Grep, Glob, Bash, Edit, Write, Task
 ---
 
@@ -49,11 +49,6 @@ two failure modes: drifting from the plan, or barrelling past a broken step.
   before a task, confirm its *Consumes* interfaces actually exist from earlier tasks.
 - **Finish the branch.** When the last task is green: run the **full** suite once more, summarize what
   shipped, and offer the wrap-up (open a PR / merge / delete the branch) — don't just stop at the last commit.
-
-## vs. GOD mode
-This is **supervised**: it checkpoints and expects you nearby. For a long **unattended** run that defers
-blockers and resumes past usage limits, use **god-mode** instead. Same discipline (verify every step, keep
-a trail) — different autonomy.
 
 ---
 *Credits:* the plan→execute-with-verification discipline echoes **superpowers** writing-plans/executing-plans

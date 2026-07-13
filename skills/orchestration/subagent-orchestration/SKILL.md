@@ -72,7 +72,7 @@ reviewer to confirm. Tell reviewers to flag only real correctness/requirement ga
   Dispatch fixes for **Critical/Important** only; log **Minor** for the final whole-branch pass (top model, explicit).
 - **Keep a durable ledger.** Append `Task N: done (<base7>..<head7>, review clean)` to a tracked file the
   instant a task passes. After a compaction/restart, trust the ledger + `git log` and **never re-dispatch a
-  completed task**. (Essential for long GOD-mode runs.)
+  completed task**.
 
 ## Economics (be honest about cost)
 A subagent run costs more tokens than inline; a full multi-agent push can be ~10–15×. Token spend explains

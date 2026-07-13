@@ -1,0 +1,390 @@
+{
+  "smoke": {
+    "title": "Smoke — app loads at all",
+    "defaultExecutor": "script",
+    "defaultHumanInvolvement": 0,
+    "examples": [
+      "App shell renders on cold load (no blank/white screen)",
+      "Primary/landing page reachable and interactive",
+      "Key data or content visibly loads",
+      "No full-page error state on the top routes"
+    ]
+  },
+  "func.auth": {
+    "title": "Registration, login & session",
+    "defaultExecutor": "script",
+    "defaultHumanInvolvement": 1,
+    "examples": [
+      "Login happy path completes and lands on the expected screen",
+      "Wrong credentials show a clear error without silent failure",
+      "One-time-code login happy path (if enabled)",
+      "Wrong one-time code shows a clear error, no surprise lockout",
+      "Logout clears session everywhere",
+      "Session survives reload / PWA relaunch",
+      "Malformed username/email/phone rejected with a proper message"
+    ]
+  },
+  "func.crud": {
+    "title": "Create, read, update & delete a record",
+    "defaultExecutor": "script",
+    "defaultHumanInvolvement": 1,
+    "examples": [
+      "Create a record, then view it reflects the entered data",
+      "Edit a field and confirm the change persists after reload",
+      "Delete flow requires confirmation and cancel aborts safely",
+      "Deleted record no longer appears in lists",
+      "Validation errors surface on required fields",
+      "Duplicate/conflicting entries handled with a clear error"
+    ]
+  },
+  "func.search": {
+    "title": "Search & filtering",
+    "defaultExecutor": "script",
+    "defaultHumanInvolvement": 0,
+    "examples": [
+      "Query returns the expected results",
+      "No-results query shows a designed empty state",
+      "Filters combine correctly (AND/OR as designed)",
+      "Clearing filters restores the full list",
+      "Pagination/infinite-scroll loads further results correctly",
+      "Sort order changes the result ordering as expected"
+    ]
+  },
+  "func.settings": {
+    "title": "Account & preference settings",
+    "defaultExecutor": "script",
+    "defaultHumanInvolvement": 1,
+    "examples": [
+      "Changing a setting persists across reload/relaunch",
+      "Toggling a feature/preference takes effect immediately",
+      "Danger-zone actions (e.g. account deletion) require explicit confirmation",
+      "Invalid input on a settings field is rejected with a clear message",
+      "Settings sync across devices/sessions where applicable"
+    ]
+  },
+  "func.notify": {
+    "title": "Notifications",
+    "defaultExecutor": "human",
+    "defaultHumanInvolvement": 5,
+    "examples": [
+      "Permission prompt timing (not on first paint)",
+      "Notification arrives for the relevant event",
+      "Notification deep-links into the correct screen",
+      "Opt-out is honored",
+      "Notification content matches the triggering event"
+    ]
+  },
+  "input": {
+    "title": "Forms & input validation",
+    "defaultExecutor": "script",
+    "defaultHumanInvolvement": 0,
+    "examples": [
+      "Required-field and format validation trigger correctly",
+      "Paste of formatted values (e.g. '1,000,000') parsed correctly",
+      "Max-length does not truncate valid input",
+      "Boundary/edge inputs (empty, zero, negative, very large) handled correctly",
+      "Leading zeros / decimal-only edge inputs handled",
+      "Whitespace stripped from pasted values",
+      "e-notation and unexpected symbols blocked where not valid"
+    ]
+  },
+  "nav": {
+    "title": "Navigation, deep links & history",
+    "defaultExecutor": "script",
+    "defaultHumanInvolvement": 0,
+    "examples": [
+      "Every primary nav tab/link reachable and highlights correctly",
+      "Browser/hardware back goes up one level, not exit",
+      "Deep link cold-loads correctly in the client-side SPA",
+      "Unknown route shows a branded 404, not a blank page",
+      "F5 on every route restores that route",
+      "External links open with rel=noopener",
+      "Protected deep link → login → returns to the intended page"
+    ]
+  },
+  "ui.click": {
+    "title": "Clickability, dead elements & touch targets",
+    "defaultExecutor": "agent",
+    "defaultHumanInvolvement": 1,
+    "examples": [
+      "Every visible button/link produces an observable effect",
+      "Touch targets >= 44x44 px on mobile viewport",
+      "No overlapping tappable elements",
+      "Disabled buttons look disabled AND are inert",
+      "Double-tap on submit does not double-fire",
+      "Sticky footer CTAs not covered by keyboard/OS bars"
+    ]
+  },
+  "ui.heuristics": {
+    "title": "UX heuristics (agent-judged)",
+    "defaultExecutor": "agent",
+    "defaultHumanInvolvement": 2,
+    "examples": [
+      "First-time-user clarity of each key screen/module",
+      "Every error state offers a next action",
+      "No spinner >5s without progress messaging",
+      "Same action labeled identically across screens",
+      "Destructive actions visually distinct",
+      "Unlabeled icons are guessable"
+    ]
+  },
+  "ui.visual": {
+    "title": "Visual regression",
+    "defaultExecutor": "script",
+    "defaultHumanInvolvement": 1,
+    "examples": [
+      "Key screens diffed against baselines per viewport",
+      "Dark/light mode parity",
+      "No layout shift between skeleton and loaded state beyond threshold",
+      "No missing-glyph tofu boxes",
+      "Critical widgets diffed at component level"
+    ]
+  },
+  "ui.responsive": {
+    "title": "Responsive matrix & touch",
+    "defaultExecutor": "script",
+    "defaultHumanInvolvement": 1,
+    "examples": [
+      "Common widths (360/375/414/768/1280) render without horizontal scroll",
+      "Modals fit the viewport with reachable close",
+      "Hover-only affordances have touch equivalents",
+      "Safe-area insets respected in standalone/PWA mode",
+      "Text not truncated at the smallest supported width"
+    ]
+  },
+  "ui.states": {
+    "title": "Error & empty states",
+    "defaultExecutor": "agent",
+    "defaultHumanInvolvement": 1,
+    "examples": [
+      "Empty lists have designed empty states with a CTA",
+      "API 500 produces a human-readable error with retry",
+      "Maintenance-mode messaging displays correctly",
+      "Partial-data render degrades gracefully",
+      "Image-load failure shows a placeholder, not a broken-image icon"
+    ]
+  },
+  "ui.content": {
+    "title": "Content quality",
+    "defaultExecutor": "agent",
+    "defaultHumanInvolvement": 2,
+    "examples": [
+      "Copy spelling/grammar sweep per screen",
+      "No untranslated strings leaking into the UI",
+      "No lorem/placeholder text",
+      "No broken images",
+      "No raw {placeholder} interpolations",
+      "Error tone consistent, never raw exception text"
+    ]
+  },
+  "i18n.rtl": {
+    "title": "RTL / bidi correctness (optional, for right-to-left locales)",
+    "defaultExecutor": "script",
+    "defaultHumanInvolvement": 1,
+    "examples": [
+      "For right-to-left locales: layout mirrors correctly (nav, back arrows point the correct direction)",
+      "LTR-isolated codes/IDs/values render correctly inside RTL text",
+      "Caret behavior correct in mixed-direction input fields",
+      "+/- and % signs render on the correct side of value chips",
+      "Parentheses and punctuation not visually flipped"
+    ]
+  },
+  "i18n.typography": {
+    "title": "Fonts & glyphs",
+    "defaultExecutor": "script",
+    "defaultHumanInvolvement": 1,
+    "examples": [
+      "Webfont loads (no fallback to an unstyled system font)",
+      "No fallback/tofu boxes for supported glyphs",
+      "Digits render in the brand font, not a fallback",
+      "Line-height does not clip ascenders/descenders",
+      "Tabular figures used in changing numeric columns (no jitter)"
+    ]
+  },
+  "i18n.locale": {
+    "title": "Dates, numbers & locale formatting",
+    "defaultExecutor": "script",
+    "defaultHumanInvolvement": 0,
+    "examples": [
+      "User-facing dates formatted per locale with correct conversion vs fixture dates",
+      "Timestamps shown in the correct timezone",
+      "Relative times (e.g. '2 minutes ago') accurate",
+      "Thousands and decimal separators consistent per locale",
+      "Correct localized month/day names",
+      "Midnight/date-boundary rows sort correctly"
+    ]
+  },
+  "pwa": {
+    "title": "PWA behaviors",
+    "defaultExecutor": "script",
+    "defaultHumanInvolvement": 1,
+    "examples": [
+      "Manifest valid: standalone, orientation, maskable icons, start_url",
+      "Install prompt flow; installed launch has no browser chrome",
+      "Offline cold open shows a branded offline page, not the dinosaur",
+      "SW update activates on next launch; no stale bundle left behind",
+      "App icon + splash correctness",
+      "Storage persistence requested"
+    ]
+  },
+  "perf": {
+    "title": "Performance",
+    "defaultExecutor": "script",
+    "defaultHumanInvolvement": 0,
+    "examples": [
+      "Lighthouse budgets pass on key pages",
+      "LCP < 2.5s, INP < 200ms, CLS < 0.1 on a throttled connection",
+      "Slow-network first load usable with skeletons",
+      "Initial JS bundle under budget per route",
+      "No memory leak over a soak test",
+      "Long-task count during scroll within budget"
+    ]
+  },
+  "net": {
+    "title": "Network behavior",
+    "defaultExecutor": "script",
+    "defaultHumanInvolvement": 0,
+    "examples": [
+      "Injected API failure → UI error state, no infinite spinner",
+      "401 mid-session → clean redirect to login",
+      "Retry with backoff observable, no request storms",
+      "WebSocket messages parse correctly; reconnect after drop",
+      "Stale data marked while reconnecting",
+      "A slow API does not block unrelated UI"
+    ]
+  },
+  "console": {
+    "title": "Console / log hygiene",
+    "defaultExecutor": "script",
+    "defaultHumanInvolvement": 0,
+    "examples": [
+      "Zero console errors on cold load of top routes",
+      "No unhandled promise rejections during core flows",
+      "No PII logged to console",
+      "No verbose debug logs in production build",
+      "No failed asset/source-map 404s"
+    ]
+  },
+  "a11y": {
+    "title": "Accessibility",
+    "defaultExecutor": "script",
+    "defaultHumanInvolvement": 2,
+    "examples": [
+      "axe-core: zero critical/serious violations per key screen",
+      "Full keyboard traversal with visible focus in logical order",
+      "Focus trapped in modals and returned on close",
+      "Form errors announced via aria-live",
+      "Contrast >= WCAG AA across key UI states",
+      "Icons labeled or aria-hidden"
+    ]
+  },
+  "sec": {
+    "title": "Security — observational black-box only",
+    "defaultExecutor": "script",
+    "defaultHumanInvolvement": 0,
+    "examples": [
+      "Security headers present: CSP, HSTS, X-Content-Type-Options, frame-ancestors",
+      "Session cookies Secure + HttpOnly + SameSite",
+      "TLS grade acceptable; no mixed content",
+      "No tokens readable in storage after logout",
+      "No secrets visible in console/page source",
+      "Service worker does not cache authenticated API responses"
+    ]
+  },
+  "seo": {
+    "title": "SEO / meta / links (public pages)",
+    "defaultExecutor": "script",
+    "defaultHumanInvolvement": 0,
+    "examples": [
+      "Title/description/canonical per public page",
+      "OG/Twitter cards for sharing",
+      "robots.txt and sitemap sane",
+      "Correct lang/dir attributes on <html>",
+      "No soft-404s",
+      "No broken links in public pages and footer"
+    ]
+  },
+  "resil.interrupt": {
+    "title": "Interruptions",
+    "defaultExecutor": "script",
+    "defaultHumanInvolvement": 1,
+    "examples": [
+      "Offline mid-flow: reconnect restores or safely resets (never half-submitted)",
+      "Tab kill + restore returns to the same route with state",
+      "Session timeout mid-form preserves or intentionally clears data with notice",
+      "OS app-switch during a timed flow (e.g. a countdown) does not break it",
+      "SW update arriving mid-flow does not hot-reload under the user"
+    ]
+  },
+  "resil.persist": {
+    "title": "State persistence",
+    "defaultExecutor": "script",
+    "defaultHumanInvolvement": 0,
+    "examples": [
+      "Language/theme/favorites persist across sessions",
+      "Lists/collections survive logout/login",
+      "Draft inputs cleared on logout (privacy)",
+      "Last selection/view restored on return"
+    ]
+  },
+  "fuzz": {
+    "title": "Monkey / fuzz testing",
+    "defaultExecutor": "agent",
+    "defaultHumanInvolvement": 1,
+    "examples": [
+      "Extended gremlins random tap/scroll across key areas: zero crashes",
+      "Random unicode/emoji/RTL-override characters into text fields: no reflection, no layout break",
+      "Rapid navigation spam",
+      "Back/forward storms",
+      "Input fuzz corpus (boundaries, huge numbers, scientific notation)"
+    ]
+  },
+  "xbrowser": {
+    "title": "Cross-browser",
+    "defaultExecutor": "script",
+    "defaultHumanInvolvement": 0,
+    "examples": [
+      "Smoke section green on chromium/firefox/webkit",
+      "WebKit: date pickers, numeric input pad, 100vh issues",
+      "Firefox WebSocket behavior",
+      "PWA install path per engine documented and checked"
+    ]
+  },
+  "data": {
+    "title": "Data sanity",
+    "defaultExecutor": "script",
+    "defaultHumanInvolvement": 0,
+    "examples": [
+      "Live values/metrics within tolerance of external references",
+      "Spread/delta positive and under a sane threshold where applicable",
+      "Change math consistent with underlying source data",
+      "No visible value older than N seconds without a stale badge",
+      "Sorted lists actually sorted",
+      "Volumes/counts plausible (non-negative, not frozen)"
+    ]
+  },
+  "trust": {
+    "title": "Critical-action confirmation UX",
+    "defaultExecutor": "agent",
+    "defaultHumanInvolvement": 2,
+    "examples": [
+      "Every irreversible action has an explicit confirm naming what/where",
+      "Costs/consequences disclosed BEFORE the point of no return",
+      "Confirm total == receipt == history row",
+      "Validity countdowns visibly tick",
+      "Ambiguous button-copy audit (confirm what, exactly?)",
+      "Emergency/undo path discoverable in a panic mindset"
+    ]
+  },
+  "perf.load": {
+    "title": "Load & stress — behavior under pressure",
+    "defaultExecutor": "script",
+    "defaultHumanInvolvement": 0,
+    "examples": [
+      "Sustained expected-peak load holds p95 latency and error rate within budget",
+      "Ramp past peak finds the breaking point and degrades gracefully (no crash)",
+      "A traffic spike is absorbed and the service recovers",
+      "A soak run reveals no memory leak or connection exhaustion over time"
+    ]
+  }
+}

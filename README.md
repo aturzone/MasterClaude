@@ -7,9 +7,10 @@ with the newest Claude Code features.
 
 No account. No API key. No vault. It's just markdown you drop into `.claude/` — everything is local, plain text, and open.
 
-**Safe by default.** Adding MASTER CLAUDE runs **nothing** — it's inert markdown. The optional autonomous
-runners (GOD mode, the clone) are tools *you* launch by hand; nothing auto-starts, no data leaves your machine,
-and the catastrophe rails always hold. Full model: **[SECURITY.md](SECURITY.md)**.
+**Safe by default.** Adding MASTER CLAUDE runs **nothing** — it's inert markdown. There are **no** autonomous
+runners, no Telegram bridge, and no background daemons; every capability works interactively under Claude
+Code's normal permission prompts, nothing auto-starts, and no data leaves your machine. Full model:
+**[SECURITY.md](SECURITY.md)**.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Buy me a coffee in TON](https://img.shields.io/badge/Buy%20me%20a%20coffee-TON-0098EA.svg)](https://masterclaude.shop/donate)
@@ -72,9 +73,6 @@ category; each folder has a README that brainstorms what else belongs there (goo
   headers) · `sec-pii` (anonymize user PII before it reaches a model) — review for vulnerabilities + privacy,
   front→back (OWASP/CWE, with fixes).
 - **`skills/workflows/`** — `wf-codebase-audit`, `wf-security-audit` — big, multi-step jobs.
-- **`skills/automation/`** — `god-mode` (an autonomous, resumable build; asks only for the critical) ·
-  `god-mode-zeus` (the dangerously, never-ask tier) · `scheduling` (cron/schtasks/launchd recurring runs) ·
-  `clone` (a Telegram-fronted digital-twin assistant — immortal session, grows a private brain repo).
 - **`skills/orchestration/`** — `subagent-orchestration` (delegate to subagents/teams) · `model-router`
   (pick a model per agent — Opus lead / Sonnet workers / Haiku scouts) · `token-economy` (best output per
   token — caveman, cheaper models, cache-warm) · `context-engineering` (curate the window — cache-stable,
@@ -90,31 +88,6 @@ category; each folder has a README that brainstorms what else belongs there (goo
 2. **Map.** Detects your stack and the gaps for *this* goal.
 3. **Assemble.** Picks a tailored team from the installed skills and explains why each fits.
 4. **Run.** Actually does the work with the team, and tells you what each member changed.
-
-## GOD mode — build until you say stop
-Hand MASTER CLAUDE a goal and let it run. **GOD mode** (`/master-claude:god-mode "<goal>"`) reviews the
-situation — improve an existing project or build one from scratch — writes a mission + prioritized backlog
-under `.mc/god-mode/`, then executes **relentlessly, without pausing for confirmation**. Anything
-that needs *you* — production, real secrets, money, publishing, irreversible actions — goes to a **BLOCKERS**
-list and it keeps working everything else; nothing idles.
-
-It's built to be unkillable except by you. State lives on disk, so it survives `/compact`, crashes, and
-reboots. For a true walk-away run, launch the bundled runner — it **auto-resumes after a usage limit** and
-stops only on a manual `STOP`:
-```bash
-node .claude/skills/automation/god-mode/runner.mjs        # keeps going across usage limits
-touch .mc/god-mode/STOP             # stop it (or Ctrl-C)
-```
-The safety rails always hold: no production, secrets, money, or destructive actions without you, tests stay
-honest, and a manual stop always wins. By default GOD mode **asks you about the genuinely critical /
-high-access calls** and defers the rest.
-
-Want a fully hands-off run? **ZEUS** (`/master-claude:god-mode-zeus`, or `runner.mjs --zeus`) is the opt-in
-unattended tier *you* launch — it runs the runner with Claude Code's standard `--dangerously-skip-permissions`
-(the normal flag for unattended automation, since no human is there to answer prompts), doesn't pause to ask,
-and you reach for it only when you accept the risk. **Nothing auto-starts it**, and the catastrophe rails still
-hold. Pair either with **scheduling** (`/master-claude:schedule`) for nightly sweeps, weekly audits, or a daily
-push on the backlog.
 
 ## Staying up to date
 MASTER CLAUDE keeps itself current — it's your guide to the best of Claude Code. Ask it **"what's new"**
