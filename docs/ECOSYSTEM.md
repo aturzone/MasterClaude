@@ -71,7 +71,16 @@ offer — credited, not vendored:
   `fe-component-craft` reuse.
 - **Standards** — the **[WAI-ARIA Authoring Practices](https://www.w3.org/WAI/ARIA/apg/)** and
   **[WCAG](https://www.w3.org/WAI/standards-guidelines/wcag/)** for the accessibility + contrast rules
-  `fe-component-craft` and `fe-design-review` enforce.
+  `fe-a11y`, `fe-component-craft` and `fe-design-review` enforce.
+- **[ui-ux-pro-max](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill)** (MIT) — the inspiration for
+  **`ui-intel`**. Their insight is that design intelligence can be a *queryable database* rather than prose:
+  product type → style, palette, typography, reasoning rules, anti-patterns; plus a design system persisted to
+  disk so it survives across sessions. We modeled the architecture on it and wrote our own data — theirs is
+  theirs to maintain, and a fork of a 100k-star dataset helps nobody. Where we differ: dep-free **Node**
+  instead of Python (guaranteed present wherever Claude Code runs), **JSON** instead of CSV-with-JSON-in-cells,
+  contrast **computed and CI-verified** rather than hand-annotated, and state under `.mc/design/` so it feeds
+  the same `mc.html` dashboard as QA and security. If you want the biggest dataset, install theirs too — the
+  two compose fine.
 
 ## Primary sources we build from
 - Anthropic — [Building effective agents](https://www.anthropic.com/engineering/building-effective-agents)

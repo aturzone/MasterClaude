@@ -1,0 +1,939 @@
+{
+  "domain": "styles",
+  "items": [
+    {
+      "id": "swiss-minimal",
+      "name": "Swiss / International Typographic",
+      "vibe": "Silence with a grid running through it — everything decorative has been removed, and what survived feels inevitable.",
+      "keywords": ["swiss", "minimal", "minimalist", "international", "grid", "clean", "whitespace", "helvetica", "bauhaus", "modernist", "restrained", "simple", "sparse", "rational", "typographic"],
+      "signature": [
+        "12-column grid with a hard baseline — every line-height a multiple of 4px",
+        "Hierarchy from the type scale alone: size and weight, never color",
+        "One accent color covering under 5% of the surface (classically red)",
+        "Hairlines instead of shadows: 1px solid rules, border-radius 0-4px",
+        "Content column capped near 65ch with margins that feel almost wasteful"
+      ],
+      "bestFor": ["documentation", "portfolios", "b2b marketing", "design systems", "pricing pages", "editorial content", "architecture and gallery sites"],
+      "doNotUseFor": [
+        "products that need to feel warm or fun — this style reads as cold by construction",
+        "dense dashboards, where the whitespace budget this needs does not exist",
+        "brands whose only real asset is personality — this hides it",
+        "teams without a strict reviewer: one 13px margin breaks the whole illusion"
+      ],
+      "lightMode": "full",
+      "darkMode": "full",
+      "accessibility": "strong",
+      "performance": "fast",
+      "complexity": "low",
+      "checklist": [
+        "Every spacing value comes from the scale — no arbitrary numbers, ever",
+        "If you reach for a shadow you have left the style; use a hairline or more space",
+        "The grid must survive 320px — collapse to one column but keep the baseline",
+        "Cheap to build, unforgiving to get right: budget review time, not dev time"
+      ]
+    },
+    {
+      "id": "glassmorphism",
+      "name": "Glassmorphism",
+      "vibe": "Frosted panes floating over something colorful — light, layered, and faintly expensive.",
+      "keywords": ["glass", "glassmorphism", "frosted", "blur", "translucent", "backdrop", "depth", "layered", "transparent", "liquid", "aero", "apple", "ios", "vision", "modern", "overlay"],
+      "signature": [
+        "backdrop-filter: blur(12px) saturate(160%) over an rgba(255,255,255,0.10) surface",
+        "1px hairline border at ~20% white plus an inset top highlight to fake the glass edge",
+        "A saturated or photographic layer underneath — glass over flat gray is just gray",
+        "Layered z-planes, each pane with its own blur radius to imply thickness",
+        "Wide soft shadow (0 8px 32px rgba(0,0,0,.2)) to lift the pane off the backdrop"
+      ],
+      "bestFor": ["saas landing pages", "hero sections", "overlay panels", "modals and sheets", "media players", "navigation bars", "os-style interfaces"],
+      "doNotUseFor": [
+        "data-dense tables — blur destroys the row-scanning edge you depend on",
+        "long-form reading — live background under paragraphs is exhausting",
+        "anything that must certify WCAG AA on text: the backdrop is never a known color",
+        "low-end mobile and Android webviews — every pane is an offscreen render pass",
+        "print and export views, where the whole effect flattens to gray mush"
+      ],
+      "lightMode": "partial",
+      "darkMode": "full",
+      "accessibility": "caution",
+      "performance": "medium",
+      "complexity": "medium",
+      "checklist": [
+        "Keep body text off the blurred layer — put it on a solid or near-solid chip",
+        "Test on a busy photo AND a plain background; if it vanishes on plain, the style is doing nothing",
+        "Ship a @supports not (backdrop-filter: blur(1px)) fallback with an opaque surface",
+        "Cap it at 3-5 blurred surfaces per view — each one costs a separate render pass",
+        "Honor prefers-reduced-transparency"
+      ]
+    },
+    {
+      "id": "neumorphism",
+      "name": "Neumorphism (Soft UI)",
+      "vibe": "Controls extruded from one sheet of soft plastic — beautiful in a screenshot, ambiguous the moment you try to use it.",
+      "keywords": ["neumorphism", "neumorphic", "soft", "softui", "embossed", "extruded", "inset", "debossed", "subtle", "tactile", "monochrome", "plastic", "dribbble", "shadow", "concept"],
+      "signature": [
+        "Two shadows per element: light -6px -6px 12px #ffffff and dark 6px 6px 12px rgba(0,0,0,.15)",
+        "Element and background share the exact same fill — the shape exists only as shadow",
+        "Pressed state flips the same shadows to inset",
+        "Large radii (16-24px) so the extrusion reads as soft rather than machined",
+        "A single desaturated base hue (around #e0e5ec) across the entire surface"
+      ],
+      "bestFor": ["audio and hardware-style controls", "smart-home and iot remotes", "calculator and keypad interfaces", "single-purpose consumer widgets", "concept and portfolio pieces"],
+      "doNotUseFor": [
+        "forms — inputs and buttons have no reliable affordance and no honest focus state",
+        "anything accessibility-critical: low contrast IS the aesthetic, you cannot fix it and keep it",
+        "government, healthcare, finance, or any regulated interface",
+        "low-vision or older audiences — the edges simply are not there",
+        "dark mode — the light-source trick collapses without a bright base",
+        "dense layouts — every control needs 12px+ of clear shadow room"
+      ],
+      "lightMode": "full",
+      "darkMode": "poor",
+      "accessibility": "risky",
+      "performance": "medium",
+      "complexity": "medium",
+      "checklist": [
+        "Add a real border and a contrast-bearing focus ring — accept that it breaks the look, ship it anyway",
+        "Never encode state in shadow alone; change color or label too",
+        "Run the 3:1 UI-component check on every control edge — most will fail",
+        "If 'is this a button?' takes longer than a second to answer, pick another style"
+      ]
+    },
+    {
+      "id": "brutalism",
+      "name": "Brutalism (Web Brutalism)",
+      "vibe": "The raw document showing through on purpose — default links, system type, and zero apology.",
+      "keywords": ["brutalism", "brutalist", "raw", "harsh", "unstyled", "default", "honest", "antidesign", "stark", "concrete", "ugly", "indie", "monospace", "exposed", "blunt"],
+      "signature": [
+        "Barely-styled defaults: system or Times body, blue underlined links, visible borders",
+        "border: 2px solid #000 with border-radius: 0 — no shadows, no gradients, no easing",
+        "Pure #000 on #fff with one screaming accent, usually #ff0000 or #0000ff",
+        "Layout that exposes document flow — left-aligned, ragged, no centering ceremony",
+        "Type at extremes: 12px body sitting next to a 120px headline"
+      ],
+      "bestFor": ["portfolios", "art and culture sites", "indie products", "developer tools", "manifestos", "event sites", "zines and publications"],
+      "doNotUseFor": [
+        "enterprise and b2b buyers — it reads as unfinished, not intentional",
+        "e-commerce checkout, where friction reads as broken and kills conversion",
+        "audiences who never opted into the joke",
+        "products asking to be trusted with money or health data"
+      ],
+      "lightMode": "full",
+      "darkMode": "partial",
+      "accessibility": "strong",
+      "performance": "fast",
+      "complexity": "low",
+      "checklist": [
+        "Keep the default focus outline — removing it is the one move that would make this style fail",
+        "Raw is a choice, not an excuse: tap targets are still 44px",
+        "Intentionally ugly must still pass 4.5:1 — that yellow on white does not",
+        "Semantic HTML is doing the accessibility work here; do not replace it with divs"
+      ]
+    },
+    {
+      "id": "neo-brutalism",
+      "name": "Neo-Brutalism",
+      "vibe": "Brutalism after a sugar rush — thick black outlines, hard offset shadows, and candy color that shouts.",
+      "keywords": ["neobrutalism", "neo", "brutalist", "bold", "outline", "offset", "chunky", "candy", "sticker", "saturated", "playful", "gumroad", "figma", "punchy", "thick"],
+      "signature": [
+        "border: 3px solid #000 on every surface, border-radius 0-8px",
+        "Hard offset shadow with zero blur: box-shadow: 6px 6px 0 #000",
+        "Press translates the element into its own shadow: translate(4px,4px) and shrink the offset",
+        "Flat saturated fills — yellow, pink, lime, cyan — always with black ink on top",
+        "Geometric sans at 700-900 weight, tight tracking"
+      ],
+      "bestFor": ["indie saas", "developer tools", "creator products", "marketing pages", "pricing tables", "community and hackathon sites", "young consumer brands"],
+      "doNotUseFor": [
+        "finance, legal, or healthcare — the toy vocabulary quietly undercuts trust",
+        "data-dense screens: 3px borders eat the pixel budget and every row shouts equally",
+        "long reading, where saturated fills fatigue within a paragraph",
+        "brands that must feel premium — this reads cheap by design"
+      ],
+      "lightMode": "full",
+      "darkMode": "partial",
+      "accessibility": "strong",
+      "performance": "fast",
+      "complexity": "low",
+      "checklist": [
+        "Every interactive element needs the press-translate — without it the shadow is just decoration",
+        "Check black text on your brightest fill: lime and yellow pass, mid-blue does not",
+        "In dark mode swap outlines to white or the entire system disappears",
+        "Three fills maximum, or it stops being bold and starts being noise"
+      ]
+    },
+    {
+      "id": "flat-modern",
+      "name": "Flat / Modern Flat",
+      "vibe": "Clean shapes and clear color with nothing pretending to be a physical object — the safe default of the modern web.",
+      "keywords": ["flat", "modern", "clean", "simple", "standard", "default", "tailwind", "shadcn", "neutral", "subtle", "contemporary", "saas", "conventional", "ui", "baseline"],
+      "signature": [
+        "Solid fills, border-radius 6-12px, one subtle elevation tier",
+        "Neutral gray ramp plus one primary and one destructive — shadcn token shape",
+        "Elevation from a 1px border and 0 1px 2px rgba(0,0,0,.05), never a gradient",
+        "4/8px spacing scale; type scale 12/14/16/20/24/30/36",
+        "Hover is a 4-8% tint shift, not a transform"
+      ],
+      "bestFor": ["b2b saas", "dashboards", "admin panels", "crud interfaces", "internal tools", "mvps", "anything shipping on a deadline"],
+      "doNotUseFor": [
+        "brands that need to be remembered — this is the style everyone already shipped",
+        "launches and campaigns that must stop the scroll",
+        "luxury or fashion, where it reads as an unfinished template"
+      ],
+      "lightMode": "full",
+      "darkMode": "full",
+      "accessibility": "strong",
+      "performance": "fast",
+      "complexity": "low",
+      "checklist": [
+        "Pick one elevation system — border OR shadow — and never mix them on the same tier",
+        "If it looks like the default template, add exactly one signature move: type, radius, or accent",
+        "Do not ship gray-400 on white; that is the classic flat contrast failure"
+      ]
+    },
+    {
+      "id": "material",
+      "name": "Material Design (M3 / Expressive)",
+      "vibe": "Digital paper with rules — surfaces at defined elevations and ink that ripples where you touch it.",
+      "keywords": ["material", "google", "android", "md3", "m3", "elevation", "ripple", "tonal", "dynamic", "fab", "expressive", "surface", "mdc", "spec", "system"],
+      "signature": [
+        "Tonal elevation — surfaces tint toward the primary hue as they rise, not just cast shadow",
+        "Ripple from the touch point; state layers at 8/12/16% opacity",
+        "Roles rather than colors: primary / on-primary / surface / on-surface tokens",
+        "4dp grid, 48dp minimum target, FAB anchored bottom-right",
+        "Corner radius as a token scale (4/8/16/28dp), full-round for pills"
+      ],
+      "bestFor": ["android apps", "cross-platform products", "flutter apps", "admin consoles", "google-ecosystem tools", "teams that need a complete spec off the shelf"],
+      "doNotUseFor": [
+        "ios-first products, where it reads as a bad port",
+        "brands with their own strong visual language — M3 overwrites it",
+        "marketing sites: this is an application system, not an editorial one",
+        "teams who will only adopt half of it — partial Material reads as broken Material"
+      ],
+      "lightMode": "full",
+      "darkMode": "full",
+      "accessibility": "strong",
+      "performance": "medium",
+      "complexity": "medium",
+      "checklist": [
+        "Use the token roles; hardcoding hex defeats the entire tonal system",
+        "No ripples and no tonal elevation means you are not doing Material — use flat instead",
+        "Audit dynamic color output: user wallpapers generate pairs you never tested"
+      ]
+    },
+    {
+      "id": "skeuomorphism",
+      "name": "Skeuomorphism",
+      "vibe": "Software pretending to be a real object — stitched leather, brushed metal, and a bevel you could almost feel.",
+      "keywords": ["skeuomorphic", "skeuomorphism", "realistic", "texture", "leather", "metal", "wood", "bevel", "gloss", "gradient", "physical", "tactile", "ios6", "nostalgic", "detailed"],
+      "signature": [
+        "Multi-stop gradients on every control to fake a light source from above",
+        "Inner bevel: inset 0 1px 0 rgba(255,255,255,.6) highlight over a dark bottom inset",
+        "Repeating raster texture on surfaces — linen, felt, brushed aluminum",
+        "Drop shadow plus a faint reflection to seat the object in its scene",
+        "Letterpress type via text-shadow: 0 1px 0 #fff"
+      ],
+      "bestFor": ["music and audio apps", "games", "kids apps", "hardware companion apps", "nostalgia projects", "instrument and tool emulators"],
+      "doNotUseFor": [
+        "productivity apps — the chrome eats the budget the content needed",
+        "products that must scale to many screens: every control is bespoke art",
+        "responsive layouts, because textures and bevels do not reflow",
+        "modern brand work, where it reads as 2011 unless the nostalgia is the point"
+      ],
+      "lightMode": "full",
+      "darkMode": "partial",
+      "accessibility": "caution",
+      "performance": "heavy",
+      "complexity": "high",
+      "checklist": [
+        "Every texture ships as an optimized tile or you have just added megabytes",
+        "Keep text on a flat region and check contrast against the darkest pixel, not the average",
+        "Pick one light direction — top — and honor it on every single element",
+        "Affordance is this style's superpower; do not waste it by making everything look pressable"
+      ]
+    },
+    {
+      "id": "claymorphism",
+      "name": "Claymorphism",
+      "vibe": "Soft 3D blobs that look squeezable — puffy, rounded, and relentlessly friendly.",
+      "keywords": ["clay", "claymorphism", "puffy", "soft", "blob", "rounded", "playful", "pastel", "friendly", "inflated", "cute", "bubbly", "plasticine", "toy", "chubby"],
+      "signature": [
+        "Huge radii — border-radius: 32-50px on everything, containers included",
+        "Double inner shadow to inflate: inset -8px -8px 16px rgba(255,255,255,.5), inset 8px 8px 16px rgba(0,0,0,.08)",
+        "One wide outer shadow tinted with the element hue, never black: 0 20px 40px rgba(120,90,255,.25)",
+        "Pastel fills on a light room — clay never sits on black",
+        "Rounded geometric sans with generous letter spacing"
+      ],
+      "bestFor": ["kids and education products", "wellness and habit apps", "onboarding flows", "illustration-led marketing", "gen-z fintech", "3d icon sets"],
+      "doNotUseFor": [
+        "enterprise or professional tools — nothing serious survives a 48px radius",
+        "data-dense views, where the padding the shape demands wastes half the screen",
+        "dark mode — clay needs a light room to read as clay at all",
+        "text-heavy pages"
+      ],
+      "lightMode": "full",
+      "darkMode": "poor",
+      "accessibility": "caution",
+      "performance": "medium",
+      "complexity": "medium",
+      "checklist": [
+        "Pastel fills fail 4.5:1 with white labels — use a dark ink instead",
+        "Keep radius proportional; 48px on a 56px button silently becomes a pill",
+        "Tint shadows with the element hue — black shadows turn clay into plastic"
+      ]
+    },
+    {
+      "id": "bento-grid",
+      "name": "Bento Grid",
+      "vibe": "A lunchbox of unequal cards, each compartment sized to its content, the whole thing snapping into a satisfying whole.",
+      "keywords": ["bento", "grid", "cards", "modular", "tiles", "compartment", "mosaic", "apple", "showcase", "feature", "layout", "boxes", "masonry", "panels", "composition"],
+      "signature": [
+        "display: grid with explicit grid-template-areas — deliberate unequal spans, not auto-fill",
+        "One uniform gap (16-24px) and one uniform radius across every tile — the only constants",
+        "Each tile owns exactly one idea: a stat, a visual, a quote, a live demo",
+        "A hero tile at 2x2 anchoring the composition",
+        "Tile-level backgrounds mixed on purpose: some solid, some gradient, some full-bleed"
+      ],
+      "bestFor": ["feature showcases", "product landing pages", "portfolios", "dashboards", "changelogs", "pricing comparisons", "why-us sections"],
+      "doNotUseFor": [
+        "sequential content — a grid promises you can read in any order",
+        "long lists of like items: that is a table or a list, and bento adds nothing",
+        "mobile-first products, where it collapses to a boring stack under 768px",
+        "content that grows unpredictably — the composition is hand-tuned and breaks on the 9th tile"
+      ],
+      "lightMode": "full",
+      "darkMode": "full",
+      "accessibility": "caution",
+      "performance": "fast",
+      "complexity": "medium",
+      "checklist": [
+        "DOM order must match reading order — never use grid placement to reorder meaning",
+        "Design the one-column collapse deliberately; the default stack loses all hierarchy",
+        "If every tile is the same size you built a card grid and called it bento",
+        "Whole-tile click targets need a real anchor element, not onClick on a div"
+      ]
+    },
+    {
+      "id": "editorial-magazine",
+      "name": "Editorial / Magazine",
+      "vibe": "Print art direction on a screen — a huge serif headline, a real column, and photography allowed to breathe.",
+      "keywords": ["editorial", "magazine", "print", "serif", "article", "publication", "longform", "column", "journalism", "newspaper", "elegant", "layout", "story", "feature", "drop"],
+      "signature": [
+        "Display serif at 48-120px against 16-19px body — extreme scale contrast",
+        "Measure locked to 60-75ch; multi-column only above 1024px",
+        "Drop cap via ::first-letter { float: left; font-size: 4em; line-height: .8 }",
+        "Asymmetric grid — text column offset, images breaking into the margin",
+        "Pull quotes and captions in a contrasting family or italic at small size"
+      ],
+      "bestFor": ["publications", "blogs", "longform content", "brand storytelling", "case studies", "annual reports", "fashion and culture sites", "about pages"],
+      "doNotUseFor": [
+        "applications — there is no ui vocabulary here, only content",
+        "dashboards and forms",
+        "content that is actually short: an editorial shell around 200 words looks abandoned",
+        "sites with no photography budget — this style is half imagery by weight"
+      ],
+      "lightMode": "full",
+      "darkMode": "partial",
+      "accessibility": "strong",
+      "performance": "medium",
+      "complexity": "medium",
+      "checklist": [
+        "Body at 18px+ with 1.6 line-height — this style lives or dies on reading comfort",
+        "Subset the display face; 200KB of serif for one headline is a bad trade",
+        "Never multi-column below 1024px — a 30ch column is unreadable",
+        "Captions are content, not decoration; style them, do not forget them"
+      ]
+    },
+    {
+      "id": "terminal-cli",
+      "name": "Terminal / CLI",
+      "vibe": "A monospace prompt on a dark screen — as if the product is talking to you in its own language.",
+      "keywords": ["terminal", "cli", "console", "monospace", "shell", "hacker", "ascii", "prompt", "code", "developer", "green", "matrix", "tui", "command", "phosphor"],
+      "signature": [
+        "One monospace family everywhere — JetBrains Mono, Berkeley Mono, or ui-monospace",
+        "A character grid: sizing in ch units rather than px",
+        "Blinking block cursor from @keyframes on a ::after element",
+        "Box-drawing borders drawn with characters instead of CSS borders",
+        "Dark base (#0a0a0a-#111) with one phosphor accent and syntax-color hierarchy"
+      ],
+      "bestFor": ["developer tools", "ci and devops products", "api docs", "status pages", "changelogs", "playgrounds", "hacker-audience marketing"],
+      "doNotUseFor": [
+        "non-technical audiences — it reads as an error screen, not a product",
+        "long prose: monospace measurably slows reading speed",
+        "mobile, because a character grid does not reflow",
+        "buyer-facing pages, as opposed to user-facing ones"
+      ],
+      "lightMode": "partial",
+      "darkMode": "full",
+      "accessibility": "caution",
+      "performance": "fast",
+      "complexity": "low",
+      "checklist": [
+        "ASCII art and box-drawing need aria-hidden — to a screen reader it is pure noise",
+        "Give anything drawn with characters a real text alternative",
+        "Classic #00ff00 on black is 15:1 and still exhausting; use a desaturated green",
+        "Do not set prose in mono past a single paragraph"
+      ]
+    },
+    {
+      "id": "retro-y2k",
+      "name": "Retro / Y2K",
+      "vibe": "The year 2000 imagined the future as chrome bubbles and lens flare, and this is that future, played straight.",
+      "keywords": ["y2k", "retro", "2000s", "chrome", "bubble", "gloss", "frutiger", "aero", "nostalgia", "millennium", "shiny", "metallic", "holographic", "iridescent", "myspace", "sparkle"],
+      "signature": [
+        "Chrome gradients with a hard specular band across the middle",
+        "Bubble buttons: pill shape, inset white highlight, colored gloss beneath",
+        "Iridescent fills via conic-gradient with rainbow stops",
+        "Starburst, sparkle and lens-flare accents as SVG overlays",
+        "Chunky rounded sans with a chrome text-shadow outline"
+      ],
+      "bestFor": ["music and fashion brands", "gen-z consumer products", "event microsites", "nostalgia campaigns", "streetwear", "artist pages"],
+      "doNotUseFor": [
+        "b2b anything",
+        "products with a long shelf life — this trend dates faster than you can rebrand",
+        "content-heavy sites, where the ornament fights every word",
+        "accessibility-regulated contexts"
+      ],
+      "lightMode": "full",
+      "darkMode": "partial",
+      "accessibility": "risky",
+      "performance": "medium",
+      "complexity": "medium",
+      "checklist": [
+        "Never set body copy in chrome — reserve gradient text for exactly one headline",
+        "Every sparkle and flare is decorative: aria-hidden plus empty alt",
+        "Keep a boring, legible fallback for checkout and form pages",
+        "Gradient text via background-clip needs a solid fallback in forced-colors mode"
+      ]
+    },
+    {
+      "id": "vaporwave",
+      "name": "Vaporwave",
+      "vibe": "A dead mall at 3am rendered in pink and cyan — nostalgia, irony, and a sunset grid stretching to nowhere.",
+      "keywords": ["vaporwave", "retrowave", "synthwave", "outrun", "80s", "neon", "pink", "cyan", "sunset", "aesthetic", "glitch", "scanline", "miami", "marble", "nostalgia", "grid"],
+      "signature": [
+        "Magenta-to-cyan gradient sky over a perspective grid floor: rotateX(75deg) on a repeating-linear-gradient",
+        "Chromatic aberration — duplicate the text offset 2px in cyan and magenta",
+        "Scanline overlay: repeating-linear-gradient(rgba(0,0,0,.15) 0 1px, transparent 1px 3px)",
+        "Headline bloom via text-shadow: 0 0 12px currentColor",
+        "Statue, palm and katakana imagery used as texture rather than content"
+      ],
+      "bestFor": ["music projects", "artist and dj pages", "game landing pages", "creative portfolios", "nostalgia campaigns", "art installations"],
+      "doNotUseFor": [
+        "anything commercial that needs to be taken seriously",
+        "products with real utility screens behind the marketing",
+        "audiences outside the in-joke — this is a subculture reference, not a look",
+        "photosensitivity-safe requirements: glitch plus scanlines is a trigger stack"
+      ],
+      "lightMode": "poor",
+      "darkMode": "full",
+      "accessibility": "risky",
+      "performance": "medium",
+      "complexity": "medium",
+      "checklist": [
+        "Scanlines and glitch must respect prefers-reduced-motion and be switchable off",
+        "Cyan on magenta is roughly 1.5:1 — real text goes on a solid dark plate",
+        "Nothing flashes faster than 3Hz; that is a seizure threshold, not a style note",
+        "Chromatic aberration on body text is illegible — headline only"
+      ]
+    },
+    {
+      "id": "cyberpunk-neon",
+      "name": "Cyberpunk / Neon",
+      "vibe": "A rain-slick night city in a browser — black surfaces, electric edges, information that glows at you.",
+      "keywords": ["cyberpunk", "neon", "glow", "futuristic", "scifi", "hud", "electric", "dark", "tron", "blade", "runner", "gaming", "esports", "edgy", "tech", "clipped"],
+      "signature": [
+        "Near-black base (#05060a) with 1px neon edges: border 1px solid #0ff plus box-shadow 0 0 8px #0ff",
+        "HUD panel shapes cut with clip-path: polygon() for angled corners",
+        "Two-accent tension — cyan and magenta, or amber and teal, never a single hue",
+        "Glitch keyframes on hover: clip-path steps plus small translate",
+        "Wide-tracked uppercase mono or tech sans for every label"
+      ],
+      "bestFor": ["game interfaces", "esports", "crypto and web3 products", "music and event sites", "hardware brands", "sci-fi projects", "hacker-audience marketing"],
+      "doNotUseFor": [
+        "long reading — glow blurs the glyph edges your eye tracks",
+        "professional b2b tools",
+        "light mode: this style has no light variant worth shipping",
+        "large data tables, where every glowing edge competes for the same attention"
+      ],
+      "lightMode": "poor",
+      "darkMode": "full",
+      "accessibility": "caution",
+      "performance": "medium",
+      "complexity": "medium",
+      "checklist": [
+        "Glow is decoration — the underlying contrast must pass with the glow removed",
+        "Saturated blue text on black is the worst case for astigmatism; use cyan or amber",
+        "Gate every glitch animation behind prefers-reduced-motion",
+        "Two accents. A third turns cyberpunk into a christmas tree"
+      ]
+    },
+    {
+      "id": "dark-luxury",
+      "name": "Dark Luxury",
+      "vibe": "Black, gold, and a great deal of empty space — the confidence of something that never mentions its price.",
+      "keywords": ["luxury", "dark", "premium", "elegant", "gold", "black", "sophisticated", "expensive", "highend", "fashion", "jewelry", "refined", "exclusive", "boutique", "opulent"],
+      "signature": [
+        "Near-black base (#0b0b0c) — pure #000 kills the depth",
+        "Metallic accent as a gradient, not a flat color: linear-gradient(135deg,#bfa06a,#f0dfa8,#8c6f3f) with background-clip: text",
+        "Whitespace at twice the normal scale — sections at 160px+ vertical padding",
+        "A high-contrast display serif, or a light wide-tracked sans in uppercase",
+        "Hairline dividers at 8-12% white and no shadows anywhere"
+      ],
+      "bestFor": ["fashion", "jewelry and watches", "hospitality", "real estate", "wine and spirits", "high-ticket services", "agencies", "private client portals"],
+      "doNotUseFor": [
+        "value or discount brands — the vocabulary flatly contradicts the offer",
+        "dense product catalogs: gold hairlines do not scale to 200 skus",
+        "light mode, where the luxury signal literally was the darkness",
+        "text-heavy or utility screens"
+      ],
+      "lightMode": "poor",
+      "darkMode": "full",
+      "accessibility": "caution",
+      "performance": "fast",
+      "complexity": "low",
+      "checklist": [
+        "Gold (#bfa06a) on black is about 5:1 — fine for headings, verify it at 14px",
+        "No 200-weight type below 18px on black; thin strokes bloom on dark screens",
+        "background-clip: text needs a solid-color fallback for forced-colors mode",
+        "If you are adding a shadow, the style has already failed"
+      ]
+    },
+    {
+      "id": "organic-earthy",
+      "name": "Organic / Earthy",
+      "vibe": "Warm clay, paper and leaf tones in shapes that never met a right angle — calm and vaguely handmade.",
+      "keywords": ["organic", "earthy", "natural", "warm", "calm", "wellness", "sustainable", "beige", "terracotta", "sage", "blob", "artisan", "eco", "cozy", "craft", "muted", "grain"],
+      "signature": [
+        "Warm off-white base (#faf7f2) — every neutral carries a hue, never #fff",
+        "Terracotta, sage, ochre and clay at low saturation",
+        "Blob shapes: border-radius: 60% 40% 55% 45% / 45% 55% 40% 60%",
+        "Paper grain texture overlaid at 3-6% opacity",
+        "Humanist serif or rounded sans at a generous 1.7 line-height"
+      ],
+      "bestFor": ["wellness and spa", "sustainability brands", "food and beverage", "artisan e-commerce", "skincare", "therapy and health services", "non-profits", "agriculture"],
+      "doNotUseFor": [
+        "technical and developer products, where it reads as unserious",
+        "urgency-driven ui — alerts, trading, ops: this palette cannot signal danger",
+        "dense data, because muted tones give you no contrast steps to work with",
+        "brands that need to feel precise or clinical"
+      ],
+      "lightMode": "full",
+      "darkMode": "partial",
+      "accessibility": "caution",
+      "performance": "fast",
+      "complexity": "low",
+      "checklist": [
+        "Push ink to around #2c2822 — warm mid-tones on warm backgrounds fail 4.5:1 fast",
+        "Reserve one saturated color for errors; a muted-only palette cannot warn anyone",
+        "Grain overlays need pointer-events: none and aria-hidden",
+        "Blob shapes must not clip text at narrow widths — test at 320px"
+      ]
+    },
+    {
+      "id": "hand-drawn-sketch",
+      "name": "Hand-Drawn / Sketch",
+      "vibe": "As if someone sketched the interface on a napkin and it happened to work — wobbly, human, disarming.",
+      "keywords": ["hand", "drawn", "sketch", "doodle", "wobbly", "rough", "excalidraw", "comic", "marker", "notebook", "casual", "human", "whimsical", "pencil", "crayon", "napkin"],
+      "signature": [
+        "Rough.js, or an SVG filter chaining feTurbulence and feDisplacementMap to fray every stroke",
+        "Hand-lettered display face (Caveat, Patrick Hand, Excalifont) paired with a clean sans for body",
+        "Cross-hatch SVG pattern fills instead of solid color",
+        "A small random rotation per element — transform: rotate(-0.6deg) — so nothing is exactly square",
+        "Paper background: off-white with faint ruled or grid lines"
+      ],
+      "bestFor": ["whiteboard and diagram tools", "education products", "wireframes and prototypes", "help centers", "changelog illustration", "workshops", "kids products"],
+      "doNotUseFor": [
+        "anything conveying precision — sketch says 'draft', which is fatal next to a price or a dose",
+        "enterprise buyers",
+        "dense ui, because frayed borders need slack around them to read",
+        "brands where the wobble will be reported as a rendering bug"
+      ],
+      "lightMode": "full",
+      "darkMode": "partial",
+      "accessibility": "caution",
+      "performance": "medium",
+      "complexity": "medium",
+      "checklist": [
+        "Never set body copy in the hand-drawn face — display only, always",
+        "SVG displacement filters repaint on every resize; rasterize anything static",
+        "Ask once: could a user think this is broken? If maybe, halve the wobble",
+        "Hand-lettered faces are hard for dyslexic readers — keep the clean sans doing the work"
+      ]
+    },
+    {
+      "id": "memphis-playful",
+      "name": "Memphis / Playful",
+      "vibe": "80s design-school chaos — squiggles, confetti shapes and clashing color, arranged just carefully enough to work.",
+      "keywords": ["memphis", "playful", "fun", "geometric", "squiggle", "confetti", "80s", "postmodern", "colorful", "terrazzo", "zigzag", "quirky", "energetic", "party", "shapes", "bold"],
+      "signature": [
+        "Loose decorative SVG shapes — squiggle, zigzag, half-circle, terrazzo dots — scattered behind content",
+        "A clashing-on-purpose palette: 4-6 saturated hues with no neutral hierarchy",
+        "Terrazzo and dot patterns as full section backgrounds",
+        "Elements rotated 3-10deg and deliberately overlapping the grid",
+        "Fat geometric sans with tight tracking"
+      ],
+      "bestFor": ["events and conferences", "kids and education", "creative agencies", "community products", "campaign microsites", "snack and beverage brands"],
+      "doNotUseFor": [
+        "any application ui — there is no consistent hierarchy left to build on",
+        "b2b and finance",
+        "content-heavy pages, where decoration competes with every paragraph",
+        "products needing a calm focused state: writing, meditation, ops consoles"
+      ],
+      "lightMode": "full",
+      "darkMode": "poor",
+      "accessibility": "risky",
+      "performance": "fast",
+      "complexity": "medium",
+      "checklist": [
+        "Text never sits directly on a pattern — give it a solid plate",
+        "Nominate one hue as the real primary or nothing will look clickable",
+        "Decorative shapes get aria-hidden and pointer-events: none",
+        "Rotation must not push targets under 44px or off-canvas on mobile"
+      ]
+    },
+    {
+      "id": "gradient-mesh",
+      "name": "Gradient Mesh",
+      "vibe": "Soft clouds of color bleeding into one another — a background that feels alive without ever asking for attention.",
+      "keywords": ["gradient", "mesh", "blob", "blur", "ambient", "soft", "colorful", "blend", "radial", "smooth", "hero", "background", "dreamy", "vibrant", "stripe", "oklch"],
+      "signature": [
+        "Stacked radial-gradient() layers at different positions on one element — the cheap, correct mesh",
+        "Or 3-5 absolutely-positioned blobs at filter: blur(80px) with mix-blend-mode: screen",
+        "OKLCH color stops so the blend never passes through gray",
+        "Contained by overflow: hidden, with content on a solid plate above it",
+        "Slow drift: keyframes translating blobs 5-10% over 20s or more"
+      ],
+      "bestFor": ["hero sections", "saas landing pages", "auth screens", "empty states", "feature cards", "pricing headers", "splash screens"],
+      "doNotUseFor": [
+        "behind body text — a moving color field under paragraphs is unreadable",
+        "as the full-page background of an application",
+        "behind data visualization: it corrupts every color you plot on top",
+        "low-end mobile if blur-based — blur(80px) is a full-viewport pass every frame"
+      ],
+      "lightMode": "full",
+      "darkMode": "full",
+      "accessibility": "caution",
+      "performance": "medium",
+      "complexity": "low",
+      "checklist": [
+        "Prefer layered radial-gradient() over blurred divs — same look, a fraction of the cost",
+        "Text on the mesh needs a scrim or a solid card; there is no fixed contrast value here",
+        "Animate transform only — animating gradient stops repaints the entire layer",
+        "Interpolate in OKLCH; sRGB blends go muddy through the middle"
+      ]
+    },
+    {
+      "id": "monochrome",
+      "name": "Monochrome",
+      "vibe": "One hue, many values — the discipline of a black-and-white photograph applied to an interface.",
+      "keywords": ["monochrome", "mono", "grayscale", "black", "white", "tonal", "achromatic", "single", "hue", "value", "restrained", "neutral", "elegant", "minimal", "contrast"],
+      "signature": [
+        "One hue across ten lightness steps — hierarchy from value, never from color",
+        "The accent is a value jump (white on black), not a second hue",
+        "Weight and size carry emphasis: font-weight 600 replaces a colored label",
+        "Images desaturated with filter: grayscale(1), restoring color on hover",
+        "Hairline borders in the same hue at 10-15% alpha"
+      ],
+      "bestFor": ["portfolios", "photography sites", "agencies", "documentation", "editorial", "print-adjacent brands", "neutral design system bases", "apps where content supplies the color"],
+      "doNotUseFor": [
+        "status-heavy ui — you have given up the channel that says success, warning, error",
+        "data visualization beyond about four series",
+        "e-commerce where product color is the thing being sold",
+        "onboarding for non-expert users: color is a wayfinding tool you are discarding"
+      ],
+      "lightMode": "full",
+      "darkMode": "full",
+      "accessibility": "strong",
+      "performance": "fast",
+      "complexity": "low",
+      "checklist": [
+        "Reserve exactly one color for destructive and error states — a monochrome error is negligent",
+        "Test the value steps in grayscale at 200% zoom; if two steps merge, delete one",
+        "Do not let 'monochrome' quietly mean 'low contrast' — use the full 0-100 range",
+        "This is the one style that is inherently colorblind-safe; do not throw that away for an accent"
+      ]
+    },
+    {
+      "id": "high-contrast-a11y",
+      "name": "High-Contrast / Accessible-First",
+      "vibe": "Built so nobody has to squint — big type, hard edges, and every state announcing exactly what it is.",
+      "keywords": ["accessible", "accessibility", "a11y", "contrast", "high", "wcag", "inclusive", "readable", "legible", "compliant", "government", "section508", "aria", "clear", "large", "vision"],
+      "signature": [
+        "Body at 18px+, 4.5:1 minimum everywhere, 7:1 on headings where it is affordable",
+        "A focus ring nobody can miss: outline: 3px solid with outline-offset: 2px — never outline: none",
+        "Every state doubled — color plus icon plus text, never color alone",
+        "44x44 minimum targets with real space between them",
+        "prefers-contrast: more and forced-colors paths actually implemented, not stubbed"
+      ],
+      "bestFor": ["government", "healthcare", "banking", "education", "public services", "utilities", "senior-focused products", "anything under WCAG, ADA or EAA obligation"],
+      "doNotUseFor": [
+        "brands competing on aesthetic distinction — this style spends its budget elsewhere on purpose",
+        "expert-facing dense tools, where 18px type costs rows the daily user actually wants",
+        "fashion-forward marketing",
+        "as an alibi: it is the floor for every other style here, not a box to tick once"
+      ],
+      "lightMode": "full",
+      "darkMode": "full",
+      "accessibility": "strong",
+      "performance": "fast",
+      "complexity": "low",
+      "checklist": [
+        "This is a floor, not a ceiling — every other style in this database still owes WCAG AA",
+        "Verify with a real screen reader, not a lighthouse score",
+        "Never ship accessibility as a toggle; that is two products, one of them neglected",
+        "Contrast alone is not accessibility — check focus order, labels, and error recovery"
+      ]
+    },
+    {
+      "id": "corporate-clean",
+      "name": "Corporate Clean",
+      "vibe": "Blue, trustworthy and utterly unsurprising — the visual language of a company that wants procurement to say yes.",
+      "keywords": ["corporate", "clean", "professional", "business", "enterprise", "b2b", "trustworthy", "blue", "safe", "conservative", "formal", "reliable", "consulting", "saas", "procurement"],
+      "signature": [
+        "A blue primary near #2563eb, neutral grays, one supporting accent",
+        "Card sections with 1px borders and border-radius: 8px",
+        "The known page order: hero, logo wall, 3-up features, testimonial, pricing, CTA",
+        "Neutral grotesk (Inter, Söhne) at 400 and 600 — no display weights",
+        "Single stroke-weight icons; flat abstract illustration"
+      ],
+      "bestFor": ["b2b saas", "enterprise marketing", "consultancies", "fintech", "healthcare it", "hr and legal tools", "investor-facing pages"],
+      "doNotUseFor": [
+        "consumer products competing on delight",
+        "brands whose wedge is being different — this actively erases differentiation",
+        "agency and creative work, where clients will assume you have no taste",
+        "developer audiences, who read this as marketing rather than substance"
+      ],
+      "lightMode": "full",
+      "darkMode": "full",
+      "accessibility": "strong",
+      "performance": "fast",
+      "complexity": "low",
+      "checklist": [
+        "The trust signals do the work — logos, numbers, testimonials. Without them this is a blue template",
+        "Check your link blue on white: #2563eb passes 4.5:1, most lighter blues do not",
+        "One accent besides the blue, maximum",
+        "If the hero could carry any competitor's logo unchanged, the brand is missing"
+      ]
+    },
+    {
+      "id": "data-dense",
+      "name": "Data-Dense / Dashboard",
+      "vibe": "Bloomberg energy — maximum information per pixel, tuned for someone who stares at it for eight hours.",
+      "keywords": ["data", "dense", "dashboard", "table", "analytics", "compact", "information", "bloomberg", "trading", "admin", "metrics", "rows", "monitoring", "ops", "enterprise", "grid"],
+      "signature": [
+        "Row height 28-32px, font-size 13px, line-height 1.3 — deliberately tight",
+        "font-variant-numeric: tabular-nums with every number right-aligned",
+        "Zebra striping or hairline separators at 6-8% — never full borders",
+        "Sticky header and sticky first column; virtualized rows past ~100",
+        "Color reserved for meaning — up, down, alert — and never for decoration"
+      ],
+      "bestFor": ["analytics dashboards", "trading and finance", "admin panels", "observability tools", "log viewers", "crm", "ops consoles", "internal tools"],
+      "doNotUseFor": [
+        "marketing pages — density reads as intimidating to a first-time visitor",
+        "mobile-first products: this pattern assumes 1440px and a mouse",
+        "occasional users — density is a trade you make only for daily experts",
+        "layering with glass, neumorphism, gradients or texture: that combination is a bug, not a style"
+      ],
+      "lightMode": "full",
+      "darkMode": "full",
+      "accessibility": "caution",
+      "performance": "fast",
+      "complexity": "high",
+      "checklist": [
+        "Tabular numerals or your columns will never align — this one is non-negotiable",
+        "Ship a density toggle (comfortable / compact); do not force 13px on everyone",
+        "Full keyboard navigation, or power users will resent it by week two",
+        "Virtualize past 100 rows: the CSS is cheap, the DOM is not",
+        "13px type and tight targets are a real accessibility debt — pay it with the toggle and zoom support"
+      ]
+    },
+    {
+      "id": "motion-driven",
+      "name": "Motion-Driven",
+      "vibe": "The page performs as you scroll — things assemble, parallax and reveal, and the story lives in the movement.",
+      "keywords": ["motion", "animation", "scroll", "parallax", "reveal", "gsap", "framer", "kinetic", "interactive", "transition", "awwwards", "scrollytelling", "choreography", "animated", "dynamic"],
+      "signature": [
+        "Scroll-linked timelines via animation-timeline: view() or GSAP ScrollTrigger",
+        "Staggered reveals — 40-80ms per child, translateY(16px) plus opacity",
+        "Only transform and opacity animate; anything else drops frames",
+        "Easing with character — cubic-bezier(.22,1,.36,1) — 200-400ms for ui, 600-1200ms for narrative",
+        "One pinned section where scroll drives a sequence rather than the page position"
+      ],
+      "bestFor": ["product launches", "brand storytelling", "campaign pages", "agency sites", "portfolios", "feature explainers", "award-seeking microsites"],
+      "doNotUseFor": [
+        "utility ui — motion between the user and the task is a tax paid on every single visit",
+        "content users need to find fast: scroll-reveal hides text from Ctrl+F and from readers",
+        "long pages on low-end devices",
+        "products people return to daily — the delight decays to annoyance by the third visit"
+      ],
+      "lightMode": "full",
+      "darkMode": "full",
+      "accessibility": "risky",
+      "performance": "heavy",
+      "complexity": "high",
+      "checklist": [
+        "prefers-reduced-motion: reduce must show the final state instantly — not a faster animation",
+        "Never scroll-jack; the user owns the scrollbar",
+        "Content exists in the DOM and is findable before its reveal ever runs",
+        "Parallax is the classic vestibular trigger — keep it under 10% displacement or drop it",
+        "Budget it: if the hero choreography costs 200KB of JS, cut the choreography"
+      ]
+    },
+    {
+      "id": "spatial-3d",
+      "name": "3D / Spatial",
+      "vibe": "Objects with real depth you can orbit — the screen stops being a page and becomes a stage.",
+      "keywords": ["3d", "spatial", "webgl", "three", "depth", "perspective", "immersive", "orbit", "model", "scene", "r3f", "render", "tilt", "configurator", "vision", "ar"],
+      "signature": [
+        "perspective: 1000px on the container plus transform-style: preserve-3d for CSS-only depth",
+        "Or a real scene — Three.js / React Three Fiber canvas with constrained orbit controls",
+        "Tilt on hover: pointer position mapped to rotateX/rotateY within ±10deg",
+        "One key light plus a rim light, and a grounded contact shadow so the object does not float",
+        "Progressive load: poster image first, model second, with a hard budget on the glb"
+      ],
+      "bestFor": ["hardware and product marketing", "3d configurators", "game sites", "portfolios", "launch pages", "museums and exhibits", "web3 products"],
+      "doNotUseFor": [
+        "content sites — a webgl canvas as decoration is a 500KB tax on every visitor",
+        "mobile-heavy audiences: thermal throttling and battery drain are real and measurable",
+        "anything needing SEO on the 3D content — canvas contents do not exist to a crawler",
+        "utility ui, because nobody wants to orbit their settings page"
+      ],
+      "lightMode": "full",
+      "darkMode": "full",
+      "accessibility": "risky",
+      "performance": "heavy",
+      "complexity": "high",
+      "checklist": [
+        "Every canvas needs a DOM equivalent — the content must exist outside the scene",
+        "Ship a poster frame and lazy-load the scene; never block LCP on a model",
+        "Cap pixel ratio at 2 and pause the raf loop when the canvas is off-screen",
+        "Respect prefers-reduced-motion: no auto-orbit, no camera drift",
+        "Canvas is opaque to assistive tech and rarely keyboard-operable — plan for both or drop it"
+      ]
+    },
+    {
+      "id": "typographic",
+      "name": "Typographic / Type-First",
+      "vibe": "The words are the design — scale, weight and spacing do everything an image would have done.",
+      "keywords": ["typography", "type", "typographic", "text", "lettering", "headline", "font", "variable", "oversized", "kinetic", "wordmark", "letters", "scale", "tracking", "wordy"],
+      "signature": [
+        "One giant headline: font-size: clamp(3rem, 12vw, 12rem) with line-height .9 and negative tracking",
+        "A variable font animated on one axis — weight or width — instead of a second family",
+        "Optical tuning: text-wrap: balance on headings, text-wrap: pretty on body",
+        "Hierarchy from two sizes and two weights: no color, no rules, no boxes",
+        "Type as layout — the text block is the composition, imagery optional"
+      ],
+      "bestFor": ["portfolios", "agency sites", "manifestos", "conference sites", "brand pages", "launch announcements", "products with no photography"],
+      "doNotUseFor": [
+        "localization-heavy sites — German and Finnish will detonate your 12vw headline",
+        "cms-driven content, where every headline needs hand-tuning to look right",
+        "applications and forms",
+        "teams where a marketer edits copy without a designer seeing it"
+      ],
+      "lightMode": "full",
+      "darkMode": "full",
+      "accessibility": "strong",
+      "performance": "medium",
+      "complexity": "medium",
+      "checklist": [
+        "Never size body text in vw — it ignores the user's font-size setting; clamp() with a rem floor",
+        "Test the longest translation you will ever ship, then add 30%",
+        "Subset the variable font and set font-display: swap — unsubsetted it can be 300KB",
+        "text-wrap: balance on headings is the cheapest quality win available here"
+      ]
+    },
+    {
+      "id": "illustrated",
+      "name": "Illustrated",
+      "vibe": "Custom drawings carry the personality — the interface is just a frame around characters made for it.",
+      "keywords": ["illustration", "illustrated", "drawing", "character", "mascot", "spot", "custom", "friendly", "storytelling", "vector", "scene", "whimsical", "mailchimp", "notion", "art"],
+      "signature": [
+        "A defined system — one line weight, one palette, one perspective. Not stock, not mixed sources",
+        "SVG spot illustrations at anchor points: hero, empty state, onboarding, error",
+        "Illustration palette derived from the ui palette and desaturated ~15% so it recedes",
+        "Characters carrying the emotion copy cannot: 404, empty, success",
+        "Layout stays plain — illustration is the only ornament in the room"
+      ],
+      "bestFor": ["onboarding flows", "empty states", "error pages", "help centers", "education", "consumer fintech", "saas marketing", "kids products"],
+      "doNotUseFor": [
+        "teams without an illustrator or budget — mixed stock art is worse than no art",
+        "dense professional tools, where a mascot in a trading ui is a distraction",
+        "brands needing gravitas: legal, security, enterprise infrastructure",
+        "screens users see daily — the joke gets old but the file size does not"
+      ],
+      "lightMode": "full",
+      "darkMode": "partial",
+      "accessibility": "caution",
+      "performance": "medium",
+      "complexity": "high",
+      "checklist": [
+        "Decide per image: decorative gets an empty alt, informative gets a real description",
+        "Every illustration needs a dark-mode variant or a plate it survives on",
+        "Run SVGO — a Figma-exported SVG is routinely 5x larger than it needs to be",
+        "One illustrator, one system. Two styles on one site reads as a hack"
+      ]
+    },
+    {
+      "id": "photographic",
+      "name": "Photographic / Full-Bleed",
+      "vibe": "A photograph the size of the window with a few words on it — the image is the product and everything else gets out of the way.",
+      "keywords": ["photo", "photography", "photographic", "fullbleed", "bleed", "image", "hero", "cinematic", "lifestyle", "immersive", "imagery", "travel", "editorial", "scrim", "visual"],
+      "signature": [
+        "height: 100svh image with object-fit: cover and an art-directed picture element per breakpoint",
+        "A scrim for legibility: linear-gradient(to top, rgba(0,0,0,.65), transparent 60%) — not a flat overlay",
+        "Minimal type on the image: one headline, one line, one CTA",
+        "Focal point preserved across crops via object-position per breakpoint",
+        "Everything else neutral — the photograph is the only color in the system"
+      ],
+      "bestFor": ["travel", "real estate", "restaurants", "hospitality", "fashion", "dtc products", "event sites", "portfolios", "editorial features"],
+      "doNotUseFor": [
+        "products without professional photography — a stock hero is worse than a plain gradient",
+        "any screen carrying more than ~15 words over the image",
+        "data-conscious markets and slow connections: the hero IS your LCP",
+        "content that changes often, where every new photo needs the same art direction"
+      ],
+      "lightMode": "full",
+      "darkMode": "full",
+      "accessibility": "caution",
+      "performance": "heavy",
+      "complexity": "medium",
+      "checklist": [
+        "Check the headline against the LIGHTEST pixel behind it, not the average",
+        "Scrim, always — the photo you tested is not the photo the CMS will receive",
+        "AVIF/WebP, picture-element art direction, fetchpriority high on the hero and lazy on the rest",
+        "Set explicit dimensions or aspect-ratio: this style is a CLS machine",
+        "Text baked into an image is invisible to search and to screen readers"
+      ]
+    },
+    {
+      "id": "aurora-glow",
+      "name": "Aurora / Glow",
+      "vibe": "Dark surfaces lit from behind by slow-moving colored light — the look that says 'serious tech, tastefully'.",
+      "keywords": ["aurora", "glow", "ambient", "dark", "light", "halo", "bloom", "spotlight", "linear", "vercel", "borealis", "radial", "sleek", "tech", "modern", "gradient"],
+      "signature": [
+        "Dark base (#08090c) with one or two blurred radial gradients bleeding in from the top edge",
+        "Glowing 1px borders from a linear-gradient border-image or a masked pseudo-element",
+        "Spotlight follows cursor: CSS vars --x/--y updated on pointermove driving a radial-gradient",
+        "Very slow drift (30-60s) so the light breathes instead of animating",
+        "Everything else restrained — neutral type, small radii, hairline dividers"
+      ],
+      "bestFor": ["developer tools", "ai products", "saas landing pages", "dark dashboards", "docs sites", "changelogs", "infrastructure brands", "pricing pages"],
+      "doNotUseFor": [
+        "light mode — the glow needs darkness to exist at all",
+        "non-technical buyers: this is a genre signal, not universal appeal",
+        "content-heavy reading, where ambient light under long text is fatiguing",
+        "brands that need to look distinct — as of 2026 every dev tool already looks like this"
+      ],
+      "lightMode": "poor",
+      "darkMode": "full",
+      "accessibility": "caution",
+      "performance": "medium",
+      "complexity": "medium",
+      "checklist": [
+        "Body text on the dark base must hit 4.5:1 — the tasteful dim gray is usually 3.8:1",
+        "Pointer-driven glow updates a CSS var; never re-render React on pointermove",
+        "Layer radial-gradients rather than blur(100px) on a div for the ambient wash",
+        "This look is everywhere now — if you need differentiation, this is not it"
+      ]
+    }
+  ]
+}

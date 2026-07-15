@@ -14,8 +14,14 @@ if (!fs.existsSync(catalogDir)) {
   process.exit(0);
 }
 
+// Skip vendored dependency trees. The bundled QA engine's node_modules contains third-party
+// SKILL.md files (playwright-core ships its own), and counting those as MASTER CLAUDE
+// capabilities makes this check cry wolf on every run.
+const SKIP_DIRS = new Set(['node_modules', '.git', 'dist', 'build']);
+
 function walk(dir, out = []) {
   for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
+    if (e.isDirectory() && SKIP_DIRS.has(e.name)) continue;
     const p = path.join(dir, e.name);
     if (e.isDirectory()) walk(p, out); else out.push(p);
   }

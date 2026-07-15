@@ -6,14 +6,30 @@ description: >-
   good/professional", "it looks generic / like Bootstrap / AI-generated", or any UI work with no established
   visual system. Establish or detect design tokens (color, type scale, spacing, radius, shadow, motion), a
   font pairing, and a component vocabulary — reusing shadcn/Radix/Tailwind conventions — before writing components.
-allowed-tools: Read, Grep, Glob, Write, Edit
+allowed-tools: Read, Grep, Glob, Bash, Write, Edit
 ---
 
 # Frontend design system — set the foundation first
 
 Default-looking UI is the #1 tell of AI-generated frontend. Before building components, establish the system
-they share. **Detect an existing one first** (read the repo's CSS / Tailwind config / token file); only invent
-what's missing — never fight a system that's already there.
+they share.
+
+## Order of operations
+1. **Does one already exist?** Read the repo first — `.mc/design/MASTER.md`, then the CSS / Tailwind config /
+   token file / theme provider. **Never fight a system that's already there.** Only invent what's missing.
+2. **Get the concrete picks** — `ui-intel` turns "a spa booking app" into real hex, a named style and a font
+   pairing, instead of you inventing a palette from nothing:
+   ```bash
+   node <ui-intel>/uikit.mjs --design-system "<product> <industry> <keywords>" --stack <detected>
+   ```
+3. **Persist it** so the next session builds the same product, not a cousin of it:
+   ```bash
+   node <ui-intel>/uikit.mjs --design-system "<query>" --persist --out <project-root> -p "<Name>"
+   ```
+   → `.mc/design/MASTER.md` (source of truth) + `.mc/design/pages/<page>.md` (per-page overrides).
+   An existing MASTER.md is **kept** unless you pass `--force` — read it before you regenerate it; it may hold
+   decisions a human made.
+4. **Emit it once**, as CSS variables or a Tailwind/token config the components import. One source of truth.
 
 ## The tokens (define once, use everywhere)
 | Token | Define | Rule of thumb |
@@ -25,6 +41,9 @@ what's missing — never fight a system that's already there.
 | Shadow | 2–3 elevations, soft + low-opacity | subtle; never a hard near-black box-shadow |
 | Motion | 1 easing + 2 durations (fast ~120ms, base ~200ms) | animate `transform`/`opacity`, not layout |
 
+`ui-intel`'s palettes ship in exactly this shape (shadcn token names, light + dark), contrast-verified — so
+step 2 usually fills the colour row for you.
+
 ## What makes it look designed
 - **One accent, restrained.** Color carries meaning; a rainbow reads amateur. Neutrals do the heavy lifting.
 - **A consistent spacing rhythm** from the scale — the fastest path from "default" to "designed".
@@ -35,9 +54,8 @@ what's missing — never fight a system that's already there.
 ## Reuse, don't reinvent
 Lean on **shadcn/ui** + **Radix** primitives (accessible, unstyled) + **Tailwind** tokens, or the project's
 framework (MUI/Chakra/Mantine). For a brand or a named look, the **theme-factory** and **brand-guidelines**
-Claude skills apply. Emit the system as CSS variables (`:root` + `[data-theme="dark"]`) or a Tailwind/token
-config the components import — one source of truth.
+Claude skills apply.
 
 ---
-*Pairs with `fe-page-patterns` (what to build) and `fe-component-craft` (how to build it). Credits: shadcn/ui,
-Radix, Tailwind; Anthropic theme-factory + brand-guidelines. See docs/ECOSYSTEM.md.*
+*Fed by `ui-intel` (the picks). Pairs with `fe-page-patterns` (what to build) and `fe-component-craft` (how to
+build it). Credits: shadcn/ui, Radix, Tailwind; Anthropic theme-factory + brand-guidelines. See docs/ECOSYSTEM.md.*

@@ -84,13 +84,13 @@ setup (and whenever you're unsure), **list it yourself**: `Glob` `.claude/skills
 | `review/` | cap-self-review, cap-red-team — critique the diff and the design |
 | `understand/` | cap-explain-senior, cap-rubber-duck, codehistorian, repo-map — explain, debug, trace history, and map the codebase |
 | `guardrails/` | guardian, supplyguard, testmedic, cap-tdd, debtradar, compactor, guardian-suite — keep the work honest & healthy (incl. test-driven dev) |
-| `frontend/` | fe-design-system, fe-page-patterns, fe-component-craft, fe-from-reference, fe-design-review — make the UI output excellent (tokens → layout → accessible/responsive components → build-from-reference → design review) |
+| `frontend/` | **ui-intel** — the design-intelligence database: query it for the *concrete* picks (real hex palettes, a named style, a font pairing, decision rules, anti-patterns — contrast-verified) and persist them to `.mc/design/MASTER.md`; **ux-research** (who it's for, the job, the flow — before pixels), fe-design-system (tokens), fe-page-patterns (layout), fe-component-craft (accessible/responsive build), fe-from-reference (screenshot/brand → UI), **fe-a11y** (WCAG 2.2 AA — the first gate), **fe-motion** (motion that explains), **fe-perf** (LCP/CLS/INP), fe-design-review (the picky pass) — the design team; UI that looks designed, not default |
 | `security/` | **core:** sec-authz-review (IDOR/BOLA/privesc), sec-injection, sec-authn-session, sec-secrets-crypto, sec-ssrf-traversal, sec-attacker-review · **depth:** sec-frontend, sec-api, sec-deps, sec-iac-cloud, sec-threat-model, sec-headers-config · **privacy:** sec-pii (anonymize user PII before it reaches a model — Presidio) — review for vulnerabilities front→back (OWASP/CWE) |
-| `workflows/` | wf-codebase-audit, wf-security-audit — big multi-step jobs (incl. a full front→back security audit) |
+| `workflows/` | wf-codebase-audit, wf-security-audit, **wf-ui-uplift** (drive a full design pass → a persisted system + mc.html) — big multi-step jobs |
 | `testing/` | **wf-tester** (drive a full QA pass → mc.html), **test-user-end**, **test-blackbox**, **test-code**, **test-stress** (load/soak via k6), **mc-dashboard** (the charted mc.html) — the tester team on any project; per-project workspace, safe by default, drives the bundled QA engine (`skills/testing/engine/`) |
 | `orchestration/` | **subagent-orchestration** (delegate to subagents/teams), **model-router** (pick a model per agent/task), **token-economy** (best output per token), **context-engineering** (curate the context window — cache-stable, retrieve-don't-dump, audit MCPs, measure tokens), **fleet** (dispatch the team to separate parallel sessions for throughput — cost-capped, opt-in), **workspace-architect** (build the best `.claude/` workspace), **worktree-isolation** (parallel work without collisions) |
 | `meta/` | **writing-skills** — author/sharpen a MASTER CLAUDE skill so the archive keeps growing; **statusline-designer** — design a custom Claude Code status line for CLI users (gated, opt-in) |
-| `agents/` | **Sentinel** — the project cartographer; **security-auditor** — read-only security audit → `.security/`; **tester** — read-only QA lead: runs the tester team → `.mc/qa/` + `mc.html` |
+| `agents/` | **Sentinel** — the project cartographer; **security-auditor** — read-only security audit → `.security/`; **tester** — read-only QA lead: runs the tester team → `.mc/qa/` + `mc.html`; **designer** — read-only design lead: brief → a persisted design system → an a11y-first review → `.mc/design/` + `mc.html` |
 
 New categories and skills land here over time (the project is community-driven) — so **discover, don't
 assume**: re-scan the tree rather than relying on this table.
@@ -201,10 +201,17 @@ Watch for the signal, then **offer** (don't force) — one line, with why:
 | a refactor with no clear target | **debtradar** | ranks hotspots by churn × complexity |
 | "why is this code like this?" / a regression | **codehistorian** | git archaeology |
 | new to a big/unfamiliar repo, or "where is X / how's this laid out" | **repo-map** | ranked map — jump to the load-bearing files, don't trawl |
+| any UI work starting — a page, a component, a whole frontend | **ui-intel** first | the concrete picks (real hex, style, fonts, anti-patterns) → `.mc/design/MASTER.md`, *then* build |
+| "what colors / font / style should this use?" or "it looks generic / AI-generated" | **ui-intel** | a database answer, not an invented palette — contrast already verified |
+| a fuzzy brief ("make a dashboard") or "who is this even for?" | **ux-research** | the user, the job, the flow — before a single pixel |
 | building or redesigning a UI — a page, a component, or a whole frontend | **fe-design-system** + **fe-page-patterns** | set tokens first, then the proven layout — designed, not default |
 | UI works but looks generic / isn't accessible / breaks on mobile | **fe-component-craft** | a11y + every state + responsive + the polish |
 | a screenshot or brand to match, or "generate a UI for…" | **fe-from-reference** | image/brand → UI via artifacts / the visualize widget / canvas-design |
+| "is this accessible?", a11y/WCAG/ADA/EAA, a failed axe score, or a custom widget | **fe-a11y** | WCAG 2.2 AA mapped to criteria — the first gate, not the last polish |
+| "add animation / it feels janky / cheap / static" | **fe-motion** | motion that explains; reduced-motion shipped in the same pass |
+| "it's slow / laggy / the page jumps", a bad Lighthouse score, a fat bundle | **fe-perf** | measure LCP/CLS/INP first, then fix the thing that actually costs |
 | before shipping frontend, or "does this look good / is it accessible?" | **fe-design-review** | a picky design + a11y pass (blocker/major/minor) |
+| a whole frontend to take from generic → designed, or "make it look professional" | **wf-ui-uplift / designer** | the full pass: brief → system → layout → build → a11y-first review → mc.html |
 | a new dependency being added | **supplyguard** | blocks hallucinated/typosquatted/vulnerable deps |
 | code touches auth, permissions, or roles | **sec-authz-review** | IDOR/BOLA/privesc — the #1 web risk |
 | an endpoint fetches/mutates a resource by id | **sec-authz-review** | object-level authz (BOLA/IDOR) |

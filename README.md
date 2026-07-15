@@ -57,8 +57,9 @@ with `/master-claude-team`.
 The leader picks a **minimal** subset per project — never all at once. Capabilities are organized by
 category; each folder has a README that brainstorms what else belongs there (good first contributions).
 
-- **`agents/`** — **Sentinel** (project cartographer → `.sentinel/`) and the **Security Auditor**
-  (read-only vulnerability audit → `.security/`). Read-only toward your source.
+- **`agents/`** — **Sentinel** (project cartographer → `.sentinel/`), the **Security Auditor** (read-only
+  vulnerability audit → `.security/`), the **Tester** (QA lead → `.mc/qa/` + `mc.html`) and the **Designer**
+  (design lead → `.mc/design/` + `mc.html`). All read-only toward your source.
 - **`skills/planning/`** — `grill-me` · `cap-brainstorm` · `cap-plan-first` · `cap-spec-smith` ·
   `cap-decomposer` · `cap-write-plan` · `cap-execute-plan` — fuzzy ask → spec → plan → built result.
 - **`skills/review/`** — `cap-self-review` · `cap-red-team` — critique the diff and the design.
@@ -66,13 +67,17 @@ category; each folder has a README that brainstorms what else belongs there (goo
   (a ranked code map for token-cheap navigation) — explain, debug, trace history, map the codebase.
 - **`skills/guardrails/`** (the Guardian suite) — `guardian` · `supplyguard` · `testmedic` · `cap-tdd` ·
   `debtradar` · `compactor` · `guardian-suite` — keep the work honest and the codebase healthy.
-- **`skills/frontend/`** — `fe-design-system` · `fe-page-patterns` · `fe-component-craft` · `fe-from-reference` ·
-  `fe-design-review` — make the UI output excellent (tokens → layout → accessible/responsive components → review).
+- **`skills/frontend/`** (the design team) — **`ui-intel`** (a queryable design-intelligence database: real hex
+  palettes, styles, font pairings, decision rules and anti-patterns per product type — contrast **verified**, not
+  claimed; persists to `.mc/design/MASTER.md` so every session builds the same product) · `ux-research` ·
+  `fe-design-system` · `fe-page-patterns` · `fe-component-craft` · `fe-from-reference` · `fe-a11y` (WCAG 2.2 AA) ·
+  `fe-motion` · `fe-perf` (LCP/CLS/INP) · `fe-design-review` — UI that looks designed, not default.
 - **`skills/security/`** — `sec-authz-review` · `sec-attacker-review` · `sec-injection` · `sec-authn-session` ·
   `sec-secrets-crypto` · `sec-ssrf-traversal` (+ depth: frontend / api / deps / iac-cloud / threat-model /
   headers) · `sec-pii` (anonymize user PII before it reaches a model) — review for vulnerabilities + privacy,
   front→back (OWASP/CWE, with fixes).
-- **`skills/workflows/`** — `wf-codebase-audit`, `wf-security-audit` — big, multi-step jobs.
+- **`skills/workflows/`** — `wf-codebase-audit`, `wf-security-audit`, `wf-ui-uplift` (a full design pass:
+  brief → system → layout → build → a11y-first review) — big, multi-step jobs.
 - **`skills/orchestration/`** — `subagent-orchestration` (delegate to subagents/teams) · `model-router`
   (pick a model per agent — Opus lead / Sonnet workers / Haiku scouts) · `token-economy` (best output per
   token — caveman, cheaper models, cache-warm) · `context-engineering` (curate the window — cache-stable,
