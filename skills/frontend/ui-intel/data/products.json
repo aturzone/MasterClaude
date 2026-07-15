@@ -4,802 +4,2662 @@
     {
       "id": "saas-b2b",
       "name": "B2B SaaS",
-      "keywords": ["saas", "b2b", "software", "subscription", "cloud", "enterprise", "platform", "business", "tool"],
-      "pattern": "Hero with one clear promise + logo wall + 3 feature blocks + pricing + FAQ + CTA",
-      "style": ["flat-modern", "glassmorphism"],
+      "keywords": [
+        "saas",
+        "b2b",
+        "software",
+        "subscription",
+        "cloud",
+        "enterprise",
+        "platform",
+        "dashboard",
+        "crm",
+        "admin",
+        "seats",
+        "procurement",
+        "landing",
+        "workflow",
+        "integration"
+      ],
+      "pattern": "Hero with one claim + logo wall + 3-up problem/solution + product screenshot + features + integrations + pricing table + FAQ + closing CTA",
+      "style": [
+        "flat-modern",
+        "bento-grid"
+      ],
       "palette": "trust-blue",
       "fonts": "geist-inter",
-      "colorMood": "Trust blue carries the page; one warm accent is reserved for the CTA and nothing else",
-      "typeMood": "Professional, strong hierarchy, nothing decorative",
-      "effects": ["subtle hover 200ms", "logo wall greyscale until hover", "sticky header that shrinks on scroll"],
-      "decisionRules": [
-        { "if": "the product is data-heavy", "then": "drop glassmorphism on tables — translucency destroys legibility at density; keep it for the marketing hero only" },
-        { "if": "pre-launch, no product yet", "then": "waitlist pattern — one CTA, no pricing table, and no fabricated testimonials or logo wall" },
-        { "if": "selling to enterprise", "then": "surface SOC2/SSO/audit-log signals above the fold; a procurement lead scans for those before features" },
-        { "if": "self-serve signup", "then": "the CTA is 'Start free' and reaches a working product in one click — no demo-request wall" }
+      "colorMood": "Trust blue carrying every surface, the teal accent spent only on the primary CTA and nothing else",
+      "typeMood": "Professional, strong hierarchy, nothing decorative — the screenshot is the hero, type is the frame",
+      "effects": [
+        "subtle hover lift 200ms ease-out",
+        "logo wall greyscale until hover",
+        "sticky nav that gains a border on scroll, not a shadow",
+        "numbers count up once on first view, never again"
       ],
-      "antiPatterns": ["Dark mode by default — B2B buyers scan in bright offices", "Stock-photo hero of people pointing at a laptop", "A testimonial carousel that auto-advances past the one being read", "Pricing hidden behind 'Contact us' for a self-serve product"],
+      "decisionRules": [
+        {
+          "if": "pre-launch / no product yet",
+          "then": "waitlist pattern — one email field, no pricing table, no fake testimonials, no logo wall of companies you do not have"
+        },
+        {
+          "if": "the product is data-heavy (tables, grids, reports)",
+          "then": "drop bento-grid inside the app — bento is a marketing device; a grid of unequal cards is the wrong shape for rows of like items"
+        },
+        {
+          "if": "enterprise deal size (>$25k ACV)",
+          "then": "replace the pricing table with 'Talk to sales' + a security/compliance section — a price tag invites procurement to anchor against it"
+        },
+        {
+          "if": "self-serve PLG motion",
+          "then": "the CTA is 'Start free', never 'Request demo' — a demo form is a churn valve on a credit-card funnel"
+        }
+      ],
+      "antiPatterns": [
+        "Dark mode by default — buyers evaluate on a projector in a lit room",
+        "Stock-photo hero of people pointing at a laptop",
+        "Carousel of testimonials nobody reads and nobody can Ctrl+F",
+        "A pricing table with four tiers where two are decoys",
+        "'Trusted by' logos at 40% opacity that turn out to be free-tier signups"
+      ],
       "severity": "high",
-      "pages": { "dashboard": "Sidebar nav + a KPI row + one primary table. Density over whitespace — this is a tool, not a brochure." }
+      "pages": {
+        "dashboard": "Sidebar nav + KPI row + one primary table. Density over whitespace — the daily user wants rows, not air.",
+        "pricing": "Three tiers max, most-popular marked once, annual/monthly toggle, feature matrix below the fold. Every row in the matrix must be a real differentiator.",
+        "login": "Single column, 400px, logo + email + SSO. No marketing copy, no hero image, no nav."
+      }
     },
     {
       "id": "micro-saas",
-      "name": "Micro SaaS / Indie product",
-      "keywords": ["micro-saas", "indie", "solo", "bootstrap", "side-project", "niche", "solopreneur", "indie-hacker", "small"],
-      "pattern": "Hero + a real screenshot or demo GIF above the fold + one price + a founder note",
-      "style": ["neo-brutalism", "flat-modern"],
-      "palette": "pastel-soft",
-      "fonts": "outfit-figtree",
-      "colorMood": "Friendly and distinct — a small product wins on personality, not on looking like an enterprise",
-      "typeMood": "Warm, direct, human — write like a person, not a committee",
-      "effects": ["hard offset shadows", "playful hover lift", "an inline demo that runs without signup"],
-      "decisionRules": [
-        { "if": "there is a working demo", "then": "put it above the fold and let people use it before signing up — for an unknown indie product, trust is the whole conversion problem" },
-        { "if": "solo founder", "then": "say so with a face and a name; being small is the differentiator, not something to hide behind corporate voice" },
-        { "if": "one price point", "then": "show a single card, not a three-tier table that fakes a lineup you don't have" }
+      "name": "Micro-SaaS",
+      "keywords": [
+        "micro saas",
+        "indie",
+        "solo",
+        "bootstrapped",
+        "side project",
+        "small tool",
+        "one person",
+        "indie hacker",
+        "launch",
+        "maker",
+        "single purpose",
+        "niche",
+        "utility"
       ],
-      "antiPatterns": ["Pretending to be a big company (fake 'Team' page, invented logo wall)", "A three-tier pricing table for one product", "Enterprise voice on an indie product — it reads as a lie"],
+      "pattern": "Hero with the exact job-to-be-done in one line + a 20-second demo GIF + three features + one price + founder note with a real face + CTA",
+      "style": [
+        "neo-brutalism",
+        "bento-grid"
+      ],
+      "palette": "pastel-soft",
+      "fonts": "space-grotesk-inter",
+      "colorMood": "Sherbet backgrounds doing the personality work while every foreground stays dark enough to read — candy surfaces, grown-up text",
+      "typeMood": "Opinionated and fast — a product that has taste and no design committee",
+      "effects": [
+        "hard 4px offset shadow that collapses to 0 on press",
+        "thick black outline on every interactive element",
+        "demo GIF autoplays muted, loops, no controls",
+        "no scroll animation anywhere — the page is 900px tall"
+      ],
+      "decisionRules": [
+        {
+          "if": "one founder with no designer",
+          "then": "neo-brutalism is the correct hedge — its rules are mechanical (border 3px, shadow 4px/4px, radius 0) so they survive being applied by someone who is not a designer; swiss-minimal in the same hands collapses on the first 13px margin"
+        },
+        {
+          "if": "the product touches money, health or legal data",
+          "then": "abandon neo-brutalism entirely — the toy vocabulary reads as a hobby project and your conversion problem becomes a trust problem"
+        },
+        {
+          "if": "traffic comes from Product Hunt / HN / X",
+          "then": "the hero must state the job in the first 8 words — this audience bounces in 3 seconds and never scrolls"
+        },
+        {
+          "if": "pricing is under $20/mo",
+          "then": "one price, one button, no tiers — a comparison table on a $9 product costs more attention than the decision is worth"
+        }
+      ],
+      "antiPatterns": [
+        "Cosplaying enterprise — a 'Trusted by' wall and an SSO badge on a two-week-old product",
+        "An 'Enterprise: Contact us' tier that goes to a founder's personal inbox",
+        "Fake urgency countdowns on a subscription",
+        "A roadmap page that has not moved in eight months",
+        "Pastel + thin grey text — the palette's whole discipline is dark foregrounds"
+      ],
       "severity": "medium"
     },
     {
       "id": "fintech",
       "name": "Fintech / Banking",
-      "keywords": ["fintech", "banking", "bank", "finance", "payments", "money", "lending", "invoicing", "accounting", "financial"],
-      "pattern": "Hero with the trust signal + how it works in 3 steps + security section + regulatory footer + CTA",
-      "style": ["corporate-clean", "data-dense"],
+      "keywords": [
+        "fintech",
+        "banking",
+        "bank",
+        "finance",
+        "financial",
+        "payments",
+        "money",
+        "invoice",
+        "accounting",
+        "ledger",
+        "wealth",
+        "investing",
+        "brokerage",
+        "insurance",
+        "lending",
+        "transactions",
+        "balance"
+      ],
+      "pattern": "Hero with the balance/number as the hero + regulator and insurance badges + how-it-works in three steps + security section + fee transparency table + FAQ + CTA",
+      "style": [
+        "corporate-clean",
+        "data-dense"
+      ],
       "palette": "ledger-emerald",
       "fonts": "ibm-plex-serif-sans",
-      "colorMood": "Money being counted carefully — deep green over graphite, never playful",
-      "typeMood": "Authoritative and precise; tabular numerals everywhere a figure appears",
-      "effects": ["restrained transitions only", "numbers that count up once on reveal, never on loop"],
-      "decisionRules": [
-        { "if": "regulated (licensing, APR, risk disclosure)", "then": "the disclosure is body text near the claim — never behind a tooltip, an accordion, or 6pt grey. That placement is a legal question, not a layout preference" },
-        { "if": "showing balances or amounts", "then": "tabular numerals + explicit currency + never rely on red/green alone for +/- — colour-blind users read the sign, not the hue" },
-        { "if": "any irreversible money action", "then": "a confirm step that restates amount and recipient in full; no one-tap transfers" },
-        { "if": "consumer-facing", "then": "lead with what it costs; a hidden fee discovered later costs more trust than the fee itself" }
+      "colorMood": "Deep green over graphite — serious rather than startup-cheerful; amber accent reserved for pending states, never for decoration",
+      "typeMood": "Institutional, audited, calm — tabular figures everywhere a number can change",
+      "effects": [
+        "tabular-nums on every currency figure so digits do not jitter as they update",
+        "no animation on a balance — a number that slides looks like a number that is unsure",
+        "row hover as a 1px background shift, nothing more",
+        "state changes announced to screen readers, not just colored"
       ],
-      "antiPatterns": ["Playful illustration next to someone's actual balance", "Green/red as the only signal for gain/loss", "Fine print as the accessibility strategy", "Fake urgency on a financial decision"],
-      "severity": "critical"
+      "decisionRules": [
+        {
+          "if": "regulated disclosure (APR, fees, risk warnings, FSCS/FDIC status)",
+          "then": "the disclosure cannot be behind a tooltip, an accordion or a hover — it renders at the point of decision, at body size, in foreground color. A tooltip is not disclosure; it is a defence you will lose"
+        },
+        {
+          "if": "consumer mobile banking rather than a back-office console",
+          "then": "drop data-dense entirely — it assumes 1440px and a mouse. One balance per screen, 44px targets, the primary action reachable by thumb"
+        },
+        {
+          "if": "the number on screen is money the user can lose",
+          "then": "destructive and confirm are different colors AND different words — 'Send £4,200 to Jane Doe' on the button, never 'Confirm'"
+        },
+        {
+          "if": "the product shows gains/losses",
+          "then": "never encode direction in red/green alone — 8% of male users cannot separate them; ship arrow + sign + color together"
+        }
+      ],
+      "antiPatterns": [
+        "Gradient hero on a bank — it reads as a crypto scam to the exact demographic with money",
+        "Hiding fees in a modal the user must open to find",
+        "Red/green as the only signal for up/down",
+        "Animated counters on a live balance",
+        "A dark-pattern 'skip for now' that is styled more prominently than the security step"
+      ],
+      "severity": "critical",
+      "pages": {
+        "dashboard": "Balance first and largest, then this month's flow, then the transaction table. Density over whitespace — this is a daily expert screen.",
+        "checkout": "One column, amount restated at every step, no upsells between the user and the confirm button.",
+        "onboarding": "KYC in named steps with a visible position indicator. Never ask for a document without saying why you need it and who sees it."
+      }
     },
     {
       "id": "crypto-web3",
       "name": "Crypto / Web3",
-      "keywords": ["crypto", "web3", "blockchain", "defi", "wallet", "nft", "token", "ethereum", "bitcoin", "dao", "onchain"],
-      "pattern": "Hero + live protocol stats + how it works + audit/security proof + connect-wallet CTA",
-      "style": ["cyberpunk-neon", "dark-luxury"],
-      "palette": "chain-gold",
-      "fonts": "space-grotesk-inter",
-      "colorMood": "Bullion on carbon — gold against near-black with one electric accent",
-      "typeMood": "Technical and confident; mono for every address and hash",
-      "effects": ["subtle glow on primary actions", "live-updating stat counters", "address truncation with copy-on-click"],
-      "decisionRules": [
-        { "if": "a transaction is irreversible", "then": "show the destination address in full at confirm, in mono, with a copy button — truncation is where people lose funds" },
-        { "if": "showing APY or returns", "then": "state the risk and the timeframe with equal weight; a number with no downside next to it is marketing, not information" },
-        { "if": "wallet connection required", "then": "explain what will be signed before the wallet modal opens; a blind signature request is how drainers work" },
-        { "if": "audited", "then": "link the actual audit report, not a badge — a badge nobody can click is decoration" }
+      "keywords": [
+        "crypto",
+        "web3",
+        "blockchain",
+        "wallet",
+        "defi",
+        "bitcoin",
+        "ethereum",
+        "nft",
+        "dapp",
+        "token",
+        "exchange",
+        "trading",
+        "dao",
+        "onchain",
+        "staking",
+        "swap",
+        "ledger",
+        "mint"
       ],
-      "antiPatterns": ["Truncated addresses at the confirm step", "APY with no risk statement", "Countdown urgency on an investment decision", "Neon glow at such low contrast that the numbers are unreadable"],
+      "pattern": "Hero with the protocol claim + live TVL/volume stats bar + connect-wallet CTA + how-it-works + audit and contract links + docs link + community CTA",
+      "style": [
+        "cyberpunk-neon",
+        "data-dense"
+      ],
+      "palette": "chain-gold",
+      "fonts": "space-mono-ibm-plex-mono",
+      "colorMood": "Bullion on carbon — gold carries the weight, the violet spark is one accent; deliberately not neon toy energy",
+      "typeMood": "Monospace as a credibility signal — addresses, hashes and amounts must align vertically or they cannot be compared",
+      "effects": [
+        "addresses always truncated middle (0x1a2b…9f0e) with click-to-copy and a copied confirmation",
+        "live stats tick without layout shift — reserve the width for the widest value",
+        "glow on the CTA edge only, never under text",
+        "pending transaction state persists across a refresh"
+      ],
+      "decisionRules": [
+        {
+          "if": "the screen is an order book, portfolio or position table",
+          "then": "data-dense wins and the glow dies — cyberpunk's own rule is that it fails on large data tables; every glowing edge competes for the attention a price change needs"
+        },
+        {
+          "if": "the action is irreversible (send, swap, approve, sign)",
+          "then": "show the resolved human meaning, not the payload — 'You are granting unlimited USDC spend to 0x1a2b…' beats a hex blob every time. Unlimited approvals need a second, deliberate step"
+        },
+        {
+          "if": "targeting non-degen / first-time users",
+          "then": "cut the neon and the jargon — 'gas', 'slippage' and 'bridge' are the top-3 drop-off words; explain in the UI or lose them at the first modal"
+        },
+        {
+          "if": "the product is a wallet",
+          "then": "seed-phrase screens get no analytics, no screenshots, no clipboard auto-clear surprises, and no dark surface that hides a shoulder-surfer's reflection"
+        }
+      ],
+      "antiPatterns": [
+        "Neon everything until an actual price is unreadable",
+        "A raw hex payload as the confirmation screen",
+        "TVL counters that animate on every render",
+        "'Audited' with no link to the report or the auditor",
+        "Connect-wallet as the first thing on the page, before the product has been explained"
+      ],
       "severity": "critical"
     },
     {
       "id": "healthcare",
-      "name": "Healthcare / Telemedicine",
-      "keywords": ["healthcare", "health", "medical", "clinic", "hospital", "patient", "doctor", "telemedicine", "pharma", "therapy", "wellness"],
-      "pattern": "Hero with the reassurance + find-care flow + credentials + insurance/cost clarity + book CTA",
-      "style": ["flat-modern", "high-contrast-a11y"],
-      "palette": "clinical-teal",
-      "fonts": "lexend-atkinson-hyperlegible",
-      "colorMood": "Competent care, not emergency — teal and cool white that calms rather than alarms",
-      "typeMood": "Plainly readable at a glance; assume the reader is anxious, tired, or on a phone in a waiting room",
-      "effects": ["no motion beyond quiet fades", "generous tap targets", "clear step indicators on any flow"],
-      "decisionRules": [
-        { "if": "the reader may be anxious or in pain", "then": "shorten every path and remove every optional field — cognitive load is a symptom here, not a metric" },
-        { "if": "showing cost or insurance", "then": "state it plainly and early; surprise medical billing is the category's defining harm" },
-        { "if": "handling PHI", "then": "no third-party analytics on pages carrying health data, and never put a condition in a URL — that leaks to referrers and logs" },
-        { "if": "an emergency is possible", "then": "a persistent, unmissable route to emergency care that never sits behind a menu" },
-        { "if": "older or low-vision users", "then": "16px floor is not enough — start at 18px and test at 200% zoom" }
+      "name": "Healthcare",
+      "keywords": [
+        "healthcare",
+        "health",
+        "medical",
+        "clinic",
+        "patient",
+        "hospital",
+        "doctor",
+        "telemedicine",
+        "telehealth",
+        "pharma",
+        "prescription",
+        "appointment",
+        "care",
+        "diagnosis",
+        "ehr",
+        "records",
+        "nurse",
+        "therapy"
       ],
-      "antiPatterns": ["Red as a primary — it reads as emergency to a worried patient", "Playful illustration next to a diagnosis", "A condition name in the URL", "Dark patterns on appointment cancellation"],
-      "severity": "critical"
+      "pattern": "Hero with a calm human claim + find-care / book-appointment entry + conditions or services + your-care-team + insurance and cost clarity + accessibility statement + contact with a real phone number",
+      "style": [
+        "high-contrast-a11y",
+        "flat-modern"
+      ],
+      "palette": "clinical-teal",
+      "fonts": "newsreader-mulish",
+      "colorMood": "Teal and cool white that reads as competent care rather than emergency — red exists only for genuine clinical alarm",
+      "typeMood": "Clinical without being cold — 18px floor, generous line height, a person's voice not a form's",
+      "effects": [
+        "no motion on anything clinical — vestibular disorders are a patient population, not an edge case",
+        "focus rings that survive a high-contrast OS mode",
+        "loading states say what is loading ('Fetching your results…')",
+        "error text is adjacent to the field, in words, never a red border alone"
+      ],
+      "decisionRules": [
+        {
+          "if": "the user is reading this while anxious or in pain (results, diagnosis, ER wayfinding)",
+          "then": "one decision per screen, plain language at grade-8, and the next action stated as a verb — cognitive load is a symptom here, not a preference"
+        },
+        {
+          "if": "a dose, frequency or interaction is on screen",
+          "then": "it renders at body size in foreground color with units spelled out — never abbreviated, never in a tooltip, never grey. 'Sketch', 'draft' or playful styling next to a dose is a safety defect"
+        },
+        {
+          "if": "the audience skews 65+",
+          "then": "18px is the floor not the ceiling, targets 48px, and never rely on a hover state — a shaky hand and a trackpad do not produce reliable hovers"
+        },
+        {
+          "if": "PHI is displayed",
+          "then": "no PHI in URLs, no PHI in analytics payloads, and an obvious, always-reachable sign-out — shared clinic machines are the default deployment, not the exception"
+        }
+      ],
+      "antiPatterns": [
+        "Neumorphism or any low-contrast aesthetic — low contrast IS the style, and you cannot fix it and keep it",
+        "Stock photo of a smiling doctor with folded arms and a stethoscope",
+        "Symptom checkers styled as a fun quiz",
+        "Cost 'from £X' with the real number three clicks away",
+        "A chatbot as the only route to a human when the user is describing chest pain"
+      ],
+      "severity": "critical",
+      "pages": {
+        "dashboard": "Next appointment first, then results needing attention, then messages. Nothing else competes.",
+        "onboarding": "Intake in short named steps, progress visible, every field justified. Allow save-and-return — patients fill these in from waiting rooms."
+      }
     },
     {
       "id": "ecommerce",
-      "name": "E-commerce / Retail",
-      "keywords": ["ecommerce", "e-commerce", "shop", "store", "retail", "product", "cart", "checkout", "shopping", "merch", "dtc"],
-      "pattern": "Hero or category grid + product grid with real photography + PDP + cart + a short checkout",
-      "style": ["photographic", "flat-modern"],
-      "palette": "shopfront-orange",
-      "fonts": "poppins-dm-sans",
-      "colorMood": "Warm retail urgency — burnt orange that makes Buy feel like the obvious next move",
-      "typeMood": "Clean and out of the way; the product photo is the design",
-      "effects": ["image zoom on hover", "cart drawer instead of a page jump", "optimistic add-to-cart"],
-      "decisionRules": [
-        { "if": "shipping cost or delivery date is knowable", "then": "show it on the product page — surprise shipping at checkout is the single biggest cart-abandonment cause in the category" },
-        { "if": "guest checkout is possible", "then": "offer it first; a forced account is a conversion tax you pay on every order" },
-        { "if": "the product has variants", "then": "show availability per variant before selection, not after — nothing is worse than picking a size to learn it's gone" },
-        { "if": "photography is weak", "then": "fix the photography before the layout; no amount of CSS rescues bad product images in this category" }
+      "name": "E-commerce",
+      "keywords": [
+        "ecommerce",
+        "commerce",
+        "shop",
+        "store",
+        "retail",
+        "cart",
+        "checkout",
+        "product",
+        "dtc",
+        "d2c",
+        "shopping",
+        "buy",
+        "catalog",
+        "storefront",
+        "sku",
+        "basket",
+        "order",
+        "merch"
       ],
-      "antiPatterns": ["Shipping cost revealed only at the last checkout step", "Forced account creation before purchase", "A hero carousel nobody clicks past slide one", "Fake countdown timers that reset on refresh"],
+      "pattern": "Hero shot + category tiles + best-sellers grid + social proof + shipping/returns promise + newsletter + footer with trust marks. PDP: gallery left, buy box right, details below, related last",
+      "style": [
+        "photographic",
+        "flat-modern"
+      ],
+      "palette": "shopfront-orange",
+      "fonts": "instrument-serif-instrument-sans",
+      "colorMood": "Burnt orange makes Buy inviting rather than shouty; the green accent is reserved for 'in stock' and confirmation and is never spent elsewhere",
+      "typeMood": "Restrained premium retail — the serif sets the brand, the sans does the selling; price is never the biggest thing on the page",
+      "effects": [
+        "image zoom on hover for desktop, pinch for touch — never a lightbox that traps focus",
+        "add-to-cart confirms in place with the item, not a full-page redirect",
+        "skeleton tiles at the real aspect ratio so the grid never reflows",
+        "sticky buy box on the PDP below 1024px"
+      ],
+      "decisionRules": [
+        {
+          "if": "the product's color, texture or fit is the purchase decision (apparel, furniture, cosmetics)",
+          "then": "photography budget is the design budget — a stock hero is worse than a plain gradient, and swatches must be real photographs, not CSS hex circles"
+        },
+        {
+          "if": "the market is data-conscious or on slow connections",
+          "then": "the hero IS your LCP — one responsive AVIF/WebP under 100KB, everything else lazy; a 2MB hero is a conversion bug, not a design choice"
+        },
+        {
+          "if": "checkout",
+          "then": "guest checkout is not optional, the total including shipping and tax appears before the payment step, and nothing new is introduced between the user and Pay — a surprise cost at step 4 is the single largest abandonment cause"
+        },
+        {
+          "if": "the catalog exceeds ~200 SKUs",
+          "then": "faceted filters that persist in the URL beat any amount of art direction — and drop dark-luxury/gold hairlines, they do not survive a 200-tile grid"
+        }
+      ],
+      "antiPatterns": [
+        "Cart that redirects to a full page and loses the browse context",
+        "Discount modal before the visitor has seen a single product",
+        "Fake 'only 2 left' scarcity — it is now illegal in the EU and it is obvious anyway",
+        "Reviews that cannot be sorted or filtered to the 1-star",
+        "Free-shipping threshold revealed only at the payment step"
+      ],
       "severity": "high",
-      "pages": { "checkout": "One column, a visible step indicator, no nav to escape through, and the order total pinned in view at every step." }
+      "pages": {
+        "product": "Gallery left (real photos, zoomable), buy box right and sticky, variant swatches as images, stock and delivery date stated, details and reviews below, related last.",
+        "checkout": "Single column, visible step count, total with shipping and tax from step 1, guest path first, payment last. No nav, no upsell, no exit.",
+        "search-results": "Facets in a left rail that persist in the URL, result count stated, zero-results offers a real alternative not an apology."
+      }
     },
     {
       "id": "luxury-fashion",
       "name": "Luxury / Fashion",
-      "keywords": ["luxury", "fashion", "premium", "designer", "couture", "jewellery", "jewelry", "boutique", "high-end", "brand"],
-      "pattern": "Full-bleed editorial imagery + minimal nav + lookbook + a deliberately quiet product grid",
-      "style": ["dark-luxury", "editorial-magazine"],
+      "keywords": [
+        "luxury",
+        "fashion",
+        "premium",
+        "designer",
+        "couture",
+        "boutique",
+        "jewellery",
+        "jewelry",
+        "watches",
+        "elegant",
+        "high-end",
+        "lookbook",
+        "atelier",
+        "brand",
+        "runway",
+        "perfume",
+        "leather"
+      ],
+      "pattern": "Full-bleed campaign image + house name only + collection index + editorial story + lookbook + stockists/boutiques + a quiet contact. Navigation is a word, not a bar",
+      "style": [
+        "dark-luxury",
+        "editorial-magazine"
+      ],
       "palette": "atelier-noir",
       "fonts": "bodoni-moda-karla",
-      "colorMood": "Near-black, bone white, one champagne accent — restraint is the signal of expense",
-      "typeMood": "High-contrast display serif with enormous whitespace; the type is the luxury",
-      "effects": ["slow deliberate fades (400ms is allowed here, and only here)", "full-bleed imagery", "hover that reveals rather than shouts"],
-      "decisionRules": [
-        { "if": "the brand is genuinely premium", "then": "remove, don't add — badges, urgency and discount language destroy the positioning faster than any layout flaw" },
-        { "if": "photography is the product", "then": "budget the LCP for it: AVIF, preload the hero, and never lazy-load the first image" },
-        { "if": "price is high", "then": "show it plainly — hiding price reads as evasive, not exclusive" }
+      "colorMood": "Near-black, bone white and a single champagne gold with nothing else permitted to compete",
+      "typeMood": "Cover-of-Vogue confidence — extreme contrast, acres of white space, the logotype never explains itself",
+      "effects": [
+        "cross-fade between campaign images, 600ms, no easing tricks",
+        "cursor becomes a thin ring over imagery",
+        "type enters once on load, never on scroll",
+        "zero hover chrome on product tiles — the photograph is the affordance"
       ],
-      "antiPatterns": ["Sale badges and countdowns on a luxury brand", "Cramped grids — whitespace IS the product here", "Stock photography of any kind", "Slow, unoptimized hero images (the aesthetic dies at 6s LCP)"],
-      "severity": "high"
+      "decisionRules": [
+        {
+          "if": "the brand discounts or runs a sale",
+          "then": "dark-luxury contradicts the offer at the vocabulary level — a gold hairline around 'MEGA SALE' reads as a counterfeit; move to editorial-magazine on white for that surface"
+        },
+        {
+          "if": "the catalog exceeds ~50 SKUs",
+          "then": "drop the gold hairlines and the 3-column air — the style does not scale past a boutique grid, it becomes an unreadable field of thin lines"
+        },
+        {
+          "if": "the site must certify WCAG AA (EAA applies to EU retail from 2025)",
+          "then": "the 60% grey body text that makes it look expensive is a legal failure — keep the restraint, raise the foreground to 4.5:1, spend the elegance on space instead of on low contrast"
+        },
+        {
+          "if": "there is no photography budget",
+          "then": "do not attempt this style — it is half imagery by weight; go typographic on white, which costs nothing and still reads as considered"
+        }
+      ],
+      "antiPatterns": [
+        "Light mode — the luxury signal literally was the darkness",
+        "A carousel of five hero images the visitor never sees past the first of",
+        "Thin 200-weight grey type at 14px as a substitute for actual art direction",
+        "Newsletter popup over the campaign image within 2 seconds",
+        "Any badge, ribbon, or star rating on a product tile"
+      ],
+      "severity": "critical"
     },
     {
       "id": "restaurant-food",
       "name": "Restaurant / Food",
-      "keywords": ["restaurant", "food", "cafe", "menu", "dining", "kitchen", "bakery", "bar", "eat", "delivery", "reservation"],
-      "pattern": "Hero food photography + the menu + hours & location + a reservation or order CTA",
-      "style": ["photographic", "organic-earthy"],
-      "palette": "trattoria-tomato",
-      "fonts": "fraunces-source-serif-4",
-      "colorMood": "Appetite on a cream tablecloth — warm reds and olive, never cold blue",
-      "typeMood": "Characterful and warm; a little personality is the point",
-      "effects": ["large food photography", "gentle parallax on section imagery", "sticky reserve button on mobile"],
-      "decisionRules": [
-        { "if": "anyone is on a phone", "then": "hours, address, phone and menu are the whole site — put them one tap away. Nobody browses a restaurant site; they are standing outside, hungry" },
-        { "if": "the menu is a PDF", "then": "make it real HTML — a PDF menu is unreadable on a phone and invisible to search, and this is the category's most common self-inflicted wound" },
-        { "if": "delivery is offered", "then": "link the platform directly; don't rebuild a checkout you can't staff" }
+      "keywords": [
+        "restaurant",
+        "food",
+        "menu",
+        "cafe",
+        "dining",
+        "kitchen",
+        "delivery",
+        "takeaway",
+        "recipe",
+        "chef",
+        "bistro",
+        "eat",
+        "reservation",
+        "table",
+        "cuisine",
+        "bar",
+        "pizza",
+        "coffee"
       ],
-      "antiPatterns": ["A PDF menu", "An autoplay video with sound", "Hours buried in a footer", "Cold blue palettes — they measurably suppress appetite"],
-      "severity": "medium"
+      "pattern": "Full-bleed dish photograph + one line of who we are + the menu (as text, on the page) + hours and address above the fold on mobile + reservation CTA + story + map",
+      "style": [
+        "photographic",
+        "organic-earthy"
+      ],
+      "palette": "trattoria-tomato",
+      "fonts": "dm-serif-display-nunito-sans",
+      "colorMood": "Tomato on a cream tablecloth with olive — warm paper that makes you hungry rather than efficient",
+      "typeMood": "Appetite in type — a chalkboard menu that had a very good art director; prices never in a bigger size than the dish",
+      "effects": [
+        "photographs at 4:5 on mobile, 3:2 on desktop, never cropped through the plate",
+        "menu sections anchor-linked, sticky section tabs on scroll",
+        "no parallax on food — motion makes it look like a stock library",
+        "hours widget resolves 'Open now' server-side, not in the visitor's timezone"
+      ],
+      "decisionRules": [
+        {
+          "if": "this is a local restaurant site",
+          "then": "the four things 90% of visitors came for are hours, address, menu and phone — they go above the fold on mobile or the design has failed regardless of how it looks. A PDF menu is the single most common conversion defect in this category"
+        },
+        {
+          "if": "food delivery / ordering rather than a restaurant site",
+          "then": "photographic drops to thumbnail scale and speed wins — the user is hungry and choosing, not browsing art; organic-earthy cannot signal 'late' or 'cancelled', so bring in a real alert color"
+        },
+        {
+          "if": "there is no photography budget",
+          "then": "do not use stock food photography — it is instantly recognisable and it reads as a chain; go typographic on the menu, which is what a good bistro does anyway"
+        },
+        {
+          "if": "allergens or dietary information exists",
+          "then": "it is text next to the dish, not an icon key in the footer — an icon the user must decode is a liability with an anaphylaxis risk attached"
+        }
+      ],
+      "antiPatterns": [
+        "The menu as a PDF — unreadable on the phone that 80% of visitors are holding",
+        "Autoplay video of sizzling with sound",
+        "Hours in an image",
+        "A full-screen splash of the interior before the menu",
+        "'Book a table' that opens a third-party site with a different brand and no back button"
+      ],
+      "severity": "high"
     },
     {
-      "id": "beauty-spa-wellness",
+      "id": "beauty-spa",
       "name": "Beauty / Spa / Wellness",
-      "keywords": ["beauty", "spa", "wellness", "salon", "massage", "skincare", "relax", "self-care", "booking", "treatment", "serenity"],
-      "pattern": "Calm hero + treatments list with prices + practitioner bios + booking flow",
-      "style": ["organic-earthy", "swiss-minimal"],
+      "keywords": [
+        "beauty",
+        "spa",
+        "wellness",
+        "salon",
+        "skincare",
+        "booking",
+        "massage",
+        "self-care",
+        "cosmetics",
+        "aesthetics",
+        "nails",
+        "facial",
+        "treatment",
+        "therapist",
+        "retreat",
+        "hair",
+        "relax",
+        "sauna"
+      ],
+      "pattern": "Calm full-bleed of the space + one line of promise + treatments with duration and price + booking CTA that never leaves the page + practitioners with real faces + what to expect + location and parking",
+      "style": [
+        "organic-earthy",
+        "photographic"
+      ],
       "palette": "spa-blush",
       "fonts": "cormorant-garamond-jost",
-      "colorMood": "Exhaling — dusty rose and sage on warm plaster; quiet and skin-adjacent",
-      "typeMood": "Airy elegant serif with a light sans; generous line-height, nothing shouty",
-      "effects": ["slow gentle fades", "soft imagery, no hard edges", "whitespace as the primary material"],
-      "decisionRules": [
-        { "if": "booking is the goal", "then": "price and duration sit on the treatment itself — 'enquire for pricing' loses the booking to the salon that just said £45, 60 min" },
-        { "if": "the promise is calm", "then": "the interface must be calm: no urgency, no popups, no carousel. A stressful booking flow contradicts the entire product" },
-        { "if": "practitioners matter", "then": "real faces and real names — this is a trust-with-my-body purchase" }
+      "colorMood": "Dusty rose and sage on warm plaster — quiet and skin-adjacent, where a hard edge would break the spell",
+      "typeMood": "Quiet money — a hairline serif over a geometric sans that refuses to raise its voice",
+      "effects": [
+        "cross-fades only, 800ms — nothing in this category should move quickly",
+        "no drop shadows; separation comes from warm tone shifts",
+        "booking calendar inline, never a modal that traps focus",
+        "images of the actual room, at rest, with no people in them"
       ],
-      "antiPatterns": ["Exit-intent popups on a relaxation brand", "'Enquire for pricing' on standard treatments", "Saturated high-energy colour", "Stock photos of orchids and hot stones"],
-      "severity": "medium"
+      "decisionRules": [
+        {
+          "if": "booking is the primary conversion",
+          "then": "price and duration appear on the treatment card, before the calendar — a spa that hides its prices reads as expensive and untrustworthy simultaneously, and the calendar is where you lose them"
+        },
+        {
+          "if": "medical aesthetics (injectables, laser, prescription skincare)",
+          "then": "this is a healthcare product wearing spa clothes — the risk and aftercare disclosure cannot be behind an accordion, and 'results not typical' is not a substitute for showing typical results"
+        },
+        {
+          "if": "the brand sells product as well as service",
+          "then": "split the surfaces — organic-earthy cannot signal 'out of stock' or 'order failed'; bring a real alert color into the commerce path only"
+        },
+        {
+          "if": "clients are booking on a phone between other things",
+          "then": "the whole flow is thumb-reachable and resumable — the abandoned-booking rate in this category is a scheduling problem, not a persuasion problem"
+        }
+      ],
+      "antiPatterns": [
+        "Stock photo of a woman with a towel turban and cucumber slices",
+        "Prices 'on consultation' for a 30-minute manicure",
+        "Before/after galleries with different lighting, angle and makeup",
+        "Thin 200-weight blush text at 14px — the palette's discipline is dark foregrounds on soft surfaces",
+        "A booking link that opens a third-party system with a completely different visual language"
+      ],
+      "severity": "high"
     },
     {
       "id": "fitness",
-      "name": "Fitness / Gym",
-      "keywords": ["fitness", "gym", "workout", "training", "exercise", "athletic", "sport", "coach", "strength", "run"],
-      "pattern": "High-energy hero + programmes + transformation proof + pricing + join CTA",
-      "style": ["motion-driven", "photographic"],
+      "name": "Fitness / Training",
+      "keywords": [
+        "fitness",
+        "gym",
+        "workout",
+        "training",
+        "exercise",
+        "athletic",
+        "sportswear",
+        "coach",
+        "reps",
+        "strength",
+        "run",
+        "running",
+        "yoga",
+        "class",
+        "membership",
+        "activewear",
+        "performance",
+        "pt"
+      ],
+      "pattern": "Full-bleed athlete shot + one verb-led claim + programmes/classes + coach credibility + membership tiers + timetable + join CTA. In-app: today's session first, everything else second",
+      "style": [
+        "photographic",
+        "high-contrast-a11y"
+      ],
       "palette": "volt-athletic",
       "fonts": "anton-barlow",
-      "colorMood": "The last rep — volt screaming off charcoal",
-      "typeMood": "Heavy condensed display, all-caps allowed, high energy",
-      "effects": ["scroll-triggered reveals", "bold imagery", "aggressive hover states"],
-      "decisionRules": [
-        { "if": "used mid-workout", "then": "huge touch targets and high contrast — sweaty hands, a phone on the floor, and glare are the real design constraints" },
-        { "if": "showing transformations", "then": "real members with consent; stock 'before/after' is both obvious and legally risky" },
-        { "if": "membership pricing", "then": "state the contract length and cancellation terms up front — the category's reputation problem is entirely about the exit" }
+      "colorMood": "Volt green screaming off charcoal — high energy, and legible mid-set at arm's length",
+      "typeMood": "Stadium volume — ultra-condensed caps that hit like a scoreboard; the rep count is the largest thing on the screen",
+      "effects": [
+        "rest timer readable at arm's length — 72px minimum, no exceptions",
+        "haptic + audio on set completion, because eyes are not on the phone",
+        "no scroll animation in-app — the user is mid-set and sweaty",
+        "screen-wake lock during an active session"
       ],
-      "antiPatterns": ["Tiny controls used with sweaty hands", "Hidden contract terms", "Body-shaming copy", "Motion so aggressive it triggers reduced-motion users"],
-      "severity": "medium"
+      "decisionRules": [
+        {
+          "if": "the screen is read mid-workout",
+          "then": "arm's length is the design constraint — 72px numerals, 4.5:1 minimum with sweat and gym glare, and targets sized for a shaking hand. This is why high-contrast-a11y is here despite its own note about fashion-forward marketing: the marketing surface and the training surface are different products"
+        },
+        {
+          "if": "marketing site rather than the training app",
+          "then": "photography carries it and high-contrast steps back — but never ship a hero of a body type the product does not actually serve; the bounce is instant and it is measurable"
+        },
+        {
+          "if": "the product tracks weight, calories or body composition",
+          "then": "make every one of those numbers optional and never celebrate a decrease — you have eating-disorder recovery users you will never identify, and a confetti animation on a weight drop is the harm"
+        },
+        {
+          "if": "gym check-in / kiosk context",
+          "then": "56px targets and high contrast — gloves, chalk, glare and a queue behind them are the design constraint"
+        }
+      ],
+      "antiPatterns": [
+        "Streak mechanics that punish rest days — the recovery day is the training",
+        "Thin type on the timer screen",
+        "Before/after transformation photos as the primary social proof",
+        "Class booking that requires the app when the member is standing at the door",
+        "Volt green as body text — it is a signal color, it has no business under a paragraph"
+      ],
+      "severity": "high"
     },
     {
       "id": "education",
       "name": "Education / LMS",
-      "keywords": ["education", "learning", "course", "lms", "school", "student", "teach", "university", "training", "academy", "class"],
-      "pattern": "Hero with the outcome + curriculum + instructor credibility + outcomes/reviews + enrol CTA",
-      "style": ["illustrated", "flat-modern"],
-      "palette": "campus-indigo",
-      "fonts": "alegreya-alegreya-sans",
-      "colorMood": "Approachable scholarship — indigo with a highlighter amber for progress",
-      "typeMood": "Readable for long stretches; this is a reading product",
-      "effects": ["progress bars that mean something", "gentle completion feedback", "clear module structure"],
-      "decisionRules": [
-        { "if": "learners are studying", "then": "long-form readability wins over brand expression — line length ≤75ch, 1.6 line-height, and a genuinely usable dark mode for late nights" },
-        { "if": "there is progress to show", "then": "make it visible and honest; a fake progress bar is the fastest way to lose a learner's trust" },
-        { "if": "the audience is children", "then": "the ux-research brief is about the teacher and parent too — they choose, the child uses" },
-        { "if": "selling an outcome", "then": "publish real completion and outcome numbers, or don't claim an outcome" }
+      "keywords": [
+        "education",
+        "learning",
+        "course",
+        "lms",
+        "school",
+        "student",
+        "teacher",
+        "edtech",
+        "university",
+        "training",
+        "curriculum",
+        "classroom",
+        "academy",
+        "e-learning",
+        "lesson",
+        "study",
+        "tutor",
+        "enrol",
+        "college"
       ],
-      "antiPatterns": ["Gamification that distracts from the learning", "Autoplay video on module open", "Endless scroll with no sense of position in the course", "Certificates presented as accreditation when they aren't"],
-      "severity": "medium"
+      "pattern": "Hero with the outcome not the feature + who it is for + curriculum outline + instructor credibility + proof of completion/accreditation + price or institutional CTA + FAQ. In-app: continue-where-you-left-off first",
+      "style": [
+        "illustrated",
+        "hand-drawn-sketch"
+      ],
+      "palette": "campus-indigo",
+      "fonts": "lexend-atkinson-hyperlegible",
+      "colorMood": "Indigo with a highlighter amber — friendly enough for a teenager, credible enough for the institution paying the invoice",
+      "typeMood": "Legibility as the actual brief — Lexend exists because reading speed is the product here, not a preference",
+      "effects": [
+        "progress is always visible and always honest — 3 of 12, never a spinner",
+        "illustration carries empty states and errors, never the content itself",
+        "autosave on every input, with a stated timestamp — students lose work on school wifi",
+        "no timed animation on an assessment screen"
+      ],
+      "decisionRules": [
+        {
+          "if": "the buyer is a school district, university or L&D procurement",
+          "then": "drop hand-drawn-sketch immediately — the wobble reads as unfinished to an enterprise buyer and it will be raised in the evaluation. Keep it on the student-facing surface, remove it from anything the cheque-signer sees"
+        },
+        {
+          "if": "learners include dyslexic or ESL users (they always do)",
+          "then": "Lexend and Atkinson Hyperlegible are load-bearing, not decorative — plus a 70-character measure, no justified text, and never encode a correct/incorrect answer in color alone"
+        },
+        {
+          "if": "K-12 rather than adult learning",
+          "then": "COPPA changes the design — no open comment fields, no third-party analytics on a minor, and the parent/teacher is a second user class with their own screens"
+        },
+        {
+          "if": "the course is assessed or accredited",
+          "then": "'sketch' styling stops at the assessment boundary — a hand-drawn border around a graded exam reads as a draft and undermines the credential the whole product sells"
+        }
+      ],
+      "antiPatterns": [
+        "Gamification bolted onto content nobody finished — badges do not fix a boring module",
+        "Progress bars that count pages instead of learning",
+        "Video as the only modality, with no transcript and no text path",
+        "A 40-hour course sold with a '5 minutes a day' hero",
+        "Autoplaying to the next lesson before the learner has decided to continue"
+      ],
+      "severity": "high",
+      "pages": {
+        "dashboard": "Continue where you left off, first and largest. Then due dates. Then the catalog. A student's dashboard is a resume button with decoration around it."
+      }
     },
     {
       "id": "kids",
       "name": "Kids / Family",
-      "keywords": ["kids", "children", "child", "family", "toy", "play", "young", "parent", "nursery", "cartoon", "playful"],
-      "pattern": "Big playful hero + what it does, for the parent + safety & privacy + the child-facing experience",
-      "style": ["memphis-playful", "claymorphism"],
+      "keywords": [
+        "kids",
+        "children",
+        "child",
+        "kid",
+        "playful",
+        "toys",
+        "family",
+        "cartoon",
+        "preschool",
+        "nursery",
+        "parents",
+        "game",
+        "games",
+        "learning",
+        "toddler",
+        "story",
+        "play",
+        "junior"
+      ],
+      "pattern": "Big friendly character + one enormous START button + parent gate to everything else + activity picker as large tiles + parent dashboard behind the gate",
+      "style": [
+        "claymorphism",
+        "illustrated"
+      ],
       "palette": "playroom-pop",
       "fonts": "fredoka-nunito",
-      "colorMood": "Primary-colour joy with the volume up",
-      "typeMood": "Rounded, friendly, large — and readable by an emerging reader",
-      "effects": ["bouncy press feedback", "chunky rounded shapes", "generous, forgiving targets"],
-      "decisionRules": [
-        { "if": "children use it", "then": "targets at 64px+ and forgive every mis-tap — small motor control is the constraint, and an undo is worth more than a confirm dialog" },
-        { "if": "parents pay", "then": "there are two users with different jobs: the parent's page sells safety and value, the child's screen is the product. Never mix them" },
-        { "if": "any data is collected", "then": "COPPA/GDPR-K applies — say plainly what is collected, and never put a purchase behind a child's tap" },
-        { "if": "an emerging reader", "then": "icons plus words, not icons alone; and read the copy aloud to check it" }
+      "colorMood": "Primary-colour joy with the volume up — bright blue, sunshine yellow, candy red, sized for small fingers",
+      "typeMood": "Round, bouncy and safe for small hands — nothing here has a sharp corner",
+      "effects": [
+        "every tap gets sound + squash-and-stretch + haptic — a 4-year-old needs three channels of confirmation",
+        "no timeouts, no urgency, no failure states — only 'try again' delivered by the character",
+        "targets 64px minimum, spaced 16px apart against fat-finger mis-taps",
+        "no hover states at all — this is a touch-only audience"
       ],
-      "antiPatterns": ["In-app purchases reachable by a child's tap", "Dark patterns aimed at children — indefensible, full stop", "Tiny text for early readers", "Data collection without a clear parental gate"],
+      "decisionRules": [
+        {
+          "if": "the child is pre-reader (under ~6)",
+          "then": "icon + color + sound + character voice must all carry the same meaning — text carries nothing. A label-only button does not exist to this user"
+        },
+        {
+          "if": "anything costs money or leaves the app",
+          "then": "it goes behind a real parent gate — a maths question, not a 'Are you 13?' checkbox. An IAP a child can reach with a tap is a chargeback and an app-store removal"
+        },
+        {
+          "if": "dark mode is requested",
+          "then": "claymorphism collapses — the light-source trick needs a bright base to read as clay at all. Ship a dimmed light theme for bedtime, not a dark theme"
+        },
+        {
+          "if": "there is a parent-facing surface (progress, settings, billing)",
+          "then": "it is a different product — drop claymorphism and fredoka there and use a plain adult UI; a parent evaluating a subscription in a bouncy toy interface does not trust it with a card"
+        }
+      ],
+      "antiPatterns": [
+        "Ads or IAP inside the child-facing surface",
+        "Streaks and loss-aversion mechanics aimed at a 5-year-old",
+        "Any collection of personal data from a minor — COPPA is not a design detail",
+        "Small text 'for the parents' inside the kids' flow",
+        "Flashing/strobing effects — photosensitive epilepsy peaks in this age group"
+      ],
       "severity": "critical"
     },
     {
       "id": "gaming",
-      "name": "Gaming",
-      "keywords": ["gaming", "game", "gamer", "esports", "arcade", "play", "console", "steam", "rpg", "fps", "studio"],
-      "pattern": "Cinematic hero (trailer) + screenshots + features + system requirements + wishlist/buy CTA",
-      "style": ["cyberpunk-neon", "spatial-3d"],
+      "name": "Gaming / Esports",
+      "keywords": [
+        "gaming",
+        "game",
+        "games",
+        "esports",
+        "player",
+        "console",
+        "rpg",
+        "launcher",
+        "twitch",
+        "arcade",
+        "fps",
+        "multiplayer",
+        "video game",
+        "steam",
+        "clan",
+        "tournament",
+        "leaderboard",
+        "loadout"
+      ],
+      "pattern": "Full-bleed key art + trailer + one CTA (Wishlist/Play/Buy) + features as screenshots not bullets + system requirements + community links + storefront badges",
+      "style": [
+        "cyberpunk-neon",
+        "spatial-3d"
+      ],
       "palette": "arcade-neon",
       "fonts": "chakra-petch-rubik",
-      "colorMood": "A dark room lit by a screen — magenta and cyan burning on true black",
-      "typeMood": "Technical, angular, energetic",
-      "effects": ["trailer as the hero", "glow and scanline accents", "parallax depth"],
-      "decisionRules": [
-        { "if": "there is a trailer", "then": "it is the hero — but muted, with controls, and never autoplaying sound" },
-        { "if": "PC release", "then": "system requirements are a real section, not a footnote; it is the question every buyer actually has" },
-        { "if": "dark theme (almost always)", "then": "never pure #000 with pure #FFF text — the halation is genuinely painful over time. Use near-black and near-white" }
+      "colorMood": "A dark room lit by a screen — magenta and cyan burning on true black; the key art supplies the rest",
+      "typeMood": "HUD energy — clipped corners and angular terminals, a scoreboard that never sleeps",
+      "effects": [
+        "trailer autoplays muted with an obvious unmute, never with sound",
+        "hover on a screenshot tile plays 3 seconds of gameplay",
+        "neon edge glow on interactive elements only — never under body text",
+        "60fps or cut the effect; a janky 3D hero on a games site is a competence signal"
       ],
-      "antiPatterns": ["Autoplay trailer with sound", "Neon at 2:1 contrast — unreadable is not a style", "Hiding the price behind a launcher", "Motion that ignores prefers-reduced-motion"],
-      "severity": "medium"
+      "decisionRules": [
+        {
+          "if": "this is a launcher or in-game HUD rather than a marketing site",
+          "then": "drop spatial-3d and most of the glow — nobody wants to orbit their settings page, and a HUD that competes with the game is a bug. Latency and legibility are the whole brief"
+        },
+        {
+          "if": "esports / live scores and stats",
+          "then": "cyberpunk-neon's own rule bites — it fails on large data tables; keep the dark surface, kill the glow, and let the numbers be the only bright thing"
+        },
+        {
+          "if": "the audience is mobile-heavy",
+          "then": "spatial-3d costs battery, thermals and a 500KB canvas the crawler cannot read — ship a video loop poster instead and keep the WebGL for desktop"
+        },
+        {
+          "if": "photosensitivity",
+          "then": "strobe, glitch and rapid neon flashing is a documented seizure trigger — respect prefers-reduced-motion and put a flashing-lights warning before the trailer, not in the footer"
+        }
+      ],
+      "antiPatterns": [
+        "Key art hidden behind a cookie wall and a newsletter modal",
+        "A wall of bullet-point features where three screenshots would do",
+        "Neon on neon until the price is unreadable",
+        "'Coming soon' with no platform, no date and no wishlist link",
+        "A Discord invite as the only support channel"
+      ],
+      "severity": "high"
     },
     {
       "id": "streaming",
       "name": "Streaming / Entertainment",
-      "keywords": ["streaming", "entertainment", "video", "movie", "film", "tv", "show", "watch", "series", "cinema", "media"],
-      "pattern": "Featured hero + content rails by category + a detail overlay + continue-watching",
-      "style": ["photographic", "dark-luxury"],
-      "palette": "primetime-red",
-      "fonts": "archivo-black-archivo",
-      "colorMood": "Lights down, poster art up — signature red on cinema black",
-      "typeMood": "Bold and out of the way; the artwork is the interface",
-      "effects": ["horizontal rails with keyboard support", "hover preview after a deliberate delay", "poster-first layout"],
-      "decisionRules": [
-        { "if": "content rails", "then": "they must be keyboard and screen-reader navigable — a horizontal rail is the single most commonly inaccessible pattern on the web" },
-        { "if": "hover preview", "then": "delay it ~700ms; instant preview makes a mouse crossing the grid fire a dozen videos" },
-        { "if": "artwork-driven", "then": "reserve the poster's aspect-ratio box before the image lands, or every rail shifts as it loads" }
+      "keywords": [
+        "streaming",
+        "entertainment",
+        "video",
+        "movie",
+        "film",
+        "tv",
+        "series",
+        "cinema",
+        "media",
+        "player",
+        "ott",
+        "watch",
+        "episode",
+        "show",
+        "channel",
+        "vod",
+        "binge",
+        "trailer"
       ],
-      "antiPatterns": ["Rails that only work with a mouse", "Autoplay with sound on page load", "Titles rendered only as text baked into artwork", "Layout shift as posters load in"],
+      "pattern": "Hero title art with continue-watching over it + rails by category + hover preview + detail sheet + player. The chrome disappears; the artwork is the interface",
+      "style": [
+        "photographic",
+        "glassmorphism"
+      ],
+      "palette": "primetime-red",
+      "fonts": "outfit-figtree",
+      "colorMood": "Lights down, poster art up — signature red on cinema black where every pixel of chrome gets out of the artwork's way",
+      "typeMood": "Approachable modern consumer — the type never competes with the title treatment on the poster",
+      "effects": [
+        "glass only over the player and the nav — the two places it earns its cost",
+        "hover preview after 700ms dwell, muted, never on touch",
+        "player chrome fades in 3s and takes the cursor with it",
+        "rails scroll by keyboard, not just by mouse drag"
+      ],
+      "decisionRules": [
+        {
+          "if": "the surface is a catalog rail or a data table",
+          "then": "glassmorphism dies — blur destroys the row-scanning edge, and the whole catalog is scanning. Glass belongs on the player overlay and the nav, nowhere else"
+        },
+        {
+          "if": "TV / 10-foot interface",
+          "then": "this is a different product — D-pad focus order, a focus state visible from three metres, 10-foot type, and no hover state exists at all"
+        },
+        {
+          "if": "there is no professional key art for every title",
+          "then": "the whole style collapses — an inconsistent rail of mismatched thumbnails reads as piracy; commission the art or use a uniform typographic tile"
+        },
+        {
+          "if": "subtitles/captions",
+          "then": "they are a product feature not an accessibility checkbox — user-controlled size, background opacity and position, because 80% of usage is not deafness, it is a noisy room"
+        }
+      ],
+      "antiPatterns": [
+        "Autoplay with sound on the browse page",
+        "Glass panels over a rail of thumbnails — legibility gone for a screenshot",
+        "A 'Continue watching' rail that never forgets the thing you abandoned in episode 1",
+        "Hover previews that fire on touch and hijack the tap",
+        "Hiding the episode list two clicks deep inside a detail sheet"
+      ],
       "severity": "medium"
     },
     {
       "id": "music",
       "name": "Music / Audio",
-      "keywords": ["music", "audio", "band", "artist", "album", "song", "podcast", "sound", "playlist", "record", "dj"],
-      "pattern": "Artist/album hero + player + releases + tour dates + listen CTA",
-      "style": ["gradient-mesh", "motion-driven"],
-      "palette": "amp-purple",
-      "fonts": "syne-dm-sans",
-      "colorMood": "Stage-light purple with a hot pink spill — nocturnal and loud",
-      "typeMood": "Expressive display; this is a brand, not a form",
-      "effects": ["waveform or visualizer", "album art as the anchor", "smooth persistent player"],
-      "decisionRules": [
-        { "if": "there is a player", "then": "it persists across navigation — audio that stops when someone clicks a link is the category's cardinal sin" },
-        { "if": "a visualizer runs", "then": "gate it behind prefers-reduced-motion and pause it when the tab is hidden; it is a battery and vestibular hazard otherwise" },
-        { "if": "tour dates exist", "then": "they are the commercial page — put them above the fold with the city, not below a bio nobody reads" }
+      "keywords": [
+        "music",
+        "audio",
+        "song",
+        "album",
+        "artist",
+        "band",
+        "concert",
+        "player",
+        "playlist",
+        "podcast",
+        "record",
+        "label",
+        "track",
+        "listen",
+        "tour",
+        "dj",
+        "release",
+        "spotify"
       ],
-      "antiPatterns": ["Audio that stops on navigation", "Autoplay music on load", "A visualizer that ignores reduced-motion", "Text baked into album-art images"],
-      "severity": "low"
+      "pattern": "Artist image + latest release + player + tour dates with a buy link per row + discography grid + socials. In-app: now-playing, library, search — nothing else",
+      "style": [
+        "gradient-mesh",
+        "glassmorphism"
+      ],
+      "palette": "amp-purple",
+      "fonts": "archivo-black-archivo",
+      "colorMood": "Stage-light purple with a hot pink spill — nocturnal and loud, with the album art supplying the actual color",
+      "typeMood": "Loud, flat and undesigned on purpose — type as a blunt instrument, the way a record sleeve does it",
+      "effects": [
+        "album art drives an extracted accent color per track — the mesh takes its hue from the artwork",
+        "player chrome as glass over the artwork, the one place it belongs",
+        "waveform scrub with a real waveform, not a fake sine",
+        "gapless transitions — a 200ms silence between tracks is a product defect"
+      ],
+      "decisionRules": [
+        {
+          "if": "artist/release page rather than a streaming product",
+          "then": "the mesh can go loud and the whole page can be one image — but a tour date row without a buy link is the most common failure in this category, and it costs the actual revenue"
+        },
+        {
+          "if": "the surface is a library, queue or search result",
+          "then": "gradient-mesh and glass both die — a moving color field under a 500-row library is unreadable, and blur kills the scanning edge. Mesh belongs behind the now-playing view only"
+        },
+        {
+          "if": "the product is a player people use daily",
+          "then": "no scroll animation, no reveal, no delight — the delight decays to annoyance by the third session and this is the twentieth session today"
+        },
+        {
+          "if": "podcast rather than music",
+          "then": "different product — chapter marks, speed control, sleep timer and a transcript beat any amount of visual treatment; the artwork matters far less than the resume position"
+        }
+      ],
+      "antiPatterns": [
+        "A player that loses the queue on navigation",
+        "Autoplaying the artist's single at full volume on page load",
+        "Tour dates as an image",
+        "A mesh gradient behind a track listing",
+        "Hiding the buy/merch link in a footer while the streaming links get the hero"
+      ],
+      "severity": "medium"
     },
     {
       "id": "news-editorial",
       "name": "News / Editorial",
-      "keywords": ["news", "editorial", "magazine", "article", "journalism", "blog", "publication", "story", "press", "reading", "longform"],
-      "pattern": "Lead story + a hierarchy of secondary stories + section nav + the article page as the real product",
-      "style": ["editorial-magazine", "typographic"],
-      "palette": "broadsheet-ink",
-      "fonts": "newsreader-mulish",
-      "colorMood": "Newsprint authority — black on paper with one red reserved for the thing that matters",
-      "typeMood": "A real reading typeface at a real reading size; hierarchy by weight and scale, not colour",
-      "effects": ["almost none — motion is a distraction in a reading product", "clear byline and timestamp"],
-      "decisionRules": [
-        { "if": "the article is the product", "then": "protect the reading column above everything: ≤75ch, 1.6 line-height, 18-20px. Every element that competes with the text is a bug" },
-        { "if": "ads are required", "then": "reserve their exact box up front — ad-driven layout shift is the #1 CLS cause on news sites and it drives readers away permanently" },
-        { "if": "breaking news", "then": "timestamp and update log are visible; 'when was this written' is the reader's first question" },
-        { "if": "a paywall", "then": "state the limit before the click, not after the reader is invested — and never cloak content from crawlers you show to readers" }
+      "keywords": [
+        "news",
+        "editorial",
+        "journalism",
+        "newspaper",
+        "magazine",
+        "article",
+        "longform",
+        "publishing",
+        "press",
+        "blog",
+        "story",
+        "opinion",
+        "reporting",
+        "byline",
+        "column",
+        "media",
+        "headline",
+        "reader"
       ],
-      "antiPatterns": ["An interstitial before the first paragraph", "Ads that reflow the article mid-sentence", "Infinite scroll that hijacks the back button", "Undated articles"],
-      "severity": "high",
-      "pages": { "article": "One column, ≤75ch, no sidebar competing with the text. Byline, date, reading time. Related links AFTER the piece, never beside it." }
+      "pattern": "Masthead + lead story at full width + secondary grid + section rails + the article: headline, standfirst, byline, date, body at a 65-character measure, related at the end",
+      "style": [
+        "editorial-magazine",
+        "monochrome"
+      ],
+      "palette": "broadsheet-ink",
+      "fonts": "libre-franklin-lora",
+      "colorMood": "Black on paper with one red for the thing that actually matters — the red is a scarce resource, not a brand color",
+      "typeMood": "A newspaper that moved online without losing its spine — the words are the design",
+      "effects": [
+        "measure locked to 65-75 characters regardless of viewport",
+        "reading progress as a hairline, not a percentage badge",
+        "images load at their real aspect ratio — a reflowing article is an unreadable article",
+        "no scroll-triggered reveals on body text: it hides content from Ctrl+F and from readers"
+      ],
+      "decisionRules": [
+        {
+          "if": "the business model is subscription",
+          "then": "the paywall must appear before the reader invests, not three paragraphs in — the meter that interrupts mid-sentence generates cancellations, not conversions. And never serve the full text to Google while blocking the human who followed the link"
+        },
+        {
+          "if": "breaking news / live blog",
+          "then": "monochrome gives up the channel that says 'updated' — bring one live indicator color back, timestamp every entry, and never silently rewrite a published line"
+        },
+        {
+          "if": "the content is CMS-driven with dozens of authors",
+          "then": "no hand-tuned typographic headlines — a 12vw display line breaks the moment a sub-editor writes a long one. Set a range and test the longest real headline, not the demo one"
+        },
+        {
+          "if": "ads fund the site",
+          "then": "reserve the slot's height in CSS before the ad loads — layout shift under a reader's thumb is the most-complained-about defect in this entire category"
+        }
+      ],
+      "antiPatterns": [
+        "Newsletter modal over the first paragraph",
+        "Infinite scroll that loads the next article and steals the URL",
+        "Autoplay video that follows you down the page",
+        "'Read more' truncation on an article you already opened",
+        "A 65-character measure abandoned on desktop so the line runs 140 characters wide"
+      ],
+      "severity": "high"
     },
     {
       "id": "portfolio",
-      "name": "Portfolio / Personal",
-      "keywords": ["portfolio", "personal", "designer", "creative", "showcase", "work", "freelance", "resume", "cv", "about"],
-      "pattern": "A statement hero + selected work + one case study per project + contact",
-      "style": ["typographic", "editorial-magazine"],
-      "palette": "studio-canvas",
-      "fonts": "instrument-serif-instrument-sans",
-      "colorMood": "Gallery walls — warm paper and ink, with one burnt-orange hyperlink",
-      "typeMood": "Confident display type; the typography IS the portfolio",
-      "effects": ["deliberate reveals", "large imagery", "restrained, precise hover"],
-      "decisionRules": [
-        { "if": "hiring managers are the audience", "then": "show the thinking, not just the final render — process is what gets someone hired; a grid of pretty screenshots is not a case study" },
-        { "if": "few projects", "then": "fewer, deeper is stronger than more, shallower — three real case studies beat twelve thumbnails" },
-        { "if": "the work is the pitch", "then": "make contact trivially findable; a portfolio that hides the email fails at its only job" }
+      "name": "Portfolio / Creative",
+      "keywords": [
+        "portfolio",
+        "creative",
+        "designer",
+        "showcase",
+        "case study",
+        "case studies",
+        "personal",
+        "work",
+        "freelance",
+        "studio",
+        "projects",
+        "cv",
+        "craft",
+        "selected works"
       ],
-      "antiPatterns": ["A grid of screenshots with no context", "A clever intro animation between the visitor and the work", "No contact route", "Client work shown without permission"],
-      "severity": "low"
+      "pattern": "Name + one line of what you do + selected work as a grid + case study: problem, approach, outcome, artefacts + about with a real face + a contact that is an email address",
+      "style": [
+        "swiss-minimal",
+        "typographic"
+      ],
+      "palette": "studio-canvas",
+      "fonts": "inter-tight-inter",
+      "colorMood": "Gallery walls — warm paper and ink, with a burnt-orange hyperlink as the only chroma; the work in the grid is the only loud thing",
+      "typeMood": "International Style discipline — one voice, two optical sizes, nothing decorative anywhere",
+      "effects": [
+        "image reveal on load, never on scroll — the grid is the point and it should be there",
+        "hover shows the project name, not a filter or a zoom",
+        "cursor stays a cursor",
+        "case studies open as pages with real URLs, not as modals"
+      ],
+      "decisionRules": [
+        {
+          "if": "the goal is getting hired",
+          "then": "outcome beats artefact — 'cut onboarding drop-off 34%' with the before/after does more than twelve dribbble shots. Six projects with reasoning beats twenty with mockups, every time"
+        },
+        {
+          "if": "this is a design portfolio judged by designers",
+          "then": "swiss-minimal has no tolerance — one 13px margin in a 16px system breaks the entire illusion and the reviewer will see it before they read a word. If nobody is checking the grid, use a looser style honestly"
+        },
+        {
+          "if": "the work is under NDA",
+          "then": "write the reasoning without the artefact — a portfolio of process, constraints and trade-offs reads as more senior than a wall of pretty screens anyway"
+        },
+        {
+          "if": "you are a developer rather than a designer",
+          "then": "do not attempt this — go typographic or brutalist on purpose; an almost-Swiss grid reads as a failed attempt, while a deliberate plain page reads as confidence"
+        }
+      ],
+      "antiPatterns": [
+        "A 3D WebGL hero that takes 4 seconds and says nothing about the work",
+        "Case studies that are a mood board with no problem statement",
+        "A contact form instead of an email address",
+        "Scroll-jacking between projects",
+        "'Passionate about pixel-perfect design' as the opening line"
+      ],
+      "severity": "medium"
     },
     {
       "id": "agency",
       "name": "Agency / Studio",
-      "keywords": ["agency", "studio", "creative", "consultancy", "branding", "marketing", "services", "clients", "digital"],
-      "pattern": "Bold statement hero + selected work + services + team + a real contact CTA",
-      "style": ["motion-driven", "brutalism"],
+      "keywords": [
+        "agency",
+        "studio",
+        "creative agency",
+        "marketing",
+        "brand",
+        "branding",
+        "consultancy",
+        "clients",
+        "campaign",
+        "advertising",
+        "design studio",
+        "landing",
+        "services",
+        "pitch"
+      ],
+      "pattern": "One enormous statement + selected clients + the work as case studies with numbers + services + the team as real people + a brief-shaped contact form",
+      "style": [
+        "motion-driven",
+        "typographic"
+      ],
       "palette": "agency-acid",
       "fonts": "bricolage-grotesque-manrope",
-      "colorMood": "Confident and slightly rude — near-black with an acid accent",
-      "typeMood": "Oversized, opinionated display; the site is the portfolio piece",
-      "effects": ["scroll-triggered reveals", "custom cursor (if it degrades safely)", "big type transitions"],
-      "decisionRules": [
-        { "if": "the site is the credential", "then": "it must be flawless where it counts — an agency site with a 4s LCP or a failing contrast ratio has already answered the client's question" },
-        { "if": "heavy motion", "then": "reduced-motion support is not optional here; it is a public demonstration of whether you know your craft" },
-        { "if": "showing client work", "then": "lead with the outcome, not the aesthetic — clients buy results" }
+      "colorMood": "Near-black with an acid lime that behaves like a highlighter — confident and slightly rude",
+      "typeMood": "A hand-set poster on a landing page — deliberately imperfect, extremely loud, and it had better be on purpose",
+      "effects": [
+        "type assembles once on load — the statement is the product demo",
+        "work tiles play a 3-second loop on hover",
+        "page transitions carry the acid across the cut",
+        "prefers-reduced-motion collapses all of it to a fade and the site still works"
       ],
-      "antiPatterns": ["A scroll-jacked homepage", "A loader animation on a site with nothing to load", "Case studies with no results", "Style that fails the a11y basics — it is the loudest possible signal of unseriousness"],
+      "decisionRules": [
+        {
+          "if": "the site is the portfolio (it is)",
+          "then": "motion is a demo of the craft you are selling, so it must be flawless — a janky reveal on an agency site is a live demonstration that you cannot do the thing you charge for"
+        },
+        {
+          "if": "the buyer is a procurement department at an enterprise",
+          "then": "acid and swagger stop at the case-study boundary — put the numbers, the timeline and the team in a plain layout, because the person approving the invoice is not the person who liked the animation"
+        },
+        {
+          "if": "the client base is regulated (pharma, finance, public sector)",
+          "then": "drop agency-acid for the pitch surface — it signals 'we will be a governance problem'; keep it for the culture pages"
+        },
+        {
+          "if": "the copy is edited by a marketer without a designer",
+          "then": "typographic breaks — the 12vw statement only works at the length it was set for. Lock the character count or lock the editor out"
+        }
+      ],
+      "antiPatterns": [
+        "'We are a full-service digital agency' — indistinguishable from 10,000 sites",
+        "Case studies with no numbers, only adjectives",
+        "A scroll-jacked hero that adds four seconds before the work",
+        "Stock team photos on an About page",
+        "An awards row above the work itself"
+      ],
       "severity": "medium"
     },
     {
-      "id": "developer-tools",
+      "id": "devtools",
       "name": "Developer Tools",
-      "keywords": ["developer", "devtool", "dev", "cli", "api", "sdk", "engineering", "code", "programming", "open-source", "library", "framework"],
-      "pattern": "Hero with the install command + a code example that actually runs + docs link + GitHub",
-      "style": ["terminal-cli", "data-dense"],
-      "palette": "devtool-slate",
-      "fonts": "jetbrains-mono-ibm-plex-sans",
-      "colorMood": "Built for people who live in a terminal but ship a GUI — slate with a signal accent",
-      "typeMood": "Mono for anything executable; a clean sans for prose",
-      "effects": ["copy-on-click install command", "syntax highlighting that matches the real theme", "tabbed examples per language"],
-      "decisionRules": [
-        { "if": "developers are the audience", "then": "the install command goes above the fold with a copy button — this audience wants to try it, not read about it. Every scroll before the code costs you" },
-        { "if": "there is an API", "then": "a real, runnable example beats any feature list; a curl that works is the entire pitch" },
-        { "if": "open source", "then": "the GitHub link, the licence and the star count are trust signals — surface them" },
-        { "if": "dark mode", "then": "ship it properly; this audience overwhelmingly uses it and will judge you on the code block" }
+      "keywords": [
+        "developer",
+        "devtools",
+        "developer tools",
+        "api",
+        "sdk",
+        "engineering",
+        "infrastructure",
+        "ci",
+        "deploy",
+        "code",
+        "library",
+        "framework",
+        "platform",
+        "backend",
+        "devops",
+        "open source",
+        "npm",
+        "build"
       ],
-      "antiPatterns": ["Marketing copy where the code example should be", "A signup wall before the docs", "Screenshots of code instead of copyable text", "Syntax highlighting that doesn't match any real theme"],
+      "pattern": "Hero with the install command copyable + a real code block showing the actual API + 'why this exists' + benchmarks or guarantees + docs link that is more prominent than the sales CTA + pricing with a real free tier",
+      "style": [
+        "aurora-glow",
+        "terminal-cli"
+      ],
+      "palette": "devtool-slate",
+      "fonts": "geist-inter",
+      "colorMood": "Slate surfaces, a functional blue, and a green that only ever means passing",
+      "typeMood": "The default voice of a well-built developer product — rational, unfussy, confident enough not to decorate",
+      "effects": [
+        "copy button on every code block, with a copied confirmation",
+        "syntax highlighting that matches the reader's editor theme, not your brand",
+        "tabs for language/runtime that persist across pages",
+        "no scroll animation — this reader opened three tabs and will close two"
+      ],
+      "decisionRules": [
+        {
+          "if": "the visitor is an engineer evaluating in under 60 seconds",
+          "then": "the code block IS the hero — show the actual API, not a diagram of it. A dev tool that explains its value proposition before showing its interface loses to one that pastes ten lines"
+        },
+        {
+          "if": "the buyer is a VP or procurement rather than the engineer",
+          "then": "aurora-glow reads as a genre signal they do not speak, and terminal-cli reads as an error screen — build a separate, plain page for them; do not compromise the developer page to reach them"
+        },
+        {
+          "if": "the brand needs to be distinguishable",
+          "then": "aurora-glow is the problem, not the solution — as of 2026 every dev tool is a dark page with a violet glow. If differentiation matters more than genre-fit, go the other way entirely and ship a white page"
+        },
+        {
+          "if": "there is long prose (concepts, guides, rationale)",
+          "then": "terminal-cli stops at the code block — monospace measurably slows reading, so body text goes to the sans"
+        }
+      ],
+      "antiPatterns": [
+        "A hero that describes the tool without showing it",
+        "'Contact sales' as the only path to knowing the price",
+        "A docs link buried in the footer",
+        "Benchmarks with no methodology, no versions and no repo",
+        "Terminal aesthetics on a page aimed at the person signing the cheque"
+      ],
       "severity": "high",
-      "pages": { "docs": "Persistent sidebar, search that works, copyable code, and a version switcher. Density is correct here — this is a reference, not a story." }
+      "pages": {
+        "pricing": "Free tier that a real project fits in, then usage-based, then enterprise. State the unit and the overage. Engineers will find the trap; do not set one."
+      }
     },
     {
       "id": "ai-ml",
       "name": "AI / ML Product",
-      "keywords": ["ai", "ml", "machine-learning", "llm", "model", "artificial-intelligence", "gpt", "agent", "chat", "assistant", "neural"],
-      "pattern": "Hero with a live demo + how it works + accuracy/limits + pricing by usage + try CTA",
-      "style": ["aurora-glow", "gradient-mesh"],
-      "palette": "neural-iris",
-      "fonts": "sora-public-sans",
-      "colorMood": "Iris violet into cyan — the current house style for intelligence, used with restraint",
-      "typeMood": "Modern and clean; let the demo speak",
-      "effects": ["streaming text output", "a demo that runs without signup", "subtle aurora gradients"],
-      "decisionRules": [
-        { "if": "there is a model", "then": "state its limits next to its claims — the category's trust problem is entirely overpromising, and an honest limits section converts better than a superlative" },
-        { "if": "output streams", "then": "render tokens as they arrive with a stable container; a jumping layout during generation makes a fast model feel broken" },
-        { "if": "the output can be wrong", "then": "say so in the interface, not in the terms — and make correction/regeneration one click" },
-        { "if": "usage-based pricing", "then": "give a real cost example; 'per 1M tokens' means nothing to someone who has never counted tokens" }
+      "keywords": [
+        "ai",
+        "ml",
+        "machine learning",
+        "llm",
+        "model",
+        "generative",
+        "chat",
+        "assistant",
+        "copilot",
+        "agent",
+        "prompt",
+        "inference",
+        "neural",
+        "gpt",
+        "rag",
+        "embedding",
+        "artificial intelligence",
+        "chatbot"
       ],
-      "antiPatterns": ["Purple gradient as the entire brand — it now reads as generic AI", "Claims with no stated limits", "A demo behind a signup wall", "Fake typing animation on a cached response"],
-      "severity": "high"
+      "pattern": "Hero with a live demo you can type into + what it does and does not do + how it works + evals/benchmarks with methodology + pricing per token or seat + safety and data-use statement + docs",
+      "style": [
+        "aurora-glow",
+        "gradient-mesh"
+      ],
+      "palette": "neural-iris",
+      "fonts": "syne-dm-sans",
+      "colorMood": "Iris violet bleeding into cyan — generative rather than corporate, and the current house style of the category",
+      "typeMood": "Engineered but faintly alien — a research lab that also ships a product and has not decided which it is",
+      "effects": [
+        "streaming tokens render as they arrive — a spinner on an LLM response wastes the one thing you have, which is early output",
+        "stop button available the entire time a response is generating",
+        "citations render inline as the claim appears, not appended at the end",
+        "no fake typing animation on cached content — it is a lie the user will catch"
+      ],
+      "decisionRules": [
+        {
+          "if": "the model can be confidently wrong (it can)",
+          "then": "uncertainty is a first-class UI element — cite the source at the claim, make 'I don't know' a designed state rather than a failure, and never render a hallucination in the same visual voice as a retrieved fact"
+        },
+        {
+          "if": "the output feeds a consequential decision (medical, legal, financial, hiring)",
+          "then": "the human-review step cannot be a checkbox — the UI must make editing easier than accepting, or you have built an automation-bias machine with a disclaimer on it"
+        },
+        {
+          "if": "user data trains the model",
+          "then": "that sentence appears in the UI at the point of input, in plain words, with the opt-out one click away — burying it in a ToS is now a regulatory exposure, not a growth tactic"
+        },
+        {
+          "if": "differentiation matters",
+          "then": "neural-iris + aurora-glow is what every AI product shipped in 2024-2026 — it buys instant category recognition and zero memorability. Choose deliberately which one you need"
+        }
+      ],
+      "antiPatterns": [
+        "A chat box as the entire product with no affordance for what to type",
+        "Benchmarks with no methodology, no baseline and no version",
+        "A spinner instead of streaming",
+        "'Powered by AI' as the value proposition",
+        "Confident output with no citation and no uncertainty signal"
+      ],
+      "severity": "critical"
     },
     {
-      "id": "analytics-dashboard",
+      "id": "analytics",
       "name": "Analytics Dashboard",
-      "keywords": ["analytics", "dashboard", "data", "metrics", "reporting", "bi", "charts", "kpi", "insights", "monitoring", "observability"],
-      "pattern": "Filter bar + KPI row + the primary chart + a supporting table + drill-down",
-      "style": ["data-dense", "flat-modern"],
-      "palette": "signal-cyan",
-      "fonts": "inter-tight-inter",
-      "colorMood": "A wall of numbers that stays readable at 2am — deep blue-slate with signal accents",
-      "typeMood": "Tabular numerals, tight and legible at small sizes",
-      "effects": ["no decorative motion", "skeletons sized to the real chart", "instant filter feedback"],
-      "decisionRules": [
-        { "if": "someone stares at this for hours", "then": "density beats whitespace and a real dark mode is a health feature, not a preference — design for the 8-hour user, not the screenshot" },
-        { "if": "any chart", "then": "never colour alone: pair it with shape, label or pattern. ~8% of men cannot distinguish your red and green series" },
-        { "if": "data loads async", "then": "reserve the chart's exact box — a dashboard that reflows as each panel lands is unusable on a slow connection" },
-        { "if": "a number can be misread", "then": "state the unit, the timezone and the comparison period on the tile, not in a tooltip" }
+      "keywords": [
+        "analytics",
+        "dashboard",
+        "data",
+        "charts",
+        "metrics",
+        "bi",
+        "reporting",
+        "observability",
+        "monitoring",
+        "telemetry",
+        "kpi",
+        "insights",
+        "visualization",
+        "graphs",
+        "logs",
+        "traces",
+        "reports",
+        "grafana"
       ],
-      "antiPatterns": ["Glassmorphism behind a data table", "Chart junk — 3D pie charts, gradients on bars", "Colour as the only series channel", "A spinner where a skeleton belongs"],
+      "pattern": "Global filter bar (date, segment) + KPI row with deltas + one primary chart + supporting breakdown table + export. Everything answers 'what changed and why'",
+      "style": [
+        "data-dense",
+        "flat-modern"
+      ],
+      "palette": "signal-cyan",
+      "fonts": "sora-public-sans",
+      "colorMood": "Deep blue-slate that stays readable at 2am, with cyan and amber reserved strictly for series color and thresholds",
+      "typeMood": "Dense, calm instrumentation — the numbers are the design, the type is just the chrome",
+      "effects": [
+        "tabular-nums everywhere so columns of figures align",
+        "chart tooltips follow the cursor without occluding the point they describe",
+        "loading a chart keeps the axes and skeletons the plot area — no reflow when data lands",
+        "no easing on data updates; a bar that animates to a new value hides the jump"
+      ],
+      "decisionRules": [
+        {
+          "if": "the user stares at this eight hours a day",
+          "then": "density is the feature — 18px type and generous whitespace cost the rows they came for. This is the one category where high-contrast-a11y's own advice does not apply, and cramped is correct"
+        },
+        {
+          "if": "the background is a gradient, mesh or glass",
+          "then": "delete it — it corrupts every color you plot on top, and series color is the only encoding a chart has. data-dense and gradient-mesh together is a bug, not a style"
+        },
+        {
+          "if": "more than ~6 series on one chart",
+          "then": "you have run out of distinguishable colors before your users have run out of color-vision deficiencies — switch to small multiples, direct labels, or let the user pick the series"
+        },
+        {
+          "if": "the dashboard will be viewed on mobile",
+          "then": "it is a different product — a KPI list and one sparkline; the table does not survive, and pretending it does produces a horizontal scroll nobody uses"
+        }
+      ],
+      "antiPatterns": [
+        "A wall of 20 KPI tiles where none is the answer to anything",
+        "Red/green as the only up/down signal",
+        "Charts with no baseline, no comparison and no units",
+        "A 3D pie chart",
+        "Dark mode as the only mode — this gets projected in meetings and printed for boards"
+      ],
       "severity": "high",
-      "pages": { "dashboard": "Filters top, KPIs in a row, one hero chart, supporting table below. Everything above the fold answers 'is anything broken?' in under 5 seconds." }
+      "pages": {
+        "dashboard": "Global filters pinned top, KPI row with deltas and comparison period, one primary chart, one breakdown table. Density over whitespace. Every tile states its unit and its time window."
+      }
     },
     {
       "id": "productivity",
-      "name": "Productivity / Notes / Tasks",
-      "keywords": ["productivity", "notes", "tasks", "todo", "planner", "organize", "workspace", "focus", "calendar", "project"],
-      "pattern": "Hero showing the actual interface + the core loop + integrations + pricing",
-      "style": ["swiss-minimal", "flat-modern"],
-      "palette": "focus-graphite",
-      "fonts": "geist-inter",
-      "colorMood": "A desk with nothing on it — warm graphite and paper, colour only where you must act",
-      "typeMood": "Quiet and legible; the user's content is the design",
-      "effects": ["fast optimistic updates", "keyboard shortcuts surfaced", "no motion that delays input"],
-      "decisionRules": [
-        { "if": "used daily", "then": "keyboard-first: every primary action has a shortcut and a command palette. Daily users graduate to the keyboard or they leave" },
-        { "if": "the user's content is the point", "then": "the chrome recedes — brand colour on every panel competes with the thing they came to write" },
-        { "if": "any write action", "then": "optimistic and instantly reversible; a 300ms round-trip on a checkbox makes the product feel broken" }
+      "name": "Productivity / Notes",
+      "keywords": [
+        "productivity",
+        "notes",
+        "note taking",
+        "tasks",
+        "todo",
+        "writing",
+        "workspace",
+        "knowledge",
+        "wiki",
+        "docs editor",
+        "planner",
+        "focus",
+        "organize",
+        "second brain",
+        "journal",
+        "outline",
+        "kanban"
       ],
-      "antiPatterns": ["A loading spinner on a checkbox", "Brand colour competing with user content", "Onboarding that blocks the empty state instead of seeding it", "No keyboard support in a daily-driver tool"],
+      "pattern": "Hero showing the actual app + one keyboard shortcut as the proof + templates + sync/offline claim + pricing + a real free tier. In-app: content first, chrome on demand",
+      "style": [
+        "swiss-minimal",
+        "flat-modern"
+      ],
+      "palette": "focus-graphite",
+      "fonts": "inter-tight-inter",
+      "colorMood": "A desk with nothing on it — warm graphite and paper, with a single amber for the one thing due today",
+      "typeMood": "One voice, two optical sizes, nothing decorative anywhere — the user's words must be the most interesting thing on screen",
+      "effects": [
+        "every action has a keyboard path and the UI teaches it in the tooltip",
+        "autosave with a stated timestamp, never a Save button that can be forgotten",
+        "chrome fades while typing and returns on mouse move",
+        "no animation on list reorder beyond 120ms — this is a daily action"
+      ],
+      "decisionRules": [
+        {
+          "if": "the user opens this 40 times a day",
+          "then": "every millisecond of animation is paid 40 times — cut all of it. The delight decays to annoyance by the third visit and this is the four-hundredth"
+        },
+        {
+          "if": "the product competes on focus",
+          "then": "the design argument is subtraction — a focus tool with a sidebar, a toolbar, a right rail and an AI button has already lost the argument it is making"
+        },
+        {
+          "if": "content is user-generated and long",
+          "then": "swiss-minimal's whitespace budget goes to the measure, not the chrome — 65-75 characters, and the note list must survive 5,000 notes without a redesign"
+        },
+        {
+          "if": "offline is claimed",
+          "then": "the conflict-resolution UI is the actual product — two devices, one note, no network is the case that decides whether people trust you with their thinking"
+        }
+      ],
+      "antiPatterns": [
+        "An onboarding tour of 11 steps before the user can write a word",
+        "A 'quick capture' that takes four taps",
+        "Amber spent on decoration so it no longer means 'due today'",
+        "AI features that write over the cursor without being asked",
+        "Templates as the hero when the empty note is the product"
+      ],
       "severity": "medium"
     },
     {
       "id": "social",
       "name": "Social / Community",
-      "keywords": ["social", "community", "feed", "network", "forum", "chat", "posts", "followers", "profile", "share", "messaging"],
-      "pattern": "Feed + composer + profile + notifications + a discovery surface",
-      "style": ["flat-modern", "motion-driven"],
+      "keywords": [
+        "social",
+        "community",
+        "feed",
+        "network",
+        "profile",
+        "creator",
+        "sharing",
+        "followers",
+        "posts",
+        "forum",
+        "timeline",
+        "comments",
+        "friends",
+        "groups",
+        "dm",
+        "discussion",
+        "member"
+      ],
+      "pattern": "Feed as the whole product + composer always reachable + profile + notifications + search. Everything else is a settings page nobody visits",
+      "style": [
+        "flat-modern",
+        "illustrated"
+      ],
       "palette": "feed-fuchsia",
       "fonts": "outfit-figtree",
-      "colorMood": "Warm, social and a little hot — fuchsia with a tangerine like",
-      "typeMood": "Compact and friendly; a lot of content per screen",
-      "effects": ["optimistic like/post", "skeleton feed items", "smooth infinite scroll with a stable scroll position"],
-      "decisionRules": [
-        { "if": "infinite scroll", "then": "preserve scroll position on back — losing someone's place in a feed is the fastest way to lose the session" },
-        { "if": "user-generated content", "then": "moderation, reporting and blocking are core UI, not settings buried three levels deep. Ship them with v1 or you are building a harassment vector" },
-        { "if": "any engagement mechanic", "then": "ask honestly whether it serves the user or the metric — this is the category where that question actually matters" },
-        { "if": "media in the feed", "then": "reserve aspect-ratio boxes; a feed that jumps as images load is the worst CLS experience on the web" }
+      "colorMood": "Fuchsia with a tangerine — a sunset pulled apart into two usable tokens, warm and a little hot",
+      "typeMood": "Approachable modern consumer — the type gets out of the way of user content, which supplies all the real color",
+      "effects": [
+        "optimistic UI on every interaction — a like that waits for the server feels broken",
+        "new-posts pill rather than auto-injecting content above the reader's scroll position",
+        "illustration only in empty states and errors, never in the feed",
+        "no infinite-scroll on a profile — people came to find one thing"
       ],
-      "antiPatterns": ["Losing scroll position on back", "Shipping without blocking/reporting", "Infinite scroll with a footer nobody can reach", "Manipulative streak/notification mechanics"],
+      "decisionRules": [
+        {
+          "if": "the feed is ranked rather than chronological",
+          "then": "say so in the UI and offer the chronological switch — the single largest trust complaint in this category is not the ranking, it is discovering the ranking existed"
+        },
+        {
+          "if": "the product has any moderation surface",
+          "then": "design the block/report/mute path before the composer — a community product ships its harassment tooling at launch or it ships its harassment problem at launch"
+        },
+        {
+          "if": "engagement metrics are visible",
+          "then": "decide whose interest they serve — public follower counts and read receipts are design decisions with documented mental-health outcomes for teenage users; 'everyone does it' is not the rationale you want in the deposition"
+        },
+        {
+          "if": "the feed carries user photography and video",
+          "then": "reserve the aspect ratio before load — content that shifts under a scrolling thumb causes mis-taps on Report and Follow alike"
+        }
+      ],
+      "antiPatterns": [
+        "Infinite scroll with no end state and no time-spent signal",
+        "Notification badges for engagement that is not about the user",
+        "A composer that loses a long draft on navigation",
+        "Dark patterns in the deactivate flow",
+        "Illustration in the feed competing with the users' own images"
+      ],
       "severity": "high"
     },
     {
       "id": "travel",
       "name": "Travel / Booking",
-      "keywords": ["travel", "booking", "hotel", "flight", "trip", "vacation", "holiday", "destination", "tour", "airbnb", "reservation"],
-      "pattern": "Search-first hero + results with real filters + a detail page + a booking flow",
-      "style": ["photographic", "flat-modern"],
-      "palette": "voyage-sky",
-      "fonts": "poppins-dm-sans",
-      "colorMood": "Window seat at altitude — sky blue over sand with a coral CTA",
-      "typeMood": "Clean and international; assume translation and long strings",
-      "effects": ["map/list split", "photo-forward results", "sticky price + book bar"],
-      "decisionRules": [
-        { "if": "search is the product", "then": "the search form IS the hero — a destination photo above a buried search box is a decorative failure" },
-        { "if": "showing a price", "then": "show the total including fees from the first result; drip pricing is the category's defining dark pattern and is now illegal in several markets" },
-        { "if": "international", "then": "dates, currency, and long translated strings will all break your layout — design for de-DE and ja-JP, not just en-US" },
-        { "if": "a booking is non-refundable", "then": "state it at the point of decision, in body text, not in the confirmation email" }
+      "keywords": [
+        "travel",
+        "booking",
+        "flight",
+        "hotel",
+        "vacation",
+        "tourism",
+        "trip",
+        "airline",
+        "destination",
+        "holiday",
+        "resort",
+        "itinerary",
+        "tours",
+        "stay",
+        "guide",
+        "cruise",
+        "hostel",
+        "rental"
       ],
-      "antiPatterns": ["Fees revealed only at the last step", "'2 people are looking at this right now' fabricated urgency", "A hero photo where the search box should be", "Date pickers that assume US format"],
-      "severity": "high"
+      "pattern": "Full-bleed destination image + search widget over it (the actual product) + results with real prices + property/flight detail + transparent total + booking. The image sells, the search converts",
+      "style": [
+        "photographic",
+        "gradient-mesh"
+      ],
+      "palette": "voyage-sky",
+      "fonts": "marcellus-raleway",
+      "colorMood": "Window seat at altitude — sky blue over sand with a coral reserved for fares and deals",
+      "typeMood": "Somewhere old and worth the flight — inscriptional capitals over air and horizon",
+      "effects": [
+        "search widget is above the fold and focused on load — it is the product, not a decoration on the hero",
+        "price changes announce themselves rather than silently updating",
+        "map and list stay in sync, both scrollable",
+        "images are the actual property, dated, never a stock beach"
+      ],
+      "decisionRules": [
+        {
+          "if": "a price is displayed",
+          "then": "it is the total the user will pay including taxes and mandatory fees — drip pricing is now enforcement territory in the EU, UK and US simultaneously, and it is also the top-rated reason people abandon this category"
+        },
+        {
+          "if": "the traveller is mid-trip rather than dreaming",
+          "then": "the whole design inverts — they are on roaming data, one bar, in a taxi. Booking reference, address in the local language, and the phone number, offline and above everything else. Photography is dead weight here"
+        },
+        {
+          "if": "there is no professional photography of the actual property",
+          "then": "photographic collapses into a trust problem — a stock hero next to a real listing photo reads as bait-and-switch. Show the real room even if it is worse"
+        },
+        {
+          "if": "gradient-mesh sits behind body text or a results list",
+          "then": "kill it — it belongs behind the search widget and nowhere else; a moving color field under a fare table is unreadable"
+        }
+      ],
+      "antiPatterns": [
+        "'From £29' where £29 has never existed on any date",
+        "Scarcity timers on a hotel with 40 rooms free",
+        "A 2MB hero that delays the search widget people came for",
+        "Booking confirmation that is not emailed and not saved offline",
+        "Cookie wall before the destination is even visible"
+      ],
+      "severity": "high",
+      "pages": {
+        "search-results": "Filters in a left rail persisting in the URL, map synced on the right, total price per row, sort visible and honest. Result count stated."
+      }
     },
     {
       "id": "real-estate",
       "name": "Real Estate / Property",
-      "keywords": ["real-estate", "property", "housing", "home", "rent", "listing", "apartment", "estate", "realtor", "mortgage"],
-      "pattern": "Search + map/list results + a photo-heavy listing page + enquiry CTA",
-      "style": ["photographic", "swiss-minimal"],
+      "keywords": [
+        "real estate",
+        "property",
+        "listing",
+        "listings",
+        "home",
+        "house",
+        "apartment",
+        "rental",
+        "rent",
+        "architecture",
+        "interiors",
+        "realtor",
+        "estate agent",
+        "mortgage",
+        "viewing",
+        "flat",
+        "lease",
+        "buy home"
+      ],
+      "pattern": "Search or featured property + listing grid with price, beds, area + property page: gallery, key facts, floor plan, map, neighbourhood, agent + arrange-viewing CTA",
+      "style": [
+        "photographic",
+        "editorial-magazine"
+      ],
       "palette": "estate-sage",
       "fonts": "marcellus-raleway",
-      "colorMood": "Old money without the crest — sage, limestone and brass",
-      "typeMood": "Quietly premium; the property photography carries it",
-      "effects": ["map/list sync", "gallery with keyboard nav", "floorplan viewer"],
-      "decisionRules": [
-        { "if": "browsing listings", "then": "photos, price, location and size answer 90% of the question — everything else is secondary. Get those four on the card" },
-        { "if": "there is a map", "then": "sync it with the list and keep both keyboard-operable; a map-only interface excludes screen-reader users from the entire product" },
-        { "if": "a big financial decision", "then": "no urgency mechanics — they read as manipulative on the largest purchase of someone's life" }
+      "colorMood": "Sage green, limestone and brass — old money without the crest; a considered purchase, not a lead form",
+      "typeMood": "Inscriptional and architectural — the building is the hero and the type behaves like a plaque next to it",
+      "effects": [
+        "gallery is the interface — full-bleed, keyboard navigable, with the floor plan in the same reel",
+        "key facts (price, beds, baths, m²) never scroll away on desktop",
+        "map lazy-loads on intent, not on page load",
+        "no hover zoom on a photo of a room — it reads as a stock library"
       ],
-      "antiPatterns": ["Listings with no price", "Map-only browsing with no accessible list", "Watermarked, low-resolution photos", "Contact-gating the address"],
-      "severity": "medium"
+      "decisionRules": [
+        {
+          "if": "the visitor is buying rather than browsing",
+          "then": "price, area, floor plan and location are the whole decision — a property page without a floor plan and an m² figure is optimising the wrong thing, however good the photography is"
+        },
+        {
+          "if": "the listing is rental at volume",
+          "then": "editorial-magazine collapses — it is half imagery by weight and it assumes long content. Rentals are a table with photos; use the listing grid honestly and spend the design on the filters"
+        },
+        {
+          "if": "the product is lead-gen for agents",
+          "then": "be honest about it — a 'contact agent' form that gates the address turns a buyer into a lead and a brand into a spam sender. The address is not the moat"
+        },
+        {
+          "if": "photography is agent-supplied and inconsistent",
+          "then": "photographic is not available to you — normalise with a uniform tile, a required aspect ratio and a floor-plan-first layout, or the grid reads as a scam listing next to a professional one"
+        }
+      ],
+      "antiPatterns": [
+        "Wide-angle lens distortion that makes a 9m² box look like a loft",
+        "'Price on application' on a residential listing",
+        "A virtual tour that requires a plugin and 30 seconds",
+        "Photos with no room labels and no floor plan to place them in",
+        "Gating the address behind a registration wall"
+      ],
+      "severity": "high"
     },
     {
       "id": "automotive",
-      "name": "Automotive",
-      "keywords": ["automotive", "car", "vehicle", "auto", "dealer", "motor", "ev", "drive", "garage", "parts"],
-      "pattern": "Cinematic vehicle hero + specs + configurator + dealer/buy CTA",
-      "style": ["photographic", "spatial-3d"],
+      "name": "Automotive / Hardware",
+      "keywords": [
+        "automotive",
+        "car",
+        "cars",
+        "vehicle",
+        "auto",
+        "hardware",
+        "engineering",
+        "machine",
+        "configurator",
+        "industrial",
+        "manufacturing",
+        "motor",
+        "ev",
+        "dealership",
+        "spec",
+        "torque",
+        "device",
+        "gadget"
+      ],
+      "pattern": "Hero of the object rotating or full-bleed + spec strip + configurator + gallery + technology sections + finance/price + book a test drive or buy",
+      "style": [
+        "spatial-3d",
+        "dark-luxury"
+      ],
       "palette": "torque-steel",
       "fonts": "chakra-petch-rubik",
-      "colorMood": "Machined gunmetal with a brake-light red — engineered",
-      "typeMood": "Technical and precise; specs are a feature",
-      "effects": ["360° vehicle view", "configurator with live preview", "spec tables that are actually readable"],
-      "decisionRules": [
-        { "if": "there is a configurator", "then": "keep the running price visible at every step — a configurator that reveals the total at the end feels like a trap" },
-        { "if": "showing specs", "then": "real units and a comparison; a spec sheet nobody can compare against a rival is decoration" },
-        { "if": "3D or 360 view", "then": "give it a static fallback and a real loading budget — it is usually the heaviest thing on the site" }
+      "colorMood": "Machined gunmetal with a brake-light red — engineered and cold to the touch; the red is a warning, not a brand flourish",
+      "typeMood": "HUD energy — clipped corners and angular terminals, the way an instrument cluster labels things",
+      "effects": [
+        "configurator updates the render and the price in the same frame — a lag between them breaks the causal link",
+        "colour swatches are rendered on the actual car, never a hex circle",
+        "3D falls back to a pre-rendered turntable video below a device threshold",
+        "spec numbers in tabular figures so trims compare vertically"
       ],
-      "antiPatterns": ["A 40MB hero video", "A configurator that hides the total until the end", "Specs as an image", "Financing terms in the footer"],
-      "severity": "medium"
+      "decisionRules": [
+        {
+          "if": "the audience is mobile-heavy",
+          "then": "spatial-3d is a thermal and battery cost they pay for your art direction — ship a turntable video, keep the WebGL behind a desktop check, and never make the canvas the only path to the spec"
+        },
+        {
+          "if": "the 3D content needs to be found in search",
+          "then": "a canvas does not exist to a crawler — every configuration, spec and trim needs a real URL with real text, or the most expensive part of the site is invisible to the people looking for it"
+        },
+        {
+          "if": "the screen is in-vehicle (IVI/HMI)",
+          "then": "entirely different rules — glance time under 2 seconds, targets sized for a moving car, no dark-luxury hairlines, and nothing that requires reading a sentence. This is a safety surface with a regulator attached"
+        },
+        {
+          "if": "the product is a configurator with a real price",
+          "then": "the running total is visible at all times and every option states its cost — a price that only resolves at the summary screen is the abandonment point in every funnel in this category"
+        }
+      ],
+      "antiPatterns": [
+        "A WebGL hero that takes 6 seconds before a single spec is visible",
+        "Colour swatches as flat hex circles next to a photorealistic render",
+        "Spec sheets as a downloadable PDF",
+        "'From $X' where X is a trim that cannot be ordered",
+        "Dark-luxury gold hairlines on a parts catalog of 400 SKUs"
+      ],
+      "severity": "high"
     },
     {
       "id": "legal",
-      "name": "Legal / Professional Services",
-      "keywords": ["legal", "law", "lawyer", "attorney", "firm", "solicitor", "counsel", "advisory", "practice", "litigation"],
-      "pattern": "Credibility hero + practice areas + attorney bios + case results + consultation CTA",
-      "style": ["corporate-clean", "editorial-magazine"],
+      "name": "Legal / Law Firm",
+      "keywords": [
+        "legal",
+        "law",
+        "firm",
+        "lawyer",
+        "attorney",
+        "solicitor",
+        "litigation",
+        "counsel",
+        "practice",
+        "chambers",
+        "paralegal",
+        "advisory",
+        "contracts",
+        "barrister",
+        "case",
+        "court",
+        "compliance",
+        "notary"
+      ],
+      "pattern": "Firm name + practice areas + the people with real credentials + notable matters + insights/publications + offices + a contact that reaches a human",
+      "style": [
+        "corporate-clean",
+        "editorial-magazine"
+      ],
       "palette": "chambers-oxblood",
       "fonts": "public-sans-eb-garamond",
-      "colorMood": "Leather-bound and unbothered — oxblood on cream with brass",
-      "typeMood": "Serious and traditional; a serif earns trust in this category",
-      "effects": ["essentially none — gravitas comes from restraint", "clear credential presentation"],
-      "decisionRules": [
-        { "if": "someone needs a lawyer", "then": "they are frightened and in a hurry — the path to 'talk to a human' must be one tap from anywhere, and the copy must be plain English, not legalese" },
-        { "if": "advertising results", "then": "the jurisdiction's bar rules apply — required disclaimers are body text near the claim, not a footer afterthought" },
-        { "if": "attorney bios", "then": "real photos and real credentials; this is a pure trust purchase" }
+      "colorMood": "Oxblood on cream with brass — leather-bound and unbothered, because blue would read as a tech startup",
+      "typeMood": "Scholarly and unshowy — the argument matters and the typography gets out of its way",
+      "effects": [
+        "no motion anywhere — gravitas is the product and movement spends it",
+        "people photographed against a real wall, not a gradient",
+        "publications as readable pages with dates, not gated PDFs",
+        "hairline rules to separate, never cards with shadows"
       ],
-      "antiPatterns": ["Stock photos of gavels and scales", "Legalese in the marketing copy", "Missing required advertising disclaimers", "A contact form as the only route to a human"],
+      "decisionRules": [
+        {
+          "if": "the visitor is a distressed individual (injury, family, immigration, criminal)",
+          "then": "this is not a corporate brochure — plain language at grade-8, the phone number in the header, 'what happens next' before 'about our firm', and no jargon between them and help. The oxblood gravitas serves the firm; the clarity serves the client, and the client is the one converting"
+        },
+        {
+          "if": "the client base is corporate/M&A",
+          "then": "credentials are the design — named partners, real matters, real jurisdictions. A stock gavel photograph actively costs credibility with this buyer"
+        },
+        {
+          "if": "any statement could be construed as legal advice",
+          "then": "the disclaimer renders at body size at the point of the claim, not in 11px grey in the footer — and never inside a tooltip. The tooltip is not a disclosure and it will not survive scrutiny"
+        },
+        {
+          "if": "the site is CMS-driven with lawyers publishing",
+          "then": "editorial-magazine breaks on a 200-word post — set a minimum length for that template or it will look abandoned within a month"
+        }
+      ],
+      "antiPatterns": [
+        "Stock photography of a gavel, scales, or a leather-bound library nobody works in",
+        "'Free consultation' that is a lead form to a call centre",
+        "Attorney bios with no bar admission, no jurisdiction and no matters",
+        "A chatbot as the first contact for someone describing an arrest",
+        "Neo-brutalism, claymorphism or any toy vocabulary — it quietly undercuts the one thing being sold"
+      ],
       "severity": "high"
     },
     {
       "id": "nonprofit",
       "name": "Nonprofit / Charity",
-      "keywords": ["nonprofit", "charity", "donate", "cause", "ngo", "fundraising", "volunteer", "giving", "impact", "foundation"],
-      "pattern": "Story-led hero + the impact + where the money goes + donate CTA everywhere",
-      "style": ["photographic", "organic-earthy"],
-      "palette": "kindred-green",
-      "fonts": "libre-franklin-lora",
-      "colorMood": "Hopeful and human — a living green with a coral for urgency",
-      "typeMood": "Warm and human; a person tells this story, not a brand",
-      "effects": ["story-driven imagery", "a progress bar toward a real goal", "a donate button that is always reachable"],
-      "decisionRules": [
-        { "if": "asking for money", "then": "show where it goes with a specific number — '£25 buys a week of meals' outperforms every abstract mission statement ever written" },
-        { "if": "there is a donate flow", "then": "make it 2 steps and take Apple/Google Pay; every extra field measurably costs donations" },
-        { "if": "showing beneficiaries", "then": "dignity and consent first — no poverty-porn imagery, ever. It is both unethical and, with modern donors, ineffective" },
-        { "if": "recurring giving", "then": "make cancellation as easy as signup; a charity that traps donors loses the next one too" }
+      "keywords": [
+        "nonprofit",
+        "charity",
+        "donate",
+        "ngo",
+        "fundraising",
+        "volunteer",
+        "social impact",
+        "cause",
+        "giving",
+        "foundation",
+        "mission",
+        "campaign",
+        "aid",
+        "community",
+        "philanthropy",
+        "donation",
+        "impact"
       ],
-      "antiPatterns": ["Poverty-porn imagery", "A donate flow with 8 fields", "Abstract mission copy with no concrete impact number", "Hard-to-cancel recurring donations"],
+      "pattern": "One photograph of the actual work + one sentence of the problem + donate CTA (present from the first screen) + what your money does, specifically + impact with real numbers + who we are + financial transparency",
+      "style": [
+        "organic-earthy",
+        "photographic"
+      ],
+      "palette": "kindred-green",
+      "fonts": "bitter-cabin",
+      "colorMood": "A living green with a coral for urgency — hopeful and human, neither a bank nor a guilt trip",
+      "typeMood": "Plain-spoken and grounded — a report from the field, not a brand campaign",
+      "effects": [
+        "donation amounts as preset buttons with what each one buys, stated",
+        "no motion on imagery of people in distress — dignity is a design constraint",
+        "impact numbers cite their source and their year",
+        "the donate path never leaves the brand"
+      ],
+      "decisionRules": [
+        {
+          "if": "donation is the conversion",
+          "then": "amount buttons must state what they buy ('£25 = a month of clean water for one family') — an empty amount field converts at a fraction of the rate, because the donor does not know what is useful"
+        },
+        {
+          "if": "the imagery shows beneficiaries",
+          "then": "consent, dignity and agency are design decisions — the poverty-porn hero raises money this quarter and costs the organisation its standing permanently. Show people doing, not people suffering"
+        },
+        {
+          "if": "the organisation handles emergencies",
+          "then": "organic-earthy cannot signal urgency — its own rule is that the palette has no danger step. Bring the coral in as a genuine alert token for the appeal surface only, or the crisis banner reads as decoration"
+        },
+        {
+          "if": "donors are recurring",
+          "then": "cancellation must be as easy as signing up — the dark-pattern retention flow is the reputational risk that outlives the retained pound, and in this sector it becomes a news story"
+        }
+      ],
+      "antiPatterns": [
+        "Poverty porn — a child's face as the hero with no name and no consent",
+        "'Every donation helps' with no figure showing what any of them do",
+        "Financials as a 60-page PDF and no summary",
+        "A donate flow that hands off to a third-party page with different branding",
+        "Guilt-based interstitials before the visitor has read the problem"
+      ],
       "severity": "high"
     },
     {
-      "id": "government-civic",
+      "id": "government",
       "name": "Government / Civic",
-      "keywords": ["government", "civic", "public", "council", "gov", "municipal", "citizen", "agency", "official", "service"],
-      "pattern": "Task-first hero (what do you need to do?) + services + forms + contact",
-      "style": ["high-contrast-a11y", "swiss-minimal"],
-      "palette": "civic-navy",
-      "fonts": "public-sans-eb-garamond",
-      "colorMood": "Plain-spoken public service — federal navy and generous neutrals",
-      "typeMood": "Maximum plainness; this must work for literally everyone",
-      "effects": ["none — this is infrastructure, not a brand exercise"],
-      "decisionRules": [
-        { "if": "public sector", "then": "accessibility is a legal requirement, not a priority band — WCAG 2.2 AA is the floor and the audit is real (Section 508, EN 301 549, the EAA)" },
-        { "if": "the user has a task", "then": "organize by task, never by department — the org chart is your problem, not the citizen's. This is the category's single biggest failure" },
-        { "if": "any user", "then": "assume old devices, slow connections, screen readers and low digital literacy — this audience cannot opt out and go elsewhere" },
-        { "if": "a form", "then": "one question per page beats a wall of fields; the GOV.UK pattern exists because it was tested on everyone" }
+      "keywords": [
+        "government",
+        "civic",
+        "public",
+        "municipal",
+        "official",
+        "gov",
+        "services",
+        "council",
+        "citizen",
+        "agency",
+        "public sector",
+        "tax",
+        "permit",
+        "benefits",
+        "city",
+        "federal",
+        "licence",
+        "voting"
       ],
-      "antiPatterns": ["Navigation organized by department", "A PDF as the only way to complete a task", "Any accessibility gap — it is a legal exposure here", "A JS-only interface with no fallback"],
-      "severity": "critical"
+      "pattern": "Search + the top 5 tasks people actually come for + start-a-service + plain-language guide pages + contact including a phone number and an in-person option",
+      "style": [
+        "high-contrast-a11y",
+        "swiss-minimal"
+      ],
+      "palette": "civic-navy",
+      "fonts": "lexend-atkinson-hyperlegible",
+      "colorMood": "Federal navy, generous neutrals, no decoration — built to survive a screen reader, a five-year-old laptop and a lawsuit",
+      "typeMood": "Designed so the reader never has to work — legibility as the actual brief, not a checkbox",
+      "effects": [
+        "one question per page — the pattern that beat every alternative in real service testing",
+        "back button always works, and the browser's back button works too",
+        "no JavaScript required for any core task",
+        "error summary at the top of the form, linked to each field, announced to assistive tech"
+      ],
+      "decisionRules": [
+        {
+          "if": "the user has no alternative supplier (they do not — this is government)",
+          "then": "every accessibility decision is a legal obligation, not a preference; and the person on a 5-year-old Android on 3G in a library is not an edge case, they are disproportionately the person who needs the service most"
+        },
+        {
+          "if": "the service involves money, eligibility or a deadline",
+          "then": "plain language at grade-8 or below, the eligibility criteria before the form, and 'what happens next' with a real timeframe — the cost of ambiguity here is a phone call to a call centre you are paying for"
+        },
+        {
+          "if": "a designer proposes glassmorphism, neumorphism, or any low-contrast aesthetic",
+          "then": "it is disqualified by rule, not by taste — these styles' own documentation excludes government, and the WCAG floor is statutory (Section 508 / EN 301 549 / EAA)"
+        },
+        {
+          "if": "the content is a service rather than information",
+          "then": "swiss-minimal's whitespace stops at the form — one question per page, 18px floor, and never a two-column form; the grid serves the guide pages, the service needs a queue"
+        }
+      ],
+      "antiPatterns": [
+        "A homepage carousel of the mayor's initiatives above the tax deadline everyone came for",
+        "PDFs as the delivery mechanism for a service",
+        "Departmental org structure as the navigation",
+        "A chatbot in front of a phone number",
+        "Any style that trades contrast for aesthetic distinction — it is not yours to trade here"
+      ],
+      "severity": "critical",
+      "pages": {
+        "onboarding": "One question per page. State why each field is needed and who sees it. Save and return by default — these forms are filled in across days, from libraries."
+      }
     },
     {
       "id": "logistics",
-      "name": "Logistics / Supply Chain",
-      "keywords": ["logistics", "supply-chain", "shipping", "freight", "warehouse", "delivery", "fleet", "tracking", "inventory", "operations"],
-      "pattern": "Ops dashboard + tracking + exceptions queue + a scannable table",
-      "style": ["data-dense", "high-contrast-a11y"],
-      "palette": "freight-amber",
-      "fonts": "roboto-slab-roboto",
-      "colorMood": "Hi-vis on steel — warehouse amber against industrial grey",
-      "typeMood": "Legible at a glance from a metre away, on a cheap screen",
-      "effects": ["status colour + icon", "real-time updates", "dense scannable tables"],
-      "decisionRules": [
-        { "if": "used on a warehouse floor", "then": "56px targets, maximum contrast, and no hover anything — gloves, glare and a cracked screen are the actual design constraints. Test it outdoors at noon" },
-        { "if": "showing exceptions", "then": "the exception queue IS the product; nobody looks at the 98% that worked. Design for the failure case first" },
-        { "if": "status matters", "then": "colour + icon + text, always — a colour-blind dispatcher misrouting freight is a real cost" },
-        { "if": "scanning is involved", "then": "the scan target is the whole screen, not a small box" }
+      "name": "Logistics / Fleet",
+      "keywords": [
+        "logistics",
+        "freight",
+        "shipping",
+        "warehouse",
+        "fleet",
+        "supply chain",
+        "tracking",
+        "delivery",
+        "ops",
+        "courier",
+        "cargo",
+        "dispatch",
+        "route",
+        "inventory",
+        "haulage",
+        "package",
+        "3pl",
+        "driver"
       ],
-      "antiPatterns": ["Hover-dependent controls on a touch device", "Low contrast in a high-glare environment", "Status by colour alone", "Burying exceptions below the happy path"],
-      "severity": "high"
+      "pattern": "Track-a-shipment first + fleet/inventory overview + exceptions needing action + route or map + reporting. The whole product answers 'where is it and what is broken'",
+      "style": [
+        "data-dense",
+        "high-contrast-a11y"
+      ],
+      "palette": "freight-amber",
+      "fonts": "sora-public-sans",
+      "colorMood": "Hi-vis on steel — warehouse amber against industrial grey, with a green that only ever means delivered",
+      "typeMood": "Dense, calm instrumentation — the numbers are the design, and they get read across a warehouse",
+      "effects": [
+        "exceptions sort to the top by default — the ops user is here for what is broken",
+        "status changes announce to screen readers and to the row's aria-live region",
+        "no motion on a live map beyond the marker itself",
+        "timestamps always with timezone — a fleet crosses them"
+      ],
+      "decisionRules": [
+        {
+          "if": "the user is on a shop floor or in a yard",
+          "then": "56px targets and maximum contrast — gloves, glare, cold hands and a scanner in the other hand are the design constraint, not the aesthetic. This is why high-contrast sits next to data-dense here despite the tension"
+        },
+        {
+          "if": "the user is a driver",
+          "then": "it is a glance-and-go product — one instruction per screen, offline-first, and never a flow that requires reading a paragraph while the engine is running. A dispatcher's dense table on a driver's phone is a safety defect"
+        },
+        {
+          "if": "amber is the brand color",
+          "then": "it cannot also be the warning color — pick one. A hi-vis palette that uses its alert token for the logo has no way left to say 'delayed'"
+        },
+        {
+          "if": "the console runs on a wall display in a depot",
+          "then": "different product again — read at 4 metres, no interaction, no hover, and the only thing on it is the exception count"
+        }
+      ],
+      "antiPatterns": [
+        "Tracking that requires an account",
+        "'Out for delivery' with no time window and no map",
+        "Exceptions buried in a tab behind the happy path",
+        "A dense dispatcher table shipped unchanged to the driver's phone",
+        "Amber used decoratively until it stops meaning anything"
+      ],
+      "severity": "high",
+      "pages": {
+        "dashboard": "Exceptions first, then in-transit counts, then the map. Density over whitespace. Every row is actionable or it should not be a row."
+      }
     },
     {
-      "id": "hr-people",
-      "name": "HR / People / Recruiting",
-      "keywords": ["hr", "people", "recruiting", "hiring", "jobs", "employee", "onboarding", "talent", "payroll", "candidate", "careers"],
-      "pattern": "Hero + the people problem it solves + the flow + integrations + demo CTA",
-      "style": ["flat-modern", "illustrated"],
-      "palette": "people-plum",
-      "fonts": "outfit-figtree",
-      "colorMood": "Warm plum with a teal that keeps it professional — softer than enterprise, still credible",
-      "typeMood": "Human and approachable; this product is about people",
-      "effects": ["gentle transitions", "clear progress through multi-step flows"],
-      "decisionRules": [
-        { "if": "candidates use it", "then": "the applicant is a user with no loyalty and no patience — a 40-field application after a CV upload is why your funnel leaks. Parse the CV or don't ask" },
-        { "if": "handling employee data", "then": "it is sensitive PII; no third-party analytics on those pages, and be explicit about who can see what" },
-        { "if": "any automated screening", "then": "say so plainly — candidates have a right to know, and increasingly a legal one (NYC LL144, the EU AI Act)" },
-        { "if": "onboarding flow", "then": "show progress and let people save and resume; day one is stressful enough" }
+      "id": "hr",
+      "name": "HR / People",
+      "keywords": [
+        "hr",
+        "people",
+        "payroll",
+        "recruiting",
+        "hiring",
+        "employee",
+        "onboarding",
+        "benefits",
+        "talent",
+        "ats",
+        "hris",
+        "leave",
+        "performance",
+        "workforce",
+        "staff",
+        "candidate",
+        "salary",
+        "holiday"
       ],
-      "antiPatterns": ["Re-typing a CV that was just uploaded", "A candidate portal that never says what happened", "Undisclosed algorithmic screening", "Ghosting built into the product's default state"],
+      "pattern": "Employee home with the 3 things they came for (book leave, payslip, who's out) + manager approvals + admin console + directory. Two user classes, two designs",
+      "style": [
+        "material",
+        "illustrated"
+      ],
+      "palette": "people-plum",
+      "fonts": "poppins-dm-sans",
+      "colorMood": "Warm plum with a teal that keeps it professional — softer than corporate blue, which matters when the screen is about someone's salary",
+      "typeMood": "Clean geometric modernism — friendly enough to book a holiday in, plain enough to read a payslip in",
+      "effects": [
+        "approval actions are two-step and reversible — an accidental leave rejection is a human conversation",
+        "illustration in empty states and onboarding only, never near a salary figure",
+        "payslip and contract render as documents, not as cards",
+        "dates always with the weekday — 'Fri 12 Sep', because leave is planned in weekdays"
+      ],
+      "decisionRules": [
+        {
+          "if": "the screen shows salary, performance, or termination",
+          "then": "no illustration, no mascot, no plum warmth — a character next to a redundancy notice is the single most-reported design failure in this category. Switch to a plain, document-like surface"
+        },
+        {
+          "if": "the user is an employee rather than an HR admin",
+          "then": "they visit four times a year and they want one thing — do not ship them the admin console's information architecture. Book leave, view payslip, find a colleague. That is the whole product to 95% of the seats"
+        },
+        {
+          "if": "recruiting / ATS",
+          "then": "the candidate is a user with no account, no training and no obligation — a 40-field application form is why your funnel is broken, and rejection emails are a design surface you are currently ignoring"
+        },
+        {
+          "if": "the org adopts only half of Material",
+          "then": "do not adopt it at all — partial Material reads as broken Material, and this is a category where 'broken' reads as 'my payroll data is unsafe'"
+        }
+      ],
+      "antiPatterns": [
+        "A confetti animation on 'Your leave was approved' next to one on 'Your role is at risk'",
+        "Cheerful illustration on a payslip",
+        "An employee handbook as a 90-page PDF",
+        "Performance review UI that makes the rating easier than the comment",
+        "Making an employee learn the HR admin's mental model to find their own contract"
+      ],
       "severity": "high"
     },
     {
       "id": "marketplace",
-      "name": "Marketplace / Two-sided",
-      "keywords": ["marketplace", "two-sided", "platform", "sellers", "buyers", "listings", "vendors", "gig", "peer-to-peer", "classifieds"],
-      "pattern": "Search + listings + a seller profile + reviews + a transaction flow",
-      "style": ["flat-modern", "photographic"],
-      "palette": "bazaar-teal",
-      "fonts": "inter-tight-inter",
-      "colorMood": "Deep teal for the platform, a warm accent for the transaction — the platform recedes, the listings pop",
-      "typeMood": "Neutral by design; the sellers bring the personality",
-      "effects": ["fast filtering", "trust badges that are real", "clear seller identity"],
-      "decisionRules": [
-        { "if": "two sides", "then": "you have two products with opposite needs — the buyer wants a filter, the seller wants a dashboard. One homepage cannot serve both; route them at the door" },
-        { "if": "trust between strangers", "then": "reviews, verification and dispute routes are the product, not features. The marketplace sells trust; the listings are just inventory" },
-        { "if": "cold start", "then": "design the empty state as the primary state — a marketplace with 6 listings must not look like a marketplace with 6 listings" },
-        { "if": "taking a fee", "then": "state it plainly to both sides; hidden take-rates are how marketplaces get disintermediated" }
+      "name": "Marketplace",
+      "keywords": [
+        "marketplace",
+        "listings",
+        "classifieds",
+        "two-sided",
+        "seller",
+        "buyer",
+        "auction",
+        "vendor",
+        "peer to peer",
+        "resale",
+        "bidding",
+        "trade",
+        "platform",
+        "storefront",
+        "gig",
+        "secondhand"
       ],
-      "antiPatterns": ["One homepage trying to serve buyers and sellers", "Fake review counts", "An empty state that exposes the cold-start problem", "Hidden fees revealed at checkout"],
+      "pattern": "Search + category entry + listing grid with photo, price, seller rating + listing page with seller trust + message/buy + separate seller dashboard. Two products in one skin",
+      "style": [
+        "flat-modern",
+        "photographic"
+      ],
+      "palette": "bazaar-teal",
+      "fonts": "poppins-dm-sans",
+      "colorMood": "Deep teal for the platform, tangerine for the transaction — the color tells you whose surface you are on",
+      "typeMood": "Plain and fast — the seller's photograph and the price are the design; the type just gets out of the way",
+      "effects": [
+        "seller-supplied photos normalised to one aspect ratio with letterboxing, never cropped through the item",
+        "price and shipping resolve on the tile, not on the listing page",
+        "saved searches notify — the returning buyer is the whole retention model",
+        "message thread keeps the listing pinned in context"
+      ],
+      "decisionRules": [
+        {
+          "if": "the marketplace is genuinely two-sided",
+          "then": "buyer and seller surfaces must be visually distinguishable — teal for browse, tangerine for transact. A seller who cannot tell whether they are looking at their listing or a buyer's view will mis-price, and will blame you"
+        },
+        {
+          "if": "trust is the actual product (it is)",
+          "then": "the seller's rating, join date, response rate and dispute path are load-bearing UI, not a badge — a beautiful listing grid on top of an unverifiable seller is a fraud funnel with good typography"
+        },
+        {
+          "if": "listings are long lists of like items",
+          "then": "no bento-grid — a grid of unequal cards promises the reader they can look in any order, which is false for a ranked result set. It is a list; design a list"
+        },
+        {
+          "if": "photography is seller-supplied",
+          "then": "photographic style is not available in its pure form — it assumes art direction you do not control. Enforce a minimum resolution and a uniform tile, or the grid will look like a scam next to any professional listing"
+        }
+      ],
+      "antiPatterns": [
+        "Shipping cost revealed only after the buyer commits",
+        "A seller dashboard that is the buyer UI with extra tabs",
+        "Ratings with no volume — '5.0' from one review shown as five stars",
+        "Contact-seller gated behind an account before the price is visible",
+        "A 'featured' rail that is indistinguishable from organic results"
+      ],
       "severity": "high"
     },
     {
       "id": "dating",
       "name": "Dating / Relationships",
-      "keywords": ["dating", "relationships", "match", "romance", "singles", "meet", "swipe", "profile", "connection"],
-      "pattern": "Profile-first + discovery + matching + chat + safety centre",
-      "style": ["photographic", "motion-driven"],
-      "palette": "heartline-rose",
-      "fonts": "poppins-dm-sans",
-      "colorMood": "Flushed but not tacky — rose and peach with a violet undertone",
-      "typeMood": "Warm and personable; large enough to read one-handed on a couch",
-      "effects": ["card gestures with an undo", "smooth match reveal", "typing indicators"],
-      "decisionRules": [
-        { "if": "strangers meet", "then": "safety is the core flow: block, report, photo verification, and a visible route to help. Ship them with v1 — this is the one category where a UX gap becomes a physical-safety incident" },
-        { "if": "location is used", "then": "never expose precise location; distance bands only. Trilateration from an exact distance is a documented real-world attack on this category" },
-        { "if": "any gesture is destructive", "then": "an undo, always — an accidental swipe is irreversible loss in a product built on chance" },
-        { "if": "monetizing", "then": "don't sell out of a problem you created; paywalling replies to a message someone already received is extortion-shaped" }
+      "keywords": [
+        "dating",
+        "match",
+        "matchmaking",
+        "romance",
+        "love",
+        "singles",
+        "swipe",
+        "relationship",
+        "meet",
+        "profile",
+        "chat",
+        "connect",
+        "partner",
+        "hookup",
+        "couples"
       ],
-      "antiPatterns": ["Precise distance exposure", "No undo on a swipe", "Safety tools buried in settings", "Paywalling a received message"],
+      "pattern": "Photo-first profile card + a decision + a match + a conversation. Everything else is settings. The product is one screen repeated",
+      "style": [
+        "gradient-mesh",
+        "photographic"
+      ],
+      "palette": "heartline-rose",
+      "fonts": "outfit-figtree",
+      "colorMood": "Rose and peach with a violet undertow — flushed but not tacky, warmth without a heart-shaped cursor",
+      "typeMood": "Approachable modern consumer — the profile photo is the design, the type is the caption",
+      "effects": [
+        "photos at a real aspect ratio, never cropped through a face",
+        "the block and report action is reachable from every surface a person appears on",
+        "no read receipts by default — asymmetric anxiety is a design decision",
+        "mesh behind the empty state and the match moment only"
+      ],
+      "decisionRules": [
+        {
+          "if": "the product connects strangers in physical space (it does)",
+          "then": "safety is the primary design surface, not a settings sub-page — block, report, photo verification, location fuzzing and a share-my-date path ship at launch or the product ships a harm at launch"
+        },
+        {
+          "if": "monetisation is engagement-based",
+          "then": "you have designed a conflict of interest into the product — a successful match is a churned user. Decide it consciously, because the dark patterns in this category (paywalled likes, artificial scarcity, ghost profiles) are now regulatory and journalistic targets"
+        },
+        {
+          "if": "the surface is a conversation or a profile detail",
+          "then": "gradient-mesh dies — a moving color field under a stranger's bio is unreadable, and this is the text that decides whether someone feels safe meeting them"
+        },
+        {
+          "if": "the user base includes LGBTQ+ users in hostile jurisdictions",
+          "then": "the design carries a threat model — no exact distance, no outing through a notification, discreet-mode as a first-class feature. This is not an edge case; it is a documented arrest vector"
+        }
+      ],
+      "antiPatterns": [
+        "Paywalling the ability to see who liked you",
+        "Distance displayed precisely enough to triangulate",
+        "A report flow that takes more taps than a like",
+        "Fake profiles or 'someone liked you' notifications with nobody behind them",
+        "Read receipts on by default"
+      ],
       "severity": "critical"
     },
     {
       "id": "sports",
       "name": "Sports / Live Scores",
-      "keywords": ["sports", "score", "team", "league", "match", "fixture", "live", "stadium", "fan", "tournament", "football"],
-      "pattern": "Live scores + fixtures + standings + team pages + news",
-      "style": ["data-dense", "photographic"],
+      "keywords": [
+        "sports",
+        "league",
+        "scores",
+        "team",
+        "live",
+        "fixtures",
+        "fantasy",
+        "match",
+        "standings",
+        "stadium",
+        "football",
+        "soccer",
+        "basketball",
+        "tournament",
+        "results",
+        "club",
+        "season",
+        "athlete"
+      ],
+      "pattern": "Live scores strip pinned + today's fixtures + the match centre (score, timeline, lineups, stats) + standings table + team pages. Speed and the number, nothing else",
+      "style": [
+        "data-dense",
+        "high-contrast-a11y"
+      ],
       "palette": "stadium-scarlet",
       "fonts": "anton-barlow",
-      "colorMood": "Kickoff — scarlet on midnight with a floodlight yellow",
-      "typeMood": "Condensed and bold; a score must be readable from across a room",
-      "effects": ["live-updating scores", "goal/event flash", "clear match state"],
-      "decisionRules": [
-        { "if": "live scores", "then": "the score is the largest thing on the screen and updates without a refresh — announce updates via aria-live or screen-reader users get a silent page" },
-        { "if": "a fan is checking in", "then": "they want one number in under two seconds; every interstitial between them and the score is a lost user" },
-        { "if": "results may spoil", "then": "offer a spoiler-free mode — a highlights page that shows the score above the video is a product that hates its users" }
+      "colorMood": "Scarlet on midnight with a floodlight yellow — built for big numbers read from the back of the room",
+      "typeMood": "Stadium volume — ultra-condensed caps hitting like a scoreboard; the score is always the largest thing on the screen",
+      "effects": [
+        "score updates push without a refresh and without moving anything else on the page",
+        "a goal announces via aria-live — blind fans follow live scores too",
+        "tabular-nums on every score, time and table position",
+        "no celebration animation over a live score — someone is checking it in a meeting"
       ],
-      "antiPatterns": ["The score below an ad", "Live updates that screen readers never hear", "Scores spoiled above the highlights video", "An interstitial before a two-second check"],
-      "severity": "medium"
-    },
-    {
-      "id": "photography",
-      "name": "Photography / Visual",
-      "keywords": ["photography", "photo", "gallery", "visual", "images", "photographer", "print", "shoot", "portfolio-photo", "darkroom"],
-      "pattern": "Full-bleed gallery + series/collections + about + licensing or booking",
-      "style": ["photographic", "monochrome"],
-      "palette": "darkroom-amber",
-      "fonts": "instrument-serif-instrument-sans",
-      "colorMood": "Safelight — neutral greys calibrated not to lie about a photograph",
-      "typeMood": "Nearly invisible; the interface must not tint the work",
-      "effects": ["full-bleed imagery", "lightbox with keyboard nav", "considered, slow reveals"],
       "decisionRules": [
-        { "if": "the work is the product", "then": "the UI must be chromatically neutral — a coloured background shifts the perceived colour of every photo on it. This is why galleries are grey" },
-        { "if": "high-resolution images", "then": "AVIF plus responsive srcset, and a real LCP budget — photographers ship the slowest sites on the web and it costs them work" },
-        { "if": "licensing matters", "then": "make the terms clear and the enquiry trivial; right-click blocking is theatre that only annoys clients" }
+        {
+          "if": "the user is checking a live score",
+          "then": "they gave you 2 seconds and one glance — the score is the page. Anything above it (a cookie banner, an interstitial, a 'download our app' rail) is the design failing at its only job"
+        },
+        {
+          "if": "the product covers a sport with a betting market",
+          "then": "the odds surface must be visually separable from the editorial surface, with the regulator's disclosure at body size — and never in a tooltip. This is enforcement territory in the UK, EU and US alike"
+        },
+        {
+          "if": "match centre / stats",
+          "then": "density is right and high-contrast-a11y's 18px advice does not apply to the stats table — but it absolutely applies to the score itself, which is read at arm's length in a pub"
+        },
+        {
+          "if": "a fan is on a stadium wifi that does not work",
+          "then": "the score must render server-side and the page must survive a dead socket — a live product that shows a spinner during the goal is the one moment it had to work"
+        }
       ],
-      "antiPatterns": ["A coloured or branded background behind the photographs", "Right-click disabling", "12MB JPEGs", "A watermark across the middle of the frame"],
-      "severity": "medium"
-    },
-    {
-      "id": "minimal-personal",
-      "name": "Minimal / Personal Site",
-      "keywords": ["minimal", "personal", "simple", "blog-personal", "homepage", "links", "about-me", "microsite", "clean"],
-      "pattern": "A short intro + links + writing + contact. That's it.",
-      "style": ["swiss-minimal", "typographic"],
-      "palette": "minimal-mono",
-      "fonts": "geist-inter",
-      "colorMood": "Nothing but greys and one blue that appears only when you can click it",
-      "typeMood": "One typeface, three sizes, done well",
-      "effects": ["none — restraint is the entire aesthetic"],
-      "decisionRules": [
-        { "if": "minimal", "then": "minimal means fewer elements, not smaller and greyer ones. Thin grey text on white is not minimalism, it is an accessibility failure wearing minimalism's clothes" },
-        { "if": "it is a personal site", "then": "ship it — a plain page that exists beats a beautiful one that never launches" }
+      "antiPatterns": [
+        "An interstitial ad over a live score",
+        "Scores that only update on a manual refresh",
+        "A standings table that scrolls horizontally on mobile",
+        "Autoplaying highlight video that spoils the score above it",
+        "Scarlet on midnight at 3:1 for the actual score"
       ],
-      "antiPatterns": ["#999 body text mistaken for taste", "A loading animation on a 40KB page", "So minimal that the navigation is a mystery"],
-      "severity": "low"
-    },
-    {
-      "id": "brutalist-experimental",
-      "name": "Brutalist / Experimental",
-      "keywords": ["brutalist", "experimental", "raw", "art", "weird", "anti-design", "avant-garde", "unconventional", "zine"],
-      "pattern": "Deliberately broken conventions — but one clear path through",
-      "style": ["brutalism", "typographic"],
-      "palette": "brutalist-concrete",
-      "fonts": "archivo-black-archivo",
-      "colorMood": "Unfinished on purpose — raw concrete, hard black rules and a single alarm colour",
-      "typeMood": "System fonts, enormous, unapologetic",
-      "effects": ["no easing — instant states", "visible structure", "raw HTML energy"],
-      "decisionRules": [
-        { "if": "breaking convention", "then": "break the aesthetic, never the access — brutalism is famously high-contrast and semantic, which is exactly why it works. Unusable is not a style, it is a bug with a manifesto" },
-        { "if": "an art project", "then": "still ship keyboard navigation and focus states; the people who most appreciate this aesthetic will be the first to notice you skipped them" }
-      ],
-      "antiPatterns": ["Illegibility defended as intent", "Removed focus states", "A layout that traps a keyboard user", "Brutalism as a costume on a bank"],
-      "severity": "low"
-    },
-    {
-      "id": "terminal-cli-tool",
-      "name": "Terminal / CLI Tool",
-      "keywords": ["terminal", "cli", "command-line", "shell", "console", "tui", "bash", "hacker", "unix", "prompt"],
-      "pattern": "Install command + an asciinema demo + flags reference + GitHub",
-      "style": ["terminal-cli", "monochrome"],
-      "palette": "terminal-phosphor",
-      "fonts": "space-mono-ibm-plex-mono",
-      "colorMood": "A CRT that never got switched off — phosphor green on near-black",
-      "typeMood": "Mono throughout; the aesthetic is the product's own output",
-      "effects": ["a real terminal recording, not a fake typing animation", "copyable everything"],
-      "decisionRules": [
-        { "if": "showing the CLI", "then": "use a real asciinema recording — a faked typing animation is instantly obvious to this audience and reads as a lie about the product" },
-        { "if": "phosphor-on-black", "then": "check the contrast for real; classic terminal green on black often lands near 3:1 and the aesthetic is not worth the readability" },
-        { "if": "there are flags", "then": "a searchable reference beats a prose tour — nobody reads a CLI site top to bottom" }
-      ],
-      "antiPatterns": ["A fake typing animation", "Green on black at 2.5:1", "Screenshots of terminal output instead of copyable text", "A blinking cursor next to body copy"],
-      "severity": "low"
-    },
-    {
-      "id": "docs-site",
-      "name": "Documentation Site",
-      "keywords": ["docs", "documentation", "reference", "guide", "manual", "api-docs", "handbook", "wiki", "knowledge-base"],
-      "pattern": "Persistent sidebar + the content column + an on-page table of contents + search",
-      "style": ["swiss-minimal", "data-dense"],
-      "palette": "devtool-slate",
-      "fonts": "ibm-plex-serif-sans",
-      "colorMood": "Quiet and neutral — the code blocks are the only colour",
-      "typeMood": "A real reading size for prose, mono for anything executable",
-      "effects": ["copy button on every code block", "anchor links on headings", "search that works"],
-      "decisionRules": [
-        { "if": "documentation", "then": "search is the primary navigation — people arrive from Google mid-task, land deep, and need to know where they are. Breadcrumbs and a visible sidebar position are not decoration" },
-        { "if": "versioned", "then": "the version switcher is prominent and the URL carries the version — docs showing v3 to someone on v2 is worse than no docs" },
-        { "if": "code examples", "then": "copyable, complete, and actually runnable; a snippet with three elided imports wastes more time than it saves" }
-      ],
-      "antiPatterns": ["A docs site with no search", "Truncated examples with '...'", "No indication of which version is being read", "Prose where a table belongs"],
       "severity": "high"
     },
     {
-      "id": "sustainability",
-      "name": "Sustainability / Organic",
-      "keywords": ["sustainability", "organic", "eco", "green", "climate", "environment", "natural", "sustainable", "farm", "ethical"],
-      "pattern": "Story hero + the practice + proof/certification + product or action CTA",
-      "style": ["organic-earthy", "illustrated"],
-      "palette": "earthy-organic",
-      "fonts": "bitter-cabin",
-      "colorMood": "Clay, moss and oat — pigments that look mixed rather than picked",
-      "typeMood": "Warm and grounded; a slab serif reads as honest here",
-      "effects": ["natural texture", "hand-drawn accents", "gentle reveals"],
-      "decisionRules": [
-        { "if": "making an environmental claim", "then": "cite the certification or the number — unsubstantiated green claims are now regulated (the EU Green Claims Directive) and readers are primed to disbelieve them" },
-        { "if": "the brand is about restraint", "then": "the site should be light — a 5MB page about carbon footprint is an own goal that reviewers will notice" }
+      "id": "photography",
+      "name": "Photography",
+      "keywords": [
+        "photography",
+        "photographer",
+        "photo",
+        "photos",
+        "gallery",
+        "portfolio",
+        "camera",
+        "images",
+        "prints",
+        "shoot",
+        "darkroom",
+        "visual",
+        "lightroom",
+        "exhibition",
+        "wedding photographer",
+        "editorial photography",
+        "image"
       ],
-      "antiPatterns": ["Green colour as the entire sustainability claim", "Vague 'eco-friendly' with no substantiation", "A heavy, energy-hungry site about energy"],
+      "pattern": "One image, full-bleed, no chrome + series index + the series as a sequence + about + prints or enquiries. Navigation is a word in a corner",
+      "style": [
+        "monochrome",
+        "photographic"
+      ],
+      "palette": "darkroom-amber",
+      "fonts": "bodoni-moda-karla",
+      "colorMood": "Safelight — neutral greys calibrated not to lie about a photograph, with amber as the only chroma in the chrome",
+      "typeMood": "Art direction confidence — extreme contrast in the type so the photograph never has to compete with it",
+      "effects": [
+        "images at full quality with a progressive load — a photographer's site that ships a compressed JPEG has already failed",
+        "cross-fade between frames, 400ms, no slide",
+        "keyboard arrows navigate the series",
+        "zero UI over the image — the caption lives below it"
+      ],
+      "decisionRules": [
+        {
+          "if": "the work is colour photography",
+          "then": "the chrome must be neutral grey and nothing else — any brand hue in the frame shifts the perceived colour of the work. This is the entire reason darkroom-amber is calibrated the way it is, and why monochrome is the right style rather than a stylistic preference"
+        },
+        {
+          "if": "the site sells prints",
+          "then": "it becomes an e-commerce product wearing a gallery's clothes — size, paper, edition and shipping are the decision, and monochrome gives up the channel that says 'out of stock'. Bring a real status color into the shop path only"
+        },
+        {
+          "if": "the audience is art directors hiring",
+          "then": "twelve images beat two hundred — and the series must be sequenced, because sequencing is the skill being assessed. A masonry wall of everything says you cannot edit"
+        },
+        {
+          "if": "image theft is a concern",
+          "then": "right-click blockers do not work and read as amateur — watermark deliberately or accept it; the design decision is which, not whether to fight the browser"
+        }
+      ],
+      "antiPatterns": [
+        "A splash page with an 'Enter' link",
+        "Right-click disabled",
+        "Masonry grid of 200 unedited frames",
+        "Music on load",
+        "Any brand color inside the frame of a colour photograph"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "personal-site",
+      "name": "Minimal / Personal Site",
+      "keywords": [
+        "personal",
+        "minimal",
+        "simple",
+        "homepage",
+        "about",
+        "resume",
+        "cv",
+        "bio",
+        "indie",
+        "blog",
+        "writer",
+        "me",
+        "linktree",
+        "digital garden",
+        "newsletter"
+      ],
+      "pattern": "Name + one line of who you are + what you are doing now + writing + links. One page, no nav, no hero",
+      "style": [
+        "swiss-minimal",
+        "typographic"
+      ],
+      "palette": "minimal-mono",
+      "fonts": "playfair-display-source-sans-3",
+      "colorMood": "Nothing but greys and one blue that only appears when you can click it — the content has to carry the design",
+      "typeMood": "Composed and literate — high-contrast elegance that still behaves itself on an about page",
+      "effects": [
+        "no animation at all — a personal site that fades in reads as a template",
+        "links underlined, because that is what a link is",
+        "the whole page is one request",
+        "dark mode from prefers-color-scheme, with no toggle to build"
+      ],
+      "decisionRules": [
+        {
+          "if": "you are not going to maintain it (you are not)",
+          "then": "one static page beats a blog with three posts from 2023 — a 'Latest writing' section with a stale date actively costs credibility. Ship the page, not the CMS"
+        },
+        {
+          "if": "the site exists to get you hired or known",
+          "then": "'what I am doing now' and 'what I have made' are the only two sections that do work — an about page of adjectives converts nobody"
+        },
+        {
+          "if": "there is real writing here",
+          "then": "the measure is the whole design — 65-75 characters, 1.6 line height, and a serif is a legitimate choice for the body. Everything else is decoration you will regret"
+        },
+        {
+          "if": "you want personality rather than restraint",
+          "then": "do not use swiss-minimal — it hides personality by construction, and a personal site whose only asset is personality is the exact case its own documentation excludes. Go brutalist or illustrated and mean it"
+        }
+      ],
+      "antiPatterns": [
+        "A splash animation of your own name",
+        "A blog with two posts and a 'Read more' link to nothing",
+        "Skill bars claiming 87% CSS",
+        "A contact form on a personal site instead of an email address",
+        "Reinventing the underline as a 1px hover animation nobody recognises as a link"
+      ],
+      "severity": "low"
+    },
+    {
+      "id": "experimental",
+      "name": "Brutalist / Experimental",
+      "keywords": [
+        "brutalist",
+        "brutalism",
+        "experimental",
+        "art",
+        "zine",
+        "raw",
+        "unpolished",
+        "weird",
+        "anti-design",
+        "manifesto",
+        "statement",
+        "culture",
+        "installation",
+        "avant garde",
+        "gallery site"
+      ],
+      "pattern": "There is no pattern — that is the point. But: the thing itself, immediately, with no preamble; navigation as raw text; and an exit to something real",
+      "style": [
+        "brutalism",
+        "neo-brutalism"
+      ],
+      "palette": "brutalist-concrete",
+      "fonts": "archivo-black-archivo",
+      "colorMood": "Raw concrete, hard black rules and a warning yellow — unfinished on purpose, and the 'on purpose' is the entire load-bearing claim",
+      "typeMood": "Loud, flat and undesigned on purpose — type as a blunt instrument",
+      "effects": [
+        "default browser focus rings, kept deliberately",
+        "system fonts where it serves the joke",
+        "no transitions — state changes are instant and jarring by design",
+        "the page weighs 30KB and that is part of the argument"
+      ],
+      "decisionRules": [
+        {
+          "if": "the audience did not opt into the joke",
+          "then": "brutalism reads as broken, not as intentional — this style requires a reader who recognises the reference. Outside that audience you have not made a statement, you have made a bug report"
+        },
+        {
+          "if": "there is a checkout, a signup, or anything asking for trust",
+          "then": "the raw aesthetic stops at that boundary — friction reads as broken and kills conversion, and 'products asking to be trusted with money or health data' is this style's own explicit exclusion"
+        },
+        {
+          "if": "accessibility",
+          "then": "brutalism is not an excuse — default focus rings and semantic HTML are actually easier here than in a designed system. A brutalist site failing WCAG is just a badly built site with a good story"
+        },
+        {
+          "if": "the client is paying for this",
+          "then": "get the reference agreed in writing before you build — this is the style most likely to be received as 'unfinished' by the one stakeholder who was not in the kickoff"
+        }
+      ],
+      "antiPatterns": [
+        "Brutalism as an excuse for an unusable navigation",
+        "Comic Sans as the entire idea",
+        "A manifesto with no work behind it",
+        "Copying a 2018 brutalist template — the whole premise was not doing that",
+        "Anti-design that took three weeks and looks like it took three weeks"
+      ],
+      "severity": "low"
+    },
+    {
+      "id": "cli-tool",
+      "name": "Terminal / CLI Tool",
+      "keywords": [
+        "terminal",
+        "cli",
+        "command line",
+        "shell",
+        "console",
+        "tui",
+        "bash",
+        "hacker",
+        "logs",
+        "ssh",
+        "binary",
+        "tool",
+        "zsh",
+        "log viewer",
+        "status page",
+        "unix"
+      ],
+      "pattern": "The install command, copyable, first + an asciinema of the tool doing the thing + flags/usage + why it beats the alternative + a link to the repo. Under 800px tall",
+      "style": [
+        "terminal-cli",
+        "brutalism"
+      ],
+      "palette": "terminal-phosphor",
+      "fonts": "space-mono-ibm-plex-mono",
+      "colorMood": "A CRT that never got switched off — phosphor green on near-black, with amber for warnings and nothing else",
+      "typeMood": "Everything is monospaced and that is the entire aesthetic",
+      "effects": [
+        "asciinema/SVG cast rather than a video — it is text, it should stay text and stay copyable",
+        "install command has a copy button and shows the checksum",
+        "no scroll animation; the reader is in a terminal in the next window",
+        "the page works with JS off"
+      ],
+      "decisionRules": [
+        {
+          "if": "there is prose (concepts, guides, rationale)",
+          "then": "monospace stops at the code block — it measurably slows reading, so the explanation goes to a sans and only the commands stay in the character grid"
+        },
+        {
+          "if": "the page is aimed at a buyer rather than a user",
+          "then": "terminal-cli reads as an error screen to a non-technical audience — build them a different page entirely rather than diluting this one"
+        },
+        {
+          "if": "mobile traffic matters",
+          "then": "a character grid does not reflow — accept that this page is a desktop artefact, keep the install command as the one thing that works at 375px, and do not try to make an 80-column TUI responsive"
+        },
+        {
+          "if": "the install is 'curl | sh'",
+          "then": "show the script's URL and the checksum next to it — a piped shell script asking for blind trust is the one design decision this audience will actually publicly criticise"
+        }
+      ],
+      "antiPatterns": [
+        "A green-on-black marketing site for a tool that is not a terminal tool",
+        "A video of a terminal instead of copyable text",
+        "'npm install' with no mention of the actual size or dependency count",
+        "A landing page taller than the tool's own README",
+        "Fake typing animations in the demo"
+      ],
+      "severity": "low"
+    },
+    {
+      "id": "documentation",
+      "name": "Documentation Site",
+      "keywords": [
+        "documentation",
+        "docs",
+        "reference",
+        "guide",
+        "manual",
+        "handbook",
+        "tutorial",
+        "readme",
+        "developer docs",
+        "api reference",
+        "technical writing",
+        "knowledge base",
+        "help center",
+        "changelog"
+      ],
+      "pattern": "Search (the real navigation) + three-column: nav rail, content at a fixed measure, on-this-page rail + quickstart before concepts + copyable examples throughout + versioned",
+      "style": [
+        "swiss-minimal",
+        "terminal-cli"
+      ],
+      "palette": "minimal-mono",
+      "fonts": "jetbrains-mono-ibm-plex-sans",
+      "colorMood": "Greys and one blue that only appears when you can click it — the safest possible base when the content must carry everything",
+      "typeMood": "Headlines set in code, prose set in a sans — for a reader who has three tabs open and 40 seconds",
+      "effects": [
+        "search is keyboard-first (Cmd+K) and it is the primary navigation, not the sidebar",
+        "every code block is copyable and language-tabbed, with the tab persisting across pages",
+        "anchor links on every heading, because this page will be linked from a Slack thread",
+        "no scroll-triggered anything — Ctrl+F must find everything on the page"
+      ],
+      "decisionRules": [
+        {
+          "if": "the reader arrived from Google with an error message",
+          "then": "they are not reading your guide — they are Ctrl+F-ing for a string. Scroll-reveal, tabs that hide content, and accordions all hide text from Ctrl+F and from the crawler that sent them. Nothing may be collapsed by default"
+        },
+        {
+          "if": "the product is versioned",
+          "then": "the version selector is in the header and the URL, and the page states which version it is — docs that silently show latest to someone on v2 generate the support load the docs existed to prevent"
+        },
+        {
+          "if": "there are conceptual guides and API reference",
+          "then": "they are different products in one skin — the guide is prose at a 70-character measure, the reference is a table. Do not set the reference in prose or the guide in a table"
+        },
+        {
+          "if": "design distinction is being proposed",
+          "then": "resist it — docs are the one category where being identical to every other docs site is a feature. The reader's muscle memory is worth more than your brand expression"
+        }
+      ],
+      "antiPatterns": [
+        "Search that only matches page titles",
+        "A quickstart that requires reading the concepts first",
+        "Code examples that are not runnable and not copyable",
+        "Content behind tabs and accordions where Ctrl+F cannot reach it",
+        "No indication of which version you are reading"
+      ],
       "severity": "medium"
     },
     {
-      "id": "accessibility-first",
-      "name": "Accessibility-first Product",
-      "keywords": ["accessibility", "a11y", "inclusive", "assistive", "wcag", "disability", "screen-reader", "accessible", "aaa"],
-      "pattern": "Plain hero + the tasks + settings that genuinely adapt the interface",
-      "style": ["high-contrast-a11y", "swiss-minimal"],
+      "id": "sustainable-brand",
+      "name": "Sustainable / Artisan Brand",
+      "keywords": [
+        "sustainable",
+        "organic",
+        "artisan",
+        "eco",
+        "craft",
+        "handmade",
+        "ethical",
+        "natural",
+        "ceramics",
+        "slow",
+        "zero waste",
+        "farm",
+        "maker",
+        "climate",
+        "regenerative",
+        "provenance",
+        "local"
+      ],
+      "pattern": "One photograph of the material or the hands making it + the claim + how it is made + provenance and materials + the products + the impact numbers with a source + shop",
+      "style": [
+        "organic-earthy",
+        "editorial-magazine"
+      ],
+      "palette": "earthy-organic",
+      "fonts": "fraunces-source-serif-4",
+      "colorMood": "Clay, moss and oat — pigments that look mixed rather than picked; nothing in the palette can shout, and that is the point",
+      "typeMood": "An old soul with a modern printing press — warm, slightly strange, and built for people who actually read the provenance",
+      "effects": [
+        "photography of process and material, not of a product on white",
+        "no motion — slow is the brand claim and a parallax contradicts it",
+        "provenance stated inline as a fact, not as a badge",
+        "texture from warm tone shifts, never from a noise overlay"
+      ],
+      "decisionRules": [
+        {
+          "if": "a sustainability claim is made",
+          "then": "it needs a number, a scope and a source at the point of the claim — 'eco-friendly' with no methodology is greenwashing, and it is now actively enforced (EU Green Claims, CMA, FTC). The design decision is where the evidence renders, not whether to include it"
+        },
+        {
+          "if": "this is also a shop",
+          "then": "organic-earthy cannot signal 'out of stock', 'payment failed' or 'order delayed' — its own rule is that muted pigments give you no contrast steps for urgency. Bring one real alert token into the commerce path only"
+        },
+        {
+          "if": "the products are genuinely handmade",
+          "then": "variation is the selling point, so photograph the variation — a uniform grid of identical shots contradicts the entire claim and reads as drop-shipped"
+        },
+        {
+          "if": "the brand is a large company with a sustainable line",
+          "then": "earthy pigments on a mass-market product is the visual grammar of greenwashing and the audience reads it instantly — earn it with the supply chain page or do not reach for the clay"
+        }
+      ],
+      "antiPatterns": [
+        "A green leaf icon as the entire sustainability story",
+        "'Eco-friendly' with no number, no scope and no source",
+        "Kraft-paper texture as a substitute for an actual supply chain",
+        "Products shot on white in a brand built on material and process",
+        "Carbon-offset badges linking to nothing"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "accessibility",
+      "name": "Accessibility-First Product",
+      "keywords": [
+        "accessible",
+        "accessibility",
+        "a11y",
+        "wcag",
+        "inclusive",
+        "low vision",
+        "screen reader",
+        "compliance",
+        "aaa",
+        "legible",
+        "assistive",
+        "disability",
+        "ada",
+        "eaa",
+        "section 508",
+        "high contrast"
+      ],
+      "pattern": "Plain hero, one claim + the task, immediately + linear content at a real measure + forms one question at a time + a genuine accessibility statement with a contact and a known-issues list",
+      "style": [
+        "high-contrast-a11y",
+        "swiss-minimal"
+      ],
       "palette": "high-contrast-accessible",
       "fonts": "lexend-atkinson-hyperlegible",
-      "colorMood": "Every pair pushed past AA and most of the way to AAA",
-      "typeMood": "Chosen for legibility above all — Atkinson Hyperlegible exists for exactly this",
-      "effects": ["none by default", "focus states that are impossible to miss"],
-      "decisionRules": [
-        { "if": "accessibility is the promise", "then": "AAA where it is achievable, and test with real assistive tech — shipping an a11y product that fails NVDA is the most embarrassing possible outcome" },
-        { "if": "offering adaptation settings", "then": "they must actually change the product, not just a font size — respect prefers-reduced-motion, prefers-contrast and forced-colors natively first" },
-        { "if": "any user", "then": "the keyboard path is the primary path, not the fallback" }
+      "colorMood": "Every pair pushed well past AA and most of the way to AAA — for when low vision, sunlight or a legal floor is the actual constraint",
+      "typeMood": "Designed so the reader never has to work — Atkinson Hyperlegible exists because letterform confusion is the failure mode, not font size",
+      "effects": [
+        "focus visible at 3:1 against both the component and the page, and never removed",
+        "prefers-reduced-motion honoured by removing the motion, not by shortening it",
+        "every state announced in text as well as color",
+        "the product works at 200% zoom and at 320px without horizontal scroll"
       ],
-      "antiPatterns": ["An accessibility overlay widget — they are widely condemned by disabled users and invite litigation", "Claiming compliance without an audit", "A settings panel that is itself inaccessible"],
+      "decisionRules": [
+        {
+          "if": "accessibility is being treated as a checklist to tick once",
+          "then": "stop — high-contrast-a11y is the floor under every other style in this database, not a box. A product that is 'the accessible one' while the rest of the range is not has described its own problem"
+        },
+        {
+          "if": "the user is an expert using this daily (a screen-reader power user)",
+          "then": "18px type and huge targets cost them rows and speed — they navigate by landmark and heading at 400 words per minute. Correct semantics beat big type for this user, and the two are constantly confused"
+        },
+        {
+          "if": "an automated audit passes",
+          "then": "you have cleared roughly 30% of the criteria — focus order, error recovery, and whether a task is completable by keyboard are not machine-detectable. Test with a real screen reader or the badge is decoration"
+        },
+        {
+          "if": "the brand wants aesthetic distinction",
+          "then": "this style spends its budget elsewhere on purpose — that is the trade. Spend the distinction on voice, layout and content instead of on contrast, which is not yours to trade"
+        }
+      ],
+      "antiPatterns": [
+        "An overlay widget that claims one-line compliance — they are demonstrably harmful and they are the leading cause of lawsuits, not the cure",
+        "Removing focus outlines because they are ugly",
+        "An accessibility statement with no contact, no date and no known issues",
+        "'Skip to content' that does not move focus",
+        "Color as the only carrier of an error, a status, or a required field"
+      ],
       "severity": "critical"
     }
   ]
