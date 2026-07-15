@@ -1,15 +1,21 @@
 # guardrails/ — keep the work honest and the codebase healthy
 
-The Guardian suite: guardrails that stop an agent from cutting corners, and analysis that keeps the
+The Guardian suite: disciplines that keep an agent from cutting corners, and analysis that keeps the
 codebase in good shape.
 
 **Current members**
-- `guardian` — blocks weakened/skipped tests and false "done" claims; flags scope creep and new deps.
-- `supplyguard` — blocks hallucinated, typosquatted, or vulnerable dependencies before they land.
+- `guardian` — verify before "done"; tests are sacred; stay in scope.
+- `supplyguard` — check a dependency exists, isn't vulnerable, and isn't a typosquat — before writing it down.
 - `testmedic` — detects flaky tests and root-causes the non-determinism (without weakening them).
+- `cap-tdd` — strict red-green-refactor as a discipline, with the excuses table and "delete means delete".
 - `debtradar` — ranks refactor targets by churn × complexity, so you fix what actually hurts.
 - `compactor` — context-compaction safety for long sessions (snapshot/restore, timing nudges).
-- `guardian-suite` — the switchboard to toggle the guardrails per-project or globally.
+- `guardian-suite` — the switchboard: which guardrails are standing, recorded in `.claude/master-claude.json`.
+
+> **These are disciplines, not interception.** They are Markdown the model reads and follows — nothing here can
+> block a tool call. A rule that must hold *every* time belongs in a `PreToolUse` hook or a `permissions.deny`
+> rule, installed deliberately by the developer. We say so plainly, because a guardrail you trust more than it
+> deserves is worse than no guardrail at all.
 
 **Brainstorm — what else belongs here** (great first contributions)
 - `secret-scanner` — block commits that add API keys / tokens / `.env` values.

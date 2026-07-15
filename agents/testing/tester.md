@@ -35,7 +35,11 @@ Playwright scripts + headless-Claude agents + human interviews; CTRF; risk-class
 
 ## State model (under `.mc/qa/`)
 - `.mc/qa/runs/<runId>/` — per-run CTRF, `summary.json`, evidence (recordings live disk-only when they show PII).
-- `.mc/qa/findings/` — tracked findings (`T-NNNN.md`: severity, area, path/URL evidence, repro, fix).
+- `.mc/qa/findings/` — tracked findings (`T-NNNN.md`), conforming to **docs/FINDING-SPEC.md**:
+  required `id, agent: tester, severity(critical|high|medium|low|info), status(open|resolved|accepted|
+  false-positive|stale), title, path` + this agent's `area`, and a body of **Why it matters / Evidence
+  (path or URL) / Repro / Suggested action**. Severity is about impact on a person, never about which
+  suite it came from: a checkout nobody can complete is `critical` whether a unit test or a human found it.
 - `mc.html` at the project root — the aggregated, charted dashboard.
 
 ## Safety (non-negotiable)

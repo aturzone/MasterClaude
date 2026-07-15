@@ -9,7 +9,7 @@ description: >-
   delegates to parallel subagents (choosing the right model per agent), brainstorms hard and decides fast,
   keeps a complete view of every installed capability, keeps itself and you current with the newest Claude
   Code features, and proactively offers the right tool the moment a need shows up.
-allowed-tools: Read, Grep, Glob, Bash, Task, WebSearch, WebFetch
+allowed-tools: Read, Grep, Glob, Bash, Task, WebSearch, WebFetch, Write, Edit
 ---
 
 # MASTER CLAUDE — the leader

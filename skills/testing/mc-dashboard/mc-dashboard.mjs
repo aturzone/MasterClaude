@@ -17,7 +17,17 @@ const readText = (p) => { try { return fs.readFileSync(p, 'utf8'); } catch { ret
 const readJSON = (p) => { try { return JSON.parse(fs.readFileSync(p, 'utf8')); } catch { return null; } };
 const ls = (d) => { try { return fs.readdirSync(d); } catch { return []; } };
 const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-const fm = (t, k) => { const m = t && t.match(new RegExp(`^${k}\\s*:\\s*(.+)$`, 'im')); return m ? m[1].trim().replace(/^["']|["']$/g, '') : ''; };
+// Frontmatter only ever lives between the leading --- fences. Scanning the whole file lets a
+// body line like "path: src/foo.ts" in a code sample win over the real field. See docs/FINDING-SPEC.md.
+const frontmatter = (t) => { const m = t && t.match(/^---\r?\n([\s\S]*?)\r?\n---/); return m ? m[1] : ''; };
+const fm = (t, k) => { const m = frontmatter(t).match(new RegExp(`^${k}\\s*:\\s*(.+)$`, 'im')); return m ? m[1].trim().replace(/^["']|["']$/g, '') : ''; };
+
+// The one severity scale (docs/FINDING-SPEC.md). Legacy words map onto it; anything else is a
+// producer bug and gets reported, never silently bucketed — silent misranking is exactly how
+// `blocker` (the designer's TOP severity) spent months sorting below `info`.
+const SEVERITY_ALIAS = { blocker: 'critical', major: 'high', moderate: 'medium', minor: 'low', nit: 'info' };
+const RANK = { critical: 0, high: 1, medium: 2, low: 3, info: 4 };
+const STATUS_ALIAS = { fixed: 'resolved', wontfix: 'accepted', 'accepted-risk': 'accepted' };
 
 // ---------- gather ----------
 function teamRoster() {
@@ -44,13 +54,22 @@ function latestRun() {
 
 function gatherFindings() {
   const out = [];
+  const unknown = [];
   const scan = (dir, team) => {
     for (const f of ls(dir)) {
       if (!f.endsWith('.md') || /^(INDEX|MAP|README|REPORT|SURFACE)/i.test(f)) continue;
       const t = readText(path.join(dir, f)); if (!t) continue;
+
+      const rawSev = (fm(t, 'severity') || 'info').toLowerCase();
+      const severity = SEVERITY_ALIAS[rawSev] || rawSev;
+      if (!(severity in RANK)) unknown.push(`${team}/${f}: severity "${rawSev}"`);
+
+      const rawStatus = (fm(t, 'status') || 'open').toLowerCase();
+      const status = STATUS_ALIAS[rawStatus] || rawStatus;
+
       out.push({
-        team, id: f.replace(/\.md$/, ''),
-        severity: (fm(t, 'severity') || 'info').toLowerCase(),
+        team, id: f.replace(/\.md$/, ''), severity, status,
+        issue: fm(t, 'issue'),
         area: fm(t, 'area') || fm(t, 'type') || fm(t, 'category') || '',
         title: (t.match(/^#\s+(.+)$/m) || [, fm(t, 'title') || f])[1],
         where: fm(t, 'evidence') || fm(t, 'location') || fm(t, 'path') || '',
@@ -61,8 +80,16 @@ function gatherFindings() {
   scan(path.join(root, '.mc', 'design', 'findings'), 'designer');
   scan(path.join(root, '.sentinel', 'findings'), 'sentinel');
   scan(path.join(root, '.security', 'findings'), 'security');
-  const rank = { critical: 0, high: 1, major: 1, medium: 2, moderate: 2, low: 3, minor: 3, info: 4 };
-  return out.sort((a, b) => (rank[a.severity] ?? 5) - (rank[b.severity] ?? 5));
+
+  if (unknown.length) {
+    console.warn(`mc-dashboard: ${unknown.length} finding(s) use a severity outside the spec — see docs/FINDING-SPEC.md`);
+    for (const u of unknown) console.warn(`  ! ${u}`);
+  }
+  // Only `open` findings count. A resolved critical used to still force a FAIL verdict — and the
+  // dashboard disagreed with hooks/sentinel-nudge.js, which has always filtered on status.
+  return out
+    .filter((f) => f.status === 'open')
+    .sort((a, b) => (RANK[a.severity] ?? 9) - (RANK[b.severity] ?? 9));
 }
 
 // ---------- charts (inline SVG, theme via currentColor + CSS vars) ----------
@@ -91,7 +118,8 @@ const findings = gatherFindings();
 const counts = (run && run.counts) || {};
 const verdict = (run && (run.verdict || (run.releaseVerdict))) || (findings.some((f) => ['critical', 'high'].includes(f.severity)) ? 'FAIL' : run ? 'PASS' : 'N/A');
 const vClass = { PASS: 'ok', FAIL: 'bad', INCOMPLETE: 'warn' }[String(verdict).toUpperCase()] || 'mut';
-const sevCounts = ['critical', 'high', 'medium', 'low', 'info'].map((s) => [s, findings.filter((f) => f.severity === s || (s === 'high' && f.severity === 'major') || (s === 'medium' && f.severity === 'moderate') || (s === 'low' && f.severity === 'minor')).length]).filter((x) => x[1] > 0);
+// Severities are normalized to the spec's five in gatherFindings(), so no alias juggling here.
+const sevCounts = Object.keys(RANK).map((s) => [s, findings.filter((f) => f.severity === s).length]).filter((x) => x[1] > 0);
 const catCounts = Object.entries((run && run.taskCounts) || {}).map(([k, v]) => [k, typeof v === 'number' ? v : (v && v.total) || 0]).filter((x) => x[1] > 0).slice(0, 10);
 const projectName = path.basename(root);
 const stamp = new Date().toISOString().replace('T', ' ').slice(0, 16) + ' UTC';
@@ -121,7 +149,7 @@ svg .big{fill:var(--fg);font-size:26px;font-weight:700}svg .sub{fill:var(--dim);
 .roster{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:8px}
 .member{border:1px solid var(--line);border-radius:7px;padding:9px 11px;display:flex;flex-direction:column;gap:2px}.mid{color:var(--accent);font-weight:600}.mrole{color:var(--fg);font-size:12px}.mwhy{color:var(--dim);font-size:11px}
 table.find{width:100%;border-collapse:collapse;font-size:12px}table.find th{text-align:left;color:var(--dim);font-weight:500;border-bottom:1px solid var(--line);padding:6px 8px}table.find td{padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}
-.pill{padding:1px 8px;border-radius:20px;font-size:11px;font-weight:600}.pill.critical,.pill.high,.pill.major{background:color-mix(in srgb,var(--bad) 20%,transparent);color:var(--bad)}.pill.medium,.pill.moderate{background:color-mix(in srgb,var(--warn) 22%,transparent);color:var(--warn)}.pill.low,.pill.minor,.pill.info{background:var(--line);color:var(--dim)}
+.pill{padding:1px 8px;border-radius:20px;font-size:11px;font-weight:600}.pill.critical,.pill.high{background:color-mix(in srgb,var(--bad) 20%,transparent);color:var(--bad)}.pill.medium{background:color-mix(in srgb,var(--warn) 22%,transparent);color:var(--warn)}.pill.low,.pill.info{background:var(--line);color:var(--dim)}
 .mono{font-family:inherit}.muted{color:var(--mut)}.stat{display:flex;gap:20px;flex-wrap:wrap}.stat div{display:flex;flex-direction:column}.stat .n{font-size:22px;font-weight:700}.stat .l{font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:1px}
 footer{color:var(--mut);font-size:11px;margin-top:22px;border-top:1px solid var(--line);padding-top:12px}
 </style></head><body><div class="wrap">
@@ -141,5 +169,8 @@ ${!run && !findings.length && !roster.length ? '<section class="card"><p class="
 
 const outPath = path.join(root, 'mc.html');
 fs.writeFileSync(outPath, html);
-console.log(`Wrote ${path.relative(root, outPath)} — ${roster.length} member(s), ${run ? (counts.passed || 0) + counts.failed || 0 : 0} result(s), ${findings.length} finding(s).`);
+// `+` binds tighter than `||`, so the old `(counts.passed||0) + counts.failed || 0` silently
+// reported 0 results whenever counts.failed was absent (NaN || 0). Parenthesize each side.
+const totalResults = run ? (counts.passed || 0) + (counts.failed || 0) : 0;
+console.log(`Wrote ${path.relative(root, outPath)} — ${roster.length} member(s), ${totalResults} result(s), ${findings.length} open finding(s).`);
 if (OPEN) console.log(`Open: file://${outPath.replace(/\\/g, '/')}`);

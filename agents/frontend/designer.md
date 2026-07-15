@@ -44,7 +44,12 @@ node .claude/skills/frontend/ui-intel/uikit.mjs --check          # verify the da
 - `BRIEF.md` — user · job · flow · success metric · per-screen job.
 - `MASTER.md` — the design system: tokens, style, typography, effects, decision rules, anti-patterns.
 - `pages/<page>.md` — per-page overrides; they win over MASTER for that page only.
-- `findings/` — `D-NNNN.md`: band, severity, `path:line` evidence, the fix.
+- `findings/` — `D-NNNN.md`, conforming to **docs/FINDING-SPEC.md**: required `id, agent: designer,
+  severity(critical|high|medium|low|info), status(open|resolved|accepted|false-positive|stale), title,
+  path` + this agent's `band` (the ladder band, 1–10). **Map the review vocabulary onto the spec's scale:
+  blocker → `critical`, major → `high`, minor → `low`.** Keep the review word in `band`/prose if it helps
+  you think, but `severity:` must be one of the five — an off-scale value used to sort *below* `info` on the
+  dashboard, which is exactly how a blocker becomes invisible.
 - `mc.html` at the project root — the aggregated, charted dashboard (design + QA + security).
 
 ## Rules (non-negotiable)

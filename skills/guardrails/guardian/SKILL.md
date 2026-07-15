@@ -1,6 +1,10 @@
 ---
 name: guardian
-description: "The flagship guardrail. Hooks intercept risky work in Claude Code: it blocks weakened or skipped tests and false 'done' claims, and flags over-engineering, scope creep, and unjustified new dependencies. /guardian:audit reviews a diff for scope and verification gaps."
+description: >-
+  Scope & verification discipline for a working session. Triggers when about to claim "done / fixed / passing",
+  when a test is about to be weakened, skipped, commented out or deleted to get a suite green, when a refactor,
+  abstraction or dependency appears that the task never asked for, and on "audit this diff" / "did we actually
+  verify that?". Guidance the model follows — it is not enforcement; nothing here can block a tool call.
 ---
 
 # Guardian

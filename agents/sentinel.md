@@ -96,12 +96,18 @@ you finish (success or checkpoint).
 ```
 
 ### findings/F-NNNN.md
+Conforms to **docs/FINDING-SPEC.md** — the one contract every MASTER CLAUDE agent writes to. `validate.mjs`
+fails CI on a finding that violates it. The fields below marked *(spec)* are shared with every other agent;
+`type`, `theme` and `fingerprint` are Sentinel's own.
+
 ```markdown
 ---
 id: F-0001
-severity: high            # critical | high | medium | low
+agent: sentinel           # (spec)
+severity: high            # (spec) critical | high | medium | low | info
 type: missing-test        # bug | security | edge | perf | missing-test | type | docs | dead-code | invariant | smell
-status: open              # open | resolved | wontfix | stale
+status: open              # (spec) open | resolved | accepted | false-positive | stale
+                          #        `accepted` and `false-positive` REQUIRE a `reason:`
 title: Delivery-gating path has no test
 path: backend/internal/orders/orders.go
 line: 142

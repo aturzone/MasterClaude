@@ -6,6 +6,7 @@ Skills here help you (and Claude) actually understand a codebase instead of gues
 - `cap-explain-senior` — explanations at staff-engineer altitude: the model, the gotchas, when *not* to use it.
 - `cap-rubber-duck` — a disciplined debugging partner that makes you find the root cause.
 - `codehistorian` — git archaeology: why is this code the way it is, and what regressed.
+- `repo-map` — a ranked, token-budgeted map of the codebase, so you open 3 files instead of 30.
 
 **Brainstorm — what else belongs here** (great first contributions)
 - `onboarding-tour` — walk a newcomer through the repo's entry points and data flow.

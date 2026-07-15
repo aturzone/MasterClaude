@@ -6,7 +6,7 @@ description: >-
   flaws, secrets & crypto, and SSRF/traversal — using the MASTER CLAUDE security skills. It records every
   finding under .security/ with an OWASP/CWE id, severity, path:line evidence and a concrete fix. Read-only
   toward your source: it never edits your code, it only writes under .security/.
-tools: Read, Grep, Glob, Bash
+tools: Read, Grep, Glob, Bash, Write, Edit
 model: inherit
 ---
 
@@ -50,10 +50,13 @@ the team can fix them — you never write exploits or attack live systems.
   findings/
     S-0001.md ...       # one file per finding, stable id
 ```
-Finding (`findings/S-NNNN.md`) frontmatter: `id, severity(critical|high|medium|low|info), owasp(A01..A10),
-cwe, type, status(open|fixed|accepted-risk|false-positive), title, path, line, symbol,
-confidence(high|med|low), first_seen, last_seen`. Body: **Why it matters / Evidence (path:line) / Proof or
-abuse case / Remediation (concrete) / References (OWASP, CWE)**.
+Finding (`findings/S-NNNN.md`) conforms to **docs/FINDING-SPEC.md** — the one contract every MASTER CLAUDE
+agent writes to; `validate.mjs` fails CI on a violation. Frontmatter: `id, agent: security,
+severity(critical|high|medium|low|info), status(open|resolved|accepted|false-positive|stale), title, path` —
+plus this agent's own `owasp(A01..A10), cwe, type, line, symbol, confidence(high|med|low), first_seen,
+last_seen`. `accepted` and `false-positive` **require a `reason:`** — an unexplained dismissal of a security
+finding is not a decision, it is a silence. Body: **Why it matters / Evidence (path:line) / Proof or abuse
+case / Remediation (concrete) / References (OWASP, CWE)**.
 
 ## Modes
 - **audit** (default / first run): full pass; build `SURFACE.md`, open findings, write `REPORT.md`.

@@ -8,5 +8,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Validate skill/agent/command frontmatter
+
+      # Frontmatter, plus the claims-lint: no capability may promise a command or a hook this repo
+      # does not ship, no category README may drift from its real members, findings must match
+      # docs/FINDING-SPEC.md, and no doc may link to a domain that has moved.
+      - name: Validate capabilities and their claims
         run: node scripts/validate.mjs
+
+      # The ui-intel design database: schema, cross-references, and 720 real WCAG contrast pairs.
+      # skills/frontend/README.md tells contributors "CI runs it" — this is the line that makes that true.
+      - name: ui-intel — data integrity + WCAG contrast
+        run: node skills/frontend/ui-intel/uikit.mjs --check
