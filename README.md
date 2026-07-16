@@ -9,8 +9,10 @@ No account. No API key. No vault. It's just markdown you drop into `.claude/` �
 
 **Safe by default.** Adding MASTER CLAUDE runs **nothing** — it's inert markdown. There are **no** autonomous
 runners, no Telegram bridge, and no background daemons; every capability works interactively under Claude
-Code's normal permission prompts, nothing auto-starts, and no data leaves your machine. Full model:
-**[SECURITY.md](SECURITY.md)**.
+Code's normal permission prompts, nothing auto-starts, and no data leaves your machine. Its guardrails are
+guidance by default; a few can be **armed** as opt-in `PreToolUse` hooks that hard-block the riskiest moves
+(weakening a test, irreversible shell on a prod box) — off until you switch them on: **[docs/ENFORCEMENT.md](docs/ENFORCEMENT.md)**.
+Full model: **[SECURITY.md](SECURITY.md)**.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Buy me a coffee in TON](https://img.shields.io/badge/Buy%20me%20a%20coffee-TON-0098EA.svg)](https://masterclaude.shop/donate)
