@@ -115,7 +115,13 @@ const PAIRS = [
   ["destructiveForeground", "destructive", 4.5, "label on a destructive button"],
   ["primary", "background", 3, "primary as a UI boundary/link on the page"],
   ["ring", "background", 3, "focus ring visibility"],
-  ["border", "background", 1.5, "border separation"],
+  // `input` outlines a CONTROL. WCAG 1.4.11 wants 3:1 for "visual information required to identify
+  // user interface components" — the field's border is the only thing telling a low-vision user
+  // where to type. `border` is a decorative divider and has no WCAG minimum; 1.5 is our own floor.
+  // Conflating the two is why every palette here once shipped an input nobody could find.
+  ["input", "background", 3, "control boundary on the page — WCAG 1.4.11"],
+  ["input", "card", 3, "control boundary on a card — WCAG 1.4.11"],
+  ["border", "background", 1.5, "decorative separation (our floor, not WCAG)"],
 ];
 
 function checkPalette(p) {

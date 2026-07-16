@@ -78,9 +78,16 @@ Work top-down; a beautiful inaccessible button is a broken button.
 Full rule text: `node uikit.mjs --domain ux-rules "<topic>"`.
 
 ## Contrast is verified here, not claimed
-Every palette in the database is checked by `uikit.mjs --check`, which computes real WCAG 2.2 ratios over all
-nine token pairs in **both** light and dark mode and exits non-zero on a violation. A palette that ships is a
-palette that passed. Use `--contrast` on your own colors before defending them.
+Every palette is checked by `uikit.mjs --check`, which computes real WCAG 2.2 ratios over all eleven token
+pairs in **both** light and dark mode and exits non-zero on a violation. A palette that ships is a palette that
+passed. Use `--contrast` on your own colors before defending them.
+
+**The pair list is the product — a pair nobody checks is a pair nobody verified.** `input` went unchecked for
+months, and every one of the 40 palettes shipped a form field outlined at ~1.6:1 against WCAG 1.4.11's 3:1. It
+passed review because it *looked* fine to people who can see it. Two lessons worth keeping:
+- **`border` and `input` answer to different rules.** A decorative divider has no WCAG minimum; a border that
+  tells someone *where the field is* needs 3:1 (1.4.11). Merging them hides the second behind the first.
+- When you add a pair, expect the database to fail. That is the check working.
 
 ---
 *Feeds `fe-design-system` (tokens), `fe-page-patterns` (layout), `fe-component-craft` (build) and
