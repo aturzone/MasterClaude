@@ -7,6 +7,8 @@ skill — and this is where you learn how to write one that actually fires.
 - `writing-skills` — author or sharpen a skill: the SKILL.md shape, trigger-only descriptions, matching the
   form of the guidance to the shape of the failure, and the stay-in-sync checklist.
 - `statusline-designer` — design a custom Claude Code status line. Gated and opt-in: it never volunteers.
+- `claude-current` — stay current with Claude Code and Claude: check the version + live changelog against
+  `docs/CLAUDE-SURFACE.md`, and report only the deltas that matter. Check, then speak — never assert from memory.
 
 **The one rule worth repeating here:** a `description` is **triggers only, never a workflow summary**. A
 description that summarizes the process becomes the shortcut the model takes *instead of* reading the body — and

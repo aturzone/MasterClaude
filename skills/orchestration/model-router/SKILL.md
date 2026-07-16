@@ -33,7 +33,7 @@ pick the stronger one; only drop to Haiku for genuinely mechanical tasks.
 - **Least powerful that suffices.** Default a role *down* to the cheapest tier that can actually do it — the
   turn-count rule overrides only for genuine reasoning work. (One axis decides up, the other down.)
 - **Always set the model on a dispatch.** An omitted model inherits the *session* default (often Opus) — so
-  a grunt task silently runs on the priciest tier. Name the model every time.
+  a grunt task silently runs on the priciest tier, **defeating the whole point of routing**. Name the model every time.
 - **Implementation tier by signal:** 1–2 files + a complete spec → cheapest; multi-file / integration → mid;
   design judgment or broad-codebase reasoning → top. Never drop a **reviewer** (or an implementer working
   from prose, not a precise spec) below the mid tier.

@@ -29,7 +29,10 @@ without stepping on each other, and a dead-end spike is discarded by removing a 
    A worktree inside a worktree is the #1 mistake.
 2. **Prefer a native worktree tool.** If your harness exposes one (e.g. **`EnterWorktree`** / a `/worktree`
    command), use it — hand-rolling `git worktree add` when a managed tool exists creates phantom state the
-   harness can't track. Fall back to raw git only when there's no native tool.
+   harness can't track. For a **dispatched subagent**, prefer the harness's `isolation: worktree` frontmatter
+   (credit **obra/superpowers**): it branches from the **default** branch and **auto-cleans** when the work is
+   left unchanged, so you never hand-roll or garbage-collect the tree. Fall back to raw git only when there's
+   no native tool.
 3. **Ignore-check first.** Before adding a repo-local dir (prefer a hidden `.worktrees/`), confirm it's
    git-ignored (`git check-ignore -q`); if not, add it to `.gitignore` and commit before creating.
 4. **Clean baseline.** After creating + installing deps (npm/cargo/pip/go per the stack), run the tests
@@ -63,4 +66,6 @@ delegation brief; never let two write the same tree.
 
 ---
 *Credits:* git-worktree isolation for parallel agent work is a pattern from **superpowers**
-(`obra/superpowers`, MIT). See `docs/ECOSYSTEM.md`. Pairs with **subagent-orchestration** + **model-router**.
+(`obra/superpowers`, MIT) — though superpowers still reimplements it in ~200 lines of shell; the native
+`isolation: worktree` frontmatter above is available ground it hasn't taken. See `docs/ECOSYSTEM.md`. Pairs
+with **subagent-orchestration** + **model-router**.

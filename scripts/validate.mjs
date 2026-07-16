@@ -144,11 +144,13 @@ for (const f of walk(ROOT).filter((p) => /[\\/]findings[\\/][A-Z]-\d+\.md$/.test
   }
 }
 
-// ---------------------------------------------------------------- stale doc domains
+// ---------------------------------------------------------------- stale doc links
 // docs.claude.com now 301s to platform.claude.com, and the Claude Code docs moved to code.claude.com/docs.
+// Match a stale LINK (a scheme or a path follows the host), not a prose mention of the hostname — otherwise
+// CLAUDE-SURFACE.md, whose whole job is to document that the host moved, can never name it.
 for (const f of [...skills, ...agents, ...commands, ...walk(path.join(ROOT, 'docs'))].filter((p) => p.endsWith('.md'))) {
-  if (/docs\.claude\.com/.test(raw(f))) {
-    problems.push(`${rel(f)}: links to docs.claude.com — moved to code.claude.com/docs (Claude Code) or platform.claude.com (API)`);
+  if (/(https?:\/\/)?docs\.claude\.com\//.test(raw(f))) {
+    problems.push(`${rel(f)}: links to docs.claude.com/… — moved to code.claude.com/docs (Claude Code) or platform.claude.com (API)`);
   }
 }
 

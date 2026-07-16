@@ -35,14 +35,19 @@ reader infer, it isn't done. Write it before any code.
 Size each task to the **smallest unit worth its own review gate** — fold its setup/config/scaffolding/docs
 into it. Then specify:
 - **Files** — `Create <exact path>` · `Modify <path:line-range>` · `Test <exact path>`.
-- **Interfaces** — *Consumes* (signatures/types this task relies on from earlier tasks) and *Produces*
-  (function names + param/return types it exposes downstream). This is what makes tasks composable across
-  fresh sessions.
+- **Interfaces (required — never omit)** — a `Consumes:` list (exact signatures/types this task relies on
+  from earlier tasks) and a `Produces:` list (exact function names + param/return types it exposes
+  downstream). Required **because a task's implementer sees only their own task** — with no interface
+  contract it invents a shape the next task can't call. `cap-execute-plan` **checks** these `Consumes` exist
+  before it implements a task, so a plan that omits them stalls execution — write them so the two never disagree.
 - **Steps** — checkboxes, each ONE 2–5 minute action, in the TDD order:
   `write failing test → run it (see it fail for the right reason) → minimal code → run (see it pass) → commit`.
   Each step has the **complete code** (no pseudocode), the **exact command**, and its **expected output**.
 
 ## No placeholders (the ban list)
+Write for a **hostile reader** — "an enthusiastic junior with poor taste, no judgement, no project context,
+and an aversion to testing." They do *exactly* what the plan says and nothing it merely implies, so a vague
+step becomes a wrong one. "Add appropriate error handling" is a **plan failure**, not a note — say exactly what.
 - No `TBD` / `TODO` / "future implementation" / vague "add error handling/validation/edge cases" — name the
   specific ones.
 - No "similar to Task N" — repeat the actual code.

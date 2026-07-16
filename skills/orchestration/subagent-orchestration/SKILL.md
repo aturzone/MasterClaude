@@ -42,6 +42,8 @@ files:
 3. **Tools / sources** — what to use, what to prioritize, what to ignore (e.g. "skip `vendor/`").
 4. **Boundaries** — its scope, so two workers don't collide or duplicate.
 Put must-have rules *in the prompt* — non-fork subagents don't read CLAUDE.md or your history.
+**Always name the model** on the dispatch itself (see **model-router**): an omitted model silently inherits the
+session's — usually the most capable and most expensive — model, defeating the point of offloading grunt work.
 
 ## Scale effort to the task (don't spawn 20 agents for a one-liner)
 | Task | Agents |
@@ -54,22 +56,32 @@ Teams: start **3–5** teammates, ~5–6 tasks each — "three focused beat five
 ## Verify — the payoff of orchestration
 After work is "done", dispatch a **fresh subagent to review the diff against the plan** — it sees only the
 diff + criteria, not the reasoning that made it, so it grades honestly. For findings, use **two loops**:
-one reviewer for spec-compliance, one for code-quality; batch the fixes into a fix-agent; re-run the *same*
-reviewer to confirm. Tell reviewers to flag only real correctness/requirement gaps (a reviewer told to
+one reviewer for spec-compliance, one for code-quality; hand **all** findings to a **single** fix-agent — never
+one fixer per finding, since each rebuilds context and re-runs the suites, and one real session's final-review
+fix wave cost more than all its tasks combined; re-run the *same* reviewer to confirm. Tell reviewers to flag only real correctness/requirement gaps (a reviewer told to
 "find problems" always finds some — that invites over-engineering). **If you can't verify it, don't ship it.**
 
 ## Run it like a loop (not a one-shot)
-- **Worker return contract.** Require each worker to end with a status: `DONE` · `DONE_WITH_CONCERNS` ·
-  `NEEDS_CONTEXT` (re-dispatch the *same* worker with the missing piece) · `BLOCKED` (assess — if the *plan*
-  is wrong, escalate to the user; don't blind-retry). The status decides your next move.
-- **Hand off via files, not chat.** Give each worker a short brief; have it write its full report to a named
-  file (`task-N-report.md`) and return only status + commit range + a one-line test summary + concerns.
-  Reviewers/fix-agents read & append that file. This is the fix for your own "workers re-bloat my context" trap.
+- **Worker return contract.** Require each worker to end with exactly one status, each with a fixed controller
+  response: `DONE` (verify, then accept) · `DONE_WITH_CONCERNS` (read the concern before accepting — don't wave
+  it through) · `NEEDS_CONTEXT` (supply the missing piece, re-dispatch the *same* worker) · `BLOCKED` (assess —
+  if the *plan* is wrong, escalate to the user; never blind-retry the same model unchanged). The rule under all
+  four: **if the worker said it's stuck, something must change** — never ignore an escalation or force a retry
+  on an unchanged prompt.
+- **Hand off via files, not chat.** Write the task brief to a file under `.mc/briefs/` and have the worker
+  *Read* it; the worker writes its full report to its own file and returns only status + commit range + a
+  one-line test summary + concerns. Reviewers/fix-agents Read & append that file — the brief and the diff
+  never enter your context. **Why it's not optional:** everything you paste into a dispatch prompt, and
+  everything a worker prints back, stays resident in your context for the rest of the session and is re-read
+  every turn — one real session's dispatch hit 42k chars, of which 99% was pasted history.
 - **Pre-flight the plan once.** Before task 1, scan the whole task set for contradictions/conflicts and
   surface them to the user in one batch — don't discover them mid-run.
-- **Reviewer hygiene.** Copy the binding constraints **verbatim** into the reviewer prompt; hand the diff
-  **as a file**; don't pre-rate severity or name what to ignore; don't ask it to re-run tests already run.
-  Dispatch fixes for **Critical/Important** only; log **Minor** for the final whole-branch pass (top model, explicit).
+- **Reviewer hygiene — never pre-judge the finding.** Copy the binding constraints **verbatim** into the
+  reviewer prompt; hand the diff **as a file**; don't ask it to re-run tests already run. If the prompt you're
+  writing to a reviewer contains "do not flag", "at most Minor", or "the plan chose X" — **stop**: you're
+  pre-judging to spare yourself a review loop. When a finding conflicts with the plan, that's the human's
+  call — present both, don't suppress one. Dispatch fixes for **Critical/Important** only; log **Minor** for
+  the final whole-branch pass (top model, explicit).
 - **Keep a durable ledger.** Append `Task N: done (<base7>..<head7>, review clean)` to a tracked file the
   instant a task passes. After a compaction/restart, trust the ledger + `git log` and **never re-dispatch a
   completed task**.
