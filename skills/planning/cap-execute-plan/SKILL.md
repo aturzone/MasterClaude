@@ -22,7 +22,8 @@ two failure modes: drifting from the plan, or barrelling past a broken step.
   *before* task 1; don't execute a plan you don't believe in.
 - **Branch safety:** if you're on `main`/a shared branch, switch to a working branch first (or get explicit
   consent). For a large, independent-task plan, prefer **subagent-orchestration** (a fresh implementer per
-  task); keep inline execution for small ones.
+  task); keep inline execution for small ones. The full git posture — `mc/<slug>` naming, commit cadence, the
+  never-auto-push bright line — is **mc-git**; treat it as canonical so this and it never drift.
 
 ## The loop (one task at a time)
 1. **Take the next task** in order; respect dependencies. State what you're about to do in a line.
@@ -30,7 +31,8 @@ two failure modes: drifting from the plan, or barrelling past a broken step.
 3. **Verify** — run the build/tests/the step's check. **A task isn't done until it's proven.** If it fails,
    fix it before moving on; never leave a red step behind.
 4. **Record** — mark the task done; note what changed + the proof. Commit at each green step (a working
-   branch), so any step is easy to undo.
+   branch) in conventional format, referencing the finding/issue it closes (`Fixes #N`) so **mc-issues** can
+   auto-close the loop — and so any step is easy to undo.
 5. **Checkpoint at the risky ones** — before anything **irreversible or high-stakes** (a destructive
    migration, a schema change, touching prod/secrets, a big architectural commit), **pause and confirm**
    with the user. Everything else, keep moving.

@@ -89,7 +89,7 @@ setup (and whenever you're unsure), **list it yourself**: `Glob` `.claude/skills
 | `workflows/` | wf-codebase-audit, wf-security-audit, **wf-ui-uplift** (drive a full design pass → a persisted system + mc.html) — big multi-step jobs |
 | `operate/` | **ops-env-map** (know where you are — unprovable ⇒ production), **ops-ship** (the 5-slot deploy gate), **ops-incident** (stabilize→diagnose; advisor not actor), **ops-rollback** (incl. expand/contract migrations), **ops-observe**, **ops-postmortem** (blameless; action items become issues) — the production half; on prod, advisor with read access, never an actor |
 | `testing/` | **wf-tester** (drive a full QA pass → mc.html), **test-user-end**, **test-blackbox**, **test-code**, **test-stress** (load/soak via k6), **mc-dashboard** (the charted mc.html) — the tester team on any project; per-project workspace, safe by default, drives the bundled QA engine (`skills/testing/engine/`) |
-| `orchestration/` | **subagent-orchestration** (delegate to subagents/teams), **model-router** (pick a model per agent/task), **token-economy** (best output per token), **context-engineering** (curate the context window — cache-stable, retrieve-don't-dump, audit MCPs, measure tokens), **fleet** (dispatch the team to separate parallel sessions for throughput — cost-capped, opt-in), **workspace-architect** (build the best `.claude/` workspace), **worktree-isolation** (parallel work without collisions) |
+| `orchestration/` | **subagent-orchestration** (delegate to subagents/teams), **model-router** (pick a model per agent/task), **token-economy** (best output per token), **context-engineering** (curate the context window — cache-stable, retrieve-don't-dump, audit MCPs, measure tokens), **fleet** (dispatch the team to separate parallel sessions for throughput — cost-capped, opt-in), **workspace-architect** (build the best `.claude/` workspace), **worktree-isolation** (parallel work without collisions), **mc-git** (the git working discipline — branch/commit mechanics; local aggressive, remote consented) |
 | `meta/` | **writing-skills** — author/sharpen a MASTER CLAUDE skill so the archive keeps growing; **statusline-designer** — design a custom Claude Code status line for CLI users (gated, opt-in) |
 | `agents/` | **Sentinel** — the project cartographer; **security-auditor** — read-only security audit → `.security/`; **tester** — read-only QA lead: runs the tester team → `.mc/qa/` + `mc.html`; **designer** — read-only design lead: brief → a persisted design system → an a11y-first review → `.mc/design/` + `mc.html` |
 
@@ -147,6 +147,16 @@ You have a real team and real tools; wield them deliberately, not timidly.
   subagents, cheap models for grunt work (**model-router**), and offer **caveman**/**compactor** on long
   runs — keep a rough eye on the burn and any budget. Optimize down to just before quality would drop, never
   past it (**token-economy**).
+
+## Git-native by default
+Unless told otherwise, you work **in git**, not next to it. It's the working discipline, not an afterthought:
+- **Know the state.** Read branch / dirty / ahead-behind at the start (the `sentinel-nudge.js` hook prints it).
+- **Branch before you build.** Any multi-file change starts on `mc/<slug>` — never the default branch.
+- **Commit every green step.** Small, conventional (`fix:`/`feat:`), tied to the work (`Fixes #N` → the
+  `mc-issues` loop). A **WIP commit is the only real undo before risky bash** — `/rewind` doesn't track `rm`/`sed -i`.
+- **The bright line:** local git (branch, commit, stash, worktree) is **aggressive by default**; `push`,
+  force-push and PR creation **always ask**; force-push to the default branch is **refused**. **Never auto-push.**
+- Mechanics live in **mc-git** (delegate there — don't inline the git details). Off switch: `.claude/master-claude.json` → `git`.
 
 ## Brainstorm hard, then decide fast
 For anything open-ended — architecture, approach, naming, "what should we build", de-risking — don't grab
@@ -237,6 +247,8 @@ Watch for the signal, then **offer** (don't force) — one line, with why:
 | after an incident / "how do we prevent this" | **ops-postmortem** | blameless; every action item becomes an issue + a concrete guard |
 | a hard-to-reverse architecture/tooling decision | **adr** | Context/Decision/Consequences, so the reasoning outlives the choice |
 | findings piling up as files / "file these as issues" / after a sweep or audit | **mc-issues** | findings → GitHub issues; local stays canon; security held back on public repos |
+| starting a multi-file change on the default branch | **mc-git** | branch first (mc/<slug>); local git aggressive, remote always consented |
+| work reached a green, verified step | **mc-git** | commit it — conventional message, Fixes #N; a WIP commit is the only real undo before risky bash |
 | user asks for a security review / audit | **/master-claude:security** | runs the right security pass |
 | user asks what's new / wants the latest | **/master-claude:whats-new** | version + changelog + ecosystem news |
 | starting in a new/unfamiliar project, or setup feels ad hoc | **workspace-architect** | builds the right lean `.claude/` for this project |
@@ -249,8 +261,9 @@ Watch for the signal, then **offer** (don't force) — one line, with why:
 ## Customization
 If `.claude/master-claude.json` exists, honor it. Keys (all optional): `autonomy` ("ask"|"act"),
 `verbosity` ("terse"|"normal"), `defaultGuardrails` (ids to keep active), `preferredEcosystem`,
-`offProactive` (true to suppress unsolicited offers). Absent ⇒ ask-before-big-moves, normal verbosity,
-proactive on.
+`offProactive` (true to suppress unsolicited offers), `git` (the git posture — `{ autobranch, commitCadence:
+"step"|"logical"|"off", conventional }`, all on by default; see **mc-git**). Absent ⇒ ask-before-big-moves,
+normal verbosity, proactive on, git-native on. `autonomy: act` never extends to `push` — the remote always asks.
 
 ## Boundaries
 - A skill shapes *how* you work — never *whether* you follow the user or respect safety.

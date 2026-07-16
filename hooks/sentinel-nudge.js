@@ -14,9 +14,31 @@ const EVENT = (process.argv[2] || "").toLowerCase();
 
 function git(root, args) {
   try {
-    return execFileSync("git", args, { cwd: root, encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] }).trim();
+    return execFileSync("git", args, { cwd: root, encoding: "utf8", stdio: ["ignore", "pipe", "ignore"], timeout: 500 }).trim();
   } catch {
     return "";
+  }
+}
+
+// One-line git awareness for SessionStart: "git: on <branch>, N dirty, A ahead, B behind".
+// Fully offline (no fetch), each git call capped at 500ms by git(), and swallows everything — not a repo,
+// git missing, detached HEAD, or a timeout just yields "" and the git line is omitted. Never throws.
+function gitLine(root) {
+  try {
+    const branch = git(root, ["rev-parse", "--abbrev-ref", "HEAD"]);
+    if (!branch) return ""; // not a git repo, or git is absent
+    const status = git(root, ["status", "--porcelain"]);
+    const dirty = status ? status.split("\n").length : 0;
+    const parts = [`on ${branch}`, `${dirty} dirty`];
+    // ahead/behind vs upstream, guarded: with no upstream, @{u} fails and git() returns "" → 0/0, omitted.
+    const [behind, ahead] = git(root, ["rev-list", "--left-right", "--count", "@{u}...HEAD"])
+      .split(/\s+/)
+      .map((n) => parseInt(n, 10) || 0);
+    if (ahead) parts.push(`${ahead} ahead`);
+    if (behind) parts.push(`${behind} behind`);
+    return `git: ${parts.join(", ")}`;
+  } catch {
+    return ""; // never let git awareness break the hook
   }
 }
 
@@ -66,6 +88,7 @@ function emitContext(text) {
 
 try {
   const root = findRoot();
+  const gl = gitLine(root); // "" outside a repo / when git is missing — then no git line is prepended
   const sentinelDir = path.join(root, ".sentinel");
   const statePath = path.join(sentinelDir, "state.json");
   const head = git(root, ["rev-parse", "--short", "HEAD"]);
@@ -74,7 +97,8 @@ try {
   if (!fs.existsSync(statePath)) {
     // Surface "no map yet" once per session (SessionStart); stay silent on Stop to avoid nagging.
     if (EVENT === "session-start") {
-      emitContext("Sentinel: no project map yet. Run /sentinel:map to build the project map and start tracking gaps.");
+      const s = "Sentinel: no project map yet. Run /sentinel:map to build the project map and start tracking gaps.";
+      emitContext(gl ? `${gl}\n${s}` : s);
     }
     process.exit(0);
   }
@@ -94,7 +118,7 @@ try {
     const text = behind
       ? `Sentinel: map is behind HEAD (last reviewed ${state.lastSHA}, now ${head}). ${openStr}. Run /sentinel:sweep to update.`
       : `Sentinel: map current at ${head || state.lastSHA}. ${openStr}. /sentinel:report for details.`;
-    emitContext(text);
+    emitContext(gl ? `${gl}\n${text}` : text);
   } else if (EVENT === "stop" && behind) {
     // Quiet by default; nudge only when commits have landed since the last review.
     process.stdout.write(`Sentinel: ${head} is ahead of the last review (${state.lastSHA}) — run /sentinel:sweep to keep the map current.\n`);
