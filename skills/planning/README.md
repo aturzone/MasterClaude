@@ -10,6 +10,7 @@ Skills here pin down *what* to build and *how* to approach it, so you don't buil
 - `cap-decomposer` — split work into the smallest verifiable steps and flag the critical path.
 - `cap-write-plan` — spec + decomposition → a plan a fresh subagent can execute cold.
 - `cap-execute-plan` — drive an approved plan to done, one verified step at a time.
+- `adr` — record a hard-to-reverse decision (Context / Decision / Consequences / Status) so the reasoning outlives the choice.
 
 **Brainstorm — what else belongs here** (great first contributions)
 - `estimate-effort` — size a task (S/M/L + risks) before committing.

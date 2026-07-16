@@ -9,6 +9,8 @@ Skills here drive a long procedure end to end, in passes, instead of a single sh
   coverage statement.
 - `wf-ui-uplift` — a full design pass: brief → system → layout → build → an accessibility-first review →
   `mc.html`, with a coverage ledger.
+- `mc-issues` — turn the team's findings into GitHub issues and keep them in sync (local files stay
+  canon; security findings held back on public repos).
 
 **Brainstorm — what else belongs here** (great first contributions)
 - `dependency-upgrade-sweep` — upgrade deps in safe batches, run tests, write the changelog.
