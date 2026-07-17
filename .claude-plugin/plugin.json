@@ -1,7 +1,7 @@
 {
   "name": "master-claude",
   "description": "A free, open-source Claude Code team: a leader that maps your project and assembles Sentinel plus planning, review, understanding, guardrail and security specialists. Inert markdown by default; this plugin also arms the opt-in enforcement hooks (prod-rails, guardian-test-guard, the Sentinel nudge).",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "author": {
     "name": "MASTER CLAUDE",
     "url": "https://github.com/aturzone/MasterClaude"
@@ -9,5 +9,12 @@
   "homepage": "https://github.com/aturzone/MasterClaude",
   "repository": "https://github.com/aturzone/MasterClaude",
   "license": "MIT",
-  "keywords": ["claude-code", "skills", "agents", "guardrails", "security", "hooks"]
+  "keywords": [
+    "claude-code",
+    "skills",
+    "agents",
+    "guardrails",
+    "security",
+    "hooks"
+  ]
 }
