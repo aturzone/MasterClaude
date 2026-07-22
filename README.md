@@ -1,4 +1,6 @@
-# SKULL 
+<h1>
+  <img src=".github/skull-logo.svg" alt="Skull" width="46" align="top" />&nbsp; SKULL
+</h1>
 
 **A free, open-source Claude Code team.** Say **"skull"** and a *leader* interviews you, maps your
 project, and assembles a tailored team — **Sentinel** the project cartographer plus planning, review,
