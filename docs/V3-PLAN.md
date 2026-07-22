@@ -165,10 +165,10 @@ Keep SKULL as *the* manager; make the leader **agent-neutral**:
 Per the 2026-07-22 steer: **stay pure-markdown for now**; the optional `skull` CLI lands only once it's
 solid. Every earlier phase is plain files you copy — no CLI required.
 
-- **Phase 0 — Plan & face (now).** This RFC + a better pixel-skull logo (Fable). *← in progress*
-- **Phase 1 — Universal instructions (fast, low-risk, pure markdown).** Generate a top-level `AGENTS.md`
-  from the leader method + publish the neutral `.agents/skills/` mirror. Instantly readable by all 10 agents
-  surveyed — a "runs in more agents" win with zero code.
+- **Phase 0 — Plan & face.** This RFC + a better pixel-skull logo (Fable). ✅ *shipped 2026-07-22 (`d4e907f`)*
+- **Phase 1 — Universal instructions (fast, low-risk, pure markdown).** ✅ *shipped 2026-07-22.* The portable
+  leader lives at `adapters/universal/AGENTS.md` (the SKULL method, agent-neutral) + `adapters/README.md`
+  (the per-agent install matrix + the `cp skills/ → .agents/skills/` step). Readable by every AGENTS.md agent.
 - **Phase 2 — Static per-agent adapter folders (pure markdown).** Ship `adapters/cursor/`, `adapters/codex/`,
   `adapters/hermes/` — pre-generated native files the user copies into place (the "let Claude Code set it up"
   path still works). No compiler yet; just the right files per agent.
