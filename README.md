@@ -82,6 +82,13 @@ category; each folder has a README that brainstorms what else belongs there (goo
   front→back (OWASP/CWE, with fixes).
 - **`skills/workflows/`** — `wf-codebase-audit`, `wf-security-audit`, `wf-ui-uplift` (a full design pass:
   brief → system → layout → build → a11y-first review) — big, multi-step jobs.
+- **`skills/operate/`** — `ops-env-map` (know where you are — unprovable ⇒ production) · `ops-ship` (the
+  5-slot deploy gate) · `ops-incident` (stabilize → diagnose) · `ops-rollback` (incl. expand/contract
+  migrations) · `ops-observe` · `ops-postmortem` (blameless) — the production half; on prod, an advisor with
+  read access, never an actor.
+- **`skills/testing/`** — `wf-tester` (a full QA pass → `skull.html`) · `test-user-end` · `test-blackbox` ·
+  `test-code` · `test-stress` (load/soak via k6) · `skull-dashboard` — the tester team on any project, safe
+  by default.
 - **`skills/orchestration/`** — `subagent-orchestration` (delegate to subagents/teams) · `model-router`
   (pick a model per agent — Opus lead / Sonnet workers / Haiku scouts) · `token-economy` (best output per
   token — caveman, cheaper models, cache-warm) · `context-engineering` (curate the window — cache-stable,
