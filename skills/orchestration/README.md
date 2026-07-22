@@ -18,6 +18,9 @@ difference between one Claude grinding a long session and a team that finishes.
 - `skull-git` — the git working discipline the leader delegates to: session awareness, branch-before-you-build
   (`mc/<slug>`), commit at every green step (`Fixes #N`), a WIP commit before risky bash. The bright line —
   local git aggressive by default, remote git always consented, **never auto-push**. `disable-model-invocation`.
+- `secret-shop` — the tool advisor: scan the project → recommend the right *external* tools (graphify, caveman,
+  Context7, CodeGraph/Serena, RTK, Tokscale, Presidio) → record what you install to `.skull/tools.json` → use
+  them. Reads `registry.json`; recommends and hands you the command, **never auto-installs**.
 
 **Brainstorm — what else belongs here** (great first contributions)
 - `handoff-brief` — pack a session's state into a brief a fresh session can start cold from.

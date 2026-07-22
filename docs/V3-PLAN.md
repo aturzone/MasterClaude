@@ -173,10 +173,12 @@ solid. Every earlier phase is plain files you copy — no CLI required.
   (native `.cursor/rules/skull.mdc` + skills), `adapters/codex/` (`AGENTS.md` + `.codex/skills/` + config),
   `adapters/hermes/` (`AGENTS.md` + `MEMORY.md` seed + cron examples) — pre-generated native files the user
   copies into place. No compiler yet; just the right files per agent.
-- **Phase 3 — The Secret Shop, leader-driven (markdown).** The registry (`registry/tools.json`) + the leader
-  *recommends* the right tools per project and hands you the exact install command to run; it records what
-  you've installed in `.skull/tools.json` and then prefers those tools. Seeded with graphify + caveman + the
-  stack in §5. (Auto-install is a CLI job — Phase 5.)
+- **Phase 3 — The Secret Shop, leader-driven (markdown).** ✅ *shipped 2026-07-22.* New skill
+  `skills/orchestration/secret-shop/` — `SKILL.md` (scan → recommend → record → use loop) + `registry.json`
+  (8 seeded tools: graphify, caveman, Context7, CodeGraph, Serena, RTK, Tokscale, Presidio, each with exact
+  install/verify + a `leader_rule` + the live Hub API). Wired into the leader (category table + proactive
+  row) + `/skull:shop` command. Records installs to `.skull/tools.json`. (Registry is skill-local for
+  copy-portability, not top-level; auto-install is a CLI job — Phase 5.)
 - **Phase 4 — Archive harvest.** Close coverage gaps (documents/data skills) using the hub as reference;
   hand-wire the Hub API lookups into the Shop's recommendations.
 - **Phase 5 — The `skull` CLI (only when fully ready).** Automates it all: `init`/`sync`/`doctor` compile the
