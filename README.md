@@ -87,7 +87,10 @@ category; each folder has a README that brainstorms what else belongs there (goo
   token — caveman, cheaper models, cache-warm) · `context-engineering` (curate the window — cache-stable,
   retrieve-don't-dump, audit MCPs, measure tokens) · `fleet` (run the team in separate parallel sessions for
   throughput — cost-capped, opt-in) · `workspace-architect` (the best `.claude/` setup per
-  project) · `worktree-isolation` (parallel work without collisions).
+  project) · `worktree-isolation` (parallel work without collisions) · `secret-shop` (scan the project →
+  recommend the right *external* tools → record to `.skull/tools.json` → use them).
+- **`skills/documents/`** — `doc-pdf` (create/fill/extract PDFs) · `doc-office` (Word/Excel/PowerPoint) —
+  when the deliverable is a file a human opens, not code.
 - **`skills/meta/`** — `writing-skills` (author or sharpen a SKULL skill) · `statusline-designer`
   (design a custom Claude Code status line for CLI users — gated, opt-in) — so the archive keeps growing.
 

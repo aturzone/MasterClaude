@@ -179,8 +179,10 @@ solid. Every earlier phase is plain files you copy — no CLI required.
   install/verify + a `leader_rule` + the live Hub API). Wired into the leader (category table + proactive
   row) + `/skull:shop` command. Records installs to `.skull/tools.json`. (Registry is skill-local for
   copy-portability, not top-level; auto-install is a CLI job — Phase 5.)
-- **Phase 4 — Archive harvest.** Close coverage gaps (documents/data skills) using the hub as reference;
-  hand-wire the Hub API lookups into the Shop's recommendations.
+- **Phase 4 — Archive harvest.** ✅ *shipped 2026-07-22.* Added the `documents/` category (`doc-pdf`,
+  `doc-office`) — the clearest gap vs the archive — wired into the leader (category table + proactive row).
+  The Hub search API is live in the Secret Shop (registry `hub` + the skill's Live-discovery section) so it
+  recommends current community skills on demand. Sources credited (not vendored) in `docs/ECOSYSTEM.md`.
 - **Phase 5 — The `skull` CLI (only when fully ready).** Automates it all: `init`/`sync`/`doctor` compile the
   neutral core into any agent, and `skull shop install` runs the permissioned installs. Then bump
   `plugin.json`, rewrite the README around "universal + Shop", update `ECOSYSTEM.md`/`ADDING-A-CAPABILITY.md`,

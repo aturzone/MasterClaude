@@ -82,6 +82,17 @@ offer — credited, not vendored:
   the same `skull.html` dashboard as QA and security. If you want the biggest dataset, install theirs too — the
   two compose fine.
 
+## Documents (what the `documents/` skills build on)
+The `skills/documents/` pack produces real files — PDF, Word, Excel, PowerPoint — over open libraries,
+credited not vendored:
+- **Anthropic's official document skills** (pdf / docx / xlsx / pptx) — the reference for what "good" output
+  looks like; we re-implemented the *approach* as guidance over the libraries below so it ports to any agent.
+- **Libraries** — WeasyPrint / ReportLab / pypdf / pdfplumber / PyMuPDF (PDF); python-docx & docxtpl,
+  openpyxl & XlsxWriter, python-pptx (Office).
+- **[Claude Skills Hub](https://claudeskills.info)** — the ~15k-skill directory (with a live search API at
+  `claudeskills.info/api/v1`) that the **secret-shop** skill queries to recommend more document/data skills
+  on demand.
+
 ## Primary sources we build from
 - Anthropic — [Building effective agents](https://www.anthropic.com/engineering/building-effective-agents)
 - Anthropic — [How we built our multi-agent research system](https://www.anthropic.com/engineering/multi-agent-research-system)
