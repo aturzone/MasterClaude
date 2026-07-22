@@ -1,8 +1,8 @@
 ---
 name: wf-tester
 description: >-
-  Drive a full QA pass on any project as a MASTER CLAUDE-led tester team — user-end, black-box, code,
-  and stress/load — then emit a charted mc.html status dashboard. Triggers on "test everything", "QA
+  Drive a full QA pass on any project as a SKULL-led tester team — user-end, black-box, code,
+  and stress/load — then emit a charted skull.html status dashboard. Triggers on "test everything", "QA
   this", "full test pass", "is it ready to ship", "pre-release check", "the app has no tests", "test
   this app end to end". Not for a single unit test (use cap-tdd) or a security audit (use wf-security-audit).
 allowed-tools: Read, Grep, Glob, Bash, Write, Edit, Task
@@ -10,8 +10,8 @@ allowed-tools: Read, Grep, Glob, Bash, Write, Edit, Task
 
 # wf-tester — the tester team, front to back
 
-You are the lead of MASTER CLAUDE's **tester team**. Assemble a per-project QA workspace, run every
-test type that fits the project, and leave behind one honest, charted `mc.html`. Read-only toward the
+You are the lead of SKULL's **tester team**. Assemble a per-project QA workspace, run every
+test type that fits the project, and leave behind one honest, charted `skull.html`. Read-only toward the
 app's source — you write tests, results, and the dashboard, never the application's code.
 
 ## The engine
@@ -19,7 +19,7 @@ Everything runs on the bundled QA engine at `.claude/skills/testing/engine/` (gi
 test = one JSON file; lanes = Playwright scripts + headless-Claude agents + human interviews; CTRF
 reports; risk-class a–d safety gate). One-time: `cd .claude/skills/testing/engine && pnpm install`.
 Per project, scaffold a target: `pnpm qa scaffold-service <name> --url <baseURL>` (or point at an
-existing surface). Results land under the project's `.mc/qa/`.
+existing surface). Results land under the project's `.skull/qa/`.
 
 ## Work the passes in order
 
@@ -37,9 +37,9 @@ existing surface). Results land under the project's `.mc/qa/`.
    - **`test-code`** — unit/integration coverage + TDD (reuse `cap-tdd`, `testmedic`, `wf-codebase-audit`).
    - **`test-stress`** — load & soak (k6).
    Collect each lane's CTRF into the run, then `pnpm qa report --run <id>` and `pnpm qa dashboard`.
-4. **Aggregate → `mc.html`.** Run the `mc-dashboard` skill: it reads the run's `summary.json` + merged
-   CTRF (and any `.sentinel/` / `.security/` findings) and writes a CLI-styled, charted `mc.html` at
-   the project root — the whole team's status for this project, led by MASTER CLAUDE. It is a local
+4. **Aggregate → `skull.html`.** Run the `skull-dashboard` skill: it reads the run's `summary.json` + merged
+   CTRF (and any `.sentinel/` / `.security/` findings) and writes a CLI-styled, charted `skull.html` at
+   the project root — the whole team's status for this project, led by SKULL. It is a local
    artifact for the developer (optionally served at `/mc` on their own app); it is never published.
 5. **Report the verdict.** Give the release verdict (gate PASS / FAIL / INCOMPLETE), the top things
    to fix with evidence (path:line or a recording), and coverage gaps. Be honest — a green run with

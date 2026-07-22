@@ -13,7 +13,7 @@ A deploy is a change to a running system other people depend on. The gate is not
 **deploy brief** whose five slots are **structurally required**. An empty slot means the brief is
 INCOMPLETE and the deploy is not ready. Not "proceed with caution" — not ready.
 
-First, confirm where this is going: read `.mc/env` (run `ops-env-map` if it's stale). If the target is
+First, confirm where this is going: read `.skull/env` (run `ops-env-map` if it's stale). If the target is
 production, you assemble the brief for a human to execute — you do not run the deploy yourself.
 
 ## The five required slots
@@ -25,7 +25,7 @@ production, you assemble the brief for a human to execute — you do not run the
 | 4 | **Blast radius** | Who and what breaks if this is wrong — which users, which services, which data. Name them. |
 | 5 | **Flag / canary strategy** | Behind a flag, or canaried to N% with a rollback trigger — **or** one sentence on why neither fits. |
 
-Write the brief to `.mc/deploy-<date>.md`. A reviewer should green-light it without re-deriving any slot.
+Write the brief to `.skull/deploy-<date>.md`. A reviewer should green-light it without re-deriving any slot.
 
 ## Tag the release — every time
 ```bash

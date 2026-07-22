@@ -1,4 +1,4 @@
-# MASTER CLAUDE QA — Git-Native Black-Box End-User QA Engine
+# SKULL QA — Git-Native Black-Box End-User QA Engine
 
 A git-native QA monorepo for testing web apps the way a real end user experiences them: UI/UX,
 clickability, forms, navigation, visual regressions, performance, accessibility,

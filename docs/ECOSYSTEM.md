@@ -1,11 +1,11 @@
-# MASTER CLAUDE — ecosystem & references
+# SKULL — ecosystem & references
 
-MASTER CLAUDE stands on the shoulders of the open Claude Code community. We **don't vendor other people's
+SKULL stands on the shoulders of the open Claude Code community. We **don't vendor other people's
 skills** into this repo — instead we learn from the best public work, build our own original skills, and
 point you at the originals so you can install them too. Everything below is **MIT-licensed** and worth
-running alongside MASTER CLAUDE. The leader knows these and will recommend the right one when it fits.
+running alongside SKULL. The leader knows these and will recommend the right one when it fits.
 
-## Recommended to install alongside MASTER CLAUDE
+## Recommended to install alongside SKULL
 | Project | By | What it gives you | We learned… |
 |---|---|---|---|
 | **[superpowers](https://github.com/obra/superpowers)** | Jesse Vincent (`obra`) | A deep skills framework + methodology: brainstorming, plan-writing, **subagent-driven development**, **parallel-agent dispatch**, git-worktree isolation, strict TDD, systematic debugging, and a meta-skill for writing skills. | model-per-role ("turn count beats token price"), the two-loop reviewer, parallel-dispatch-by-cardinality, and trigger-only skill descriptions → shaped our `orchestration/` skills. |
@@ -14,7 +14,7 @@ running alongside MASTER CLAUDE. The leader knows these and will recommend the r
 | **[gsd](https://github.com/glittercowboy/gsd)** | — | Spec-driven autonomous builds that resume across `/compact`. | a model for long autonomous, spec-driven builds. |
 | **caveman** | — | Terse output mode (~65% fewer output tokens) for long sessions. | when to recommend trimming output on marathon sessions. |
 
-> If you heard about MASTER CLAUDE alongside a Persian "**Kak [Alireza]**" recommendation, that most likely
+> If you heard about SKULL alongside a Persian "**Kak [Alireza]**" recommendation, that most likely
 > points to [Alireza Rezvani's skills aggregator](https://github.com/alirezarezvani/claude-skills), which
 > **re-hosts** Matt Pocock's `grill-me` — the canonical upstream is `mattpocock/skills` above.
 
@@ -48,7 +48,7 @@ separate parallel sessions for throughput:
 The trade-off is real: **N parallel sessions ≈ N× usage** — fan out only for genuinely independent work.
 
 ## Codebase graph / repo-map (optional MCP power-ups)
-MASTER CLAUDE ships a zero-dependency **`repo-map`** skill (a ranked structure map via Grep/Glob) plus
+SKULL ships a zero-dependency **`repo-map`** skill (a ranked structure map via Grep/Glob) plus
 **Sentinel** (the architectural map). For a *true* AST/LSP code graph — symbol-level retrieval, real
 call/impact edges, incremental sync — you need an MCP server (beyond plain markdown). Good ones to run
 alongside:
@@ -78,8 +78,8 @@ offer — credited, not vendored:
   disk so it survives across sessions. We modeled the architecture on it and wrote our own data — theirs is
   theirs to maintain, and a fork of a 100k-star dataset helps nobody. Where we differ: dep-free **Node**
   instead of Python (guaranteed present wherever Claude Code runs), **JSON** instead of CSV-with-JSON-in-cells,
-  contrast **computed and CI-verified** rather than hand-annotated, and state under `.mc/design/` so it feeds
-  the same `mc.html` dashboard as QA and security. If you want the biggest dataset, install theirs too — the
+  contrast **computed and CI-verified** rather than hand-annotated, and state under `.skull/design/` so it feeds
+  the same `skull.html` dashboard as QA and security. If you want the biggest dataset, install theirs too — the
   two compose fine.
 
 ## Primary sources we build from
@@ -88,12 +88,12 @@ offer — credited, not vendored:
 - Claude Code docs — [subagents](https://code.claude.com/docs/en/sub-agents) · [agent teams](https://code.claude.com/docs/en/agent-teams) · [best practices](https://code.claude.com/docs/en/best-practices)
 - Curated lists — [awesome-claude-skills](https://github.com/travisvn/awesome-claude-skills) · [awesome-agent-skills](https://github.com/VoltAgent/awesome-agent-skills)
 
-## How MASTER CLAUDE relates to these
-- **MASTER CLAUDE is the leader.** It assembles a tailored team for *your* project and runs it. When an
+## How SKULL relates to these
+- **SKULL is the leader.** It assembles a tailored team for *your* project and runs it. When an
   external tool fits better than anything in our archive, the leader recommends it (never silently forces it).
 - **Our skills are original.** Where a technique came from a project above, we credit it in that skill's
   footer — we re-implemented the *idea*, not their files.
-- **Licensing.** MASTER CLAUDE is MIT. The projects above are MIT. If you fork, keep each project's own
+- **Licensing.** SKULL is MIT. The projects above are MIT. If you fork, keep each project's own
   license + attribution.
 
 *Know a great public skill we should learn from or recommend? Open a PR adding it here.*

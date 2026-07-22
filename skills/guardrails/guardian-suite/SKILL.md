@@ -3,7 +3,7 @@ name: guardian-suite
 description: >-
   The guardrail switchboard. Triggers on "which guardrails are on?", "turn on / turn off <guardrail>",
   "set up guardrails for this project", or when a guardrail keeps firing and the developer wants it quieter.
-  Records the choice in .claude/master-claude.json so it survives the session; the leader honours it.
+  Records the choice in .claude/skull.json so it survives the session; the leader honours it.
 allowed-tools: Read, Grep, Glob, Write, Edit
 ---
 
@@ -18,7 +18,7 @@ install and nothing running in the background.
 Adjacent, and always on when installed: `sentinel` (the cartographer agent).
 
 ## The switch
-Per project, `.claude/master-claude.json`:
+Per project, `.claude/skull.json`:
 
 ```json
 { "defaultGuardrails": ["guardian", "supplyguard"] }

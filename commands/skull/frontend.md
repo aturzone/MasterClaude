@@ -1,8 +1,8 @@
 ---
-description: Build excellent frontend — pick the right MASTER CLAUDE frontend skills for the page or component (triggers on "build a UI", "design a page", "make it look good", "build this screenshot", "review this UI")
+description: Build excellent frontend — pick the right SKULL frontend skills for the page or component (triggers on "build a UI", "design a page", "make it look good", "build this screenshot", "review this UI")
 allowed-tools: Read, Grep, Glob, Bash, Write, Edit, Task
 ---
-As MASTER CLAUDE, produce great frontend for: $ARGUMENTS
+As SKULL, produce great frontend for: $ARGUMENTS
 
 Pick the right `skills/frontend/` members for what's being built — don't ship default-looking UI:
 1. **Foundation** — `fe-design-system`: detect or set the tokens (color / type / spacing / radius / shadow /

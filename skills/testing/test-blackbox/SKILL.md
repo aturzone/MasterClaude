@@ -28,7 +28,7 @@ security/visual sidecars.
 1. `cd .claude/skills/testing/engine && pnpm qa scaffold-service <name> --url <baseURL>` (or reuse the target).
 2. Run: `pnpm qa run --service <name> --env <profile> [--section s01-smoke] [--docker]`.
 3. Security sidecars (optional, Docker): testssl, HTTP Observatory, ZAP baseline (passive) — targets come from `MC_QA_TARGET_URL`.
-4. Merge + report: `pnpm qa report --run <id>`; unresolved gaps become tracked findings under `.mc/qa/findings/`.
+4. Merge + report: `pnpm qa report --run <id>`; unresolved gaps become tracked findings under `.skull/qa/findings/`.
 
 ## Note on canvas apps
 Some apps paint to a `<canvas>` (e.g. Flutter Web) — the DOM is empty. Assert via the accessibility

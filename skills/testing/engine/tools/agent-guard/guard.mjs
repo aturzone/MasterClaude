@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// MASTER CLAUDE QA action guard — a Claude Code PreToolUse/PostToolUse hook (dependency-free ESM).
+// SKULL QA action guard — a Claude Code PreToolUse/PostToolUse hook (dependency-free ESM).
 //
 // It is the THIRD safety layer under the agent brief and the tool allowlist: it inspects
 // each browser tool call and BLOCKS anything that would commit an irreversible action, change
@@ -48,7 +48,7 @@ function deny(reason, cwd) {
       JSON.stringify({ at: new Date().toISOString(), reason }) + '\n',
     );
   } catch { /* best effort */ }
-  process.stderr.write(`MASTER CLAUDE QA guard blocked this action: ${reason}\n`);
+  process.stderr.write(`SKULL QA guard blocked this action: ${reason}\n`);
   process.exit(2);
 }
 

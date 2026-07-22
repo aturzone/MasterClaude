@@ -1,5 +1,5 @@
 /**
- * Core contracts of the MASTER CLAUDE QA workspace. Everything else compiles against this file.
+ * Core contracts of the SKULL QA workspace. Everything else compiles against this file.
  * A "task" is one JSON file under apps/<service>/tasks/ — see schemas/task.schema.json.
  */
 

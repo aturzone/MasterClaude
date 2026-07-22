@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "mc-qa-selector-map-1.0",
-  "title": "MASTER CLAUDE QA Selector Map (one file per page)",
+  "title": "SKULL QA Selector Map (one file per page)",
   "type": "object",
   "required": ["schemaVersion", "service", "page", "entries"],
   "additionalProperties": false,

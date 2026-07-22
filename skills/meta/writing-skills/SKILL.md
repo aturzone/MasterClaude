@@ -1,7 +1,7 @@
 ---
 name: writing-skills
 description: >-
-  Author a great MASTER CLAUDE skill (or sharpen one). Triggers on "write a skill", "add a skill", "create
+  Author a great SKULL skill (or sharpen one). Triggers on "write a skill", "add a skill", "create
   a skill", "make this a skill", "improve this skill's triggering", or when turning a repeatable methodology
   into a reusable `.md`. Covers the SKILL.md shape, the trigger-only description that actually fires, keeping
   it focused, crediting borrowed techniques, and the stay-in-sync checklist so the leader, docs and site all
@@ -70,7 +70,7 @@ run it on a real case and tighten the wording where it was ignored or misread.
 A skill is more than its file — follow **`docs/ADDING-A-CAPABILITY.md`**: add it to the right category,
 make the **leader** aware (category table + a proactive row if it should be offered on a signal), mirror it
 to the website (`catalog/<id>/{meta.json,content.md}` + regenerate `catalog.json`), run `validate.mjs` +
-`sync-check.mjs`, then push + deploy. The leader can run `/master-claude:checklist` to verify nothing's missed.
+`sync-check.mjs`, then push + deploy. The leader can run `/skull:checklist` to verify nothing's missed.
 
 ---
 *Credits:* the "description says when not what" + focused-skill discipline is sharpened in **superpowers**

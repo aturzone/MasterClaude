@@ -14,7 +14,7 @@ Before any theory, gather what the system already knows about itself. Most diagn
 logs and the last deploy; guessing skips past them. This skill is **read-only toward the system** —
 observing is how you stay the advisor instead of becoming the actor.
 
-Check `.mc/env` first, so you read the right box with the right care.
+Check `.skull/env` first, so you read the right box with the right care.
 
 ## The five reads
 | What | Where to look |

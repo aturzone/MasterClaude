@@ -19,7 +19,7 @@ reader infer, it isn't done. Write it before any code.
 ## Inputs & output
 - **In:** an approved spec (from `cap-spec-smith` / `grill-me`) + a decomposition (from `cap-decomposer`).
   No spec yet? Stop and get one first — don't plan against a fuzzy goal.
-- **Out:** a plan doc saved to `.mc/plans/<date>-<feature>.md` (or the repo's convention).
+- **Out:** a plan doc saved to `.skull/plans/<date>-<feature>.md` (or the repo's convention).
 - **Scope check:** a spec spanning multiple independent subsystems → **one plan per subsystem**, each
   independently testable and shippable.
 

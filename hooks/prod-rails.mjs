@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // prod-rails — a PreToolUse hook that turns "on production, advisor not actor" from prose into a
-// guarantee. It reads .mc/env (written by ops-env-map) and, when the environment is production,
+// guarantee. It reads .skull/env (written by ops-env-map) and, when the environment is production,
 // DENIES a short list of irreversible shell commands.
 //
 // Why a hook and not a skill: a skill is guidance the model can talk itself out of, and the platform
@@ -29,11 +29,11 @@ const tool = evt.tool_name || evt.toolName || "";
 const cmd = (evt.tool_input || evt.toolInput || {}).command || "";
 if (tool !== "Bash" || !cmd) ALLOW();
 
-// Where's the project root? The hook may run from anywhere; walk up for .mc/ or .git.
+// Where's the project root? The hook may run from anywhere; walk up for .skull/ or .git.
 function root() {
   let d = evt.cwd || process.cwd();
   for (let i = 0; i < 40; i++) {
-    if (fs.existsSync(path.join(d, ".mc")) || fs.existsSync(path.join(d, ".git"))) return d;
+    if (fs.existsSync(path.join(d, ".skull")) || fs.existsSync(path.join(d, ".git"))) return d;
     const up = path.dirname(d);
     if (up === d) break;
     d = up;
@@ -41,13 +41,13 @@ function root() {
   return evt.cwd || process.cwd();
 }
 
-// Read .mc/env. No file, or not production → this hook has nothing to say. (ops-env-map's rule is
+// Read .skull/env. No file, or not production → this hook has nothing to say. (ops-env-map's rule is
 // that an *unprovable* environment is written as production, so the absence of the file is NOT
 // treated as production here — that would block every dev session; the burden is on ops-env-map to
 // have run. The hook enforces a known-prod verdict, it doesn't guess one.)
 function isProd(r) {
   try {
-    const t = fs.readFileSync(path.join(r, ".mc", "env"), "utf8");
+    const t = fs.readFileSync(path.join(r, ".skull", "env"), "utf8");
     return /^\s*environment\s*:\s*production\b/im.test(t);
   } catch { return false; }
 }
@@ -78,8 +78,8 @@ for (const [re, why] of DENY) {
         permissionDecision: "deny",
         permissionDecisionReason:
           `prod-rails: refused — ${why}.\n` +
-          `MASTER CLAUDE's posture on production is advisor with read access, never an actor. ` +
-          `If this is genuinely intended, run it yourself, or change .mc/env if this is not actually production.`,
+          `SKULL's posture on production is advisor with read access, never an actor. ` +
+          `If this is genuinely intended, run it yourself, or change .skull/env if this is not actually production.`,
       },
     }));
     process.exit(0);

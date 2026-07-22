@@ -2,9 +2,9 @@
 name: claude-current
 description: >-
   Stay current with Claude Code and Claude itself. Triggers on "what's new", "what can Claude Code do now",
-  "is there a newer/better way", "update master claude", "which model should I use", or before relying on any
+  "is there a newer/better way", "update skull", "which model should I use", or before relying on any
   claim about a Claude Code feature, model, price, or limit. Checks the installed version, the live changelog,
-  and the harness surface MASTER CLAUDE depends on — then reports only the deltas that matter for this project.
+  and the harness surface SKULL depends on — then reports only the deltas that matter for this project.
 allowed-tools: Read, Grep, Glob, Bash, WebFetch, WebSearch
 ---
 
@@ -15,7 +15,7 @@ capability, model id, price, or limit from memory.** This skill is the protocol 
 check — cheap, and it is the difference between advice that's true and advice that was true.
 
 ## The one resident rule
-Every version-sensitive claim MASTER CLAUDE makes should trace to `docs/CLAUDE-SURFACE.md` (a dated snapshot of
+Every version-sensitive claim SKULL makes should trace to `docs/CLAUDE-SURFACE.md` (a dated snapshot of
 the harness we depend on) or to a live check. If those two disagree, **the live source wins and the snapshot is
 stale** — fix it.
 
@@ -33,7 +33,7 @@ lines, not the raw pages.
    omits (a new hook event, a moved doc URL, a model id, a tokenizer change), the snapshot is drifting.
 4. **Claude itself.** For "what's new" broadly, `WebFetch` `https://claude.com/blog` for new models/features;
    confirm anything load-bearing with `WebSearch`. One line each.
-5. **MASTER CLAUDE.** The skills are plain `.md`; to update, `git pull` the repo and re-copy
+5. **SKULL.** The skills are plain `.md`; to update, `git pull` the repo and re-copy
    `skills/ agents/ commands/` into `.claude/` (or offer to).
 
 ## When you find drift, close it

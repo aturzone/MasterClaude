@@ -47,7 +47,7 @@ import { attendedHostSession } from './attend.ts';
 import { preflightSession } from './session-preflight.ts';
 import { keeperStatus, resetSharedContext, startKeeper, stopKeeper } from './session-keeper.ts';
 
-const HELP = `MASTER CLAUDE QA — black-box QA runner (git-native task files, three executor lanes)
+const HELP = `SKULL QA — black-box QA runner (git-native task files, three executor lanes)
 
 Usage: pnpm qa <command> [options]
 

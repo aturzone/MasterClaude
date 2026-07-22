@@ -1,7 +1,7 @@
 ---
 name: workspace-architect
 description: >-
-  How MASTER CLAUDE builds the best Claude Code workspace for a project. Triggers on "set up my
+  How SKULL builds the best Claude Code workspace for a project. Triggers on "set up my
   workspace", "configure .claude", "CLAUDE.md", "what should this project have", "make this project
   Claude-ready", "best setup for this repo", or at the start of working in any project. Decides what each
   project's .claude/ should contain — a lean CLAUDE.md, the right skills/agents/settings/hooks/MCP, tuned
@@ -58,7 +58,7 @@ tuned so you're not click-fatigued. **Bloated (avoid):** giant CLAUDE.md → ign
 agents → unreliable auto-delegation · agents inheriting all tools · MCP "just in case" · documenting what
 Claude already knows.
 
-## How MASTER CLAUDE sets a project up
+## How SKULL sets a project up
 1. **Map first** (Stage 2 / Sentinel) — stack, structure, gaps, how they verify.
 2. **Write/prune CLAUDE.md** to the essentials above (or improve theirs).
 3. **Add only the skills/agents this project needs** — the leader's tailored team, not the whole catalog.

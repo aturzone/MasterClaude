@@ -26,7 +26,7 @@ engine dispatches it as a CLI lane so results fold into the same CTRF/dashboard.
    pass/fail: e.g. `http_req_duration: ['p(95)<500']`, `http_req_failed: ['rate<0.01']`.
 3. Start small and ramp: `k6 run --vus 10 --duration 30s script.js`, then stages up to your target.
 4. Record throughput, p50/p95/p99, error rate, and the concurrency at first degradation. Feed the
-   summary into `.mc/qa/` so `mc-dashboard` charts it.
+   summary into `.skull/qa/` so `skull-dashboard` charts it.
 
 ## Safety
 Load-test **only** systems you own or are authorized to test, and **only** staging/pre-prod unless

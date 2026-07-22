@@ -15,7 +15,7 @@ Default-looking UI is the #1 tell of AI-generated frontend. Before building comp
 they share.
 
 ## Order of operations
-1. **Does one already exist?** Read the repo first — `.mc/design/MASTER.md`, then the CSS / Tailwind config /
+1. **Does one already exist?** Read the repo first — `.skull/design/MASTER.md`, then the CSS / Tailwind config /
    token file / theme provider. **Never fight a system that's already there.** Only invent what's missing.
 2. **Get the concrete picks** — `ui-intel` turns "a spa booking app" into real hex, a named style and a font
    pairing, instead of you inventing a palette from nothing:
@@ -26,7 +26,7 @@ they share.
    ```bash
    node <ui-intel>/uikit.mjs --design-system "<query>" --persist --out <project-root> -p "<Name>"
    ```
-   → `.mc/design/MASTER.md` (source of truth) + `.mc/design/pages/<page>.md` (per-page overrides).
+   → `.skull/design/MASTER.md` (source of truth) + `.skull/design/pages/<page>.md` (per-page overrides).
    An existing MASTER.md is **kept** unless you pass `--force` — read it before you regenerate it; it may hold
    decisions a human made.
 4. **Emit it once**, as CSS variables or a Tailwind/token config the components import. One source of truth.

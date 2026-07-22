@@ -6,7 +6,7 @@
 // Why a hook and not just the skill: a skill is guidance, and guidance loses to compaction and to a
 // long green-the-build session. A PreToolUse deny is the hard stop. This is opt-in enforcement — it
 // only runs if wired into settings.json (scripts/install-hooks.mjs) or shipped via the plugin
-// (hooks/hooks.json). Inert until then; shipping the script does not make MASTER CLAUDE non-inert.
+// (hooks/hooks.json). Inert until then; shipping the script does not make SKULL non-inert.
 //
 // Scope: only Edit/Write whose file_path looks like a test. Anything else → allow.
 //   - Edit: diff old_string vs new_string — we can see exactly what changed.

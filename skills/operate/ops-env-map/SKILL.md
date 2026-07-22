@@ -3,7 +3,7 @@ name: ops-env-map
 description: >-
   Know which environment you are standing in before you touch anything. Triggers on starting work on a
   server, "is this prod?", "which environment is this", before any deploy, migration, restart or seed, and
-  the moment you ssh into a box you didn't just provision. Writes the verdict to `.mc/env` so every other
+  the moment you ssh into a box you didn't just provision. Writes the verdict to `.skull/env` so every other
   ops skill can key off it.
 allowed-tools: Read, Grep, Glob, Bash, Write, Edit
 ---
@@ -14,11 +14,11 @@ Every destructive mistake in ops starts the same way: the right command run in t
 first move on any server is not the task — it's answering **which environment is this**, in writing.
 
 **The governing posture, and it never bends:**
-> On production, MASTER CLAUDE is an incident advisor with read access and a rollback plan — never an actor
+> On production, SKULL is an incident advisor with read access and a rollback plan — never an actor
 > with write access. It helps the developer make the right decision; it does not make the change itself.
 
 ## The iron rule (positive form)
-Read the markers, weigh them, and write the answer to `.mc/env`. **If you cannot PROVE which environment
+Read the markers, weigh them, and write the answer to `.skull/env`. **If you cannot PROVE which environment
 this is — no marker resolves, or they disagree — you write `environment: production` and behave
 accordingly.** Unknown is not a fourth option; unknown is production until proven otherwise. Treating
 staging as prod costs a little extra caution; treating prod as staging costs the outage.
@@ -37,7 +37,7 @@ staging as prod costs a little extra caution; treating prod as staging costs the
 No single marker is authority. A staging box can carry `NODE_ENV=production`; a prod box can be mislabeled.
 **Corroborate at least two, and when they conflict, the more dangerous reading wins.**
 
-## Write it down — `.mc/env`
+## Write it down — `.skull/env`
 A tiny file, rewritten each time you re-check. Every other ops skill reads this before it acts.
 ```
 environment: production          # production | staging | development | unknown→production
@@ -55,7 +55,7 @@ detected_at: 2026-07-16T14:02Z
 - **staging / development** → normal working latitude, still verify before you ship.
 
 Re-run this the instant the ground shifts — a new ssh session, a context switch, a different terminal tab.
-The `.mc/env` file is only as true as its `detected_at`.
+The `.skull/env` file is only as true as its `detected_at`.
 
 ---
 *Pairs with `ops-observe` (read the system once you know where you are) and `ops-ship` (the gate that

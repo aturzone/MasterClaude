@@ -2,7 +2,7 @@
   "name": "@mc-qa/assertions",
   "version": "0.1.0",
   "private": true,
-  "description": "Optional i18n/RTL assertion helpers for MASTER CLAUDE QA (enable per-project; the core engine is English-first and locale-neutral by default)",
+  "description": "Optional i18n/RTL assertion helpers for SKULL QA (enable per-project; the core engine is English-first and locale-neutral by default)",
   "type": "module",
   "exports": {
     ".": "./src/index.ts"

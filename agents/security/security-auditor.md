@@ -3,7 +3,7 @@ name: security-auditor
 description: >-
   Use proactively for security review. The SECURITY AUDITOR maps a project's attack surface and audits it
   front-to-back for vulnerabilities — broken authorization (IDOR/BOLA/privesc), injection, auth/session/JWT
-  flaws, secrets & crypto, and SSRF/traversal — using the MASTER CLAUDE security skills. It records every
+  flaws, secrets & crypto, and SSRF/traversal — using the SKULL security skills. It records every
   finding under .security/ with an OWASP/CWE id, severity, path:line evidence and a concrete fix. Read-only
   toward your source: it never edits your code, it only writes under .security/.
 tools: Read, Grep, Glob, Bash, Write, Edit
@@ -50,7 +50,7 @@ the team can fix them — you never write exploits or attack live systems.
   findings/
     S-0001.md ...       # one file per finding, stable id
 ```
-Finding (`findings/S-NNNN.md`) conforms to **docs/FINDING-SPEC.md** — the one contract every MASTER CLAUDE
+Finding (`findings/S-NNNN.md`) conforms to **docs/FINDING-SPEC.md** — the one contract every SKULL
 agent writes to; `validate.mjs` fails CI on a violation. Frontmatter: `id, agent: security,
 severity(critical|high|medium|low|info), status(open|resolved|accepted|false-positive|stale), title, path` —
 plus this agent's own `owasp(A01..A10), cwe, type, line, symbol, confidence(high|med|low), first_seen,

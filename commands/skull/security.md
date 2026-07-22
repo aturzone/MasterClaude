@@ -1,8 +1,8 @@
 ---
-description: Run a security review — pick the right MASTER CLAUDE security skills (or the full audit) for what you're working on
+description: Run a security review — pick the right SKULL security skills (or the full audit) for what you're working on
 allowed-tools: Task, Read, Grep, Glob, Bash
 ---
-As MASTER CLAUDE, run a security review for the developer. $ARGUMENTS
+As SKULL, run a security review for the developer. $ARGUMENTS
 
 1. **Scope it.** If they named a target (a file, a feature, an endpoint, "the auth flow"), focus there. If
    they want the whole project, run the full audit.

@@ -10,7 +10,7 @@ codebase in good shape.
 - `cap-tdd` — strict red-green-refactor as a discipline, with the excuses table and "delete means delete".
 - `debtradar` — ranks refactor targets by churn × complexity, so you fix what actually hurts.
 - `compactor` — context-compaction safety for long sessions (snapshot/restore, timing nudges).
-- `guardian-suite` — the switchboard: which guardrails are standing, recorded in `.claude/master-claude.json`.
+- `guardian-suite` — the switchboard: which guardrails are standing, recorded in `.claude/skull.json`.
 
 > **These are disciplines, not interception.** They are Markdown the model reads and follows — nothing here can
 > block a tool call. A rule that must hold *every* time belongs in a `PreToolUse` hook or a `permissions.deny`

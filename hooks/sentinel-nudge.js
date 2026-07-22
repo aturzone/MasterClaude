@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// MASTER CLAUDE — Sentinel nudge hook (dependency-free, cross-platform).
+// SKULL — Sentinel nudge hook (dependency-free, cross-platform).
 // Wired from .claude/settings.json on SessionStart and Stop. It NEVER runs a model and never
 // edits anything — it only reads .sentinel/ + git and emits a short awareness line. It must always
 // exit 0 so it can never break a session.

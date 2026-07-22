@@ -1,13 +1,13 @@
 #!/usr/bin/env node
-// mc-issues — sync MASTER CLAUDE findings to GitHub Issues.
+// skull-issues — sync SKULL findings to GitHub Issues.
 //
-//   node scripts/mc-issues.mjs                  # sync: create/reopen/close to mirror local state
-//   node scripts/mc-issues.mjs --dry-run        # say what would happen, do nothing
-//   node scripts/mc-issues.mjs --include-security   # override the public-repo disclosure gate
-//   node scripts/mc-issues.mjs --status         # one line: mode, counts, pending
+//   node scripts/skull-issues.mjs                  # sync: create/reopen/close to mirror local state
+//   node scripts/skull-issues.mjs --dry-run        # say what would happen, do nothing
+//   node scripts/skull-issues.mjs --include-security   # override the public-repo disclosure gate
+//   node scripts/skull-issues.mjs --status         # one line: mode, counts, pending
 //
 // THE MODEL — local canon, issue surface:
-//   Finding FILES (.sentinel/findings, .security/findings, .mc/qa/findings, .mc/design/findings)
+//   Finding FILES (.sentinel/findings, .security/findings, .skull/qa/findings, .skull/design/findings)
 //   remain the machine's source of truth: they are offline, deterministic, and carry the dedup
 //   fingerprints. Issues are the HUMAN surface — assignable, closeable by "Fixes #N", visible where
 //   the team already lives. Sync is one-way (local -> GitHub) with one write-back: the issue number
@@ -19,7 +19,7 @@
 //   --include-security (explicit, per-run) or a private mirror (--repo owner/private-repo).
 //
 // NEVER runs from a hook. Hooks must stay fast and offline; this talks to a network. It runs at
-// natural moments — the end of a sweep, /master-claude:issues, or by hand.
+// natural moments — the end of a sweep, /skull:issues, or by hand.
 import fs from 'node:fs';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
@@ -35,10 +35,10 @@ const CREATE_CAP = 30; // rate-limit hygiene: a first sync on a big backlog goes
 const DIRS = [
   ['.sentinel/findings', 'sentinel'],
   ['.security/findings', 'security'],
-  ['.mc/qa/findings', 'tester'],
-  ['.mc/design/findings', 'designer'],
+  ['.skull/qa/findings', 'tester'],
+  ['.skull/design/findings', 'designer'],
 ];
-const STATE_FILE = path.join(ROOT, '.mc', 'issues.json');
+const STATE_FILE = path.join(ROOT, '.skull', 'issues.json');
 
 // ---------------------------------------------------------------- plumbing
 const gh = (...a) => execFileSync('gh', a, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] }).trim();
@@ -87,7 +87,7 @@ function detectRepo() {
 function issueBody(f) {
   const machine = { id: f.id, agent: f.agent, fingerprint: f.fingerprint || null, path: f.pathField || null, severity: f.severity };
   const body = f.text.replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n?/, ''); // human part = the markdown after the frontmatter
-  return `<!-- mc-finding ${JSON.stringify(machine)} -->\n\n${body.trim()}\n\n---\n*Filed by MASTER CLAUDE (\`${f.agent}\`) from \`${path.relative(ROOT, f.file).replace(/\\/g, '/')}\`. The local finding file is the canon; this issue is its tracking surface.*`;
+  return `<!-- mc-finding ${JSON.stringify(machine)} -->\n\n${body.trim()}\n\n---\n*Filed by SKULL (\`${f.agent}\`) from \`${path.relative(ROOT, f.file).replace(/\\/g, '/')}\`. The local finding file is the canon; this issue is its tracking surface.*`;
 }
 
 // ---------------------------------------------------------------- main
@@ -168,7 +168,7 @@ console.log(`\n${DRY ? '[dry-run] ' : ''}created ${actions.created} · reopened 
 if (heldBack.length) {
   console.error(`\n⚠ ${heldBack.length} SECURITY finding(s) NOT synced — ${repo.name} is PUBLIC, and posting them would`);
   console.error(`  publish your vulnerability list with file and line. They remain tracked locally. To sync anyway:`);
-  console.error(`    node scripts/mc-issues.mjs --include-security          # deliberate, per-run`);
-  console.error(`    node scripts/mc-issues.mjs --repo owner/private-mirror # or route them to a private repo`);
+  console.error(`    node scripts/skull-issues.mjs --include-security          # deliberate, per-run`);
+  console.error(`    node scripts/skull-issues.mjs --repo owner/private-mirror # or route them to a private repo`);
 }
 if (actions.created >= CREATE_CAP) console.error(`\n(create cap ${CREATE_CAP}/run reached — run again to continue draining the backlog)`);

@@ -8,8 +8,8 @@ Skills here drive a long procedure end to end, in passes, instead of a single sh
 - `wf-security-audit` — a full front→back security audit mapped to the OWASP Top 10 + CWE, with a
   coverage statement.
 - `wf-ui-uplift` — a full design pass: brief → system → layout → build → an accessibility-first review →
-  `mc.html`, with a coverage ledger.
-- `mc-issues` — turn the team's findings into GitHub issues and keep them in sync (local files stay
+  `skull.html`, with a coverage ledger.
+- `skull-issues` — turn the team's findings into GitHub issues and keep them in sync (local files stay
   canon; security findings held back on public repos).
 
 **Brainstorm — what else belongs here** (great first contributions)

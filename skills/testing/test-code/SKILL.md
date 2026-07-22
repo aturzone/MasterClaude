@@ -12,7 +12,7 @@ allowed-tools: Read, Grep, Glob, Bash, Write, Edit
 
 Add and run code-level tests with the project's **own** runner (Jest/Vitest/pytest/go test/…). Part of
 the `wf-tester` team. This pass doesn't need the QA engine — it works in the repo, so it composes the
-existing MASTER CLAUDE guardrails rather than reinventing them.
+existing SKULL guardrails rather than reinventing them.
 
 ## Reuse, don't reinvent
 - **`cap-tdd`** — for any new behavior: red (failing test) → green (make it pass) → refactor. Never weaken a test to go green.
@@ -29,8 +29,8 @@ existing MASTER CLAUDE guardrails rather than reinventing them.
 ## How
 - Run the existing suite first (`npm test` / `pytest` / `go test ./...`) and record the baseline.
 - Add tests pass by pass; keep each test independent and deterministic.
-- Feed results into the run so they show up in `mc.html` alongside the other lanes (write a small
-  CTRF or a summary the `mc-dashboard` skill can read from `.mc/qa/`).
+- Feed results into the run so they show up in `skull.html` alongside the other lanes (write a small
+  CTRF or a summary the `skull-dashboard` skill can read from `.skull/qa/`).
 
 ## Output
 Tracked findings for untested critical paths, a short coverage-gap note, and green new tests — never a

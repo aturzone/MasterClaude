@@ -15,7 +15,7 @@ difference between one Claude grinding a long session and a team that finishes.
   agents, a real verify path.
 - `worktree-isolation` — parallel or risky work without collisions. Prefer the harness's native worktree
   support over hand-rolled `git worktree` bash — a managed tool leaves no phantom state.
-- `mc-git` — the git working discipline the leader delegates to: session awareness, branch-before-you-build
+- `skull-git` — the git working discipline the leader delegates to: session awareness, branch-before-you-build
   (`mc/<slug>`), commit at every green step (`Fixes #N`), a WIP commit before risky bash. The bright line —
   local git aggressive by default, remote git always consented, **never auto-push**. `disable-model-invocation`.
 

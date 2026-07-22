@@ -1,9 +1,9 @@
 #!/usr/bin/env node
-// install-hooks — the opt-in arming switch for the plain-.md tier of MASTER CLAUDE.
+// install-hooks — the opt-in arming switch for the plain-.md tier of SKULL.
 //
-// MASTER CLAUDE is inert by default: copying the .md files into .claude/ runs nothing, and shipping
+// SKULL is inert by default: copying the .md files into .claude/ runs nothing, and shipping
 // the scripts in hooks/ runs nothing either. Enforcement only turns on when a hook is deliberately
-// wired into .claude/settings.json. If you installed MASTER CLAUDE as a Claude Code PLUGIN, the
+// wired into .claude/settings.json. If you installed SKULL as a Claude Code PLUGIN, the
 // plugin's hooks/hooks.json already wires the global hooks and you do NOT need this script. This
 // script is for people who copied the .md files by hand and want the same enforcement.
 //
@@ -109,7 +109,7 @@ function prompt(q) {
 }
 
 async function main() {
-  console.log(`MASTER CLAUDE — arm the opt-in enforcement hooks`);
+  console.log(`SKULL — arm the opt-in enforcement hooks`);
   console.log(`Project:  ${projectDir}`);
   console.log(`Settings: ${settingsPath}${fs.existsSync(settingsPath) ? "" : "  (will be created)"}`);
   console.log(`Hooks:    ${HOOKS_DIR}\n`);

@@ -1,7 +1,7 @@
 ---
 name: model-router
 description: >-
-  How MASTER CLAUDE picks the right model for each agent and task. Triggers on "which model", "pick a
+  How SKULL picks the right model for each agent and task. Triggers on "which model", "pick a
   model", "model selection", "use haiku/sonnet/opus", "cheaper model", "model per agent", or whenever
   spawning a subagent/team and choosing its model, or optimizing cost vs. quality on a long run. Gives a
   role→model heuristic, the "turn count beats token price" rule, the effort dial, and the cost math so the

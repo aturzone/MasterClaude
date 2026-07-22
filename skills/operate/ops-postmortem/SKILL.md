@@ -14,10 +14,10 @@ The point of a post-mortem is not to explain what happened; it's to make this cl
 or loud next time*. It is **blameless**: the target is the system that let the error through, never the
 person who made it. A blaming post-mortem teaches people to hide incidents — the opposite of what you need.
 
-Write it to `.mc/postmortem-<date>.md`, built from the `ops-incident` timeline.
+Write it to `.skull/postmortem-<date>.md`, built from the `ops-incident` timeline.
 
 ## The required sections
-1. **Timeline.** Lifted from `.mc/incident-<date>.md` — detection, each action, when service was restored.
+1. **Timeline.** Lifted from `.skull/incident-<date>.md` — detection, each action, when service was restored.
    Facts with timestamps, no editorializing.
 2. **Contributing causes.** Plural, and never "human error." A person clicking the wrong thing is a
    *symptom*; the cause is **what made the wrong thing easy** — no confirmation step, no environment check,

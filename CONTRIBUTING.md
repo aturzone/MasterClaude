@@ -1,6 +1,6 @@
-# Contributing to MASTER CLAUDE
+# Contributing to SKULL
 
-Thanks for helping build MASTER CLAUDE — a free, open-source Claude Code team. It's a collection of
+Thanks for helping build SKULL — a free, open-source Claude Code team. It's a collection of
 **skills**, **agents**, and a **leader** that assembles them for your project. Everything here is plain
 text: no build step, no secrets, no accounts.
 
@@ -13,11 +13,11 @@ Claude Code **≥ 2.1.183** (the categorized skill folders use nested-skill disc
 `claude --version`; run `claude update` if you're behind.
 
 ## Repo layout
-MASTER CLAUDE is plain markdown. The three folders users copy into their `.claude/` are `skills/`,
+SKULL is plain markdown. The three folders users copy into their `.claude/` are `skills/`,
 `agents/`, and `commands/`:
 ```
 skills/
-  master-claude/SKILL.md     # the leader (entry point)
+  skull/SKILL.md     # the leader (entry point)
   planning/   <skill>/SKILL.md   # spec & plan before code
   review/     <skill>/SKILL.md   # critique the diff & design
   understand/ <skill>/SKILL.md   # explain, debug, trace history
@@ -25,7 +25,7 @@ skills/
   security/   <skill>/SKILL.md   # review for vulnerabilities, front→back (OWASP/CWE)
   workflows/  <skill>/SKILL.md   # big multi-step jobs
 agents/<name>.md             # subagents (Sentinel; security-auditor) — may nest in agents/<category>/
-commands/                    # slash commands (/master-claude:whats-new, /master-claude:security, /sentinel:*)
+commands/                    # slash commands (/skull:whats-new, /skull:security, /sentinel:*)
 hooks/                       # the optional Sentinel session nudge (a dep-free Node hook)
 SETUP.md                     # how it's installed (copy the three folders into .claude/)
 ```
@@ -74,25 +74,25 @@ themselves (read the manifest/lockfile) rather than assume one.
 Copy the markdown into a scratch project's `.claude/` and exercise your change:
 ```bash
 mkdir -p /tmp/scratch/.claude && cd /tmp/scratch
-cp -r /path/to/MasterClaude/skills /path/to/MasterClaude/agents /path/to/MasterClaude/commands .claude/
-claude     # then, in the session: master claude
+cp -r /path/to/Skull/skills /path/to/Skull/agents /path/to/Skull/commands .claude/
+claude     # then, in the session: skull
 ```
 Confirm your skill is discovered and assembled when relevant (nested skills need Claude Code ≥ 2.1.183);
 for the cartographer, run `/sentinel:map`, make a change, and `/sentinel:sweep`.
 
 ## How we say thanks — the monthly TON share ☕
-MASTER CLAUDE is funded by donations (a TON "buy me a coffee" widget at
-[masterclaude.shop/donate](https://masterclaude.shop/donate)). At the **end of each month**, contributors
+SKULL is funded by donations (a TON "buy me a coffee" widget at
+[skull.shop/donate](https://skull.shop/donate)). At the **end of each month**, contributors
 who merged work and want to take part can share a **TON wallet address** — include it in your PR (or tell
 us in the channel) — and we send a slice of that month's donations their way, split fairly by
 contribution. Be honest with everyone: open-source donations are usually modest, so treat this as a
 thank-you, not a salary. No address, no problem — contributions are always welcome either way.
 
 ## Keep it in sync
-A capability is more than its `SKILL.md` — MASTER CLAUDE must stay aware of it and the docs/site must update.
+A capability is more than its `SKILL.md` — SKULL must stay aware of it and the docs/site must update.
 Follow **[docs/ADDING-A-CAPABILITY.md](docs/ADDING-A-CAPABILITY.md)** (the leader's category/proactive table,
 the website `catalog/`, regenerate `catalog.json`, push + deploy). Run `node scripts/validate.mjs` (also
-enforced in CI) and `node scripts/sync-check.mjs` before opening your PR — or just `/master-claude:checklist`
+enforced in CI) and `node scripts/sync-check.mjs` before opening your PR — or just `/skull:checklist`
 in the repo.
 
 ## Conduct & license

@@ -22,7 +22,7 @@ and reported success is a lie; say what you actually covered.
 
 1. **Brief** — `ux-research`. Who is this for, what job, what's the primary flow, what does each screen have to
    accomplish? If the answers aren't in the repo or the request, **ask** (`grill-me`) — do not invent a
-   persona. Persist to `.mc/design/BRIEF.md`.
+   persona. Persist to `.skull/design/BRIEF.md`.
 
 2. **Inventory.** Enumerate every screen, component and state that exists today. Note the stack (detect it —
    never assume), the existing tokens or lack of them, and the component library already in use. This frames
@@ -34,12 +34,12 @@ and reported success is a lie; say what you actually covered.
    node <ui-intel>/uikit.mjs --design-system "<product> <industry>" --stack <detected> \
         --persist --out <project-root> -p "<Name>"
    ```
-   → `.mc/design/MASTER.md`. If it already exists, **read it and keep it** — a prior human decision outranks a
+   → `.skull/design/MASTER.md`. If it already exists, **read it and keep it** — a prior human decision outranks a
    fresh generation. Emit the tokens once, as CSS variables or a Tailwind config.
 
 4. **Layout** — `fe-page-patterns`. Per screen, apply the proven structure for its type (landing, dashboard,
    settings, auth, pricing, table, form, detail, empty/error/loading). Page-specific deviations go in
-   `.mc/design/pages/<page>.md`, not into a forked MASTER.
+   `.skull/design/pages/<page>.md`, not into a forked MASTER.
 
 5. **Build** — `fe-component-craft`. Rebuild components against the tokens: every state
    (`hover · focus · active · disabled · loading · empty · error`), responsive 360→1440, accessible by
@@ -51,10 +51,10 @@ and reported success is a lie; say what you actually covered.
 7. **Review** — `fe-design-review` + `fe-a11y` + `fe-perf`, in that order of severity. Walk the `ui-intel`
    priority ladder; a band-1 accessibility miss is a blocker regardless of how good it looks.
 
-8. **Report** — `mc-dashboard`. Regenerate `mc.html` so the design team's output lands next to QA and security
+8. **Report** — `skull-dashboard`. Regenerate `skull.html` so the design team's output lands next to QA and security
    in one place:
    ```bash
-   node <mc-dashboard>/mc-dashboard.mjs
+   node <skull-dashboard>/skull-dashboard.mjs
    ```
 
 ## Parallelism
@@ -69,5 +69,5 @@ still has blockers, it is not shippable, whatever the screenshots suggest.
 
 ---
 *Members: `ux-research` · `ui-intel` · `fe-design-system` · `fe-page-patterns` · `fe-component-craft` ·
-`fe-motion` · `fe-design-review` · `fe-a11y` · `fe-perf` · `mc-dashboard`. Run by the `designer` agent or
-`/master-claude:design`.*
+`fe-motion` · `fe-design-review` · `fe-a11y` · `fe-perf` · `skull-dashboard`. Run by the `designer` agent or
+`/skull:design`.*

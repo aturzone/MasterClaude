@@ -1,9 +1,9 @@
-# CLAUDE.md — MASTER CLAUDE QA workspace guide
+# CLAUDE.md — SKULL QA workspace guide
 
 Read this first. It orients a Claude session in this repo. Deep detail lives in `docs/`.
 
 ## What this is
-**MASTER CLAUDE QA** — a git-native, black-box, **end-user** QA monorepo for testing web apps.
+**SKULL QA** — a git-native, black-box, **end-user** QA monorepo for testing web apps.
 Everything is tested the way a real user experiences it (UI/UX, clickability, forms, navigation,
 console/network/WebSocket health, performance, PWA install/offline, accessibility, visual, SEO,
 security-observational checks, resilience, content). No application source, no product test hooks.

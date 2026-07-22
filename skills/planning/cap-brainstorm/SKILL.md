@@ -40,7 +40,7 @@ the assumptions each option rides on.
 End with a short written outcome: the decision, the options considered, the rejected ones + why, and the
 open risks. Before you save it, **scan it once** for unresolved TBDs, internal contradictions, and scope
 that won't fit one plan (if it spans independent subsystems, stop and **cap-decomposer** first). Save it
-(`.mc/decisions.md` or a design note). **Gate:** don't pass it to **cap-spec-smith** /
+(`.skull/decisions.md` or a design note). **Gate:** don't pass it to **cap-spec-smith** /
 **cap-plan-first** / any build skill until the user gives an explicit yes on the decision. A brainstorm
 that vanishes into chat history — or slides into code unapproved — was half-wasted.
 

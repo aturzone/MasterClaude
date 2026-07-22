@@ -96,7 +96,7 @@ you finish (success or checkpoint).
 ```
 
 ### findings/F-NNNN.md
-Conforms to **docs/FINDING-SPEC.md** — the one contract every MASTER CLAUDE agent writes to. `validate.mjs`
+Conforms to **docs/FINDING-SPEC.md** — the one contract every SKULL agent writes to. `validate.mjs`
 fails CI on a finding that violates it. The fields below marked *(spec)* are shared with every other agent;
 `type`, `theme` and `fingerprint` are Sentinel's own.
 

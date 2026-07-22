@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "mc-qa-checklist-1.0",
-  "title": "MASTER CLAUDE QA Service Checklist (curated, ordered)",
+  "title": "SKULL QA Service Checklist (curated, ordered)",
   "type": "object",
   "$defs": {
     "localizedText": {

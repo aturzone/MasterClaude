@@ -44,11 +44,11 @@ Read the component + styles; if it runs, **exercise it** (the preview tools or a
 rendered result + DOM for the contrast / a11y / state items rather than guessing. Tie every finding to a
 checklist item — no hand-waving — and lead with the highest-severity, highest-impact fix.
 
-**Check against the project's own system, not your taste.** If `.mc/design/MASTER.md` exists, it — plus any
+**Check against the project's own system, not your taste.** If `.skull/design/MASTER.md` exists, it — plus any
 `pages/<page>.md` override — is the baseline. A deviation from MASTER is a finding; disagreeing with MASTER is
 a conversation to have with the human, not a finding to file.
 
 ---
 *The frontend sibling of `cap-self-review`. Uses `ui-intel`'s ladder for severity and `fe-design-system` /
-`.mc/design/MASTER.md` as the consistency baseline; hands deep a11y work to `fe-a11y` and slowness to
+`.skull/design/MASTER.md` as the consistency baseline; hands deep a11y work to `fe-a11y` and slowness to
 `fe-perf`. Credits: WCAG, the WAI-ARIA APG, shadcn/Radix accessibility patterns.*

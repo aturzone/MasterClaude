@@ -1,5 +1,5 @@
 ---
-name: mc-issues
+name: skull-issues
 description: >-
   Turn the team's findings into GitHub issues, and keep them in sync. Triggers on "file these as issues",
   "sync findings", "open issues for the security review / the QA run / Sentinel", "close the fixed ones", or
@@ -8,9 +8,9 @@ description: >-
 allowed-tools: Read, Grep, Glob, Bash
 ---
 
-# mc-issues — findings become issues, without losing the machine
+# skull-issues — findings become issues, without losing the machine
 
-Findings live as files (`.sentinel/findings/`, `.security/findings/`, `.mc/qa/findings/`, `.mc/design/findings/`)
+Findings live as files (`.sentinel/findings/`, `.security/findings/`, `.skull/qa/findings/`, `.skull/design/findings/`)
 because that is what makes them work: offline, deterministic, and carrying the dedup fingerprints Sentinel
 depends on. But a folder of `F-0013.md` files is a bad **interface** — nobody assigns one, closes one with a
 commit, or discusses one there. This skill gives each finding a GitHub issue as its human surface, and keeps
@@ -24,10 +24,10 @@ the two in sync.
   finds it by search and re-links instead of filing a duplicate.
 
 ```bash
-node .claude/skills/workflows/mc-issues/… ↑ no — the script lives at the repo's scripts/:
-node scripts/mc-issues.mjs --status        # mode, counts, how many still pending
-node scripts/mc-issues.mjs --dry-run       # say what would happen, touch nothing
-node scripts/mc-issues.mjs                  # create / reopen / close to mirror local state
+node .claude/skills/workflows/skull-issues/… ↑ no — the script lives at the repo's scripts/:
+node scripts/skull-issues.mjs --status        # mode, counts, how many still pending
+node scripts/skull-issues.mjs --dry-run       # say what would happen, touch nothing
+node scripts/skull-issues.mjs                  # create / reopen / close to mirror local state
 ```
 
 ## What syncs, and how it maps
@@ -47,8 +47,8 @@ line. So on a public repo, **security (`S-*`) findings are held back by default*
 deliberate exits, never a default:
 
 ```bash
-node scripts/mc-issues.mjs --include-security          # opt in, per run, eyes open
-node scripts/mc-issues.mjs --repo owner/private-mirror # or route them to a private repo
+node scripts/skull-issues.mjs --include-security          # opt in, per run, eyes open
+node scripts/skull-issues.mjs --repo owner/private-mirror # or route them to a private repo
 ```
 
 Sentinel/tester/designer findings sync normally; only security is gated, and only on a public repo. On a
@@ -56,10 +56,10 @@ private repo everything syncs.
 
 ## Never from a hook
 This talks to the network. Hooks (`sentinel-nudge.js`) must stay fast and offline. Run this at a natural
-moment — the end of a sweep, `/master-claude:issues`, or by hand. With no `gh`, no auth, or no remote, it
+moment — the end of a sweep, `/skull:issues`, or by hand. With no `gh`, no auth, or no remote, it
 records `mode: local`, changes nothing, and says so; the findings are safe as files and drain on the next
 online run. Create is capped at ~30/run so a first sync on a big backlog goes in polite waves.
 
 ---
 *Reads the finding files written by `sentinel`, `security-auditor`, `tester`, `designer` — see
-docs/FINDING-SPEC.md. Pairs with `mc-git` (the `Fixes #N` commit loop). Requires the `gh` CLI, authenticated.*
+docs/FINDING-SPEC.md. Pairs with `skull-git` (the `Fixes #N` commit loop). Requires the `gh` CLI, authenticated.*

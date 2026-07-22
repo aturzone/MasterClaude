@@ -23,7 +23,7 @@ This is the "repository map" idea: a *computed, importance-ranked* structure, no
    repo-wide (`grep -row '\bNAME\b' | wc -l`) — most-referenced ≈ most load-bearing. This approximates the
    PageRank a tree-sitter graph would compute. *(Honest limit: common/overloaded names over-count, and this
    is text matching, not a real call graph — refine a hot path with a targeted grep before trusting it.)*
-4. **Emit a budgeted map** to `.mc/repomap.md`: the top files (by ranked symbols), each with its
+4. **Emit a budgeted map** to `.skull/repomap.md`: the top files (by ranked symbols), each with its
    highest-ranked signatures + a reference count, plus entry points (`main`/`index`/routes) and the dir
    shape. Keep it to a **token budget** (~1–2k) — it's a guide, not a dump.
 

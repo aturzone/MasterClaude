@@ -2,7 +2,7 @@
 description: Run the team across separate parallel Claude Code sessions for throughput (triggers on "make it faster", "parallelize", "fan out", "run several at once", "background agents")
 allowed-tools: Read, Grep, Glob, Bash, Write, Edit, Task
 ---
-As MASTER CLAUDE, parallelize the work across separate sessions for: $ARGUMENTS
+As SKULL, parallelize the work across separate sessions for: $ARGUMENTS
 
 Follow the `fleet` skill. In short:
 1. **Decide if it's worth it.** Fan out only when the chunks are INDEPENDENT (separate files/modules, parallel

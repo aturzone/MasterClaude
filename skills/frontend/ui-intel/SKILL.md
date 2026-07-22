@@ -6,7 +6,7 @@ description: >-
   a named style, a font pairing, decision rules and the anti-patterns to avoid. Triggers at the START of any
   UI work — a new page, app, landing page, redesign, component library — and on "what colors / font / style
   should this use", "make it look designed, not generic", or "it looks AI-generated". Persists the result to
-  .mc/design/MASTER.md so every later session builds the same product.
+  .skull/design/MASTER.md so every later session builds the same product.
 allowed-tools: Read, Grep, Glob, Bash, Write, Edit
 ---
 
@@ -49,14 +49,14 @@ node uikit.mjs --contrast "#64748B" "#F1F5F9"          # ratio + AA/AAA verdict 
 ```bash
 node uikit.mjs --design-system "<query>" --persist --out <project-root> -p "Name" [--page dashboard]
 ```
-Writes `.mc/design/MASTER.md` (the source of truth) and `.mc/design/pages/<page>.md` (overrides that win over
+Writes `.skull/design/MASTER.md` (the source of truth) and `.skull/design/pages/<page>.md` (overrides that win over
 MASTER for that page only).
 
 **Read MASTER.md before regenerating it.** An existing file is left untouched unless you pass `--force` —
 that file may hold decisions a human made deliberately, and silently overwriting them is the one unforgivable
 move here. When a page genuinely needs to deviate, write a page override; don't fork MASTER.
 
-Later sessions: read `.mc/design/MASTER.md` → read `pages/<page>.md` if it exists → build. No re-litigating
+Later sessions: read `.skull/design/MASTER.md` → read `pages/<page>.md` if it exists → build. No re-litigating
 the palette every time.
 
 ## The priority ladder — what to fix first

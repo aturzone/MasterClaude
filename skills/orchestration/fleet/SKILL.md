@@ -64,7 +64,7 @@ genuinely parallel and big enough to matter.
 - **Opt-in & safe.** The fleet is just Claude Code's own built-in fan-out — background agents, agent teams, and
   git worktrees — so **every session runs with normal permissions** (no permission-skipping runner, nothing
   headless, nothing auto-fans-out; you dispatch each one). The same safe-by-default rules and catastrophe rails
-  hold as the rest of MASTER CLAUDE (no money, no destroying real data, no exfiltration, stay in the project).
+  hold as the rest of SKULL (no money, no destroying real data, no exfiltration, stay in the project).
   See [SECURITY.md](../../../SECURITY.md).
 
 ---

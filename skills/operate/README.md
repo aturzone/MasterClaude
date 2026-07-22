@@ -3,14 +3,14 @@
 Skills here cover the other side of shipping: running software once it's live, and responding when it
 breaks. They share one non-negotiable posture:
 
-> On production, MASTER CLAUDE is an incident advisor with read access and a rollback plan — never an actor
+> On production, SKULL is an incident advisor with read access and a rollback plan — never an actor
 > with write access. It helps the developer make the right decision; it does not make the change itself.
 
-Every skill here keys off `.mc/env` (written by `ops-env-map`): on production it reads, advises, and hands
+Every skill here keys off `.skull/env` (written by `ops-env-map`): on production it reads, advises, and hands
 the developer the exact command — it never runs the destructive one itself.
 
 **Current members**
-- `ops-env-map` — know where you are before anything else; unprovable ⇒ production. Writes `.mc/env`.
+- `ops-env-map` — know where you are before anything else; unprovable ⇒ production. Writes `.skull/env`.
 - `ops-ship` — the pre-deploy gate: a brief with five required slots (verify · migration · rollback ·
   blast radius · flag/canary) and a tagged release.
 - `ops-observe` — read the system's own story first: logs, metrics, health, recent deploys, error rates.

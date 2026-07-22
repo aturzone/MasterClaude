@@ -61,7 +61,7 @@ export function renderDashboard(
       <table><tr><th>task</th><th>status</th><th>at</th></tr>${rows}</table>`;
   }).join('');
 
-  const html = `<!doctype html><meta charset="utf-8"><title>MASTER CLAUDE QA — ${esc(service)} coverage</title>
+  const html = `<!doctype html><meta charset="utf-8"><title>SKULL QA — ${esc(service)} coverage</title>
 <style>
 body{font:14px/1.5 system-ui;margin:24px;max-width:1100px}
 table{border-collapse:collapse;margin:8px 0 20px}td,th{border:1px solid #ccc;padding:4px 10px;text-align:left}
@@ -69,7 +69,7 @@ h1,h2{margin:18px 0 6px}.warn{background:#fff3cd;padding:10px;border-radius:8px}
 .s-passed{color:#15803d}.s-failed{color:#b91c1c}.s-skipped-needs-human{color:#b45309}
 .grid{display:flex;gap:32px;flex-wrap:wrap}
 </style>
-<h1>MASTER CLAUDE QA coverage — ${esc(service)}</h1>
+<h1>SKULL QA coverage — ${esc(service)}</h1>
 <p>${active.length} active tasks (${tasks.length} total). Generated ${new Date().toISOString().slice(0, 16)}.</p>
 <div class="grid">
 <div><h2>By category</h2>${table(byCategory, 'category')}</div>

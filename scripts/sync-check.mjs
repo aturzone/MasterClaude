@@ -7,7 +7,7 @@ import path from 'node:path';
 import url from 'node:url';
 
 const ROOT = path.resolve(path.dirname(url.fileURLToPath(import.meta.url)), '..');
-const catalogDir = process.env.MC_WEBSITE_CATALOG || path.resolve(ROOT, '..', 'master-claude', 'catalog');
+const catalogDir = process.env.MC_WEBSITE_CATALOG || path.resolve(ROOT, '..', 'skull', 'catalog');
 
 if (!fs.existsSync(catalogDir)) {
   console.log(`(sync-check skipped — website catalog not found at ${catalogDir}; set MC_WEBSITE_CATALOG to enable)`);
@@ -15,7 +15,7 @@ if (!fs.existsSync(catalogDir)) {
 }
 
 // Skip vendored dependency trees. The bundled QA engine's node_modules contains third-party
-// SKILL.md files (playwright-core ships its own), and counting those as MASTER CLAUDE
+// SKILL.md files (playwright-core ships its own), and counting those as SKULL
 // capabilities makes this check cry wolf on every run.
 const SKIP_DIRS = new Set(['node_modules', '.git', 'dist', 'build']);
 
@@ -39,7 +39,7 @@ const catalogIds = new Set(
 
 // Intentional differences: the leader itself isn't a catalog product; the bundled `grill-me`
 // skill corresponds to the catalog's `cap-grill-me`.
-const NOT_IN_CATALOG = new Set(['master-claude', 'grill-me']);
+const NOT_IN_CATALOG = new Set(['skull', 'grill-me']);
 const NOT_IN_REPO = new Set(['cap-grill-me']);
 
 const missingFromCatalog = [...repoIds].filter((id) => !catalogIds.has(id) && !NOT_IN_CATALOG.has(id));

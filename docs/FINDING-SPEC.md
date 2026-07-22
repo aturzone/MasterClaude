@@ -1,12 +1,12 @@
-# The finding spec — one contract for every MASTER CLAUDE agent
+# The finding spec — one contract for every SKULL agent
 
 Four agents write findings: **Sentinel** (`.sentinel/findings/F-NNNN.md`), the **Security Auditor**
-(`.security/findings/S-NNNN.md`), the **Tester** (`.mc/qa/findings/T-NNNN.md`) and the **Designer**
-(`.mc/design/findings/D-NNNN.md`).
+(`.security/findings/S-NNNN.md`), the **Tester** (`.skull/qa/findings/T-NNNN.md`) and the **Designer**
+(`.skull/design/findings/D-NNNN.md`).
 
 Until this spec, they used **four different severity vocabularies and three different status vocabularies**, and
 two of them specified no fields at all. That is not a taxonomy, it is four conventions that happen to share a
-folder shape — and it produced real bugs: `mc-dashboard.mjs` ranked the Designer's *top* severity (`blocker`)
+folder shape — and it produced real bugs: `skull-dashboard.mjs` ranked the Designer's *top* severity (`blocker`)
 below `info`, and read no `status` at all, so a resolved critical still forced a FAIL verdict.
 
 **One scale. One status set. Every consumer can trust it.**
@@ -81,7 +81,7 @@ path: src/auth/verify.ts   # repo-relative. The one place to look first.
 | `symbol` | Function/class/component name. Survives line drift. |
 | `fingerprint` | Stable identity — see below. |
 | `related` | Ids of related findings. **Symmetric**: if A lists B, B lists A. |
-| `issue` | The GitHub issue number once synced (see `mc-issues`). Its presence means "already filed". |
+| `issue` | The GitHub issue number once synced (see `skull-issues`). Its presence means "already filed". |
 | `first_seen` / `last_seen` | Commit SHAs. |
 | `reason` | **Required when status is `accepted` or `false-positive`.** A status without a reason is an unexplained dismissal. |
 
@@ -127,7 +127,7 @@ Ids are allocated monotonically and **never reused**, even after deletion.
 
 ## For consumers
 
-Anything that reads findings — `mc-dashboard.mjs`, `hooks/sentinel-nudge.js`, `mc-issues`, a future badge —
+Anything that reads findings — `skull-dashboard.mjs`, `hooks/sentinel-nudge.js`, `skull-issues`, a future badge —
 must:
 1. Parse the frontmatter **between the `---` fences**, not by scanning the whole file. A body line reading
    `path: something` is prose, not a field.

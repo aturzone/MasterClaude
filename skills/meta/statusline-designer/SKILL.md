@@ -91,5 +91,5 @@ at `/statusline`; for a tailored, iterated bar, design it here. To remove one: `
 ---
 *Builds on Claude Code's native status line + `/statusline` (credit: Claude Code). The gate exists to honor
 [[token-economy]] — never spend tokens on a status line that isn't wanted. Pairs with [[workspace-architect]]
-for the rest of the `.claude/` setup; the leader keeps [[master-claude]]'s command of the Claude Code feature
+for the rest of the `.claude/` setup; the leader keeps [[skull]]'s command of the Claude Code feature
 surface current via what's-new.*

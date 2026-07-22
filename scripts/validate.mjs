@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Validate the MASTER CLAUDE skills repo. MASTER CLAUDE is plain markdown you copy into .claude/
+// Validate the SKULL skills repo. SKULL is plain markdown you copy into .claude/
 // (there are no manifests to validate), so the thing worth enforcing is that it does not LIE:
 // a description must not promise a command or a hook the repo doesn't ship, a category README must
 // list the members that actually exist, findings must match docs/FINDING-SPEC.md, and doc links
@@ -112,8 +112,8 @@ for (const f of [...skills, ...agents, ...commands]) {
 }
 
 // ---------------------------------------------------------------- category READMEs
-// skills/master-claude/ is the leader itself, not a category — a README there would be noise.
-const NO_README_NEEDED = new Set(['master-claude']);
+// skills/skull/ is the leader itself, not a category — a README there would be noise.
+const NO_README_NEEDED = new Set(['skull']);
 const skillsDir = path.join(ROOT, 'skills');
 for (const cat of fs.readdirSync(skillsDir, { withFileTypes: true }).filter((e) => e.isDirectory())) {
   if (NO_README_NEEDED.has(cat.name)) continue;

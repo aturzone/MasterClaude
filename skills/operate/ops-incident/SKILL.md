@@ -21,9 +21,9 @@ shortcut).
    *forward* only when the fix is genuinely smaller and safer than the rollback.** Reversible beats clever.
 2. **Call severity.** How many users, how bad, and is it getting worse? That answer sets everything — who
    you wake, how often you communicate, whether you canary the fix or just ship it.
-3. **Keep a timeline from minute one.** Timestamped facts in `.mc/incident-<date>.md`: what you saw, what
+3. **Keep a timeline from minute one.** Timestamped facts in `.skull/incident-<date>.md`: what you saw, what
    you did, what happened next. Written live, not reconstructed after. (These lines become the post-mortem,
-   and the issue comments once `mc-issues` lands.)
+   and the issue comments once `skull-issues` lands.)
 4. **Never edit code on the prod box.** Reproduce in staging or locally, fix it there, and ship the fix
    through the normal pipeline (`ops-ship`). A hand-edit on prod is an untracked, untested, un-revertable
    change layered on top of an outage.

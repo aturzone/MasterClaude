@@ -1,33 +1,33 @@
 <!-- verified: 2026-07, cc 2.1.210 -->
-# Enforcement — MASTER CLAUDE's two tiers
+# Enforcement — SKULL's two tiers
 
-Most of MASTER CLAUDE is **guidance**: markdown a skill loads into context, which the model then follows.
+Most of SKULL is **guidance**: markdown a skill loads into context, which the model then follows.
 Guidance is honest but soft — it can lose to compaction on a long session, or to a model talking itself into
 "just this once." A few rules are too important for soft. This page is about those, and the switch that turns
 them from a request into a guarantee.
 
 ## Tier 1 — inert by default (guidance)
 
-Copying MASTER CLAUDE's `.md` files into `.claude/` **runs nothing**. There are no daemons, no autostart, no
+Copying SKULL's `.md` files into `.claude/` **runs nothing**. There are no daemons, no autostart, no
 background processes. Skills and agents are plain text that Claude Code reads when relevant. Their rules —
 "verify before done", "tests are sacred", "read-only toward your source" — are disciplines the model *holds*,
 not walls it *hits*. This is the safe default, and it stays the default even though the repo also ships hook
 scripts under `hooks/`: **a script in `hooks/` does nothing until it is deliberately wired.** Shipping them
-does not make MASTER CLAUDE non-inert.
+does not make SKULL non-inert.
 
 ## Tier 2 — opt-in enforcement (hooks)
 
 A `PreToolUse` hook runs *before* a tool call and can **deny** it, **ask** for confirmation, or **allow** it —
-a hard gate the model cannot narrate its way past. MASTER CLAUDE ships four, all dependency-free Node, all
+a hard gate the model cannot narrate its way past. SKULL ships four, all dependency-free Node, all
 **fail-open** (any error or malformed input → allow; a guardrail must never wedge a session) and all exit 0
 (blocking is done with the decision, never the exit code):
 
 | Hook | Event | What it guarantees |
 |---|---|---|
 | `hooks/sentinel-nudge.js` | SessionStart · Stop | Read-only awareness line: git state + whether the Sentinel map has drifted behind HEAD. Never blocks. |
-| `hooks/prod-rails.mjs` | PreToolUse · Bash | On a box `.mc/env` marks **production**, denies a short list of irreversible shell (`rm -rf`, `DROP TABLE`, unbounded `DELETE`, `terraform destroy`, `kubectl delete`, force-push, raw disk writes…). |
+| `hooks/prod-rails.mjs` | PreToolUse · Bash | On a box `.skull/env` marks **production**, denies a short list of irreversible shell (`rm -rf`, `DROP TABLE`, unbounded `DELETE`, `terraform destroy`, `kubectl delete`, force-push, raw disk writes…). |
 | `hooks/guardian-test-guard.mjs` | PreToolUse · Edit \| Write | **Denies** silently disabling a test (adding `it.skip`/`xit`/`pytest.mark.skip`/`@Ignore`/`t.Skip()`, or commenting out an assertion). **Asks** on the doubtful cases (`.only` focus, an assertion count that merely dropped, a full-file write carrying a skip marker). Scoped to test files only. |
-| `hooks/findings-scope.mjs` | PreToolUse · Write \| Edit | Enforces "read-only toward your source" for the read-only agents: a write outside their finding dirs (`.sentinel/`, `.security/`, `.mc/`) or `mc.html` is denied. **Agent-scoped — never wired globally.** |
+| `hooks/findings-scope.mjs` | PreToolUse · Write \| Edit | Enforces "read-only toward your source" for the read-only agents: a write outside their finding dirs (`.sentinel/`, `.security/`, `.skull/`) or `skull.html` is denied. **Agent-scoped — never wired globally.** |
 
 ### Deny vs ask (why guardian-test-guard is careful)
 
@@ -62,5 +62,5 @@ frontmatter when you want that agent's source-write ban enforced rather than mer
 ## The honest line
 
 Other guardrail packs write rules as "Iron Laws" and trust the model to obey. Ours are guidance too — until
-you arm them. The difference MASTER CLAUDE ships is the **arming switch**: their Iron Laws are requests; ours
+you arm them. The difference SKULL ships is the **arming switch**: their Iron Laws are requests; ours
 have an on position. Off by default, on when you decide, and honest about which is which.

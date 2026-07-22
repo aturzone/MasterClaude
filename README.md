@@ -1,13 +1,13 @@
-# MASTER CLAUDE ☕
+# SKULL ☕
 
-**A free, open-source Claude Code team.** Say **"master claude"** and a *leader* interviews you, maps your
+**A free, open-source Claude Code team.** Say **"skull"** and a *leader* interviews you, maps your
 project, and assembles a tailored team — **Sentinel** the project cartographer plus planning, review,
 understanding and guardrail specialists — then runs it on your work. It also keeps itself (and you) current
 with the newest Claude Code features.
 
 No account. No API key. No vault. It's just markdown you drop into `.claude/` — everything is local, plain text, and open.
 
-**Safe by default.** Adding MASTER CLAUDE runs **nothing** — it's inert markdown. There are **no** autonomous
+**Safe by default.** Adding SKULL runs **nothing** — it's inert markdown. There are **no** autonomous
 runners, no Telegram bridge, and no background daemons; every capability works interactively under Claude
 Code's normal permission prompts, nothing auto-starts, and no data leaves your machine. Its guardrails are
 guidance by default; a few can be **armed** as opt-in `PreToolUse` hooks that hard-block the riskiest moves
@@ -15,15 +15,15 @@ guidance by default; a few can be **armed** as opt-in `PreToolUse` hooks that ha
 Full model: **[SECURITY.md](SECURITY.md)**.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Buy me a coffee in TON](https://img.shields.io/badge/Buy%20me%20a%20coffee-TON-0098EA.svg)](https://masterclaude.shop/donate)
+[![Buy me a coffee in TON](https://img.shields.io/badge/Buy%20me%20a%20coffee-TON-0098EA.svg)](https://skull.shop/donate)
 
 ---
 
 ## What it is
-MASTER CLAUDE is a set of Claude Code **skills** and **agents** — all plain `.md` files, organized by
-category — plus a **leader** skill (`master-claude`) that ties them together. You add the markdown to your
+SKULL is a set of Claude Code **skills** and **agents** — all plain `.md` files, organized by
+category — plus a **leader** skill (`skull`) that ties them together. You add the markdown to your
 project's `.claude/` folder (or your global `~/.claude/`) and it's live. Instead of installing a dozen tools
-you'll forget, you say "master claude" once — it figures out what
+you'll forget, you say "skull" once — it figures out what
 *this* project and *this* developer need, assembles the smallest team that helps, gets to work, and brings
 in more members the moment a need shows up.
 
@@ -32,17 +32,17 @@ in more members the moment a need shows up.
 `claude --version`; if you're behind, run `claude update`.
 
 ## Set up
-MASTER CLAUDE is `.md` files you drop into `.claude/`. Pick either path:
+SKULL is `.md` files you drop into `.claude/`. Pick either path:
 
 **A. Let Claude Code set it up (easiest).** In your project, paste this to Claude Code:
 
-> I want to use MASTER CLAUDE (https://github.com/aturzone/MasterClaude) in this project. Clone the repo,
+> I want to use SKULL (https://github.com/aturzone/Skull) in this project. Clone the repo,
 > copy its `skills/`, `agents/` and `commands/` folders into this project's `.claude/` directory, then load
-> and run the `master-claude` skill to set up my team.
+> and run the `skull` skill to set up my team.
 
 **B. Manual (git).**
 ```bash
-git clone https://github.com/aturzone/MasterClaude /tmp/mc
+git clone https://github.com/aturzone/Skull /tmp/mc
 mkdir -p .claude && cp -r /tmp/mc/skills /tmp/mc/agents /tmp/mc/commands .claude/
 ```
 Use `~/.claude/` instead of `.claude/` to enable it for **every** project. The optional Sentinel hook and
@@ -50,18 +50,18 @@ full details are in **[SETUP.md](SETUP.md)**.
 
 **Then run it** — in any project, say:
 ```
-master claude — set up my team for this project
+skull — set up my team for this project
 ```
-(or `/master-claude`). It interviews you, maps the repo, and assembles your team. See your team any time
-with `/master-claude-team`.
+(or `/skull`). It interviews you, maps the repo, and assembles your team. See your team any time
+with `/skull-team`.
 
 ## The team
 The leader picks a **minimal** subset per project — never all at once. Capabilities are organized by
 category; each folder has a README that brainstorms what else belongs there (good first contributions).
 
 - **`agents/`** — **Sentinel** (project cartographer → `.sentinel/`), the **Security Auditor** (read-only
-  vulnerability audit → `.security/`), the **Tester** (QA lead → `.mc/qa/` + `mc.html`) and the **Designer**
-  (design lead → `.mc/design/` + `mc.html`). All read-only toward your source.
+  vulnerability audit → `.security/`), the **Tester** (QA lead → `.skull/qa/` + `skull.html`) and the **Designer**
+  (design lead → `.skull/design/` + `skull.html`). All read-only toward your source.
 - **`skills/planning/`** — `grill-me` · `cap-brainstorm` · `cap-plan-first` · `cap-spec-smith` ·
   `cap-decomposer` · `cap-write-plan` · `cap-execute-plan` — fuzzy ask → spec → plan → built result.
 - **`skills/review/`** — `cap-self-review` · `cap-red-team` — critique the diff and the design.
@@ -71,7 +71,7 @@ category; each folder has a README that brainstorms what else belongs there (goo
   `debtradar` · `compactor` · `guardian-suite` — keep the work honest and the codebase healthy.
 - **`skills/frontend/`** (the design team) — **`ui-intel`** (a queryable design-intelligence database: real hex
   palettes, styles, font pairings, decision rules and anti-patterns per product type — contrast **verified**, not
-  claimed; persists to `.mc/design/MASTER.md` so every session builds the same product) · `ux-research` ·
+  claimed; persists to `.skull/design/MASTER.md` so every session builds the same product) · `ux-research` ·
   `fe-design-system` · `fe-page-patterns` · `fe-component-craft` · `fe-from-reference` · `fe-a11y` (WCAG 2.2 AA) ·
   `fe-motion` · `fe-perf` (LCP/CLS/INP) · `fe-design-review` — UI that looks designed, not default.
 - **`skills/security/`** — `sec-authz-review` · `sec-attacker-review` · `sec-injection` · `sec-authn-session` ·
@@ -86,7 +86,7 @@ category; each folder has a README that brainstorms what else belongs there (goo
   retrieve-don't-dump, audit MCPs, measure tokens) · `fleet` (run the team in separate parallel sessions for
   throughput — cost-capped, opt-in) · `workspace-architect` (the best `.claude/` setup per
   project) · `worktree-isolation` (parallel work without collisions).
-- **`skills/meta/`** — `writing-skills` (author or sharpen a MASTER CLAUDE skill) · `statusline-designer`
+- **`skills/meta/`** — `writing-skills` (author or sharpen a SKULL skill) · `statusline-designer`
   (design a custom Claude Code status line for CLI users — gated, opt-in) — so the archive keeps growing.
 
 ## How it works
@@ -97,10 +97,10 @@ category; each folder has a README that brainstorms what else belongs there (goo
 4. **Run.** Actually does the work with the team, and tells you what each member changed.
 
 ## Staying up to date
-MASTER CLAUDE keeps itself current — it's your guide to the best of Claude Code. Ask it **"what's new"**
-(or run `/master-claude:whats-new`) and it checks your Claude Code version, reads the official changelog,
+SKULL keeps itself current — it's your guide to the best of Claude Code. Ask it **"what's new"**
+(or run `/skull:whats-new`) and it checks your Claude Code version, reads the official changelog,
 and flags the new features relevant to *your* work.
-- **Update MASTER CLAUDE:** just ask it to **"update yourself"** — it `git pull`s the repo and re-copies
+- **Update SKULL:** just ask it to **"update yourself"** — it `git pull`s the repo and re-copies
   `skills/ agents/ commands/` into `.claude/`. (Or do it by hand, same two commands as setup.)
 - **Update Claude Code:** `claude update`.
 
@@ -115,7 +115,7 @@ invariant recorded; every gap / bug / missing test surfaced as a tracked, cross-
 A session hook nudges you when the map drifts behind HEAD or criticals are open.
 
 ## Customization
-Drop a `.claude/master-claude.json` in your project to steer the leader (all keys optional):
+Drop a `.claude/skull.json` in your project to steer the leader (all keys optional):
 ```json
 {
   "autonomy": "ask",
@@ -127,7 +127,7 @@ Drop a `.claude/master-claude.json` in your project to steer the leader (all key
 ```
 
 ## Plays nicely with the wider ecosystem
-MASTER CLAUDE will recommend (never force) external tools when they fit: **[superpowers](https://github.com/obra/superpowers)**
+SKULL will recommend (never force) external tools when they fit: **[superpowers](https://github.com/obra/superpowers)**
 (broad TDD/review + subagent base), **[mattpocock/skills](https://github.com/mattpocock/skills)** (the
 original `grill-me` + engineering skills), **gsd** (spec-driven autonomous builds), **caveman** (fewer output
 tokens on long sessions). We learn from the best of the community and build our own — we **don't vendor their
@@ -141,11 +141,11 @@ folder brainstorms what's needed (including **stack-specific** ideas). Contribut
 [CONTRIBUTING.md](CONTRIBUTING.md). Licensed under [MIT](LICENSE).
 
 
-[![Claudeers](https://claudeers.com/api/badge/masterclaude-2.svg)](https://claudeers.com/masterclaude-2)
+[![Claudeers](https://claudeers.com/api/badge/skull-2.svg)](https://claudeers.com/skull-2)
 
-[![Hits](https://claudeers.com/api/counter/masterclaude-2.svg)](https://claudeers.com/masterclaude-2)
+[![Hits](https://claudeers.com/api/counter/skull-2.svg)](https://claudeers.com/skull-2)
 
 ## Support the project ☕
-MASTER CLAUDE is free and open source. If it saves you time, **buy it a coffee in TON** — 100% on-chain,
+SKULL is free and open source. If it saves you time, **buy it a coffee in TON** — 100% on-chain,
 wallet-to-wallet, no accounts or cards, and you can leave a message with your donation:
-<https://masterclaude.shop/donate>
+<https://skull.shop/donate>

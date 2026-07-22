@@ -1,6 +1,6 @@
 # Adding a capability — the stay-in-sync checklist
 
-Every time we add or change a skill / agent / command, run this list so MASTER CLAUDE stays aware, the docs
+Every time we add or change a skill / agent / command, run this list so SKULL stays aware, the docs
 and website stay accurate, and it actually ships. Nothing half-landed.
 
 ## 1. Build it (this skills repo)
@@ -9,12 +9,12 @@ and website stay accurate, and it actually ships. Nothing half-landed.
 - [ ] Promote it in the category README (from "brainstorm" to "current members").
 - [ ] `node scripts/validate.mjs` is green.
 
-## 2. Make the leader aware (`skills/master-claude/SKILL.md`)
+## 2. Make the leader aware (`skills/skull/SKILL.md`)
 - [ ] Discovery is automatic, but: add it to the leader's **category table** (for a new category) and add a
       **proactive-trigger row** if it should be offered on a signal.
 - [ ] Add or adjust a command if it deserves one (`commands/...`).
 
-## 3. Mirror to the website (private repo `master-claude`)
+## 3. Mirror to the website (private repo `skull`)
 - [ ] `catalog/<id>/meta.json` (correct `category`, `title`, `description`, `preview`, `example`) +
       `catalog/<id>/content.md`.
 - [ ] `node infra/seeds/build-catalog.mjs` → regenerates `frontend/public/catalog.json`.
@@ -25,10 +25,10 @@ and website stay accurate, and it actually ships. Nothing half-landed.
 ## 4. Ship it
 - [ ] Update the README team list on a new category. (Users get the change by re-copying
       `skills/ agents/ commands/` into `.claude/`.)
-- [ ] Commit + **push** the skills repo (`aturzone/MasterClaude`).
+- [ ] Commit + **push** the skills repo (`aturzone/Skull`).
 - [ ] Build + **deploy** the website (`bash infra/deploy.sh`); **verify live** (home 200, catalog count, the
       new item present).
 - [ ] Notable addition → a short **blog** post.
 
-> Shortcut: inside the repos, run `/master-claude:checklist` — MASTER CLAUDE prints this and runs
+> Shortcut: inside the repos, run `/skull:checklist` — SKULL prints this and runs
 > `validate.mjs` + `sync-check.mjs`, then tells you what's still pending.

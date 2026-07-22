@@ -1,19 +1,19 @@
 ---
-name: mc-git
+name: skull-git
 description: >-
-  The git mechanics MASTER CLAUDE runs by default — invoked by the leader, not auto-triggered. Covers
+  The git mechanics SKULL runs by default — invoked by the leader, not auto-triggered. Covers
   session awareness (branch, dirty count, ahead/behind), branch-before-you-build (mc/<slug>, never the
   default branch), commit at every green step (conventional, Fixes #N), a WIP commit before risky bash,
   finishing a branch (PR/merge/delete), worktrees for parallel writers, and the bright line: local git
   aggressive by default, remote git always consented, never auto-push. The off switch lives in
-  .claude/master-claude.json.
+  .claude/skull.json.
 disable-model-invocation: true
 allowed-tools: Read, Grep, Glob, Bash
 ---
 
-# mc-git — intimate with git, locally; consented, remotely
+# skull-git — intimate with git, locally; consented, remotely
 
-MASTER CLAUDE works *in* git, not next to it. Every non-trivial change lands on its own branch, every green
+SKULL works *in* git, not next to it. Every non-trivial change lands on its own branch, every green
 step is a commit, and the history is the undo. That intimacy is **local**: branching, committing, stashing and
 worktrees happen freely, by default. The moment anything leaves the machine — a `push`, a force-push, a PR —
 it stops and asks. **Never auto-push.** "Intimate with git" means *local* intimacy; the remote is always the
@@ -49,7 +49,7 @@ If you're on it, branch **before the first edit**:
 ```bash
 git switch -c mc/<slug>              # modern; git checkout -b on old git
 ```
-**Ask once per project**, then remember: write `git.autobranch` into `.claude/master-claude.json`. After that,
+**Ask once per project**, then remember: write `git.autobranch` into `.claude/skull.json`. After that,
 branching is automatic and silent — one of the aggressive-by-default local ops.
 
 ## Commit at every green step
@@ -60,7 +60,7 @@ git add -A && git commit -m "fix: reject unowned order ids in GET /orders/:id
 Fixes #42"
 ```
 - **Conventional prefix** carries the meaning: `feat:` `fix:` `chore:` `refactor:` `test:` `docs:`.
-- **Reference the issue/finding:** `Fixes #N` / `Refs #N`. This is the loop `mc-issues` closes —
+- **Reference the issue/finding:** `Fixes #N` / `Refs #N`. This is the loop `skull-issues` closes —
   finding → issue → branch → commit `Fixes #N` → merge → issue auto-closes → the next sweep confirms.
 - Cadence is `commitCadence` in config: `step` (every green step, default), `logical` (at logical units),
   `off` (you commit by hand).
@@ -93,7 +93,7 @@ Pick the one that fits and propose it; don't leave a green branch dangling with 
 | **Refused** | force-push to the **default branch** (`main`/`master`) | **Refused outright** — rewriting shared default history is a catastrophe rail, not a prompt |
 
 `push` and PR creation are never automatic — not under `autonomy: act`, not "to save a step". The user's remote
-is theirs. This is the one place mc-git is deliberately timid.
+is theirs. This is the one place skull-git is deliberately timid.
 
 ## Worktrees — for parallel writers
 When you dispatch **subagents that edit in parallel**, give each its own worktree so they never clobber one
@@ -102,7 +102,7 @@ branches from the **default branch**, so it fits **independent** tasks, not stac
 full lifecycle (create → work → integrate → clean up, and the "am I already in a worktree?" check), see
 **worktree-isolation**. Don't hand-roll `git worktree` when a managed tool exists.
 
-## The off switch — `.claude/master-claude.json`
+## The off switch — `.claude/skull.json`
 Everything above is on by default; this is how a user turns it down. All keys optional:
 ```json
 { "git": { "autobranch": true, "commitCadence": "step", "conventional": true } }
@@ -117,6 +117,6 @@ Absent ⇒ all on. `commitCadence: "off"` still lets you commit when asked — i
 The bright line is **not** configurable: remote always asks, force-push to the default branch is always refused.
 
 ---
-*The canonical git mechanics for MASTER CLAUDE — `cap-execute-plan` and the leader delegate here so the posture
-never drifts. Pairs with `mc-issues` (the `Fixes #N` commit→issue loop) and `worktree-isolation` (parallel
+*The canonical git mechanics for SKULL — `cap-execute-plan` and the leader delegate here so the posture
+never drifts. Pairs with `skull-issues` (the `Fixes #N` commit→issue loop) and `worktree-isolation` (parallel
 writers). Local intimacy, remote consent, never auto-push.*

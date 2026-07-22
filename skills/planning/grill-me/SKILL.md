@@ -48,7 +48,7 @@ opening the next, and order questions so an upstream choice unlocks the downstre
 4. Incorporate the answer; repeat step 3 until the spec is unambiguous.
 5. **Hand off — don't just chat.** Echo a structured spec (goal · scope · non-goals · approach · success
    criteria · open risks) and get a clear yes. For anything sizeable, **write it down** — pass it to
-   **cap-spec-smith** / **cap-plan-first**, or save it under `.mc/` — so the interview becomes an
+   **cap-spec-smith** / **cap-plan-first**, or save it under `.skull/` — so the interview becomes an
    artifact you build from, and a long grill can resume later (pair with **compactor**).
 
 Be direct and curious, never interrogating for its own sake — every question must change what you will build.

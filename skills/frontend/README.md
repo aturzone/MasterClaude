@@ -1,10 +1,10 @@
 # skills/frontend — the design team
 
-MASTER CLAUDE's UI/UX team. Not default-looking AI frontend: a real design org, covering the whole loop —
+SKULL's UI/UX team. Not default-looking AI frontend: a real design org, covering the whole loop —
 **know the user → get the concrete picks → set the system → pick the layout → craft the components →
 make it accessible, fast and alive → review it.**
 
-The team is driven end-to-end by **`wf-ui-uplift`**, the **`designer`** agent, or `/master-claude:design`.
+The team is driven end-to-end by **`wf-ui-uplift`**, the **`designer`** agent, or `/skull:design`.
 
 ## Current members
 
@@ -14,7 +14,7 @@ The team is driven end-to-end by **`wf-ui-uplift`**, the **`designer`** agent, o
 **Decide how it looks — with specifics**
 - **ui-intel** — ★ the design-intelligence database. Query it for **real** answers: a full palette in hex
   (light + dark, shadcn-shaped), a named style, a font pairing, decision rules, and the anti-patterns to
-  avoid — then persist them to `.mc/design/MASTER.md` so every later session builds the *same* product.
+  avoid — then persist them to `.skull/design/MASTER.md` so every later session builds the *same* product.
   Dep-free Node, no install. Every palette's contrast is **computed and verified**, not claimed.
 - **fe-design-system** — turn the picks into tokens (color / type / spacing / radius / shadow / motion).
 

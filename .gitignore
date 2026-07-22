@@ -12,9 +12,9 @@ Thumbs.db
 
 # Claude Code local / per-user state (don't ship dogfood artifacts)
 .sentinel/
-.mc/
+.skull/
 .claude/settings.local.json
-.claude/master-claude.json
+.claude/skull.json
 
 # clone runtime state + secrets (NEVER commit)
 .clone/

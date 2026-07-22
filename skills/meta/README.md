@@ -1,4 +1,4 @@
-# meta/ — MASTER CLAUDE working on MASTER CLAUDE
+# meta/ — SKULL working on SKULL
 
 Skills here extend the project itself. If you find yourself explaining the same method twice, it belongs in a
 skill — and this is where you learn how to write one that actually fires.

@@ -1,5 +1,5 @@
 /**
- * Tiny, dependency-free i18n for the MASTER CLAUDE QA run report.
+ * Tiny, dependency-free i18n for the SKULL QA run report.
  *
  * English (`en`) is the default and only built-in language. The catalog is typed
  * `satisfies Record<string, Record<Lang, string>>`, so a message entry that is missing a language
@@ -24,7 +24,7 @@ export type LocalizedText = string | { en: string };
  */
 const messages = {
   // --- run report artifact (run-report.ts) ---
-  'rr.title': { en: 'MASTER CLAUDE QA run report — {service}' },
+  'rr.title': { en: 'SKULL QA run report — {service}' },
   'rr.provisional': { en: '⏳ PROVISIONAL — incomplete ({n} outstanding)' },
   'rr.run': { en: 'Run' },
   'rr.envProfile': { en: 'Env profile' },

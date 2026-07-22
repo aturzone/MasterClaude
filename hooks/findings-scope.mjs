@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // findings-scope — a PreToolUse hook that turns "read-only toward your source" from a promise in an
-// agent's prose into a guarantee. MASTER CLAUDE's four read-only agents — sentinel, security-auditor,
-// tester, designer — may read anything but must write ONLY under their finding directories (+ mc.html).
+// agent's prose into a guarantee. SKULL's four read-only agents — sentinel, security-auditor,
+// tester, designer — may read anything but must write ONLY under their finding directories (+ skull.html).
 // Today that boundary is prose the agent can drift past; this hook makes it enforced.
 //
 // AGENT-SCOPED — DO NOT WIRE GLOBALLY. A hook that denied every Write outside these dirs would break
@@ -12,7 +12,7 @@
 // It can't tell WHICH agent it's running for from the event alone, so it keeps it simple: it enforces
 // the UNION of write locations allowed to any read-only agent —
 //   .sentinel/   (sentinel)   ·   .security/  (security-auditor)
-//   .mc/         (tester → .mc/qa/, designer → .mc/design/)   ·   basename mc.html (tester + designer)
+//   .skull/         (tester → .skull/qa/, designer → .skull/design/)   ·   basename skull.html (tester + designer)
 // If a specific agent needs a narrower or wider set, adjust ALLOWED and re-scope. A path outside the
 // union is denied with a reason pointing back at the read-only contract. (Known nuance: the tester
 // agent also writes to a QA workspace under .claude/skills/testing/engine/apps/<target>/ — if you
@@ -38,9 +38,9 @@ const input = evt.tool_input || evt.toolInput || {};
 const filePath = input.file_path || input.filePath || "";
 if (!filePath) ALLOW();
 
-// Directory prefixes a read-only agent may write under, plus the one allowed loose file (mc.html).
-const ALLOWED_DIRS = [".sentinel", ".security", ".mc"];
-const ALLOWED_BASENAMES = ["mc.html"];
+// Directory prefixes a read-only agent may write under, plus the one allowed loose file (skull.html).
+const ALLOWED_DIRS = [".sentinel", ".security", ".skull"];
+const ALLOWED_BASENAMES = ["skull.html"];
 
 // Resolve file_path relative to the project root, then test the relative path against the prefixes.
 // Absolute or relative input both work: path.resolve leaves an absolute path alone and joins a
@@ -61,7 +61,7 @@ process.stdout.write(JSON.stringify({
     hookEventName: "PreToolUse",
     permissionDecision: "deny",
     permissionDecisionReason:
-      `findings-scope: refused to write ${filePath}. This is a MASTER CLAUDE read-only agent — it is ` +
+      `findings-scope: refused to write ${filePath}. This is a SKULL read-only agent — it is ` +
       `read-only toward your source and may write ONLY under ${ALLOWED_DIRS.map((d) => d + "/").join(", ")} ` +
       `or to ${ALLOWED_BASENAMES.join(", ")}. Record this as a finding with a suggested fix instead of ` +
       `editing the source; applying the fix is the developer's or the Conductor's job, not the agent's.`,

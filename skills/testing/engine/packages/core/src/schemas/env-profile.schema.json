@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "mc-qa-env-profile-1.0",
-  "title": "MASTER CLAUDE QA Env Profile (committed, non-secret)",
+  "title": "SKULL QA Env Profile (committed, non-secret)",
   "type": "object",
   "required": ["name", "baseURL", "accountType", "unattendedRiskClasses", "supervisedRiskClasses"],
   "additionalProperties": false,

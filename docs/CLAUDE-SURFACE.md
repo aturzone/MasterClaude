@@ -1,5 +1,5 @@
 <!-- verified: 2026-07, cc 2.1.210 -->
-# The Claude Code surface MASTER CLAUDE depends on
+# The Claude Code surface SKULL depends on
 
 A **dated snapshot** of the harness features the skills reference, so this rots **visibly in one file**
 instead of silently across 70. Every version-sensitive claim in a skill should trace to a line here.
@@ -52,7 +52,7 @@ PostCompact · Elicitation · ElicitationResult · SessionEnd`
 - Entering auto mode **drops broad allow rules** (`Bash(*)`, `Agent` allow rules); narrow rules survive.
 - **Conversation-stated boundaries are enforced but re-read from the transcript — compaction can lose them. Deny rules are the hard guarantee.**
 - **Protected paths** never auto-approved and NOT overridable by `permissions.allow`: `.git`, `.claude` (except `.claude/worktrees`), `.mcp.json`, `.claude.json`, shell rc files, `.npmrc`, `.pre-commit-config.yaml`, …
-- **Checkpointing/`/rewind` does NOT track bash file changes** (`rm`, `mv`) — only file-tool edits. Not a substitute for git. (This is why `mc-git` commits before risky bash.)
+- **Checkpointing/`/rewind` does NOT track bash file changes** (`rm`, `mv`) — only file-tool edits. Not a substitute for git. (This is why `skull-git` commits before risky bash.)
 - **Sandboxing** is Bash-only, OS-enforced; **native Windows unsupported (WSL2 required)**; the proxy doesn't terminate TLS by default, so domain fronting can bypass an allowlist.
 
 ## Docs locations (⚠ these MOVED)

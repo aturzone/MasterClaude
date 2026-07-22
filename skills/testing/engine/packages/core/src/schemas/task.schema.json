@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "mc-qa-task-1.0",
-  "title": "MASTER CLAUDE QA Task",
+  "title": "SKULL QA Task",
   "type": "object",
   "required": ["schemaVersion", "id", "title", "goal", "classification", "importance", "risk", "automation", "procedure", "oracle", "lifecycle", "schedule"],
   "additionalProperties": false,

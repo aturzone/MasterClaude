@@ -1,4 +1,4 @@
-# MASTER CLAUDE QA nightly job (point Windows Task Scheduler here).
+# SKULL QA nightly job (point Windows Task Scheduler here).
 # Re-verifies selector health and runs the unattended public suite in Docker.
 #   powershell -ExecutionPolicy Bypass -File tools/scripts/nightly.ps1 -Service example
 param(

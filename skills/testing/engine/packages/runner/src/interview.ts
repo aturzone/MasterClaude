@@ -49,7 +49,7 @@ export function renderInterviewForm(task: Task): string {
     evidencePrompt: q.evidencePrompt ? pickLang(q.evidencePrompt, 'en') : undefined,
   }));
   const payload = JSON.stringify({ taskId: task.id, questions: resolvedQuestions });
-  return `<!doctype html><meta charset="utf-8"><title>MASTER CLAUDE QA interview — ${task.id}</title>
+  return `<!doctype html><meta charset="utf-8"><title>SKULL QA interview — ${task.id}</title>
 <style>body{font:15px/1.6 system-ui;max-width:760px;margin:32px auto;padding:0 16px}
 .q{border:1px solid #ddd;border-radius:10px;padding:12px 16px;margin:12px 0}
 .hint{color:#666;font-size:13px}textarea,input,select{width:100%;box-sizing:border-box;margin-top:6px}

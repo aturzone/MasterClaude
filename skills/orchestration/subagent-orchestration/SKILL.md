@@ -1,7 +1,7 @@
 ---
 name: subagent-orchestration
 description: >-
-  How MASTER CLAUDE delegates work to subagents and teams. Triggers on "delegate", "spawn agents",
+  How SKULL delegates work to subagents and teams. Triggers on "delegate", "spawn agents",
   "parallel agents", "fan out", "run these in parallel", "subagent", "orchestrate", "build a team for
   this", or whenever a task splits into independent chunks, needs a fresh-eyes review, or means reading
   many files. Teaches the orchestrator-worker pattern: pick the right primitive (subagent vs agent-team
@@ -68,7 +68,7 @@ fix wave cost more than all its tasks combined; re-run the *same* reviewer to co
   if the *plan* is wrong, escalate to the user; never blind-retry the same model unchanged). The rule under all
   four: **if the worker said it's stuck, something must change** — never ignore an escalation or force a retry
   on an unchanged prompt.
-- **Hand off via files, not chat.** Write the task brief to a file under `.mc/briefs/` and have the worker
+- **Hand off via files, not chat.** Write the task brief to a file under `.skull/briefs/` and have the worker
   *Read* it; the worker writes its full report to its own file and returns only status + commit range + a
   one-line test summary + concerns. Reviewers/fix-agents Read & append that file — the brief and the diff
   never enter your context. **Why it's not optional:** everything you paste into a dispatch prompt, and
@@ -97,7 +97,7 @@ specialists (auto-delegation gets unreliable) · letting every worker dump huge 
 context) · trusting without verifying.
 
 ---
-*Credits / further reading (install alongside MASTER CLAUDE if you like them):* Anthropic's
+*Credits / further reading (install alongside SKULL if you like them):* Anthropic's
 [multi-agent research system](https://www.anthropic.com/engineering/multi-agent-research-system) &
 [subagents docs](https://code.claude.com/docs/en/sub-agents); the parallel-dispatch + two-loop-review
 patterns are sharpened in **superpowers** (`obra/superpowers`, MIT). See `docs/ECOSYSTEM.md`.

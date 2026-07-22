@@ -31,7 +31,7 @@ export async function promptHumanInPage(
         'padding:16px;border-radius:12px;font:14px/1.6 system-ui;box-shadow:0 8px 32px rgba(0,0,0,.5)',
     );
     host.innerHTML =
-      `<div style="margin-bottom:8px;white-space:pre-wrap">🧪 MASTER CLAUDE QA — ${text}</div>` +
+      `<div style="margin-bottom:8px;white-space:pre-wrap">🧪 SKULL QA — ${text}</div>` +
       `<textarea id="__mc-qa-notes" placeholder="notes (optional)" style="width:100%;min-height:40px;margin-bottom:8px"></textarea>` +
       `<div style="display:flex;gap:8px">` +
       `<button id="__mc-qa-pass" style="flex:1;padding:8px;background:#16a34a;color:#fff;border:0;border-radius:8px;cursor:pointer">Pass ✓</button>` +

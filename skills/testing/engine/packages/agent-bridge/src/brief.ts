@@ -54,7 +54,7 @@ export function renderBrief(plan: RunPlan, task: Task, agentDir: string): string
     ? `\n### FIRST — verify your session\nYou are given a logged-in session. Before anything else, load the base URL. If you land on \`/login\` or \`/starter\`, or you see the login form, the session is **NOT authenticated** — do NOT attempt to log in or request an OTP. Immediately write \`result.ctrf.json\` with every criterion **failed**, message \`"blocked: session not authenticated"\`, and stop.\n`
     : '';
 
-  return `# MASTER CLAUDE QA Agent Brief — ${task.id}
+  return `# SKULL QA Agent Brief — ${task.id}
 
 You are a QA agent testing **${plan.serviceConfig.displayName}** from the end-user side,
 via browser tools (Playwright MCP). Base URL: ${plan.baseURL}

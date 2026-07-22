@@ -1,12 +1,12 @@
 #!/usr/bin/env node
-// mc-dashboard — render mc.html at the project root: a self-contained, CLI-styled,
-// charted view of MASTER CLAUDE's team and its findings for THIS project. Dependency-free.
-// Reads (all optional, degrades gracefully): .mc/team.md, .mc/qa/runs/<latest>/summary.json,
-// .mc/qa/findings/*.md, .mc/design/findings/*.md + .mc/design/MASTER.md, .sentinel/findings/*.md +
+// skull-dashboard — render skull.html at the project root: a self-contained, CLI-styled,
+// charted view of SKULL's team and its findings for THIS project. Dependency-free.
+// Reads (all optional, degrades gracefully): .skull/team.md, .skull/qa/runs/<latest>/summary.json,
+// .skull/qa/findings/*.md, .skull/design/findings/*.md + .skull/design/MASTER.md, .sentinel/findings/*.md +
 // .sentinel/MAP.md, .security/findings/*.md.
-// Writes ./mc.html. A local artifact — never published.
+// Writes ./skull.html. A local artifact — never published.
 //
-//   node .claude/skills/testing/mc-dashboard/mc-dashboard.mjs [--open]
+//   node .claude/skills/testing/skull-dashboard/skull-dashboard.mjs [--open]
 import fs from 'node:fs';
 import path from 'node:path';
 
@@ -31,7 +31,7 @@ const STATUS_ALIAS = { fixed: 'resolved', wontfix: 'accepted', 'accepted-risk': 
 
 // ---------- gather ----------
 function teamRoster() {
-  const t = readText(path.join(root, '.mc', 'team.md'));
+  const t = readText(path.join(root, '.skull', 'team.md'));
   if (!t) return [];
   const rows = [];
   for (const line of t.split('\n')) {
@@ -45,7 +45,7 @@ function teamRoster() {
 }
 
 function latestRun() {
-  const runsDir = path.join(root, '.mc', 'qa', 'runs');
+  const runsDir = path.join(root, '.skull', 'qa', 'runs');
   const runs = ls(runsDir).filter((r) => fs.existsSync(path.join(runsDir, r, 'summary.json'))).sort();
   if (!runs.length) return null;
   const s = readJSON(path.join(runsDir, runs[runs.length - 1], 'summary.json'));
@@ -76,13 +76,13 @@ function gatherFindings() {
       });
     }
   };
-  scan(path.join(root, '.mc', 'qa', 'findings'), 'tester');
-  scan(path.join(root, '.mc', 'design', 'findings'), 'designer');
+  scan(path.join(root, '.skull', 'qa', 'findings'), 'tester');
+  scan(path.join(root, '.skull', 'design', 'findings'), 'designer');
   scan(path.join(root, '.sentinel', 'findings'), 'sentinel');
   scan(path.join(root, '.security', 'findings'), 'security');
 
   if (unknown.length) {
-    console.warn(`mc-dashboard: ${unknown.length} finding(s) use a severity outside the spec — see docs/FINDING-SPEC.md`);
+    console.warn(`skull-dashboard: ${unknown.length} finding(s) use a severity outside the spec — see docs/FINDING-SPEC.md`);
     for (const u of unknown) console.warn(`  ! ${u}`);
   }
   // Only `open` findings count. A resolved critical used to still force a FAIL verdict — and the
@@ -130,7 +130,7 @@ const rosterHtml = roster.length ? `<div class="roster">${roster.map((m) => `<di
 const findingsHtml = findings.length ? `<table class="find"><thead><tr><th>sev</th><th>team</th><th>area</th><th>finding</th><th>where</th></tr></thead><tbody>${findings.slice(0, 60).map((f) => `<tr><td><span class="pill ${f.severity}">${esc(f.severity)}</span></td><td class="muted">${esc(f.team)}</td><td class="muted">${esc(f.area)}</td><td>${esc(f.title)}</td><td class="mono muted">${esc(f.where)}</td></tr>`).join('')}</tbody></table>` : '';
 
 const html = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="noindex"><title>mc.html — ${esc(projectName)}</title><style>
+<meta name="robots" content="noindex"><title>skull.html — ${esc(projectName)}</title><style>
 :root{--bg:#0b0d10;--fg:#d7dde3;--dim:#8b95a1;--mut:#5b6570;--line:#1c2128;--card:#0f1318;--accent:#d97757;--ok:#3fb950;--bad:#f85149;--warn:#d29922;--muted:#7d8590}
 @media(prefers-color-scheme:light){:root{--bg:#f6f7f9;--fg:#1c2128;--dim:#57606a;--mut:#8b949e;--line:#d0d7de;--card:#fff;--accent:#bc4c2e;--ok:#1a7f37;--bad:#cf222e;--warn:#9a6700;--muted:#6e7781}}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.55 ui-monospace,"JetBrains Mono",SFMono-Regular,Menlo,Consolas,monospace;padding:28px}
@@ -153,7 +153,7 @@ table.find{width:100%;border-collapse:collapse;font-size:12px}table.find th{text
 .mono{font-family:inherit}.muted{color:var(--mut)}.stat{display:flex;gap:20px;flex-wrap:wrap}.stat div{display:flex;flex-direction:column}.stat .n{font-size:22px;font-weight:700}.stat .l{font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:1px}
 footer{color:var(--mut);font-size:11px;margin-top:22px;border-top:1px solid var(--line);padding-top:12px}
 </style></head><body><div class="wrap">
-<div class="head"><span class="prompt">$</span><h1>master-claude ~ ${esc(projectName)}</h1><span class="by">led by MASTER CLAUDE</span>
+<div class="head"><span class="prompt">$</span><h1>skull ~ ${esc(projectName)}</h1><span class="by">led by SKULL</span>
 <span class="badge ${vClass}">${esc(String(verdict).toUpperCase())}</span><span class="stamp">${esc(stamp)}</span></div>
 ${run ? `<div class="grid">
   <section class="card"><h2>Test results${run.env ? ' · ' + esc(run.env) : ''}</h2><div class="chartrow">${donut(counts)}
@@ -163,11 +163,11 @@ ${run ? `<div class="grid">
 </div>` : (sevCounts.length ? `<div class="grid"><section class="card"><h2>Findings by severity</h2>${bars(sevCounts, 'var(--bad)')}</section></div>` : '')}
 ${section('Team on this project', rosterHtml)}
 ${section(`Findings (${findings.length})`, findingsHtml)}
-${!run && !findings.length && !roster.length ? '<section class="card"><p class="muted">No MASTER CLAUDE state found yet. Run the tester team (<code>/master-claude:test</code>), the design team (<code>/master-claude:design</code>) or Sentinel first, then regenerate.</p></section>' : ''}
-<footer>Generated by MASTER CLAUDE · mc-dashboard · local artifact (not published). Regenerate: <span class="mono">node .claude/skills/testing/mc-dashboard/mc-dashboard.mjs</span></footer>
+${!run && !findings.length && !roster.length ? '<section class="card"><p class="muted">No SKULL state found yet. Run the tester team (<code>/skull:test</code>), the design team (<code>/skull:design</code>) or Sentinel first, then regenerate.</p></section>' : ''}
+<footer>Generated by SKULL · skull-dashboard · local artifact (not published). Regenerate: <span class="mono">node .claude/skills/testing/skull-dashboard/skull-dashboard.mjs</span></footer>
 </div></body></html>`;
 
-const outPath = path.join(root, 'mc.html');
+const outPath = path.join(root, 'skull.html');
 fs.writeFileSync(outPath, html);
 // `+` binds tighter than `||`, so the old `(counts.passed||0) + counts.failed || 0` silently
 // reported 0 results whenever counts.failed was absent (NaN || 0). Parenthesize each side.

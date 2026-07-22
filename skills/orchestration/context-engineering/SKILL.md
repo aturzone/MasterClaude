@@ -40,7 +40,7 @@ Run it when a session feels expensive or the model is losing the thread:
 - Could a retrieval step replace a dump? Could a cheaper model do this turn? Is the prefix stable enough to cache?
 - Fix the biggest leak first; re-measure. Treat it like profiling, not vibes.
 
-## Where MASTER CLAUDE already helps
+## Where SKULL already helps
 **token-economy** (best output per token), **repo-map** (ranked retrieval), **compactor** (session handoffs),
 **model-router** (right model per task), **workspace-architect** (a lean `.claude/`). The external power-ups —
 Context7, CodeGraph, RTK, Tokscale, caveman — are in **docs/ECOSYSTEM.md**.

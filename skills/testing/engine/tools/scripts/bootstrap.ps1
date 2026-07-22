@@ -1,8 +1,8 @@
-# MASTER CLAUDE QA one-time Windows setup. Run from the repo root:
+# SKULL QA one-time Windows setup. Run from the repo root:
 #   powershell -ExecutionPolicy Bypass -File tools/scripts/bootstrap.ps1
 $ErrorActionPreference = "Stop"
 
-Write-Host "== MASTER CLAUDE QA bootstrap ==" -ForegroundColor Cyan
+Write-Host "== SKULL QA bootstrap ==" -ForegroundColor Cyan
 
 # 1. Long paths (the monorepo + Playwright browser paths get deep).
 git config core.longpaths true

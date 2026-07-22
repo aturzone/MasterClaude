@@ -49,7 +49,7 @@ Group by **the user's mental model**, not your database schema. Table names are 
 ## Then hand off
 Output a short brief — user · job · flow · success metric · per-screen job — and hand it to **`ui-intel`** for
 the visual system and **`fe-page-patterns`** for the layout. Persist it next to the design system at
-`.mc/design/BRIEF.md` so the next session inherits the *why*, not just the hex codes.
+`.skull/design/BRIEF.md` so the next session inherits the *why*, not just the hex codes.
 
 ## Evidence beats opinion
 If there's real signal in the repo, read it before theorizing: analytics events, support tickets, error logs,
