@@ -141,9 +141,9 @@ folder brainstorms what's needed (including **stack-specific** ideas). Contribut
 [CONTRIBUTING.md](CONTRIBUTING.md). Licensed under [MIT](LICENSE).
 
 
-[![Claudeers](https://claudeers.com/api/badge/skull-2.svg)](https://claudeers.com/skull-2)
+[![Claudeers](https://claudeers.com/api/badge/skull-2.svg)](https://claudeers.com/masterclaude-2)
 
-[![Hits](https://claudeers.com/api/counter/skull-2.svg)](https://claudeers.com/skull-2)
+[![Hits](https://claudeers.com/api/counter/skull-2.svg)](https://claudeers.com/masterclaude-2)
 
 ## Support the project ☕
 SKULL is free and open source. If it saves you time, **buy it a coffee in TON** — 100% on-chain,
