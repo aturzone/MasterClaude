@@ -169,9 +169,10 @@ solid. Every earlier phase is plain files you copy — no CLI required.
 - **Phase 1 — Universal instructions (fast, low-risk, pure markdown).** ✅ *shipped 2026-07-22.* The portable
   leader lives at `adapters/universal/AGENTS.md` (the SKULL method, agent-neutral) + `adapters/README.md`
   (the per-agent install matrix + the `cp skills/ → .agents/skills/` step). Readable by every AGENTS.md agent.
-- **Phase 2 — Static per-agent adapter folders (pure markdown).** Ship `adapters/cursor/`, `adapters/codex/`,
-  `adapters/hermes/` — pre-generated native files the user copies into place (the "let Claude Code set it up"
-  path still works). No compiler yet; just the right files per agent.
+- **Phase 2 — Static per-agent adapter folders (pure markdown).** ✅ *shipped 2026-07-22.* `adapters/cursor/`
+  (native `.cursor/rules/skull.mdc` + skills), `adapters/codex/` (`AGENTS.md` + `.codex/skills/` + config),
+  `adapters/hermes/` (`AGENTS.md` + `MEMORY.md` seed + cron examples) — pre-generated native files the user
+  copies into place. No compiler yet; just the right files per agent.
 - **Phase 3 — The Secret Shop, leader-driven (markdown).** The registry (`registry/tools.json`) + the leader
   *recommends* the right tools per project and hands you the exact install command to run; it records what
   you've installed in `.skull/tools.json` and then prefers those tools. Seeded with graphify + caveman + the

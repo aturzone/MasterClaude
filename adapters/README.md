@@ -56,9 +56,9 @@ Ready-made native files for specific agents live in sibling folders (each with i
 commands):
 
 - [`universal/`](universal/) — the portable `AGENTS.md` (start here; covers every agent above).
-- `cursor/` — a native `.cursor/rules/skull.mdc`.
-- `codex/` — `AGENTS.md` + `.codex/` notes.
-- `hermes/` — `AGENTS.md` + `MEMORY.md` seed + cron examples.
+- [`cursor/`](cursor/) — a native `.cursor/rules/skull.mdc` + the skills.
+- [`codex/`](codex/) — `AGENTS.md` + `.codex/skills/` + a `config.toml` snippet.
+- [`hermes/`](hermes/) — `AGENTS.md` + a `MEMORY.md` seed + cron examples.
 
 > The `skills/` folder is the single source of truth for capabilities — don't fork it per agent. Adapters
 > only carry the thin, agent-specific *wrapper* (which instructions file, which skills path).
