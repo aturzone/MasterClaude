@@ -103,5 +103,5 @@ Code is already testable · the change is style-only · a big architecture chang
 a pure util · a factory before data is duplicated 2+ times · splitting an already-small, focused component.
 
 ---
-*Distilled from a production Vue/Nuxt refactoring methodology by **Atur Dana** and a collaborator, generalized
+*Distilled from a production Vue/Nuxt refactoring methodology by **Atur Dana** and **Saeed Nezafat**, generalized
 for any component framework. Companions: `test-frontend`, `cap-tdd`, `debtradar`.*

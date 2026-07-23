@@ -123,6 +123,6 @@ A per-file test plan (type + risk + the scenarios that exist), the green tests t
 **Required Dependencies** block if anything's missing, and a short **Confidence & Gaps** footer.
 
 ---
-*Distilled from a production Vue/Nuxt front-end testing methodology by **Atur Dana** and a collaborator,
+*Distilled from a production Vue/Nuxt front-end testing methodology by **Atur Dana** and **Saeed Nezafat**,
 generalized here for any front end. Companions: `cap-tdd` (red→green→refactor), `testmedic` (flake triage),
 `guardian` (the honesty gate).*

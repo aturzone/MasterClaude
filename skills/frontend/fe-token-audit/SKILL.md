@@ -54,5 +54,5 @@ A fix plan: the classification table above filled in for this file, the concrete
 tokens to add (with role-names). Apply after the developer approves.
 
 ---
-*Distilled from a production design-token methodology by **Atur Dana** and a collaborator, generalized beyond
+*Distilled from a production design-token methodology by **Atur Dana** and **Saeed Nezafat**, generalized beyond
 Tailwind to any token system. Companions: `fe-design-system` (defines the tokens), `fe-design-review`, `fe-refactor`.*

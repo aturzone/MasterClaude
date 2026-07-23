@@ -65,5 +65,5 @@ point: the next session starts with the knowledge, not without it.
 behavior or callers unknown — say what would change the doc.
 
 ---
-*Distilled from a production documentation methodology by **Atur Dana** and a collaborator, generalized for
+*Distilled from a production documentation methodology by **Atur Dana** and **Saeed Nezafat**, generalized for
 any stack. Companions: `codehistorian`, `repo-map`, `fe-refactor`.*
