@@ -18,6 +18,7 @@ CTRF report). Install it once per machine: `cd .claude/skills/testing/engine && 
 - **`test-blackbox`** — outside‑in checks with no source hooks: functional, visual, a11y, perf, SEO, PWA, network/console.
 - **`test-code`** — code‑level tests: unit/integration coverage and TDD discipline (reuses `cap-tdd`, `testmedic`, `wf-codebase-audit`).
 - **`test-stress`** — load & soak testing (k6) to find where the app bends under pressure.
+- **`test-frontend`** — framework-level UI tests done right: risk-scored per file (P0–P3), behavior-not-implementation, boundary-only mocking, the minimum valuable set — components, composables/hooks, stores, forms, and SSR safety with the project's own runner (Vitest/Jest + Testing Library/VTU, Playwright for E2E). Complements `test-code` (non-UI logic).
 - **`skull-dashboard`** — renders `skull.html`: a CLI‑styled, professional, charted view of SKULL's team and its findings for this project.
 - Agent: **`tester`** (`agents/testing/tester.md`) — read‑only toward source; drives the engine, writes results under `.skull/qa/` + the root `skull.html`.
 

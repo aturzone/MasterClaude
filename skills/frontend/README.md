@@ -29,6 +29,12 @@ The team is driven end-to-end by **`wf-ui-uplift`**, the **`designer`** agent, o
 - **fe-perf** — LCP / CLS / INP and bundle size. Measure, then fix the thing that actually costs.
 - **fe-design-review** — a picky design pass, severity assigned by the priority ladder (blocker/major/minor).
 
+**Keep the code clean (the engineering side)**
+- **fe-refactor** — restructure UI code for testability and correctness *without changing behavior*: pull
+  pure logic out of framework glue, fix reactivity anti-patterns (derived-state-in-an-effect, logic in the
+  view, missing cleanup, unstable keys), place extractions right (util vs helper vs colocated), and keep the
+  `base ← common ← feature` dependency one-way. Vue & React. The companion to `test-frontend`.
+
 ## The priority ladder
 Every reviewer here works top-down: **1** accessibility · **2** touch & interaction · **3** performance ·
 **4** style coherence · **5** layout & responsive · **6** typography & colour · **7** motion · **8** forms ·
