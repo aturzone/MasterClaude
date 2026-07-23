@@ -75,7 +75,8 @@ category; each folder has a README that brainstorms what else belongs there (goo
   palettes, styles, font pairings, decision rules and anti-patterns per product type — contrast **verified**, not
   claimed; persists to `.skull/design/MASTER.md` so every session builds the same product) · `ux-research` ·
   `fe-design-system` · `fe-page-patterns` · `fe-component-craft` · `fe-from-reference` · `fe-a11y` (WCAG 2.2 AA) ·
-  `fe-motion` · `fe-perf` (LCP/CLS/INP) · `fe-design-review` — UI that looks designed, not default.
+  `fe-motion` · `fe-perf` (LCP/CLS/INP) · `fe-design-review` · `fe-refactor` (make Vue/React code testable &
+  correctly layered) — UI that looks designed, not default, on code that stays clean underneath.
 - **`skills/security/`** — `sec-authz-review` · `sec-attacker-review` · `sec-injection` · `sec-authn-session` ·
   `sec-secrets-crypto` · `sec-ssrf-traversal` (+ depth: frontend / api / deps / iac-cloud / threat-model /
   headers) · `sec-pii` (anonymize user PII before it reaches a model) — review for vulnerabilities + privacy,
@@ -87,8 +88,8 @@ category; each folder has a README that brainstorms what else belongs there (goo
   migrations) · `ops-observe` · `ops-postmortem` (blameless) — the production half; on prod, an advisor with
   read access, never an actor.
 - **`skills/testing/`** — `wf-tester` (a full QA pass → `skull.html`) · `test-user-end` · `test-blackbox` ·
-  `test-code` · `test-stress` (load/soak via k6) · `skull-dashboard` — the tester team on any project, safe
-  by default.
+  `test-code` · `test-frontend` (framework-level Vue/React component & unit tests) · `test-stress`
+  (load/soak via k6) · `skull-dashboard` — the tester team on any project, safe by default.
 - **`skills/orchestration/`** — `subagent-orchestration` (delegate to subagents/teams) · `model-router`
   (pick a model per agent — Opus lead / Sonnet workers / Haiku scouts) · `token-economy` (best output per
   token — caveman, cheaper models, cache-warm) · `context-engineering` (curate the window — cache-stable,
