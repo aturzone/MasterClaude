@@ -68,7 +68,8 @@ category; each folder has a README that brainstorms what else belongs there (goo
   `cap-decomposer` · `cap-write-plan` · `cap-execute-plan` — fuzzy ask → spec → plan → built result.
 - **`skills/review/`** — `cap-self-review` · `cap-red-team` — critique the diff and the design.
 - **`skills/understand/`** — `cap-explain-senior` · `cap-rubber-duck` · `codehistorian` · `repo-map`
-  (a ranked code map for token-cheap navigation) — explain, debug, trace history, map the codebase.
+  (a ranked code map for token-cheap navigation) · `codescribe` (capture the *why* into `.skull/context/`) —
+  explain, debug, trace history, document, map the codebase.
 - **`skills/guardrails/`** (the Guardian suite) — `guardian` · `supplyguard` · `testmedic` · `cap-tdd` ·
   `debtradar` · `compactor` · `guardian-suite` — keep the work honest and the codebase healthy.
 - **`skills/frontend/`** (the design team) — **`ui-intel`** (a queryable design-intelligence database: real hex
@@ -76,7 +77,8 @@ category; each folder has a README that brainstorms what else belongs there (goo
   claimed; persists to `.skull/design/MASTER.md` so every session builds the same product) · `ux-research` ·
   `fe-design-system` · `fe-page-patterns` · `fe-component-craft` · `fe-from-reference` · `fe-a11y` (WCAG 2.2 AA) ·
   `fe-motion` · `fe-perf` (LCP/CLS/INP) · `fe-design-review` · `fe-refactor` (make Vue/React code testable &
-  correctly layered) — UI that looks designed, not default, on code that stays clean underneath.
+  correctly layered) · `fe-token-audit` (route hardcoded values through tokens) — UI that looks designed,
+  not default, on code that stays clean underneath.
 - **`skills/security/`** — `sec-authz-review` · `sec-attacker-review` · `sec-injection` · `sec-authn-session` ·
   `sec-secrets-crypto` · `sec-ssrf-traversal` (+ depth: frontend / api / deps / iac-cloud / threat-model /
   headers) · `sec-pii` (anonymize user PII before it reaches a model) — review for vulnerabilities + privacy,

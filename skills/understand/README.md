@@ -7,6 +7,7 @@ Skills here help you (and Claude) actually understand a codebase instead of gues
 - `cap-rubber-duck` — a disciplined debugging partner that makes you find the root cause.
 - `codehistorian` — git archaeology: why is this code the way it is, and what regressed.
 - `repo-map` — a ranked, token-budgeted map of the codebase, so you open 3 files instead of 30.
+- `codescribe` — capture the *why* after a change (hidden constraints, decisions, edge-case guards) into `.skull/context/` so the next session starts with the knowledge, not without it. The write-side companion to `codehistorian`.
 
 **Brainstorm — what else belongs here** (great first contributions)
 - `onboarding-tour` — walk a newcomer through the repo's entry points and data flow.

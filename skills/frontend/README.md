@@ -34,6 +34,9 @@ The team is driven end-to-end by **`wf-ui-uplift`**, the **`designer`** agent, o
   pure logic out of framework glue, fix reactivity anti-patterns (derived-state-in-an-effect, logic in the
   view, missing cleanup, unstable keys), place extractions right (util vs helper vs colocated), and keep the
   `base ← common ← feature` dependency one-way. Vue & React. The companion to `test-frontend`.
+- **fe-token-audit** — find hardcoded design values that bypass the system (raw hex, `bg-[#…]`, inline-style
+  colors, magic spacing) and route each through a token — or add one, named by role. Enforces what
+  `fe-design-system` defines.
 
 ## The priority ladder
 Every reviewer here works top-down: **1** accessibility · **2** touch & interaction · **3** performance ·
