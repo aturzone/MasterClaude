@@ -62,8 +62,7 @@ asked. A signature lands because it's rare; overused it's noise.
 - **Inert by default.** SKULL is plain markdown — having it installed runs nothing. A skill acts only
   when invoked; there is no install step, no hook that runs code, no background process, no network call, no
   telemetry.
-- **No autonomous runners; permissions always on.** SKULL ships **no** unattended runner scripts, no
-  Telegram bridge, and no background daemons — and nothing in it ever skips Claude Code's permission prompts.
+- **No autonomous runners; permissions always on.** SKULL ships **no** unattended runner scripts and no background daemons — and nothing in it ever skips Claude Code's permission prompts.
   Every capability works **interactively**, under the normal approvals, with you in the loop; you never put a
   permission-skipping flag in a hook. The catastrophe rails (no moving money, no destroying real data, no
   exfiltration, stay in the project) always hold.

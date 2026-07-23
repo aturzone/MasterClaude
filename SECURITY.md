@@ -13,7 +13,7 @@ all plain text you can read.
 
 ## No autonomous runners — everything runs interactively, with permissions on
 SKULL ships **no** unattended runner scripts: there is no "always-on" build loop, no headless batch
-runner, and no Telegram (or any other) bridge — nothing that keeps working while you're away. Every capability
+runner — nothing that keeps working while you're away. Every capability
 runs **interactively**, inside a normal Claude Code session, under the **normal permission prompts** — the same
 approvals you'd get for any other work. Claude asks before it acts and you stay in control of every tool call.
 Nothing in this repo skips those prompts, and no skill ever asks you to put a permission-skipping flag in a

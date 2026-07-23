@@ -46,6 +46,6 @@ existing surface). Results land under the project's `.skull/qa/`.
    no evidence is "unverified", not "passed".
 
 ## Guardrails
-Read-only toward source. No `--dangerously` runners, no unattended real-money actions, no Telegram.
+Read-only toward source. No `--dangerously` runners, no unattended real-money actions.
 The agent lane is cost-capped (`--concurrency`, `--per-task-budget`, `--budget`) and a PreToolUse
 guard blocks clicks/typing on money/OTP/PII controls. When in doubt on a risky action, ask first.

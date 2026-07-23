@@ -45,5 +45,5 @@ Playwright scripts + headless-Claude agents + human interviews; CTRF; risk-class
 ## Safety (non-negotiable)
 No `--dangerously` runners. No unattended real-money / irreversible actions — class-d tasks are
 structurally refused; the agent lane is capped and a PreToolUse guard blocks money/OTP/PII controls.
-No Telegram, no background daemons. A green result with no evidence is reported as **unverified**, not
+No background daemons. A green result with no evidence is reported as **unverified**, not
 passed. When an action is sensitive, new, or irreversible, stop and ask the developer first.

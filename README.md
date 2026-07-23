@@ -10,7 +10,7 @@ with the newest Claude Code features.
 No account. No API key. No vault. It's just markdown you drop into `.claude/` — everything is local, plain text, and open.
 
 **Safe by default.** Adding SKULL runs **nothing** — it's inert markdown. There are **no** autonomous
-runners, no Telegram bridge, and no background daemons; every capability works interactively under Claude
+runners and no background daemons; every capability works interactively under Claude
 Code's normal permission prompts, nothing auto-starts, and no data leaves your machine. Its guardrails are
 guidance by default; a few can be **armed** as opt-in `PreToolUse` hooks that hard-block the riskiest moves
 (weakening a test, irreversible shell on a prod box) — off until you switch them on: **[docs/ENFORCEMENT.md](docs/ENFORCEMENT.md)**.
